@@ -16,7 +16,7 @@ export default async function handler(request: NextRequest) {
   const rawTitle = searchParams.has("title")
     ? searchParams.get("title")
     : undefined;
-  const title = rawTitle ?? "Langfuse";
+  const title = rawTitle ?? "aiop";
 
   const rawDescription = searchParams.has("description")
     ? searchParams.get("description")

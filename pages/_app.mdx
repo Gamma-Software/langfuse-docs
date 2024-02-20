@@ -37,12 +37,11 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <div className={`${GeistSans.variable} font-sans ${GeistMono.variable}`}>
-      {/*TODO
       <PostHogProvider client={posthog}>
         <Component {...pageProps} />
         {process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID ? <CrispWidget /> : null}
       </PostHogProvider>
-      <Hubspot />*/}
+      <Hubspot />
       <Script
         src="https://app.termly.io/embed.min.js"
         strategy="beforeInteractive"

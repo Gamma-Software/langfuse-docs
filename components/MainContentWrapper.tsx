@@ -76,7 +76,7 @@ export const DocsSupport = () => {
           <span>Chat</span> <MessageSquare className="h-4 w-4 ml-3" />
         </Button>
         <Button variant="outline" size="sm" asChild>
-          <a href="mailto:support@aiop.fr" target="_blank">
+          <a href="mailto:valentin.rudloff.perso@gmail.com" target="_blank">
             <span>Email</span>
             <Mail className="h-4 w-4 ml-3" />
           </a>
