@@ -39,9 +39,9 @@ import { LangfuseWeb } from "langfuse";
 
 export function UserFeedbackComponent(props: { traceId: string }) {
   const langfuseWeb = new LangfuseWeb({
-    publicKey: env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY,
-    baseUrl: "https://cloud.langfuse.com", // 🇪🇺 EU region
-    // baseUrl: "https://us.cloud.langfuse.com", // 🇺🇸 US region
+    publicKey: env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    baseUrl: "https://cloud.aiop.fr", // 🇪🇺 EU region
+    // baseUrl: "https://us.cloud.aiop.fr", // 🇺🇸 US region
   });
 
   const handleUserFeedback = async (value: number) =>
@@ -89,8 +89,8 @@ export function UserFeedbackComponent(props: { traceId: string }) {
     created() {
       this.langfuseWeb = new LangfuseWeb({
         publicKey: process.env.VUE_APP_LANGFUSE_PUBLIC_KEY,
-        baseUrl: "https://cloud.langfuse.com", // 🇪🇺 EU region
-        // baseUrl: "https://us.cloud.langfuse.com", // 🇺🇸 US region
+        baseUrl: "https://cloud.aiop.fr", // 🇪🇺 EU region
+        // baseUrl: "https://us.cloud.aiop.fr", // 🇺🇸 US region
       });
     },
     methods: {
@@ -124,8 +124,8 @@ import { LangfuseWeb } from "langfuse";
 
 const langfuseWeb = new LangfuseWeb({
   publicKey: "pk-lf-...",
-  baseUrl: "https://cloud.langfuse.com", // 🇪🇺 EU region
-  // baseUrl: "https://us.cloud.langfuse.com", // 🇺🇸 US region
+  baseUrl: "https://cloud.aiop.fr", // 🇪🇺 EU region
+  // baseUrl: "https://us.cloud.aiop.fr", // 🇺🇸 US region
 });
 ```
 
@@ -135,7 +135,7 @@ Hint for Next.js users: you need to prefix the public key with `NEXT_PUBLIC_` to
 
 | Variable       | Description                                                                               | Default value                                                                                                                                           |
 | -------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| baseUrl        | BaseUrl of the Langfuse API; for US data region, set to `"https://us.cloud.langfuse.com"` | `"https://cloud.langfuse.com"`                                                                                                                          |
+| baseUrl        | BaseUrl of the Langfuse API; for US data region, set to `"https://us.cloud.aiop.fr"` | `"https://cloud.aiop.fr"`                                                                                                                          |
 | release        | The release number/hash of the application to provide analytics grouped by release.       | `process.env.LANGFUSE_RELEASE` or [common system environment names](https://github.com/langfuse/langfuse-js/blob/main/langfuse-core/src/release-env.ts) |
 | requestTimeout | Timeout in ms for requests                                                                | `10000`                                                                                                                                                 |
 

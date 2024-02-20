@@ -2,7 +2,7 @@
 
 In this cookbook, we'll iterate on systems prompts with the goal of getting only the capital of a given country. We use Langfuse datasets, to store a list of example inputs and expected outputs.
 
-This is a very simple example, you can run experiments on any LLM application that you either trace with the [Langfuse SDKs](https://langfuse.com/docs/sdk) (Python, JS/TS) or via one of our [integrations](https://langfuse.com/docs/integrations) (e.g. Langchain).
+This is a very simple example, you can run experiments on any LLM application that you either trace with the [Langfuse SDKs](https://aiop.fr/docs/sdk) (Python, JS/TS) or via one of our [integrations](https://aiop.fr/docs/integrations) (e.g. Langchain).
 
 _Simple example application_
 
@@ -23,15 +23,15 @@ _Simple example application_
 ```python
 import os
 
-# get keys for your project from https://cloud.langfuse.com
+# get keys for your project from https://cloud.aiop.fr
 os.environ["LANGFUSE_PUBLIC_KEY"] = ""
 os.environ["LANGFUSE_SECRET_KEY"] = ""
 
 # your openai key
 os.environ["OPENAI_API_KEY"] = ""
 
-# Your host, defaults to https://cloud.langfuse.com
-# For US data region, set to "https://us.cloud.langfuse.com"
+# Your host, defaults to https://cloud.aiop.fr
+# For US data region, set to "https://us.cloud.aiop.fr"
 # os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 ```
 
@@ -96,7 +96,7 @@ We implement the application in two ways to demonstrate how it's done
 
 ```python
 # we use a very simple eval here, you can use any eval library
-# see https://langfuse.com/docs/scores/model-based-evals for details
+# see https://aiop.fr/docs/scores/model-based-evals for details
 def simple_evaluation(output, expected_output):
   return output == expected_output
 ```
@@ -236,4 +236,4 @@ run_langchain_experiment(
 - Browse each run for an individual item
 - Look at traces to debug issues
 
-![Experiment runs in Langfuse](https://langfuse.com/images/docs/dataset-runs-cookbook.jpg)
+![Experiment runs in Langfuse](https://aiop.fr/images/docs/dataset-runs-cookbook.jpg)

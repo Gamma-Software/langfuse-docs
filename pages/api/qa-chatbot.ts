@@ -24,7 +24,7 @@ const supabaseClient = createClient(
 );
 
 const langfuse = new Langfuse({
-  publicKey: process.env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY,
+  publicKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   secretKey: process.env.LANGFUSE_SECRET_KEY,
   baseUrl: process.env.NEXT_PUBLIC_LANGFUSE_BASE_URL ?? undefined,
 });

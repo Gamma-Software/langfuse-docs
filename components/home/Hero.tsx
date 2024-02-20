@@ -37,7 +37,8 @@ export function Hero() {
         </div>
       </div>
       {/* Badges */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap">
+      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap"> */}
+      {/* <div className="grid grid-cols-1 md:grid-cols-1 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap">
         <Link href="https://github.com/langfuse/langfuse">
           <img
             alt="Langfuse Github stars"
@@ -73,12 +74,14 @@ export function Hero() {
           <ProductHuntBadge />
         </div>
       </div>
-      {/* <div className="aspect-video bg-blue-200"></div> */}
-      {/* <CloudflareVideo
+      {/* <div className="aspect-video bg-blue-200"></div>
+      <CloudflareVideo
         videoId="ff57153dd945da86f7549c1f30daaea2"
         aspectRatio={1.71}
         title="What is Langfuse?"
-      /> */}
+      />
+      */}
+
     </HomeSection>
   );
 }

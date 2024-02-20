@@ -102,7 +102,7 @@ export function Chat({ className }: { className?: string }) {
 const welcomeMessage: Message = {
   role: "assistant",
   id: "announcement-1",
-  content: `👋 Do you have any questions about Langfuse? Ask me!
+  content: `👋 Do you have any questions about AIOP? Ask me!
 
 _⚠️ Warning: Do not enter sensitive information. All chat messages can be viewed in the public demo project. Humans (the founders) are available via the chat widget._`,
 } as const;

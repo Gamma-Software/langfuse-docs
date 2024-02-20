@@ -18,12 +18,12 @@ import { BlogHeader } from "@/components/blog/BlogHeader";
 
 ## Demo
 
-### Frontend: [chat.langfuse.com](https://chat.langfuse.com)
+### Frontend: [chat.aiop.fr](https://chat.aiop.fr)
 
 Chat application with conversations, user feedback, and streaming responses from the edge.
 
 <Frame>
-  ![chat.langfuse.com screen recording](/images/blog/ai-chatbot/chat-ui.gif)
+  ![chat.aiop.fr screen recording](/images/blog/ai-chatbot/chat-ui.gif)
 </Frame>
 
 ### Langfuse UI
@@ -31,7 +31,7 @@ Chat application with conversations, user feedback, and streaming responses from
 We have captured threads of users as single traces in langfuse. Threads include the user_id, overall token usage, and further metadata. User feedback which is collected in the frontend is directly related to the trace and helps to find low-quality conversations and individual messages which got negative feedback.
 
 <Frame>
-  ![chat.langfuse.com screen
+  ![chat.aiop.fr screen
   recording](/images/blog/ai-chatbot/langfuse-dashboard.gif)
 </Frame>
 
@@ -75,7 +75,7 @@ npm i langfuse
 ```typescript
 const langfuse = new Langfuse({
   secretKey: process.env.LANGFUSE_SECRET_KEY,
-  publicKey: process.env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY,
+  publicKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 });
 ```
 
@@ -177,7 +177,7 @@ The SDK requires the `publicKey` which can be safely exposed as it can only be u
 
 ```typescript
 const langfuse = new LangfuseWeb({
-  publicKey: process.env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY ?? "",
+  publicKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
 });
 ```
 
@@ -204,4 +204,4 @@ If you want to integrate Langfuse into your own chat application, read the [Quic
 
 ## Get in touch
 
-Langfuse is being actively developed in open source together with the community. Provide feedback, report bugs, or request features via GitHub issues. Join our [Discord](/discord) for fast support. If you want to chat about your use case, reach out to us via email: contact@langfuse.com
+Langfuse is being actively developed in open source together with the community. Provide feedback, report bugs, or request features via GitHub issues. Join our [Discord](/discord) for fast support. If you want to chat about your use case, reach out to us via email: contact@aiop.fr

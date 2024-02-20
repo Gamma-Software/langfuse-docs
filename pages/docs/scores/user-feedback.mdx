@@ -55,7 +55,7 @@ import { LangfuseWeb } from "langfuse";
 
 export function UserFeedbackComponent(props: { traceId: string }) {
   const langfuseWeb = new LangfuseWeb({
-    publicKey: env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY,
+    publicKey: env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   });
 
   const handleUserFeedback = async (value: number) =>

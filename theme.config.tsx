@@ -25,11 +25,7 @@ const footerNav = [
   { name: "Careers", href: "/careers" },
   {
     name: "Status",
-    href: "https://status.langfuse.com",
-  },
-  {
-    name: "OSS Friends",
-    href: "/oss-friends",
+    href: "https://aiop-uptime.pival.fr/status/services",
   },
 ];
 
@@ -58,8 +54,8 @@ const config: DocsThemeConfig = {
         <a
           className="p-1 hidden sm:inline-block hover:opacity-80"
           target="_blank"
-          href="https://langfuse.com/discord"
-          aria-label="Langfuse Discord"
+          href="https://discord.gg/vdbnZQwKuB"
+          aria-label="aiop Discord"
           rel="nofollow noreferrer"
         >
           <BsDiscord size={24} />
@@ -68,8 +64,8 @@ const config: DocsThemeConfig = {
         <a
           className="p-1 hidden sm:inline-block hover:opacity-80"
           target="_blank"
-          href="https://x.com/langfuse"
-          aria-label="Langfuse X formerly known as Twitter"
+          href="https://twitter.com/valentinrudlof1"
+          aria-label="X formerly known as Twitter"
           rel="nofollow noreferrer"
         >
           <svg
@@ -99,7 +95,7 @@ const config: DocsThemeConfig = {
   toc: {
     backToTop: true,
   },
-  docsRepositoryBase: "https://github.com/langfuse/langfuse-docs/tree/main",
+  docsRepositoryBase: "https://github.com/Gamma-Software/aiop-docs/tree/main",
   footer: {
     text: (
       <div className="flex md:justify-between md:flex-row flex-col items-center flex-1 flex-wrap gap-2 text-sm">
@@ -116,6 +112,7 @@ const config: DocsThemeConfig = {
             ))}
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-end">
+            {/* TODO add legal links
             {footerLegalNav.map((nav) => (
               <Link
                 key={nav.name}
@@ -124,7 +121,7 @@ const config: DocsThemeConfig = {
               >
                 {nav.name}
               </Link>
-            ))}
+            ))} */}
             <a
               href="#"
               onClick={() => (window as any).displayPreferenceModal()}
@@ -146,19 +143,19 @@ const config: DocsThemeConfig = {
     return {
       titleTemplate:
         asPath === "/"
-          ? "Langfuse"
+          ? "aiop"
           : asPath.startsWith("/blog/")
-          ? "%s - Langfuse Blog"
+          ? "%s - aiop Blog"
           : asPath.startsWith("/docs/guides/")
-          ? "%s - Langfuse Guides"
-          : "%s - Langfuse",
+          ? "%s - aiop Guides"
+          : "%s - aiop",
     };
   },
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter();
     const { frontMatter, title: pageTitle } = useConfig();
     const url =
-      "https://langfuse.com" +
+      "https://aiop.fr" +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
     const description = frontMatter.description ?? "";
@@ -172,15 +169,15 @@ const config: DocsThemeConfig = {
       : "";
 
     const image = frontMatter.ogImage
-      ? "https://langfuse.com" + frontMatter.ogImage
-      : `https://langfuse.com/api/og?title=${encodeURIComponent(
+      ? "https://aiop.fr" + frontMatter.ogImage
+      : `https://aiop.fr/api/og?title=${encodeURIComponent(
           title
         )}&description=${encodeURIComponent(
           description
         )}&section=${encodeURIComponent(section)}`;
 
     const video = frontMatter.ogVideo
-      ? "https://langfuse.com" + frontMatter.ogVideo
+      ? "https://aiop.fr" + frontMatter.ogVideo
       : null;
 
     return (
@@ -198,8 +195,8 @@ const config: DocsThemeConfig = {
         <meta property="twitter:image" content={image} />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site:domain" content="langfuse.com" />
-        <meta name="twitter:url" content="https://langfuse.com" />
+        <meta name="twitter:site:domain" content="aiop.fr" />
+        <meta name="twitter:url" content="https://aiop.fr" />
 
         <link
           rel="logo_180"
@@ -235,10 +232,10 @@ const config: DocsThemeConfig = {
   //   text: (
   //     <Link href="https://www.producthunt.com/golden-kitty-awards/hall-of-fame">
   //       {/* mobile */}
-  //       <span className="sm:hidden">Langfuse won a Golden Kitty Award →</span>
+  //       <span className="sm:hidden">aiop won a Golden Kitty Award →</span>
   //       {/* desktop */}
   //       <span className="hidden sm:inline">
-  //         Langfuse won a Golden Kitty Award in AI Infra →
+  //         aiop won a Golden Kitty Award in AI Infra →
   //       </span>
   //     </Link>
   //   ),

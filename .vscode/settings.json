@@ -1,8 +1,10 @@
 {
-  "cSpell.enableFiletypes": ["mdx"],
+  "cSpell.enableFiletypes": [
+    "mdx"
+  ],
   "cSpell.words": [
     "Langchain",
-    "Langfuse",
+    "aiop",
     "Quickstart"
   ],
   "editor.wordWrap": "on",

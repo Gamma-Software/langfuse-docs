@@ -8,7 +8,7 @@ export function ScheduleDemoPage() {
     <section className="flex flex-col gap-10 w-full min-h-screen items-center py-20">
       <Header
         title="Talk to us"
-        description="Get a demo by one of the founders to learn more about Langfuse"
+        description="Get a demo by the founder to learn more about aiop and how it can help your business."
         h="h1"
       />
       <ScheduleDemo />
@@ -30,7 +30,7 @@ export function ScheduleDemo() {
   }, []);
   return (
     <Cal
-      calLink="marc-kl/demo"
+      calLink="valentin-rudloff/aiop-demo"
       style={{ width: "100%", height: "100%", overflow: "scroll" }}
       config={{ layout: "month_view" }}
     />

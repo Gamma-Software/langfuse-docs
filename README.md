@@ -1,6 +1,6 @@
-# Langfuse Docs
+# aiop Docs
 
-Repo for [langfuse.com](https://langfuse.com), based on [Nextra](https://nextra.site/)
+Repo for [aiop.fr](https://aiop.fr), based on [Nextra](https://nextra.site/)
 
 ## Local Development
 
@@ -33,7 +33,7 @@ API reference is automatically generated based on the OpenAPI spec of the curren
 - [shadcn/ui](https://ui.shadcn.com)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://langfuse.com/blog/qa-chatbot-for-langfuse-docs) for implementation details (all open source)
+Interested in stack of Q&A docs chatbot? Checkout the [blog post](https://aiop.fr/blog/qa-chatbot-for-langfuse-docs) for implementation details (all open source)
 
 ## Bundle analysis
 

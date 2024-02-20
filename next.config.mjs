@@ -30,7 +30,7 @@ const nextraConfig = withNextra({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'static.langfuse.com',
+        hostname: 'static.aiop.fr',
         port: '',
         pathname: '/**',
       },
@@ -77,8 +77,8 @@ const nonPermanentRedirects = [
   ].map((path) => [path, path + "/overview"]),
 
   // Redirects to bridge all kinds of old links to new links
-  ["/docs/reference", "https://api.reference.langfuse.com/"],
-  ["/docs/integrations/api", "https://api.reference.langfuse.com/"],
+  ["/docs/reference", "https://api.reference.aiop.fr/"],
+  ["/docs/integrations/api", "https://api.reference.aiop.fr/"],
   ["/docs/langchain", "/docs/integrations/langchain/python"],
   ["/docs/integrations/langchain", "/docs/integrations/langchain/python"],
   ["/docs/langchain/python", "/docs/integrations/langchain/python"],
@@ -97,7 +97,7 @@ const nonPermanentRedirects = [
   ["/docs/debugging-ui", "/docs/tracing/overview"],
   ["/observability", "/docs/tracing/overview"],
   ["/docs/openai", "/docs/integrations/openai"],
-  ["/docs/api", "https://api.reference.langfuse.com/"],
+  ["/docs/api", "https://api.reference.aiop.fr/"],
   ["/docs/qa-chatbot", "/docs/demo"],
   ["/docs/user-explorer", "/docs/tracing/users"],
   ["/docs/sessions", "/docs/tracing/sessions"],

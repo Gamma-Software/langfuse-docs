@@ -7,11 +7,11 @@ export const ToAppButton = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       Promise.all([
-        fetch("https://us.cloud.langfuse.com/api/auth/session", {
+        fetch("https://us.cloud.aiop.fr/api/auth/session", {
           credentials: "include",
           mode: "cors",
         }),
-        fetch("https://cloud.langfuse.com/api/auth/session", {
+        fetch("https://cloud.aiop.fr/api/auth/session", {
           credentials: "include",
           mode: "cors",
         }),
@@ -31,8 +31,8 @@ export const ToAppButton = () => {
       <Link
         href={
           signedIn === "US"
-            ? "https://us.cloud.langfuse.com"
-            : "https://cloud.langfuse.com"
+            ? "https://us.cloud.aiop.fr"
+            : "https://cloud.aiop.fr"
         }
       >
         {signedIn ? "To App" : "Sign Up"}

@@ -47,7 +47,7 @@ The Langfuse `CallbackHandler` tracks the following actions when using Langchain
 - ChatModel: `on_chat_model_start`,
 - LLM: `on_llm_start`, `on_llm_end`, `on_llm_error`
 
-Missing some useful information/context in Langfuse? Join the [Discord](/discord) or share your feedback directly with us: feedback@langfuse.com
+Missing some useful information/context in Langfuse? Join the [Discord](/discord) or share your feedback directly with us: feedback@aiop.fr
 
 ## Notebook Setup
 
@@ -70,15 +70,15 @@ Alternatively, you can also pass them as arguments to the `CallbackHandler` cons
 ```python
 import os
 
-# get keys for your project from https://cloud.langfuse.com
+# get keys for your project from https://cloud.aiop.fr
 os.environ["LANGFUSE_PUBLIC_KEY"] = ""
 os.environ["LANGFUSE_SECRET_KEY"] = ""
 
 # your openai key
 os.environ["OPENAI_API_KEY"] = ""
 
-# Your host, defaults to https://cloud.langfuse.com
-# For US data region, set to "https://us.cloud.langfuse.com"
+# Your host, defaults to https://cloud.aiop.fr
+# For US data region, set to "https://us.cloud.aiop.fr"
 # os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 ```
 
@@ -110,7 +110,7 @@ from langfuse.callback import CallbackHandler
 
 ### 1. Sequential Chain
 
-![Trace of Langchain Sequential Chain in Langfuse](https://langfuse.com/images/docs/langchain_chain.jpg)
+![Trace of Langchain Sequential Chain in Langfuse](https://aiop.fr/images/docs/langchain_chain.jpg)
 
 
 ```python
@@ -139,7 +139,7 @@ handler.langfuse.flush()
 
 ### 2. Sequential Chain in Langchain Expression Language (LCEL)
 
-![Trace of Langchain LCEL](https://langfuse.com/images/docs/langchain_LCEL.png)
+![Trace of Langchain LCEL](https://aiop.fr/images/docs/langchain_LCEL.png)
 
 
 ```python
@@ -172,7 +172,7 @@ handler.get_trace_url()
 
 ### 3. QA Retrieval
 
-![Trace of Langchain QA Retrieval in Langfuse](https://langfuse.com/images/docs/langchain_qa_retrieval.jpg)
+![Trace of Langchain QA Retrieval in Langfuse](https://aiop.fr/images/docs/langchain_qa_retrieval.jpg)
 
 
 ```python
@@ -225,7 +225,7 @@ handler.langfuse.flush()
 
 
 
-![Trace of Langchain Agent in Langfuse](https://langfuse.com/images/docs/langchain_agent.jpg)
+![Trace of Langchain Agent in Langfuse](https://aiop.fr/images/docs/langchain_agent.jpg)
 
 
 ```python
@@ -399,7 +399,7 @@ TRACE
 |   |   |-- GENERATION: ChatOpenAi
 ```
 
-We changed this, so that each invocation will end up on its own trace. This allows us to derive the user inputs and outputs to Langchain applications. If you still want to group multiple invocations on one trace, you can use [this](https://langfuse.com/docs/langchain/python#adding-trace-as-context-to-a-langchain-handler) approach.
+We changed this, so that each invocation will end up on its own trace. This allows us to derive the user inputs and outputs to Langchain applications. If you still want to group multiple invocations on one trace, you can use [this](https://aiop.fr/docs/langchain/python#adding-trace-as-context-to-a-langchain-handler) approach.
 
 ```bash
 TRACE_1

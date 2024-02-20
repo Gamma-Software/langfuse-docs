@@ -9,7 +9,7 @@ This cookbook follows three steps:
 
 
 ----
-Not using Langfuse yet? [Get started](https://langfuse.com/docs/get-started) by capturing LLM events.
+Not using Langfuse yet? [Get started](https://aiop.fr/docs/get-started) by capturing LLM events.
 
 ### Setup
 
@@ -24,15 +24,15 @@ First you need to install Langfuse and Langchain via pip and then set the enviro
 ```python
 import os
 
-# get keys for your project from https://cloud.langfuse.com
+# get keys for your project from https://cloud.aiop.fr
 os.environ["LANGFUSE_PUBLIC_KEY"] = ""
 os.environ["LANGFUSE_SECRET_KEY"] = ""
 
 # your openai key
 os.environ["OPENAI_API_KEY"] = ""
 
-# Your host, defaults to https://cloud.langfuse.com
-# For US data region, set to "https://us.cloud.langfuse.com"
+# Your host, defaults to https://cloud.aiop.fr
+# For US data region, set to "https://us.cloud.aiop.fr"
 # os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 ```
 
@@ -56,7 +56,7 @@ EVAL_TYPES={
 }
 ```
 
-Initialize the Langfuse Python SDK, more information [here](https://langfuse.com/docs/sdk/python#1-installation).
+Initialize the Langfuse Python SDK, more information [here](https://aiop.fr/docs/sdk/python#1-installation).
 
 
 ```python
@@ -71,7 +71,7 @@ langfuse.auth_check()
 
 Load all `generations` from Langfuse filtered by `name`, in this case `OpenAI`. Names are used in Langfuse to identify different types of generations within an application. Change it to the name you want to evaluate.
 
-Checkout [docs](https://langfuse.com/docs/sdk/python#generation) on how to set the name when ingesting an LLM Generation.
+Checkout [docs](https://aiop.fr/docs/sdk/python#generation) on how to set the name when ingesting an LLM Generation.
 
 
 ```python
@@ -126,7 +126,7 @@ def get_hallucination_eval():
 
 ### Execute evaluation
 
-Below, we execute the evaluation for each `Generation` loaded above. Each score is ingested into Langfuse via [`langfuse.score()`](https://langfuse.com/docs/scores).
+Below, we execute the evaluation for each `Generation` loaded above. Each score is ingested into Langfuse via [`langfuse.score()`](https://aiop.fr/docs/scores).
 
 
 
@@ -186,10 +186,10 @@ langfuse.flush()
 
  In the Langfuse UI, you can filter Traces by `Scores` and look into the details for each. Check out Langfuse Analytics to understand the impact of new prompt versions or application releases on these scores.
 
-![Image of Trace](https://langfuse.com/images/docs/trace-conciseness-score.jpg)
+![Image of Trace](https://aiop.fr/images/docs/trace-conciseness-score.jpg)
 _Example trace with conciseness score_
 
 
 ## Get in touch
 
-Looking for a specific way to score your production data in Langfuse? Join the [Discord](https://langfuse.com/discord) and discuss your use case!
+Looking for a specific way to score your production data in Langfuse? Join the [Discord](https://aiop.fr/discord) and discuss your use case!

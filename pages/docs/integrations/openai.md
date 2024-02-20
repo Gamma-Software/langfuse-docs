@@ -24,15 +24,15 @@ The integration is compatible with OpenAI SDK versions `>=0.27.8`. It supports a
 ```python
 import os
 
-# get keys for your project from https://cloud.langfuse.com
+# get keys for your project from https://cloud.aiop.fr
 os.environ["LANGFUSE_PUBLIC_KEY"] = ""
 os.environ["LANGFUSE_SECRET_KEY"] = ""
 
 # your openai key
 os.environ["OPENAI_API_KEY"] = ""
 
-# Your host, defaults to https://cloud.langfuse.com
-# For US data region, set to "https://us.cloud.langfuse.com"
+# Your host, defaults to https://cloud.aiop.fr
+# For US data region, set to "https://us.cloud.aiop.fr"
 # os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 ```
 
@@ -57,11 +57,11 @@ auth_check()
 
 Instead of setting the environment variables before importing the SDK, you can also use the following attributes after the import. This works for the async OpenAI client as well:
 
-| Attribute |Description   | Default value  
+| Attribute |Description   | Default value
 | --- | --- | ---
-| `openai.langfuse_host` | BaseUrl of the Langfuse API | `LANGFUSE_HOST` environment variable, defaults to `"https://cloud.langfuse.com"`. Set to `"https://us.cloud.langfuse.com"` for US data region.       
-| `openai.langfuse_public_key` | Public key of the Langfuse API | `LANGFUSE_PUBLIC_KEY` environment variable       
-| `openai.langfuse_secret_key` | Private key of the Langfuse API | `LANGFUSE_SECRET_KEY` environment variable       
+| `openai.langfuse_host` | BaseUrl of the Langfuse API | `LANGFUSE_HOST` environment variable, defaults to `"https://cloud.aiop.fr"`. Set to `"https://us.cloud.aiop.fr"` for US data region.
+| `openai.langfuse_public_key` | Public key of the Langfuse API | `LANGFUSE_PUBLIC_KEY` environment variable
+| `openai.langfuse_secret_key` | Private key of the Langfuse API | `LANGFUSE_SECRET_KEY` environment variable
 | `openai.langfuse_debug` | Debug mode of Langfuse SDK | `False`
 
 
@@ -188,19 +188,19 @@ output = json.loads(response.choices[0].message.function_call.arguments)
 
 ## 4. Debug & measure in Langfuse
 
-Go to https://cloud.langfuse.com or your own instance
+Go to https://cloud.aiop.fr or your own instance
 
 ### Dashboard
-![Dashboard](https://langfuse.com/images/docs/openai-dashboard.png)
+![Dashboard](https://aiop.fr/images/docs/openai-dashboard.png)
 
 ### List of generations
-![List of generations](https://langfuse.com/images/docs/openai-generation-list.png)
+![List of generations](https://aiop.fr/images/docs/openai-generation-list.png)
 
 ### Chat completion
-![Chat completion](https://langfuse.com/images/docs/openai-chat.png)
+![Chat completion](https://aiop.fr/images/docs/openai-chat.png)
 
 ### Function
-![Function](https://langfuse.com/images/docs/openai-function.png)
+![Function](https://aiop.fr/images/docs/openai-function.png)
 
 
 ## 5. Track OpenAI errors
@@ -222,7 +222,7 @@ country = openai.chat.completions.create(
 
 Throws error 👆
 
-![Openai error](https://langfuse.com/images/docs/openai-error.png)
+![Openai error](https://aiop.fr/images/docs/openai-error.png)
 
 
 ```python
@@ -273,11 +273,11 @@ poem = openai.chat.completions.create(
 ).choices[0].message.content
 ```
 
-![Trace with multiple OpenAI calls](https://langfuse.com/images/docs/openai-trace-grouped.png)
+![Trace with multiple OpenAI calls](https://aiop.fr/images/docs/openai-trace-grouped.png)
 
 ### Fully featured: create trace via SDK
 
-The `trace` is a core object in Langfuse and you can add rich metadata to it. See [Python SDK docs](https://langfuse.com/docs/sdk/python#traces-1) for full documentation on this.
+The `trace` is a core object in Langfuse and you can add rich metadata to it. See [Python SDK docs](https://aiop.fr/docs/sdk/python#traces-1) for full documentation on this.
 
 Some of the functionality enabled by custom traces:
 - custom name to identify a specific trace-type
@@ -336,7 +336,7 @@ poem = openai.chat.completions.create(
 
 ## 6. Add scores
 
-You can also add [scores](https://langfuse.com/docs/scores) to the trace, to e.g. record user feedback or some other evaluation. Scores are used throughout Langfuse to filter traces and on the dashboard. See the docs on scores for more details.
+You can also add [scores](https://aiop.fr/docs/scores) to the trace, to e.g. record user feedback or some other evaluation. Scores are used throughout Langfuse to filter traces and on the dashboard. See the docs on scores for more details.
 
 The score is associated to the trace using the `trace_id` (see previous step).
 
@@ -353,7 +353,7 @@ langfuse.score(
 );
 ```
 
-![Trace with score](https://langfuse.com/images/docs/openai-trace-with-score.png)
+![Trace with score](https://aiop.fr/images/docs/openai-trace-with-score.png)
 
 ## Troubleshooting
 

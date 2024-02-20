@@ -23,14 +23,14 @@ export function Logo() {
       >
         <Image
           src="/logo_light_512.png"
-          alt="Langfuse Logo"
+          alt="aiop Logo"
           width={120}
           height={20}
           className="hidden dark:block"
         />
         <Image
           src="/logo_dark_512.png"
-          alt="Langfuse Logo"
+          alt="aiop Logo"
           width={120}
           height={20}
           className="block dark:hidden"

@@ -8,7 +8,7 @@ This quickstart helps you to integrate your LLM application with Langfuse. It wi
 
 ## Create new project in Langfuse
 
-1.  [Create Langfuse account](https://cloud.langfuse.com/auth/sign-up)
+1.  [Create Langfuse account](https://cloud.aiop.fr/auth/sign-up)
 2.  Create a new project
 3.  Create new API credentials in the project settings
 
@@ -26,8 +26,8 @@ pip install langfuse
 ```bash filename=".env"
 LANGFUSE_SECRET_KEY="sk-lf-...";
 LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_HOST="https://cloud.langfuse.com"; # 🇪🇺 EU region
-# LANGFUSE_HOST="https://us.cloud.langfuse.com"; # 🇺🇸 US region
+LANGFUSE_HOST="https://cloud.aiop.fr"; # 🇪🇺 EU region
+# LANGFUSE_HOST="https://us.cloud.aiop.fr"; # 🇺🇸 US region
 ```
 
 Example usage, most of the parameters are optional and depend on the use case. For more information, see the [python docs](/docs/sdk/python).
@@ -79,8 +79,8 @@ import { Langfuse } from "https://esm.sh/langfuse"
 ```bash filename=".env"
 LANGFUSE_SECRET_KEY="sk-lf-...";
 LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_BASEURL="https://cloud.langfuse.com"; # 🇪🇺 EU region
-# LANGFUSE_BASEURL="https://us.cloud.langfuse.com"; # 🇺🇸 US region
+LANGFUSE_BASEURL="https://cloud.aiop.fr"; # 🇪🇺 EU region
+# LANGFUSE_BASEURL="https://us.cloud.aiop.fr"; # 🇺🇸 US region
 ```
 
 Example usage, most of the parameters are optional and depend on the use case. For more information, see the [typescript SDK docs](/docs/sdk/typescript).
@@ -122,8 +122,8 @@ pip install langfuse
 ```bash filename=".env"
 LANGFUSE_SECRET_KEY="sk-lf-...";
 LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_HOST="https://cloud.langfuse.com"; # 🇪🇺 EU region
-# LANGFUSE_HOST="https://us.cloud.langfuse.com"; # 🇺🇸 US region
+LANGFUSE_HOST="https://cloud.aiop.fr"; # 🇪🇺 EU region
+# LANGFUSE_HOST="https://us.cloud.aiop.fr"; # 🇺🇸 US region
 ```
 
 ```diff filename="server.py"
@@ -155,8 +155,8 @@ pip install langfuse
 ```bash filename=".env"
 LANGFUSE_SECRET_KEY="sk-lf-...";
 LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_HOST="https://cloud.langfuse.com"; # 🇪🇺 EU region
-# LANGFUSE_HOST="https://us.cloud.langfuse.com"; # 🇺🇸 US region
+LANGFUSE_HOST="https://cloud.aiop.fr"; # 🇪🇺 EU region
+# LANGFUSE_HOST="https://us.cloud.aiop.fr"; # 🇺🇸 US region
 ```
 
 Add Langfuse callback handler to your Langchain agent/chain/... to automatically capture traces.
@@ -191,8 +191,8 @@ import CallbackHandler from 'https://esm.sh/langfuse-langchain'
 ```bash filename=".env"
 LANGFUSE_SECRET_KEY="sk-lf-...";
 LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_BASEURL="https://cloud.langfuse.com"; # 🇪🇺 EU region
-# LANGFUSE_BASEURL="https://us.cloud.langfuse.com"; # 🇺🇸 US region
+LANGFUSE_BASEURL="https://cloud.aiop.fr"; # 🇪🇺 EU region
+# LANGFUSE_BASEURL="https://us.cloud.aiop.fr"; # 🇺🇸 US region
 ```
 
 Add Langfuse callback handler to your Langchain agent/chain/... to automatically capture traces.
@@ -215,7 +215,7 @@ await chain.call({ input: "<user_input>" }, { callbacks: [handler] });
 <Tab>
 {/* API */}
 
-[API reference](https://api.reference.langfuse.com) for custom integrations. OpenAPI spec available.
+[API reference](https://api.reference.aiop.fr) for custom integrations. OpenAPI spec available.
 
 </Tab>
 
@@ -286,7 +286,7 @@ import { SiOpenai } from "react-icons/si";
   <Card
     icon={<FiCode size="24" />}
     title="API reference"
-    href="https://api.reference.langfuse.com/"
+    href="https://api.reference.aiop.fr/"
     arrow
   />
   <Card

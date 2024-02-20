@@ -20,9 +20,9 @@ import { LangfuseWeb } from "langfuse";
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 
-const langfuse = process.env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY
+const langfuse = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   ? new LangfuseWeb({
-      publicKey: process.env.NEXT_PUBLIC_LANGFUSE_PUBLIC_KEY,
+      publicKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       baseUrl: process.env.NEXT_PUBLIC_LANGFUSE_BASE_URL ?? undefined,
     })
   : undefined;

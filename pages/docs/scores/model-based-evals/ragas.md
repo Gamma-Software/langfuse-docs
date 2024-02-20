@@ -5,7 +5,7 @@ Langfuse offers the feature to score your traces and spans. They can be used in 
 2. Segment all execution traces by scores to e.g. find all traces with a low-quality score
 3. Analytics: Detailed score reporting with drill downs into use cases and user segments
 
-Ragas is an open-source tool that can help you run [Model-Based Evaluation](https://langfuse.com/docs/scores/model-based-evals) on your traces/spans, especially for RAG pipelines. Ragas can perform reference-free evaluations of various aspects of your RAG pipeline. Because it is reference-free you don't need ground-truths when running the evaluations and can run it on production traces that you've collected with Langfuse.
+Ragas is an open-source tool that can help you run [Model-Based Evaluation](https://aiop.fr/docs/scores/model-based-evals) on your traces/spans, especially for RAG pipelines. Ragas can perform reference-free evaluations of various aspects of your RAG pipeline. Because it is reference-free you don't need ground-truths when running the evaluations and can run it on production traces that you've collected with Langfuse.
 
 ## The Environment
 
@@ -13,15 +13,15 @@ Ragas is an open-source tool that can help you run [Model-Based Evaluation](http
 ```python
 import os
 
-# get keys for your project from https://cloud.langfuse.com
+# get keys for your project from https://cloud.aiop.fr
 os.environ["LANGFUSE_PUBLIC_KEY"] = ""
 os.environ["LANGFUSE_SECRET_KEY"] = ""
 
 # your openai key
 os.environ["OPENAI_API_KEY"] = ""
 
-# Your host, defaults to https://cloud.langfuse.com
-# For US data region, set to "https://us.cloud.langfuse.com"
+# Your host, defaults to https://cloud.aiop.fr
+# For US data region, set to "https://us.cloud.aiop.fr"
 # os.environ["LANGFUSE_HOST"] = "http://localhost:3000"
 ```
 
@@ -123,7 +123,7 @@ You compute the score with each request. Below I've outlined a dummy application
 2. fetch context from the database or vector store that can be used to answer the question from the user
 3. pass the question and the contexts to the LLM to generate the answer
 
-All these step are logged as spans in a single trace in langfuse. You can read more about traces and spans from the [langfuse documentation](https://langfuse.com/docs/tracing).
+All these step are logged as spans in a single trace in langfuse. You can read more about traces and spans from the [langfuse documentation](https://aiop.fr/docs/tracing).
 
 
 ```python
@@ -160,7 +160,7 @@ for m in metrics:
     trace.score(name=m.name, value=ragas_scores[m.name])
 ```
 
-![Trace with RAGAS scores](https://langfuse.com/images/docs/ragas-trace-score.png)
+![Trace with RAGAS scores](https://aiop.fr/images/docs/ragas-trace-score.png)
 
 Note that the scoring is blocking so make sure that you sent the generated answer before waiting for the scores to get computed. Alternatively you can run `score_with_ragas()` in a separate thread and pass in the trace_id to log the scores.
 
@@ -296,4 +296,4 @@ for _, row in df.iterrows():
         )
 ```
 
-![List of traces with RAGAS scores](https://langfuse.com/images/docs/ragas-list-score-traces.png)
+![List of traces with RAGAS scores](https://aiop.fr/images/docs/ragas-list-score-traces.png)
