@@ -52,7 +52,7 @@ export function Logo() {
           <DropdownMenuItem
             onClick={(e) => {
               e.preventDefault();
-              window.open("/langfuse_logo.png", "_blank");
+              window.open("/aiop_logo_bw.png", "_blank");
             }}
           >
             <Download size={14} className="mr-2" />

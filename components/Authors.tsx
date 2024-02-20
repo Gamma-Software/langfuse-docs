@@ -1,23 +1,11 @@
 import Image from "next/image";
 
 export const allAuthors = {
-  maxdeichmann: {
-    firstName: "Max",
-    name: "Max Deichmann",
-    image: "/images/people/maxdeichmann.jpg",
-    twitter: "maxdeichmann",
-  },
-  marcklingen: {
-    firstName: "Marc",
-    name: "Marc Klingen",
-    image: "/images/people/marcklingen.jpg",
-    twitter: "marcklingen",
-  },
-  clemensrawert: {
-    firstName: "Clemens",
-    name: "Clemens Rawert",
-    image: "/images/people/clemensrawert.jpg",
-    twitter: "rawert",
+  valentinrudloff: {
+    firstName: "Valentin",
+    name: "Valentin Rudloff",
+    image: "/images/people/valentinrudloff.png",
+    twitter: "valentinrudlof1",
   },
 } as const;
 

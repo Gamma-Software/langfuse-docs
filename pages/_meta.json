@@ -25,6 +25,13 @@
       "layout": "raw"
     }
   },
+  "Home": {
+    "title": "Home",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
   "docs": {
     "type": "page",
     "title": "Docs"
