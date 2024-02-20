@@ -145,10 +145,10 @@ const config: DocsThemeConfig = {
         asPath === "/"
           ? "aiop"
           : asPath.startsWith("/blog/")
-          ? "%s - aiop Blog"
+          ? "%s - Aiop Blog"
           : asPath.startsWith("/docs/guides/")
-          ? "%s - aiop Guides"
-          : "%s - aiop",
+          ? "%s - Aiop Guides"
+          : "%s - Aiop",
     };
   },
   head: () => {
