@@ -1,0 +1,18 @@
+inventory:
+  - architecture: t3
+    model_range: open
+    model: "1500"
+    apps:
+      - ams
+      - ssc
+      - cpa
+    contexts:
+      - transport
+
+  - architecture: t3
+    model_range: self
+    model: "2000"
+    apps:
+      - ams
+    contexts:
+      - evcharging

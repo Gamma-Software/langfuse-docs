@@ -1,0 +1,13 @@
+# You can specify multiple compatibility for a single file
+- source: file.txt
+  destination: file.txt
+  authors: [some.teams@test.com]
+  compatibility:
+    - t3/self/2000:
+        envs: [dev]
+        apps: [ssc, ams]
+        contexts: [parking, evcharging]
+    - t3/self/4000:
+        envs: [dev]
+        apps: [ssc, ams]
+        contexts: [parking, evcharging]

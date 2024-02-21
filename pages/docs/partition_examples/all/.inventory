@@ -1,0 +1,132 @@
+inventory:
+  - architecture: t3
+    model_range: open
+    model: "1500"
+    catalog_extension: M90
+    apps:
+      - ams
+      - ssc
+      - cpa
+    contexts:
+      - transport
+    envs:
+      - dev
+      - test
+      - bench
+      - prod
+  - architecture: t3
+    model_range: open
+    model: "2500"
+    catalog_extension: M90
+    apps:
+      - ams
+      - ssc
+      - cpa
+    contexts:
+      - transport
+    envs:
+      - dev
+      - test
+      - bench
+      - prod
+  - architecture: t3
+    model_range: self
+    model: "2000"
+    catalog_extension: M92
+    apps:
+      - ams
+      - ssc
+      - cpa
+    contexts:
+      - evcharging
+      - vending_c3
+      - vending_mdb
+      - vending_exe
+      - parking
+    envs:
+      - dev
+      - test
+      - bench
+      - prod
+  - architecture: t3
+    model_range: self
+    model: "4000"
+    catalog_extension: M94
+    apps:
+      - ams
+      - ssc
+      - cpa
+      - ame
+      - emv
+    contexts:
+      - evcharging
+      - vending_c3
+      - vending_mdb
+      - vending_exe
+      - parking
+    envs:
+      - dev
+      - test
+      - bench
+      - prod
+  - architecture: t3
+    model_range: self
+    model: "5000"
+    catalog_extension: M95
+    apps:
+      - ams
+      - ssc
+      - cpa
+      - ame
+      - emv
+    contexts:
+      - evcharging
+      - vending_c3
+      - vending_mdb
+      - vending_exe
+      - parking
+    envs:
+      - dev
+      - test
+      - bench
+      - prod
+  - architecture: t3
+    model_range: self
+    model: "7000"
+    catalog_extension: M96
+    apps:
+      - ame
+      - emv
+      - cpa
+    contexts:
+      - evcharging
+      - vending_c3
+      - vending_mdb
+      - vending_exe
+      - parking
+    envs:
+      - dev
+      - test
+      - bench
+      - prod
+  - architecture: t3
+    model_range: self
+    model: "7_8000"
+    catalog_extension: M96
+    apps:
+      - ams
+      - ssc
+      - cpa
+      - ame
+      - emv
+    contexts:
+      - evcharging
+      - vending_c3
+      - vending_mdb
+      - vending_exe
+      - parking
+    envs:
+      - dev
+      - test
+      - bench
+      - prod

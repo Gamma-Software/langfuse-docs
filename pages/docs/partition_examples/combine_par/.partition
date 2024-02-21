@@ -1,0 +1,9 @@
+# You can also combine files content
+- source: a.PAR|b.PAR|c.PAR
+  destination: a+b+c.PAR
+  authors: [some.teams@test.com]
+  compatibility:
+    - t3/self/2000:
+        envs: [dev]
+        apps: [ssc, ams]
+        contexts: [parking, evcharging]

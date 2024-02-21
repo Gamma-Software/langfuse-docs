@@ -1,0 +1,15 @@
+inventory:
+  - architecture: t3
+    model_range: self
+    model: "2000"
+    catalog_extension: M92
+    apps:
+      - ams
+      - ssc
+      - cpa
+    contexts:
+      - evcharging
+      - vending_c3
+      - vending_mdb
+      - vending_exe
+      - parking

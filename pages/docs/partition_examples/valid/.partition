@@ -1,0 +1,8 @@
+- source: README.md
+  destination: self/README_self.md
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/2000:
+        envs: [dev]
+        apps: [ssc, ams]
+        contexts: [parking, evcharging]

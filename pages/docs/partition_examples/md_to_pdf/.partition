@@ -1,0 +1,8 @@
+- source: test.md
+  destination: test.pdf
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3:
+        envs: [dev]
+        apps: [all]
+        contexts: [all]

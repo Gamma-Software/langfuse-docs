@@ -1,0 +1,19 @@
+# Invalid because the terminals are not in the inventory
+- source: README.md
+  destination: self/README_self.md
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [emv, ame]
+        contexts: [evcharging, parking]
+
+- source: <sdk>/SDK14.4.1.05/Components/HW_TETRA/Platform/package/SELF4000_TRANSAC_T3_FULL_CONF.M94
+  download_catalog: True
+  destination: sdk_addon/sdk/SELF4000_TRANSAC_T3_FULL_CONF.M94
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - all:
+        envs: [dev]
+        apps: [ams]
+        contexts: [evcharging]

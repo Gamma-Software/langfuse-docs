@@ -1,0 +1,9 @@
+- source: <url>https://google.com/templates/package_skeleton/-/raw/master/README.md
+  destination: self/README_remote.md
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/2000:
+        envs: [dev]
+        apps: [ssc, ams]
+        contexts: [parking, evcharging]
+  executable: true # if the file is executable (optional: default is false)

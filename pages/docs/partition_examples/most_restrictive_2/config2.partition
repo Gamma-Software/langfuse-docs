@@ -1,0 +1,8 @@
+- source: config2
+  destination: config
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - all:
+        envs: [dev]
+        apps: [ssc]
+        contexts: [vending_exe]

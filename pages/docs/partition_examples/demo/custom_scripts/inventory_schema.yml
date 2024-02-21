@@ -1,0 +1,74 @@
+inventory:
+  type: list
+  schema:
+    type: dict
+    schema: # architecture/range/model
+      architecture:
+        type: string
+        required: True
+        allowed:
+          - t2
+          - t3
+      model_range: #TODO add more ranges
+        type: string
+        required: True
+        allowed:
+          - self
+          - open
+          - desk
+      model:
+        type: string
+        required: True
+        allowed:
+          - "1500"
+          - "2500"
+          - "2000"
+          - "4000"
+          - "5000"
+          - "7000"
+          - "7_8000"
+      catalog_extension:
+        type: string
+        required: True
+        allowed:
+          - M90
+          - M93
+          - M94
+          - M95
+          - M96
+      apps:
+        type: list
+        schema:
+          type: string
+          required: True
+          allowed:
+            - ame
+            - ams
+            - emv
+            - ssc
+            - cpa
+      contexts:
+        type: list
+        schema:
+          type: string
+          required: True
+          allowed:
+            - evcharging
+            - vending_c3
+            - vending_mdb
+            - vending_mdb_mdbm
+            - vending_exe
+            - vending_exe_payzily
+            - parking
+            - transport
+      envs:
+        type: list
+        required: True
+        schema:
+          type: string
+          required: True
+          allowed:
+            - dev
+            - test
+            - bench
+            - prod

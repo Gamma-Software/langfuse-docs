@@ -1,0 +1,8 @@
+- source: <repo:nexus:ingenico>c3_emb_release/T3/ADM/16.38/8293221638_ADM_DEV.P3A
+  destination: c3_applications/adm/adm.P3A
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [all]
+        contexts: [all]

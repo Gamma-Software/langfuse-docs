@@ -1,0 +1,8 @@
+- source: card/card.ini
+  destination: param/C3CONFIG_T
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self:
+        envs: [dev]
+        apps: [cpa]
+        contexts: [vending_mdb]

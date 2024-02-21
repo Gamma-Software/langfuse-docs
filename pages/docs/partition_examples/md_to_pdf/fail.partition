@@ -1,0 +1,17 @@
+- source: test
+  destination: test_merged_fail.pdf
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3:
+        envs: [dev]
+        apps: [all]
+        contexts: [all]
+
+- source: test.md | test
+  destination: test_merged_fail.pdf
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3:
+        envs: [dev]
+        apps: [all]
+        contexts: [all]

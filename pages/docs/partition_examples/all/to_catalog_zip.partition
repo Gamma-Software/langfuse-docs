@@ -1,0 +1,10 @@
+- source: <repo:nexus:ingenico>c3_emb_release/T3/SSC_MPA/14.64/T3_SSC_MPA_14.64_DEV.zip
+  unzip: true
+  destination: c3_applications/ssc
+  to_catalog: c3_applications/apps
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [all]
+        contexts: [all]

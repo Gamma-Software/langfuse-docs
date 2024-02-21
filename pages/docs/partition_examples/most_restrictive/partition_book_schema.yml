@@ -1,0 +1,49 @@
+source:
+  type: string
+  required: True
+  empty: False
+destination:
+  type: string
+  required: True
+  empty: False
+download_catalog:
+  type: boolean
+  required: False
+  default: False
+unzip:
+  type: boolean
+  required: False
+  default: False
+to_catalog:
+  type: string
+  required: False
+authors:
+  type: list
+  required: True
+  empty: False
+compatibility:
+  type: dict
+  required: True
+  empty: False
+  keyschema:
+    type: string
+    regex: \w+(/\w+){0,2}
+  valueschema:
+    type: dict
+    empty: False
+    schema:
+      envs:
+        type: list
+        empty: False
+      apps:
+        type: list
+        empty: False
+        regex: \w+
+      contexts:
+        type: list
+        empty: False
+        regex: \w+
+executable:
+  type: boolean
+  required: False
+  default: False

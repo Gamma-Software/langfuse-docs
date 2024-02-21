@@ -1,0 +1,10 @@
+# Use the prefix <sdk> to indicate that the file is in the SDK
+- source: <sdk>/SDK/Components/SELF4000_TRANSAC_T3_FULL_CONF.M94
+  download_catalog: True
+  destination: sdk_addon/sdk/SELF4000_TRANSAC_T3_FULL_CONF.M94
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - all:
+        envs: [dev]
+        apps: [all]
+        contexts: [all]

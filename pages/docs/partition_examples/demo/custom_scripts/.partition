@@ -1,0 +1,8 @@
+- source: test.txt
+  destination: ip
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/2000:
+        envs: [dev]
+        apps: [all]
+        contexts: [vending_exe, vending_mdb]

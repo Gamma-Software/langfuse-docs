@@ -1,0 +1,8 @@
+- source: config1
+  destination: config
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [ssc]
+        contexts: [vending_exe]

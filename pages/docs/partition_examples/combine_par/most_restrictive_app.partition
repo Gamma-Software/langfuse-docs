@@ -1,0 +1,26 @@
+- source: card/card.ini | card/card_emv.ini
+  destination: param/C3CONFIG_T
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [emv]
+        contexts: [vending_mdb]
+
+- source: card/card.ini | card/card_ssc.ini
+  destination: param/C3CONFIG_T
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [ssc]
+        contexts: [vending_mdb]
+
+- source: card/card.ini | card/card_emv.ini | card/card_ssc.ini
+  destination: param/C3CONFIG_T
+  authors: [valentin.rudloff@test.com]
+  compatibility:
+    - t3/self/4000:
+        envs: [dev]
+        apps: [emv, ssc]
+        contexts: [vending_mdb]
