@@ -9,5 +9,11 @@
             "command": "pnpm dev",
             "problemMatcher": []
         },
+        {
+            "label": "Start prod docs",
+            "type": "shell",
+            "command": "pnpm start",
+            "problemMatcher": []
+        },
     ]
 }

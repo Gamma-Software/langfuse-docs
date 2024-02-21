@@ -3,11 +3,8 @@ description: Démarrer la génération de packages avec Aiop en quelques minutes
 ---
 import { Callout } from "nextra-theme-docs";
 import { Button } from "@/components/ui/button";
-import { SiTypescript, SiPython } from "react-icons/si";
+import { SiPython } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
-import { FiCode } from "react-icons/fi";
-import { SiOpenai } from "react-icons/si";
-import { Pre } from "nextra/components";
 
 # Démarrage
 
@@ -194,39 +191,3 @@ aiop build archi1/model_range/model1 --apps app1 app2
 ## Que faire ensuite ?
 
 Passez ensuite à la partie [configuration](/docs/configuration/overview) pour apprendre à configurer votre playbook.
-
-Explorez toutes les fonctionnalités de l’outil Aiop en détail.
-
-**Configuration**
-
-<Cards num={3}>
-  <Card title="Tracing" href="/docs/tracing/overview" arrow />
-  <Card title="Prompt Management" href="/docs/prompts" arrow />
-  <Card
-    title="Export & Fine-tuning"
-    href="/docs/export-and-fine-tuning"
-    arrow
-  />
-</Cards>
-
-**Init**
-
-<Cards num={3}>
-  <Card title="Analytics" href="/docs/analytics" arrow />
-  <Card title="Model Usage & Cost" href="/docs/model-usage-and-cost" arrow />
-  <Card title="Scores & Evaluation" href="/docs/scores/overview" arrow />
-</Cards>
-
-**Build**
-
-<Cards num={3}>
-  <Card title="Experimentation" href="/docs/experimentation" arrow />
-  <Card title="Datasets" href="/docs/datasets/overview" arrow />
-</Cards>
-
-**Build**
-
-<Cards num={3}>
-  <Card title="Experimentation" href="/docs/experimentation" arrow />
-  <Card title="Datasets" href="/docs/datasets/overview" arrow />
-</Cards>

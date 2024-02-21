@@ -40,7 +40,7 @@ export LANGFLOW_LANGFUSE_SECRET_KEY=<your secret key>
 export LANGFLOW_LANGFUSE_PUBLIC_KEY=<your public key>
 ```
 
-Read the [integration docs](https://aiop.fr/docs/langflow) for more details on how to set up the integration. If you are looking for a general intro to Langfuse, we recorded a [2 min demo](https://aiop.fr/docs/video) showing the core tracing and analytics features.
+Read the [integration docs](https://aiop.fr/docs/langflow) for more details on how to set up the integration. If you are looking for a general intro to Langfuse, we recorded a [2 min demo](https://aiop.fr/docs/demo) showing the core tracing and analytics features.
 
 If you want to learn more about Langflow and Langfuse, you can join their Discords for further discussions and support ([Langfuse](https://aiop.fr/discord), [Langflow](https://discord.com/invite/EqksyE2EX9)). Additionally, as both projects are open source check out the open issues to collaborate with the community ([Langfuse](https://github.com/langfuse/langfuse), [Langflow](https://github.com/logspace-ai/langflow/issues)) or leave a ⭐️.
 

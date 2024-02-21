@@ -3,9 +3,9 @@
     "type": "separator",
     "title": "Introduction"
   },
-  "index": "Aperçus",
+  "index": "Aperçu",
   "get-started": "Démarrer",
-  "demo": "Interactive Demo",
+  "demo": "Demo",
 
   "-- Develop": {
     "type": "separator",
