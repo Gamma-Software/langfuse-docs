@@ -48,7 +48,8 @@
     "type": "page",
     "theme": {
       "layout": "full"
-    }
+    },
+    "display": "hidden"
   },
   "demo": {
     "title": "Demo",

@@ -14,7 +14,7 @@ import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
+  email: z.string().email("Entrez une adresse email valide, s’il vous plait."),
 });
 
 export function ProductUpdateSignup(props: {
@@ -34,7 +34,7 @@ export function ProductUpdateSignup(props: {
       method: "POST",
       body: JSON.stringify({
         ...values,
-        source: props.source ?? "Website signup",
+        source: props.source ?? "Création de compte",
       }),
       headers: {
         "Content-Type": "application/json",
@@ -42,9 +42,9 @@ export function ProductUpdateSignup(props: {
     });
 
     if (!res.ok) {
-      alert("Something went wrong. Please try again later.");
+      alert("Quelque chose s’est mal passé. Réessayez plus tard s’il vous plait.");
     } else {
-      alert("Thanks for signing up!");
+      alert("Merci !");
       form.reset();
     }
   }

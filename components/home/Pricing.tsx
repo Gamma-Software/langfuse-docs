@@ -13,20 +13,22 @@ function classNames(...classes) {
 
 const tiers = [
   {
-    name: "Hobby",
-    id: "tier-hobby",
+    name: "Free",
+    id: "tier-free",
     href: "https://cloud.aiop.fr",
     featured: false,
     description:
-      "Get started, no credit card required. Great for hobby projects and POCs.",
-    price: "Free",
+      "Démarrez dès maintenant ! carte de crédit non requise. Parfait pour essayer l’outil.",
+    price: "Gratuit",
     mainFeatures: [
-      "No credit card required",
-      "All platform features",
-      "50k observations / month included",
-      "Community support (Discord & GitHub)",
+      "Carte de crédit non requise",
+      "Toutes le fonctionnalités de base",
+      "Linting / Post-Build personnalisation des tâches",
+      "Limité à 10 packages générés / mois",
+      "Limité à 1 playbook par compte et par personne",
+      "Support de la communauté (Discord & Gitlab & Slack)",
     ],
-    cta: "Sign up",
+    cta: "S’inscrire",
   },
   {
     name: "Pro",
@@ -34,31 +36,39 @@ const tiers = [
     href: "https://cloud.aiop.fr",
     featured: true,
     description:
-      "For serious projects. Includes access to full history and higher usage.",
-    price: "$59",
+      "Pour des projets serieux. Inclus des fonctionnalités avancées de CI/CD et du support dédié.",
+    price: "49€",
     mainFeatures: [
-      "100k observations / month included, additional: $10 / 100k observations",
-      "Unlimited data access",
-      "Unlimited users",
-      "Dedicated support",
+      "Toutes les fonctionnalités de la version gratuite",
+      "Linting / Post-Build personnalisation des tâches",
+      "Accès à des cookbook de tâches personnalisées",
+      "Accès à des workshops et formations",
+      "Système de cache avancé",
+      "Génération de packages illimitée",
+      "Playbooks illimités, mais limité à 1 personne",
+      "Accès à des cookbook CI/CD",
+      "Support dédié en plus de la communauté",
     ],
-    cta: "Sign up",
+    cta: "S’inscrire",
   },
   {
     name: "Team",
     id: "tier-team",
     href: "/schedule-demo",
     featured: false,
-    price: "Starts at $499",
+    price: "Démarre à 499€",
     description:
-      "Dedicated solutions and support for your team. Contact us for pricing.",
+      "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
     mainFeatures: [
-      "Unlimited ingestion throughput",
-      "Support SLAs",
-      "SSO enforcement and custom roles",
-      "Additional security and compliance features",
+      "Toutes les fonctionnalités de la version Pro",
+      "Statistiques",
+      "Playbooks illimités, pas de limites de personnes",
+      "Collaboration active sur les playbooks",
+      "Accès à des fonctionnalités avancées de la CI/CD",
+      "Développement de fonctionnalités sur mesure (plugins)",
+      "Support personnalisé, Garantie de disponibilité",
     ],
-    cta: "Talk to founders",
+    cta: "En discuter",
   },
 ] as const;
 const sections = [
@@ -208,8 +218,8 @@ export function Pricing({
         <div className="flow-root pb-16 lg:pb-0">
           <div className="mx-auto max-w-7xl">
             <Header
-              title="Simple pricing for projects of all sizes"
-              description="Get started on the Hobby plan for free. No credit card required."
+              title="Des prix pour tous les projets."
+              description="Commencez dès maintenant avec la version gratuite ! Pas besoin de carte de crédit."
               h="h1"
             />
 
