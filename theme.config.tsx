@@ -54,7 +54,7 @@ const config: DocsThemeConfig = {
         <a
           className="p-1 hidden sm:inline-block hover:opacity-80"
           target="_blank"
-          href="https://discord.gg/vdbnZQwKuB"
+          href="/discord"
           aria-label="aiop Discord"
           rel="nofollow noreferrer"
         >

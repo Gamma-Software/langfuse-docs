@@ -37,12 +37,13 @@ const tiers = [
     featured: true,
     description:
       "Pour des projets serieux. Inclus des fonctionnalités avancées de CI/CD et du support dédié.",
-    price: "49€",
+    price: "99€",
     mainFeatures: [
       "Toutes les fonctionnalités de la version gratuite",
       "Linting / Post-Build personnalisation des tâches",
       "Accès à des cookbook de tâches personnalisées",
       "Accès à des workshops et formations",
+      "Outil de comparaison de playbooks et packages",
       "Système de cache avancé",
       "Génération de packages illimitée",
       "Playbooks illimités, mais limité à 1 personne",

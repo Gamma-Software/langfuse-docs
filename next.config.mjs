@@ -52,17 +52,17 @@ const nextraConfig = withNextra({
 
 const nonPermanentRedirects = [
   ["/analytics", "https://docs.google.com/document/d/1PEFSqn-VWjNXOZZ1U7FC0oH-spDdkKJxLwgp15iK7zY"],
-  ["/discord", "https://discord.gg/7NXusRtqYU"],
+  ["/discord", "https://discord.gg/vdbnZQwKuB"],
   ["/demo", "/docs/demo"],
   ["/video", "/docs/video"],
-  ["/ph", "https://www.producthunt.com/posts/langfuse"],
+  ["/ph", "https://www.producthunt.com/posts/aiop"],
   ["/loom-gpt4-PR", "https://www.loom.com/share/5c044ca77be44ff7821967834dd70cba"],
-  ["/issue", "https://github.com/langfuse/langfuse/issues/new/choose"],
-  ["/new-issue", "https://github.com/langfuse/langfuse/issues/new/choose"],
-  ["/issues", "https://github.com/langfuse/langfuse/issues"],
+  ["/issue", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new"],
+  ["/new-issue", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new"],
+  ["/issues", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues"],
 
   ["/security", "/docs/data-security-privacy"],
-  ["/idea", "https://github.com/orgs/langfuse/discussions/new?category=ideas"],
+  ["/idea", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new?issuable_template=idea&issue%5Bissue_type%5D=idea"],
   ["/new-idea", "https://github.com/orgs/langfuse/discussions/new?category=ideas"],
   ["/ideas", "https://github.com/orgs/langfuse/discussions/categories/ideas"],
 
