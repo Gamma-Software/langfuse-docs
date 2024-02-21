@@ -1,237 +1,203 @@
 ---
 description: Démarrer la génération de packages avec Aiop en quelques minutes avant de continuer dans la customization et l'utilisation de fonctions avancées.
 ---
+import { Callout } from "nextra-theme-docs";
+import { Button } from "@/components/ui/button";
+import { SiTypescript, SiPython } from "react-icons/si";
+import { TbBrandVscode } from "react-icons/tb";
+import { FiCode } from "react-icons/fi";
+import { SiOpenai } from "react-icons/si";
+import { Pre } from "nextra/components";
 
 # Démarrage
 
 Cette introduction rapide vous aide à commencer à utiliser Aiop rapidement.
 
-## Installation
+## Prerequis
 
-1.  [Créez un compte aiopsa](https://cloud.aiop.fr/auth/sign-up)
-2.  Create a new project
-3.  Create new API credentials in the project settings
+### Python
 
-## Log your first LLM call to Langfuse
+Un environnement Python 3.6+ est nécessaire pour utiliser Aiop. Si vous n'avez pas Python d’installé vous pouvez télécharger les versions suivantes, selon votre système d'exploitation:
 
-<Tabs items={["Python","JS/TS","OpenAI SDK (Python)","Langchain","Langchain (JS)","API"]}>
+<Tabs items={["Windows","Ubuntu","Mac OS"]}>
 
 <Tab>
-{/* Python */}
+{/* Windows */}
+
+<Cards num={3}>
+  <Card icon={<SiPython size="24" />} title="Python (3.6 et +)" href="https://www.python.org/downloads/" target="_blank" />
+  <Card icon={<SiPython size="24" />} title="Recommandé (3.11.8)" href="https://www.python.org/downloads/release/python-3118/" target="_blank" arrow/>
+  <Card
+    icon={<SiPython size="24" />}
+    title="Stable et récente (3.12.2)"
+    href="https://www.python.org/downloads/release/python-3122/"
+    target="_blank"
+  />
+</Cards>
+
+Le guide d’installation de python sur Windows peut être trouvé [ici](https://docs.python.org/3/using/windows.html#the-full-installer).
+
+</Tab>
+<Tab>
+{/* Ubuntu */}
+
+<Steps>
+
+#### Installation de Python
+
+Installez la version recommandée de Python 3.11.8 en utilisant votre gestionnaire de paquets. Mettez à jour votre gestionnaire de paquets et installez les dépendances nécessaires. Puis ajoutez le dépôt de deadsnakes pour installer les versions de Python.
 
 ```bash
-pip install langfuse
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
+sudo add-apt-repository ppa:deadsnakes/ppa
 ```
 
-```bash filename=".env"
-LANGFUSE_SECRET_KEY="sk-lf-...";
-LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_HOST="https://cloud.aiop.fr"; # 🇪🇺 EU region
-# LANGFUSE_HOST="https://us.cloud.aiop.fr"; # 🇺🇸 US region
-```
-
-Example usage, most of the parameters are optional and depend on the use case. For more information, see the [python docs](/docs/sdk/python).
-
-```python filename="server.py"
-from langfuse import Langfuse
-
-# Create Langfuse client
-langfuse = Langfuse()
-
-# Create generation in Langfuse
-generation = langfuse.generation(
-    name="summary-generation",
-    model="gpt-3.5-turbo",
-    model_parameters={"maxTokens": "1000", "temperature": "0.9"},
-    input=[{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "Please generate a summary of the following documents \nThe engineering department defined the following OKR goals...\nThe marketing department defined the following OKR goals..."}],
-    metadata={"interface": "whatsapp"}
-)
-
-# Execute model, mocked here
-# chat_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": "Hello world"}])
-chat_completion = "completion":"The Q3 OKRs contain goals for multiple teams..."
-
-# Update span and sets end_time
-generation.end(output=chat_completion)
-
-# The SDK executes network requests in the background.
-# To ensure that all requests are sent before the process exits, call flush()
-# Not necessary in long-running production code
-langfuse.flush()
-```
-
-</Tab>
-<Tab>
-{/* JS/TS */}
-
-```sh
-npm i langfuse
-# or
-yarn add langfuse
-
-# Node.js < 18
-npm i langfuse-node
-
-# Deno
-import { Langfuse } from "https://esm.sh/langfuse"
-```
-
-```bash filename=".env"
-LANGFUSE_SECRET_KEY="sk-lf-...";
-LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_BASEURL="https://cloud.aiop.fr"; # 🇪🇺 EU region
-# LANGFUSE_BASEURL="https://us.cloud.aiop.fr"; # 🇺🇸 US region
-```
-
-Example usage, most of the parameters are optional and depend on the use case. For more information, see the [typescript SDK docs](/docs/sdk/typescript).
-
-```typescript filename="server.ts"
-import { Langfuse } from "langfuse";
-
-const langfuse = new Langfuse();
-
-// Example generation creation
-const generation = trace.generation({
-  name: "chat-completion",
-  model: "gpt-3.5-turbo",
-  modelParameters: {
-    temperature: 0.9,
-    maxTokens: 2000,
-  },
-  input: messages,
-});
-
-// Application code
-const chatCompletion = await llm.respond(prompt);
-
-// End generation - sets endTime
-generation.end({
-  output: chatCompletion,
-});
-```
-
-</Tab>
-<Tab>
-{/* OpenAI SDK (Python) */}
-The integration is a drop-in replacement for the OpenAI Python SDK. By changing the import, Langfuse will capture all LLM calls and send them to Langfuse asynchronously.
+Ensuite installez la version de python de votre choix. Veuillez installer les versions supérieurs à 3.6.
 
 ```bash
-pip install langfuse
+sudo apt install python3.6
 ```
 
-```bash filename=".env"
-LANGFUSE_SECRET_KEY="sk-lf-...";
-LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_HOST="https://cloud.aiop.fr"; # 🇪🇺 EU region
-# LANGFUSE_HOST="https://us.cloud.aiop.fr"; # 🇺🇸 US region
-```
-
-```diff filename="server.py"
-- import openai
-+ from langfuse.openai import openai
-```
-
-Use the OpenAI SDK as you would normally. Example:
-
-```python
-completion = openai.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[
-      {"role": "system", "content": "You are a very accurate calculator."},
-      {"role": "user", "content": "1 + 1 = "}],
-)
-```
-
-</Tab>
-<Tab>
-{/* Langchain (Python) */}
-
-The integration uses the Langchain callback system to automatically capture detailed traces of your Langchain executions.
+En revanche nous recommandons d’installer la version 3.11.8.
 
 ```bash
-pip install langfuse
+sudo apt install python3.11
 ```
 
-```bash filename=".env"
-LANGFUSE_SECRET_KEY="sk-lf-...";
-LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_HOST="https://cloud.aiop.fr"; # 🇪🇺 EU region
-# LANGFUSE_HOST="https://us.cloud.aiop.fr"; # 🇺🇸 US region
-```
-
-Add Langfuse callback handler to your Langchain agent/chain/... to automatically capture traces.
-
-```python /callbacks=[handler]/
-from langfuse.callback import CallbackHandler
-handler = CallbackHandler(LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY)
-
-# Langchain implementation
-
-# Add handler as callback when running the Langchain agent
-agent.run("<user_input>", callbacks=[handler])
-```
-
-For more examples, see the [Langchain integration docs](/docs/integrations/langchain/python).
-
-</Tab>
-<Tab>
-{/* Langchain (JS) */}
-
-The integration uses the Langchain callback system to automatically capture detailed traces of your Langchain executions.
-
-```sh
-npm i langfuse-langchain
-# or
-yarn add langfuse-langchain
-
-# Deno
-import CallbackHandler from 'https://esm.sh/langfuse-langchain'
-```
-
-```bash filename=".env"
-LANGFUSE_SECRET_KEY="sk-lf-...";
-LANGFUSE_PUBLIC_KEY="pk-lf-...";
-LANGFUSE_BASEURL="https://cloud.aiop.fr"; # 🇪🇺 EU region
-# LANGFUSE_BASEURL="https://us.cloud.aiop.fr"; # 🇺🇸 US region
-```
-
-Add Langfuse callback handler to your Langchain agent/chain/... to automatically capture traces.
-
-```typescript /callbacks: [handler]/
-import { CallbackHandler } from "langfuse-langchain";
-
-// Initialize Langfuse callback handler
-const handler = new CallbackHandler();
-
-// Your Langchain implementation
-const chain = new LLMChain(...);
-
-// Add handler as callback when running the Langchain agent
-await chain.call({ input: "<user_input>" }, { callbacks: [handler] });
-
-```
-
-</Tab>
-<Tab>
-{/* API */}
-
-[API reference](https://api.reference.aiop.fr) for custom integrations. OpenAPI spec available.
-
-</Tab>
-
-</Tabs>
-
-import { Callout } from "nextra-theme-docs";
-
-<Callout type="info" emoji="✅">
-  Done, now visit the Langfuse interface to look at the trace you just created.
+<Callout type="info" emoji="ℹ️">
+  Vous pouvez toute fois installer la dernière version 3.12. En revanche nous ne garantissons pas que Aiop fonctione.
 </Callout>
 
-## All Langfuse platform features
+Vérifiez la version de python installée avec la commande `python3 --version`.
 
-This was a very brief introduction to get started with Langfuse. Explore all Langfuse platform features in detail.
+#### Installation des dépendances
 
-**Develop**
+Additionnellement installez des outils de développement et des bibliothèques pour Python que Aiop utilisera.
+
+```bash
+sudo apt-get install curl iputils-ping -y
+```
+
+#### Installation de Pip
+Si vous n’avez pas pip d’installez, vous pouvez l’installer avec la commande suivante:
+
+```bash
+sudo apt-get install python3-pip -y
+```
+
+### Alias
+
+Pour simplifier l’utilisation de python, il est recommandé d’aliaser les commandes `python` et `pip` à `python3` et `pip3` respectivement:
+
+```bash
+ln -s /usr/bin/python3 /usr/bin/python
+ln -s /usr/bin/pip3 /usr/bin/pip
+```
+
+</Steps>
+
+</Tab>
+<Tab>
+{/* Mac OS */}
+
+
+<Cards num={3}>
+  <Card icon={<SiPython size="24" />} title="Python (3.6 et +)" href="https://www.python.org/downloads/macos/" target="_blank" />
+  <Card icon={<SiPython size="24" />}title="Recommandé (3.11.8)" href="https://www.python.org/ftp/python/3.11.8/python-3.11.8-macos11.pkg" target="_blank" arrow/>
+  <Card
+    icon={<SiPython size="24" />}
+    title="Stable et récente (3.12.2)"
+    href="https://www.python.org/ftp/python/3.12.2/python-3.12.2-macos11.pkg"
+    target="_blank"
+  />
+</Cards>
+
+Le guide d’installation de python sur MacOS peut être trouvé [ici](https://docs.python.org/3/using/mac.html#the-full-installer).
+
+</Tab>
+</Tabs>
+
+### Éditeur de code
+
+Un éditeur de code est également nécessaire pour travailler avec Aiop. Vous pouvez utiliser n’importe quel éditeur de code que vous préférez. Cependant, nous recommandons d’utiliser Visual Studio Code. Nous avons spécialement conçu des racourcis pour VSCode. À l’avenir, nous developperons des [extensions](/docs/roadmap) pour VSCode.
+
+Vous pouvez télécharger Visual Studio Code en cliquant sur le bouton ci-dessous.
+
+<Cards>
+<Card
+  icon={<TbBrandVscode size="24"/>}
+  title="VSCode"
+  href="https://code.visualstudio.com/download"
+  target="_blank"
+  arrow
+/>
+</Cards>
+
+## Installation
+
+<Steps>
+
+### Créez un compte aiop
+
+Commencez par créer un compte aiop. Si vous n’avez pas de compte, appuiyez sur le bouton ci-dessous pour en créer un.
+
+<Button asChild className="mt-3">
+  <a
+    href="/auth/sign-up"
+    target="_blank"
+    rel="noopener"
+  >
+    Créer un compte aiop
+  </a>
+</Button>
+
+
+### Installez aiop
+Installer aiop est simple. Ouvrez un terminal et exécutez la commande suivante:
+
+```bash
+pip install aiop
+```
+
+Cela installera aiop et toutes ses dépendances.
+
+
+### Télécharger un modèle de playbook
+
+Pour utiliser aiop, vous avez besoin d’un [playbook](/docs/vocabulaire#playbook). Vous pouvez installer un modèle de playbook en exécutant la commande suivante:
+
+```bash
+aiop init ./my-playbook
+```
+
+Cela téléchargera un modèle de playbook dans le dossier `my-playbook`.
+
+### Générer sont premier package
+
+Vous y êtes enfin ! Vous pouvez maintenant générer votre premier package en exécutant la commande suivante:
+
+```bash
+cd my-playbook
+aiop build archi1/model_range/model1 --apps app1 app2
+```
+
+</Steps>
+
+<Callout type="info" emoji="✅">
+  Terminé, il est maintenant temps de modifier le playbook ainsi que vous l’approprier.
+</Callout>
+
+
+
+## Que faire ensuite ?
+
+Passez ensuite à la partie [configuration](/docs/configuration/overview) pour apprendre à configurer votre playbook.
+
+Explorez toutes les fonctionnalités de l’outil Aiop en détail.
+
+**Configuration**
 
 <Cards num={3}>
   <Card title="Tracing" href="/docs/tracing/overview" arrow />
@@ -243,7 +209,7 @@ This was a very brief introduction to get started with Langfuse. Explore all Lan
   />
 </Cards>
 
-**Monitor**
+**Init**
 
 <Cards num={3}>
   <Card title="Analytics" href="/docs/analytics" arrow />
@@ -251,72 +217,16 @@ This was a very brief introduction to get started with Langfuse. Explore all Lan
   <Card title="Scores & Evaluation" href="/docs/scores/overview" arrow />
 </Cards>
 
-**Test**
+**Build**
 
 <Cards num={3}>
   <Card title="Experimentation" href="/docs/experimentation" arrow />
   <Card title="Datasets" href="/docs/datasets/overview" arrow />
 </Cards>
 
-## References
+**Build**
 
-import { SiTypescript, SiPython } from "react-icons/si";
-import { FiCode } from "react-icons/fi";
-import { SiOpenai } from "react-icons/si";
-
-<Cards num={2}>
-  <Card
-    icon={<SiPython size="24" />}
-    title="Python SDK"
-    href="/docs/sdk/python"
-    arrow
-  />
-  <Card
-    icon={<SiTypescript size="24" />}
-    title="JS/TS SDK"
-    href="/docs/sdk/typescript"
-    arrow
-  />
-  <Card
-    icon={<SiOpenai size="24" />}
-    title="OpenAI SDK (Python)"
-    href="/docs/integrations/openai"
-    arrow
-  />
-  <Card
-    icon={<FiCode size="24" />}
-    title="API reference"
-    href="https://api.reference.aiop.fr/"
-    arrow
-  />
-  <Card
-    icon={<span>🦜🔗</span>}
-    title="Langchain integration (Python)"
-    href="/docs/integrations/langchain/python"
-    arrow
-  />
-  <Card
-    icon={<span>🦜🔗</span>}
-    title="Langchain integration (JS/TS)"
-    href="/docs/integrations/langchain/typescript"
-    arrow
-  />
-  <Card
-    icon={<FiCode size="24" />}
-    title="Flowise"
-    href="/docs/integrations/flowise"
-    arrow
-  />
-  <Card
-    icon={<FiCode size="24" />}
-    title="Langflow"
-    href="/docs/integrations/langflow"
-    arrow
-  />
-  <Card
-    icon={<FiCode size="24" />}
-    title="Litellm"
-    href="/docs/integrations/litellm"
-    arrow
-  />
+<Cards num={3}>
+  <Card title="Experimentation" href="/docs/experimentation" arrow />
+  <Card title="Datasets" href="/docs/datasets/overview" arrow />
 </Cards>

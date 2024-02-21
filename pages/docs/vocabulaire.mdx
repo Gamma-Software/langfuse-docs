@@ -1,0 +1,47 @@
+---
+description: Lister les vocabulaire de aiop
+---
+
+# Vocabulaire
+
+Aiop utilise un vocabulaire spécifique pour décrire ces concepts.
+
+## Aiop
+
+`All-In-One-Packager` génère des packages uniformes pour différentes plateformes à l'aide d'une simple déclaration de source. "Packages as Code". [En savoir plus](../aiop/)
+
+## Aiop core
+
+C’est le coeur de Aiop. Il contient les fonctionnalités de base pour la gestion des ressources. Il est responsable de la séléction des resources en fonction de la cible de l’utilisateur.
+
+## Aiop cli
+
+Aiop est accessible via une interface en ligne de commande (CLI-Command Line Interface en anglais). [En savoir plus](../cli/)
+
+## Aiop lib
+
+Un [playbook](#playbook) est extensible via des scripts python customizé. Ces scripts doivent inclures des dépendances à la librairie de Aiop.
+
+## Aiop plugin
+
+Aiop est extensible via des plugins. Un plugin est une extension qui permet d’ajouter des fonctionnalités à Aiop. [En savoir plus](../plugin/)
+
+## (System) Cible
+
+Une cible est une combinaison de paramètres pour lequel vous souhaitez générer un package. C’est le [playbook](#playbook) qui décrit la combinaison de paramètres pour une cible donnée. [En savoir plus](../system/)
+
+## Déclaration
+
+Une déclaration correspond à une resources décrite dans un [.aml](#aml). [En savoir plus](../declaration/)
+
+## Inventaire
+
+Un inventaire est une liste de cibles. Pour chaque cible des packages peuvent être généré. [En savoir plus](../inventaire/)
+
+## Playbook
+
+Le coeur de votre projet qui contient toutes les resources (textes, configurations, binaires...) ainsi que les fichiers déclaratifs de Aiop appellé [`.aml`](#aml). [En savoir plus](../playbook/)
+
+## AML
+
+`Aiop Markup Language` est un langage de description de ressources. Il est utilisé pour décrire les ressources de votre projet. Il est basé sur le format YAML. [En savoir plus](../aml/)
