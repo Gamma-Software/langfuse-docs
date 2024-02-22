@@ -1,0 +1,10 @@
+{
+    "uninstall": "Desinstaller",
+    "roadmap": "Feuille de route",
+    "changelog": {
+      "title": "Changelog ↗",
+      "href": "/changelog",
+      "newWindow": false
+    },
+    "limitations": "Limitation"
+}
