@@ -4,52 +4,47 @@
     "title": "Introduction"
   },
   "index": "Aperçu",
-  "get-started": "Démarrer",
+  "get-started": "Comment démarrer",
   "demo": "Demo",
 
-  "-- Develop": {
+  "-- Core": {
     "type": "separator",
-    "title": "Develop"
+    "title": "Core"
   },
-  "tracing": "Tracing",
-  "prompts": "Prompt Management",
-  "export-and-fine-tuning": "Export & Fine-tuning",
-
-  "-- Monitor": {
-    "type": "separator",
-    "title": "Monitor"
-  },
-  "analytics": "Analytics",
-  "model-usage-and-cost": "Model Usage & Cost",
-  "scores": "Scores & Evaluation",
-
-  "-- Test": {
-    "type": "separator",
-    "title": "Test"
-  },
-  "experimentation": "Experimentation",
-  "datasets": "Datasets",
-
-  "-- References": {
-    "type": "separator",
-    "title": "References"
-  },
-  "sdk": {
-    "title": "SDKs"
-  },
+  "declaration": "Declaration",
   "integrations": "Integrations",
-  "api-ref": {
-    "title": "API ↗",
-    "href": "https://api.reference.aiop.fr",
-    "newWindow": true
+  "cookbook": "Recueil de recettes (Cookbook)",
+
+  "-- Lib": {
+    "type": "separator",
+    "title": "Lib"
   },
+  "lib-index": "Aperçu",
+  "lib-get-started": "Comment démarrer",
+  "custom-jobs": "Tâches personnalisées",
+  "plugins": "Plugins",
+
+  "-- Tools": {
+    "type": "separator",
+    "title": "Boite à outils"
+  },
+  "compare": "Comparateur",
+  "ci-cd": "CI-CD",
+  "experimentation": "Experimentation",
 
   "-- More": {
     "type": "separator",
-    "title": "More"
+    "title": "Pour aller plus loin"
   },
-  "rbac": "Project Sharing (RBAC)",
-  "data-security-privacy": "Data Security & Privacy",
-  "open-source": "Open Source",
-  "deployment": "Self-host"
+  "third-party": "Librairies tierces",
+  "uninstall": "Uninstall",
+  "faq": "FAQ",
+  "changelog": {
+    "title": "Changelog ↗",
+    "href": "/changelog",
+    "newWindow": false
+  },
+  "limitations": "Limitation",
+  "roadmap": "Feuille de route",
+  "data-security-privacy": "Propriété des données et sécurité"
 }
