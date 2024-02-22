@@ -13,18 +13,24 @@
     "title": "Core"
   },
   "configurations": "Configurations",
-  "core-declaration": "Declaration",
+  "declarations": "Declarations",
   "integrations": "Integrations",
-  "cookbook": "Recueil de recettes (Cookbook)",
+  "stages": "Etapes de construction",
+  "caching": "Caching",
+
+  "-- CLI": {
+    "type": "separator",
+    "title": "CLI"
+  },
+  "cli-overview": "Aperçu",
+  "cli": "Commandes",
 
   "-- Lib": {
     "type": "separator",
     "title": "Librairie"
   },
   "lib-index": "Aperçu",
-  "lib-get-started": "Comment démarrer",
-  "custom-jobs": "Tâches personnalisées",
-  "plugins": "Plugins",
+  "aiop-lib": "Developpement",
 
   "-- Tools": {
     "type": "separator",
@@ -32,7 +38,6 @@
   },
   "compare": "Comparateur",
   "ci-cd": "CI-CD",
-  "experimentation": "Experimentation",
 
   "-- More": {
     "type": "separator",
@@ -40,6 +45,7 @@
   },
   "third-party": "Librairies tierces",
   "faq": "FAQ",
+  "troubleshooting": "Diagnostic les problèmes",
   "data-security-privacy": "Propriété des données et sécurité",
   "even-more": "Encore plus loin"
 }
