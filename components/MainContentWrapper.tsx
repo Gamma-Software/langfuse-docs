@@ -51,7 +51,7 @@ export const MainContentWrapper = (props) => {
 export const DocsSubscribeToUpdates = () => {
   return (
     <div className="flex flex-col items-start gap-3">
-      <h3 className="text-xl font-semibold">Subscribe to updates</h3>
+      <h3 className="text-xl font-semibold">S'inscrire pour avoir des nouvelles</h3>
       <div className="flex gap-3 flex-wrap">
         <ProductUpdateSignup source="docs-footer" small />
       </div>
@@ -63,7 +63,7 @@ export const DocsSupport = () => {
   return (
     <div className="flex flex-col items-start gap-3">
       <h3 className="text-xl font-semibold" id="contact">
-        Questions? We're here to help
+        Question? Nous sommes là pour aider!
       </h3>
       <div className="flex gap-3 flex-wrap">
         <Button variant="outline" size="sm" asChild>
@@ -83,7 +83,7 @@ export const DocsSupport = () => {
         </Button>
         <Button variant="outline" size="sm" asChild>
           <a href="https://calendly.com/valentin-rudloff" target="_blank">
-            <span>Talk to founder</span>
+            <span>Parler au fondateur</span>
             <Calendar className="h-4 w-4 ml-3" />
           </a>
         </Button>
@@ -139,12 +139,12 @@ export const DocsFeedback = () => {
     <div className="flex flex-col gap-3">
       <h3 className="text-xl font-semibold">
         {selected === null
-          ? "Was this page useful?"
+          ? "Est-ce que cette page était utile?"
           : selected === "positive"
-          ? "What was most useful?"
+          ? "Qu'est qui était le plus utile?"
           : selected === "negative"
-          ? "What can we improve?"
-          : "Thanks for your feedback!"}
+          ? "Que pouvons nous améliorer?"
+          : "Merci pour votre retour!"}
       </h3>
       {selected === null ? (
         <div className="flex flex-wrap gap-3">
@@ -154,7 +154,7 @@ export const DocsFeedback = () => {
             onClick={() => handleFeedbackSelection("positive")}
             disabled={submitting}
           >
-            <span>Yes</span>
+            <span>Oui</span>
             <ThumbsUp className="h-5 w-5 ml-4 text-green-800" />
           </Button>
           <Button
@@ -163,7 +163,7 @@ export const DocsFeedback = () => {
             onClick={() => handleFeedbackSelection("negative")}
             disabled={submitting}
           >
-            <span>Could be better</span>
+            <span>Cela pourrait être mieux</span>
             <ThumbsDown className="h-5 w-5 ml-4 text-red-800" />
           </Button>
         </div>
@@ -172,8 +172,8 @@ export const DocsFeedback = () => {
           <Textarea
             placeholder={
               selected === "positive"
-                ? "Let us know what you found most useful"
-                : "Let us know what we can improve"
+                ? "Dites nous ce que vous avez trouvé utile"
+                : "Dites nous ce que nous pouvons améliorer"
             }
             value={feedbackComment}
             onChange={(e) => setFeedbackComment(e.target.value)}
@@ -185,7 +185,7 @@ export const DocsFeedback = () => {
             disabled={submitting}
             onClick={handleFeedbackCommentSubmit}
           >
-            {submitting ? "Submitting ..." : "Send feedback"}
+            {submitting ? "Retour à envoyer..." : "Retour envoyé"}
           </Button>
         </div>
       ) : (
@@ -196,7 +196,7 @@ export const DocsFeedback = () => {
             onClick={() => setSelected(null)}
             className="self-start"
           >
-            Send more feedback
+            Faire un autre retour
           </Button>
         </div>
       )}

@@ -8,31 +8,33 @@ import { CloudflareVideo } from "../Video";
 import GoldenKittyAwardSVG from "./img/ph_gke_ai_infra.svg";
 import GoldenKittyAwardSVGWhite from "./img/ph_gke_ai_infra_white.svg";
 import { HomeSection } from "./components/HomeSection";
+import {Meteors} from "../magicui/meteors";
 
 export function Hero() {
   return (
     <HomeSection>
       {/* HERO */}
+      <Meteors/>
       <div className="flex flex-col items-start justify-center gap-3 md:min-h-[calc(60vh-100px)] pb-12 lg:py-20">
         <h1 className="text-4xl sm:text-7xl lg:text-8xl font-bold font-mono">
-          Open Source
+          All-In-One
           <br />
-          LLM Engineering Platform
+          Packager
         </h1>
         <span className="mt-2 text-primary/70 text-2xl sm:text-3xl lg:text-4xl md:text-balance font-semibold tracking-wide">
-          <span className="underline">Traces</span>,{" "}
-          <span className="underline">evals</span>,{" "}
-          <span className="underline">prompt management</span> and{" "}
-          <span className="underline">metrics</span> to debug and improve your
-          LLM application.
+          <span className="underline">Valider</span>,{" "}
+          <span className="underline">Construire</span>,{" "}
+          <span className="underline">Déployer</span> et{" "}
+          <span className="underline">Contrôler</span><br/>
+          vos packages pour tous vos <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.pink.400),theme(colors.orange.400),theme(colors.pink.400))] bg-[length:200%_auto] animate-gradient">clients</span> et <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.pink.400),theme(colors.orange.400),theme(colors.pink.400))] bg-[length:200%_auto] animate-gradient">configurations</span>.
         </span>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">
           <Button size="lg" variant="cta" asChild>
-            <Link href="/docs/demo">Try demo</Link>
+            <Link href="/docs/demo">Démonstration</Link>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <Link href="/docs">View docs</Link>
+            <Link href="/docs">Voir la documentation</Link>
           </Button>
         </div>
       </div>

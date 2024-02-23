@@ -12,6 +12,7 @@
     "type": "separator",
     "title": "Core"
   },
+  "core-index": "Aperçu",
   "configurations": "Configurations",
   "declarations": "Declarations",
   "integrations": "Integrations",
@@ -22,7 +23,7 @@
     "type": "separator",
     "title": "CLI"
   },
-  "cli-overview": "Aperçu",
+  "cli-index": "Aperçu",
   "cli": "Commandes",
 
   "-- Lib": {
@@ -44,7 +45,7 @@
     "title": "Pour aller plus loin"
   },
   "third-party": "Librairies tierces",
-  "faq": "FAQ",
+  "qna": "FAQ",
   "troubleshooting": "Diagnostic les problèmes",
   "data-security-privacy": "Propriété des données et sécurité",
   "even-more": "Encore plus loin"

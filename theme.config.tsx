@@ -19,10 +19,10 @@ import { ToAppButton } from "./components/ToAppButton";
 
 const footerNav = [
   {
-    name: "Schedule Demo",
+    name: "Participer à une démo",
     href: "/schedule-demo",
   },
-  { name: "Careers", href: "/careers" },
+  { name: "Carrière", href: "/careers" },
   {
     name: "Status",
     href: "https://aiop-uptime.pival.fr/status/services",
@@ -46,7 +46,7 @@ const config: DocsThemeConfig = {
   logo: <Logo />,
   main: MainContentWrapper,
   search: {
-    placeholder: "Search...",
+    placeholder: "Rechercher...",
   },
   navbar: {
     extraContent: (
@@ -65,11 +65,11 @@ const config: DocsThemeConfig = {
           className="p-1 hidden sm:inline-block hover:opacity-80"
           target="_blank"
           href="https://twitter.com/valentinrudlof1"
-          aria-label="X formerly known as Twitter"
+          aria-label="X précédement Twitter"
           rel="nofollow noreferrer"
         >
           <svg
-            aria-label="X formerly known as Twitter"
+            aria-label="X précédement Twitter"
             fill="currentColor"
             width="24"
             height="24"
@@ -90,7 +90,7 @@ const config: DocsThemeConfig = {
     toggleButton: true,
   },
   editLink: {
-    text: "Edit this page on GitHub",
+    text: "Êditer cette page sur Github",
   },
   toc: {
     backToTop: true,
@@ -128,12 +128,12 @@ const config: DocsThemeConfig = {
               className="inline rounded-none leading-6 text-primary/80 hover:text-primary"
               id="termly-consent-preferences"
             >
-              Cookie Preferences
+              Préférence des Cookies
             </a>
           </div>
         </div>
         <span className="text-primary/80">
-          MIT {new Date().getFullYear()} © Finto Technologies GmbH
+          {new Date().getFullYear()} © Leaptech SAS
         </span>
       </div>
     ),

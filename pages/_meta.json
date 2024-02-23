@@ -30,7 +30,7 @@
     "title": "Docs"
   },
   "pricing": {
-    "title": "Tarifs",
+    "title": "Plans",
     "type": "page",
     "theme": {
       "layout": "full"

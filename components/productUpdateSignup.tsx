@@ -62,7 +62,7 @@ export function ProductUpdateSignup(props: {
             <FormItem>
               <FormControl>
                 <Input
-                  placeholder="Enter your email"
+                  placeholder="Entrez votre email"
                   type="email"
                   {...field}
                   className={cn(
@@ -76,7 +76,7 @@ export function ProductUpdateSignup(props: {
           )}
         />
         <Button
-          type="submit"
+          type="Soumettre"
           variant="secondary"
           className="sm:rounded-l-none"
           disabled={form.formState.isSubmitting}
@@ -85,7 +85,7 @@ export function ProductUpdateSignup(props: {
           {form.formState.isSubmitting ? (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           ) : (
-            <>Get&nbsp;updates</>
+            <>Rester&nbsp;Informé</>
           )}
         </Button>
       </form>

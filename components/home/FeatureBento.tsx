@@ -126,8 +126,8 @@ export function FeatureBento() {
   return (
     <HomeSection id="features">
       <Header
-        title="Tools for the full development workflow"
-        description="All Langfuse features are tightly integrated with Langfuse tracing."
+        title="Les fonctionnalitées"
+        description="pour tous vos besoins."
         button={{ href: "/docs", text: "Explore docs" }}
       />
       <BentoGrid>

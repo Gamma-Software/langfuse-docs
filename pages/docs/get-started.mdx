@@ -40,7 +40,7 @@ Le guide d’installation de python sur Windows peut être trouvé [ici](https:/
 
 <Steps>
 
-#### Installation de Python
+### Installation de Python
 
 Installez la version recommandée de Python 3.11.8 en utilisant votre gestionnaire de paquets. Mettez à jour votre gestionnaire de paquets et installez les dépendances nécessaires. Puis ajoutez le dépôt de deadsnakes pour installer les versions de Python.
 
@@ -69,7 +69,7 @@ sudo apt install python3.11
 
 Vérifiez la version de python installée avec la commande `python3 --version`.
 
-#### Installation des dépendances
+### Installation des dépendances
 
 Additionnellement installez des outils de développement et des bibliothèques pour Python que Aiop utilisera.
 
@@ -77,23 +77,22 @@ Additionnellement installez des outils de développement et des bibliothèques p
 sudo apt-get install curl iputils-ping -y
 ```
 
-#### Installation de Pip
+### Installation de Pip
 Si vous n’avez pas pip d’installez, vous pouvez l’installer avec la commande suivante:
 
 ```bash
 sudo apt-get install python3-pip -y
 ```
+</Steps>
 
 ### Alias
 
-Pour simplifier l’utilisation de python, il est recommandé d’aliaser les commandes `python` et `pip` à `python3` et `pip3` respectivement:
+Pour simplifier l’utilisation de python, il est recommandé de créer des racourcis des commandes `python` et `pip` à `python3` et `pip3` respectivement:
 
 ```bash
 ln -s /usr/bin/python3 /usr/bin/python
 ln -s /usr/bin/pip3 /usr/bin/pip
 ```
-
-</Steps>
 
 </Tab>
 <Tab>
@@ -183,11 +182,10 @@ aiop build archi1/model_range/model1 --apps app1 app2
 </Steps>
 
 <Callout type="info" emoji="✅">
-  Terminé, il est maintenant temps de modifier le playbook ainsi que vous l’approprier.
+  Terminé, vous avez généré votre premier package !
 </Callout>
-
 
 
 ## Que faire ensuite ?
 
-Passez ensuite à la partie [configuration](/docs/configuration/overview) pour apprendre à configurer votre playbook.
+Il est maintenant temps de modifier le playbook ainsi que vous l’approprier. Passez à la partie [configuration](/docs/configuration/overview) pour apprendre à configurer votre playbook. Sinon vous pouvez suivre une vidéo d’introduction à aiop [ici](/demo).

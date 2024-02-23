@@ -12,7 +12,7 @@ export const Home = () => (
   <>
     <main className="relative overflow-hidden w-full">
       <Hero />
-      <Users />
+      {/* <Users /> */}
       <FeatureBento />
       <Integrations />
       {/* <OpenSource /> */}
