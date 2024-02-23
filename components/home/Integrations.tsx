@@ -48,11 +48,11 @@ export function Integrations() {
   return (
     <HomeSection>
       <Header
-        title="Works with any LLM app"
-        description="SDKs for Python & JS/TS. Native integrations for popular libraries such as OpenAI and Langchain. Missing an integration? Let us know!"
+        title="Intégrations"
+        description="Intégration native des registres d'artefactes. Nous avons oublié une intégration? Dites le nous!"
         button={{
           href: "/docs/integrations/overview",
-          text: "Integration docs",
+          text: "Documentation",
         }}
       />
       <div

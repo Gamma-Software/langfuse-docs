@@ -6,7 +6,7 @@ export const FromTheBlog = () => (
   <HomeSection>
     <Header
       title="Blog"
-      description="The latest updates and releases from Langfuse"
+      description="Voici les derniers articles du blog. Découvrez les dernières nouveautés, les astuces et les conseils de notre équipe."
     />
     <BlogIndex maxItems={3} />
   </HomeSection>

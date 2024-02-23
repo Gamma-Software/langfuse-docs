@@ -17,7 +17,7 @@ export const Home = () => (
       <Integrations />
       {/* <OpenSource /> */}
       <Pricing />
-      <FromTheBlog />
+      {/* <FromTheBlog /> */}
       {/* <CTA /> */}
       <Footer />
     </main>

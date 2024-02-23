@@ -1,17 +1,22 @@
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import {
-  Box,
+  Boxes,
   GanttChart,
   GitPullRequestArrow,
   LineChart,
+  Users,
+  Rocket,
+  Cable,
   ThumbsUp,
 } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
-import bentoTracePng from "./img/bento_trace.png";
-import bentoTraceDarkPng from "./img/bento_trace_dark.png";
-import bentoMetricsPng from "./img/bento_metrics.png";
-import bentoMetricsDarkPng from "./img/bento_metrics_dark.png";
+import bentoLanguagePng from "./img/bento_language.png";
+import bentoLanguageDarkPng from "./img/bento_language_dark.png";
+import bentoVersionnigPng from "./img/bento_versionning.png";
+import bentoVersionnigDarkPng from "./img/bento_versionning_dark.png";
+import bentoCollabPng from "./img/bento_collab.png";
+import bentoCollabDarkPng from "./img/bento_collab_dark.png";
 import bentoPromptPng from "./img/bento_prompt_management.png";
 import bentoPromptDarkPng from "./img/bento_prompt_management_dark.png";
 import Image, { type StaticImageData } from "next/image";
@@ -56,66 +61,66 @@ const BentoBgImage = ({
 const features = [
   {
     Icon: GanttChart,
-    name: "Tracing",
-    description: "Detailed production traces to debug LLM applications faster.",
-    href: "/docs/tracing/overview",
-    cta: "Learn more",
+    name: "Language universel",
+    description: "Déclarez vos resources, configurez et persionalisez le projet, dans un language compréhensible par tous.",
+    href: "/docs/languages",
+    cta: "En savoir plus",
     background: (
       <BentoBgImage
-        imgLight={bentoTracePng}
-        imgDark={bentoTraceDarkPng}
-        alt="Tracing"
+        imgLight={bentoLanguagePng}
+        imgDark={bentoLanguageDarkPng}
+        alt="Languages"
       />
     ),
     className: "md:row-start-1 md:row-end-4 md:col-start-2 md:col-end-2",
   },
   {
-    Icon: GitPullRequestArrow,
-    name: "Prompt Management",
+    Icon: Boxes,
+    name: "Gestion des packages",
     description:
-      "Version and deploy prompts collaboratively and retrieve them with low latency.",
+      "Gérez et versionnez tous vos packages d'un seul endroit. Suivez les évolutions et debuggez plus facilement.",
     href: "/docs/prompts",
-    cta: "Learn more",
+    cta: "En savoir plus",
     background: (
       <BentoBgImage
-        imgLight={bentoPromptPng}
-        imgDark={bentoPromptDarkPng}
-        alt="Prompt Management"
+        imgLight={bentoVersionnigPng}
+        imgDark={bentoVersionnigDarkPng}
+        alt="Versionning des packages"
       />
     ),
     className: "md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3",
   },
   {
-    Icon: ThumbsUp,
-    name: "Evaluation",
+    Icon: Rocket,
+    name: "Rapidité",
     description:
-      "Collect user feedback and use manual and model-based evaluations.",
-    href: "/docs/scores/overview",
-    cta: "Learn more",
+      "Obtenez rapidement des résultats et générer vos packages en un éclair !",
+    href: "/docs",
+    cta: "En savoir plus",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "md:col-start-1 md:col-end-2 md:row-start-3 md:row-end-4",
   },
   {
-    Icon: Box,
-    name: "Datasets",
+    Icon: Cable,
+    name: "Personnalisation",
     description:
-      "Derive datasets from production data to fine-tune models and test your LLM application.",
-    href: "/docs/datasets/overview",
-    cta: "Learn more",
+      "Personnalisez le comportement de Aiop et de vos projets pour correspondre à vos problématiques.",
+    href: "/docs",
+    cta: "En savoir plus",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-2",
   },
   {
-    Icon: LineChart,
-    name: "Metrics",
-    description: "Track cost, latency, and quality.",
-    href: "/docs/analytics",
-    cta: "Learn more",
+    Icon: Users,
+    name: "Collaboration",
+    description: "Travaillez à plusieurs sur un même projet; à distance. Partagez vos packages, ressources et vos connaissances.",
+    href: "/docs/collaboration",
+    cta: "En savoir plus",
     background: (
       <BentoBgImage
-        imgLight={bentoMetricsPng}
-        imgDark={bentoMetricsDarkPng}
-        alt="Metrics"
+        imgLight={bentoCollabPng}
+        imgDark={bentoCollabDarkPng}
+        alt="Personnalisation"
       />
     ),
     className: "md:col-start-3 md:col-end-3 md:row-start-2 md:row-end-4",
@@ -126,7 +131,7 @@ export function FeatureBento() {
   return (
     <HomeSection id="features">
       <Header
-        title="Les fonctionnalitées"
+        title="Des fonctionnalitées"
         description="pour tous vos besoins."
         button={{ href: "/docs", text: "Explore docs" }}
       />
