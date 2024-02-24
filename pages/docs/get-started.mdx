@@ -44,7 +44,7 @@ Le guide d’installation de python sur Windows peut être trouvé [ici](https:/
 
 Installez la version recommandée de Python 3.11.8 en utilisant votre gestionnaire de paquets. Mettez à jour votre gestionnaire de paquets et installez les dépendances nécessaires. Puis ajoutez le dépôt de deadsnakes pour installer les versions de Python.
 
-```bash
+```bash copy
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
@@ -53,13 +53,13 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 
 Ensuite installez la version de python de votre choix. Veuillez installer les versions supérieurs à 3.6.
 
-```bash
+```bash copy
 sudo apt install python3.6
 ```
 
 En revanche nous recommandons d’installer la version 3.11.8.
 
-```bash
+```bash copy
 sudo apt install python3.11
 ```
 
@@ -73,14 +73,14 @@ Vérifiez la version de python installée avec la commande `python3 --version`.
 
 Additionnellement installez des outils de développement et des bibliothèques pour Python que Aiop utilisera.
 
-```bash
+```bash copy
 sudo apt-get install curl iputils-ping -y
 ```
 
 ### Installation de Pip
 Si vous n’avez pas pip d’installez, vous pouvez l’installer avec la commande suivante:
 
-```bash
+```bash copy
 sudo apt-get install python3-pip -y
 ```
 </Steps>
@@ -89,7 +89,7 @@ sudo apt-get install python3-pip -y
 
 Pour simplifier l’utilisation de python, il est recommandé de créer des racourcis des commandes `python` et `pip` à `python3` et `pip3` respectivement:
 
-```bash
+```bash copy
 ln -s /usr/bin/python3 /usr/bin/python
 ln -s /usr/bin/pip3 /usr/bin/pip
 ```
@@ -153,7 +153,7 @@ Commencez par créer un compte aiop. Si vous n’avez pas de compte, appuiyez su
 ### Installez aiop
 Installer aiop est simple. Ouvrez un terminal et exécutez la commande suivante:
 
-```bash
+```bash copy
 pip install aiop
 ```
 
@@ -164,7 +164,7 @@ Cela installera aiop et toutes ses dépendances.
 
 Pour utiliser aiop, vous avez besoin d’un [playbook](/docs/vocabulaire#playbook). Vous pouvez installer un modèle de playbook en exécutant la commande suivante:
 
-```bash
+```bash copy
 aiop init ./my-playbook
 ```
 
@@ -174,7 +174,7 @@ Cela téléchargera un modèle de playbook dans le dossier `my-playbook`.
 
 Vous y êtes enfin ! Vous pouvez maintenant générer votre premier package en exécutant la commande suivante:
 
-```bash
+```bash copy
 cd my-playbook
 aiop build archi1/model_range/model1 --apps app1 app2
 ```

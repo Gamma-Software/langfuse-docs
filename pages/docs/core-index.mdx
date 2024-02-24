@@ -27,33 +27,47 @@ Un package est un ensemble d’[artefacts](/docs/vocabulary#artefact) qui compos
 
 Un package est composé de plusieurs artefacts. Ces artefacts sont des fichiers ou des dossiers.
 
-Les artefacts peuvent être des fichiers textuels:
- - du code source,
- - du paramétrage,
- - de la donnée,
- - de la documentation,
- - des rapports,
- - des fichiers de licences,
- - des certificats,
- - des fichiers de logs,
- - etc... tout ce qui est lisible par un humain.
+<details>
+  <summary>Les artefacts peuvent être des fichiers textuels</summary>
+  <ol>
+    <li><p>Rapports</p></li>
+    <li><p>Paramétrage</p></li>
+    <li><p>Certificats</p></li>
+    <li><p>Code source</p></li>
+    <li><p>Des données</p></li>
+    <li><p>Documentation</p></li>
+    <li><p>Fichiers de logs</p></li>
+    <li><p>...tout ce qui est lisible par un humain</p></li>
+  </ol>
+</details>
 
-Les artefacts peuvent être des fichiers binaires:
- - des archives (zip),
- - des exécutables,
- - des librairies,
- - des images,
- - des vidéos,
- - des sons,
- - des documents cryptés,
- - des bases de données,
- - etc...
+<details>
+  <summary>Les artefacts peuvent être des fichiers binaires</summary>
+  <ol>
+    <li><p>des sons</p></li>
+    <li><p>des images</p></li>
+    <li><p>des vidéos</p></li>
+    <li><p>des librairies</p></li>
+    <li><p>des exécutables</p></li>
+    <li><p>des archives (zip)</p></li>
+    <li><p>des bases de données</p></li>
+    <li><p>des documents cryptés</p></li>
+    <li><p>...tout ce qui est compilé, crypté, dont la donnée est non lisible par l'humain</p></li>
+  </ol>
+</details>
+
 
 #### Sources des artefacts
 
 Les artefacts peuvent être issus de plusieurs sources:
- - des fichiers locaux,
- - des fichiers distants
+
+import { Cards, Card } from 'nextra/components'
+import { DownloadCloud, Laptop } from "lucide-react";
+
+<Cards>
+  <Card icon={<Laptop />} title="des fichiers locaux" arrow href="/docs/declarations/cookbook/local" />
+  <Card icon={<DownloadCloud />} title="des fichiers distants" arrow href="/docs/declarations/cookbook/remote" />
+</Cards>
 
 #### Organisation des artefacts
 
@@ -76,12 +90,15 @@ Aiop remonte les erreurs **le plus tôt possible** pour que l'utilisateur puisse
 
 ### Configurations
 
+Le comportement de Aiop Core peut être modifié par des configurations. Ces configurations sont des fichiers de paramétrage. [En savoir plus](/docs/configurations).
 
-### Declarations
+### Déclarations
 
+Aiop fonctionne sur le principe déclaratif de resources. Les déclarations sont des fichiers qui décrivent les artefacts d'un package ainsi que leurs compatibilités avec des systèmes. [En savoir plus](/docs/declarations).
 
 ### Intégrations
 
+Aiop Core intègre des
 
 ### Caching
 
