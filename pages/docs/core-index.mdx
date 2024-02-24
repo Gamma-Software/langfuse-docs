@@ -99,12 +99,15 @@ Aiop fonctionne sur le principe déclaratif de resources. Les déclarations sont
 
 ### Intégrations
 
-Aiop Core intègre des outils et des services tiers pour réaliser certaines tâches.
+Aiop Core inclut divers outils et services tiers pour exécuter différentes tâches. Parmi eux, on compte des gestionnaires de référentiels d'artefacts universels tels que [Nexus](https://www.sonatype.com/nexus-repository-oss) ou [Artifactory](https://jfrog.com/artifactory/). De plus, il intègre un outil de construction de PDF.
 
 <IntegrationBeam />
 
+Une multitude d'autres fonctionnalités et services arriverons dans les prochaines versions (voir la [feuille de route](/docs/roadmap)). [En savoir plus](/docs/integrations).
+
 ### Caching
 
+Aiop Core exploite un mécanisme de mise en cache pour stocker les ressources distantes. Cette fonctionnalité vise à diminuer le temps nécessaire à la construction des packages, surtout dans le cas où la connexion avec les serveurs distants est interrompue ou lorsque la connexion internet est limitée.
 
 ## Fonctionnement
 
