@@ -91,7 +91,8 @@ Aiop remonte les erreurs **le plus tôt possible** pour que l'utilisateur puisse
 
 ### Configurations
 
-Le comportement de Aiop Core peut être modifié par des configurations. Ces configurations sont des fichiers de paramétrage. [En savoir plus](/docs/configurations).
+Le comportement de Aiop Core peut être modifié par des configurations. Il existe plusieurs types de configurations: la configuration utilisateur, la configuration du projet, la configuration des systèmes.
+[En savoir plus](/docs/configurations).
 
 ### Déclarations
 
@@ -111,45 +112,71 @@ Aiop Core exploite un mécanisme de mise en cache pour stocker les ressources di
 
 ## Fonctionnement
 
+Voyons maintenant comment fonctionne Aiop.
+
 ### Languages utilisés
 
+Le language de programmation utilisé est le Python. Les déclarations et les configurations sont écrites en [YAML](https://yaml.org/).
 
-### Séléctions de déclarations
+### Sélections de déclarations
 
+La sélection est une opération qui consiste à choisir les déclarations à utiliser pour la construction d'un package. La sélection se fait en fonction du système ciblé et de la configuration choisie. Le système cible est défini par l'utilisateur dans le fichier de [configuration des systèmes](/docs/inventory). [En savoir plus](/docs/declarations).
 
-### Rapports
+### Logs et rapports
 
+Aiop Core produit des journaux pour chaque étape de construction, affichant des informations variées telles que les erreurs, les avertissements, les détails sur les artefacts, et autres, directement dans la console.
+
+En outre, Aiop Core génère des rapports textuels stockés dans le répertoire de construction. Ces rapports incluent :
+
+- Un rapport détaillé de la construction, répertoriant toutes les opérations réalisées par Aiop.
+- Un résumé du package construit, fournissant des informations essentielles sur celui-ci.
+- Un rapport spécifique décrivant les modifications apportées au package lors de l'étape `post-build`.
 
 ## Phases de constructions
 
+Aiop Core est composé de plusieurs phases de construction du package. Chaque phase est responsable de plusieurs tâches spécifiques. Les phases sont exécutées dans un ordre précis.
+Voici les phases de construction:
 
 ### Lint
 
+La phase de `lint` assure la validation des déclarations et des configurations en vérifiant la syntaxe des fichiers correspondants ainsi que la cohérence entre eux.
+
+Étant une analyse statique, elle n'exige pas de spécifier le système cible. Toutefois, une option est disponible pour définir le système cible et réaliser des vérifications supplémentaires, notamment sur les éventuels conflits au niveau des ressources.[En savoir plus](/docs/lint).
+
+<Callout type="info" emoji="ℹ️">
+  À noter qu’il est possible de rajouter des tâches de lint personnalisées pour valider des règles spécifiques à votre projet.
+</Callout>
+
+<Callout type="warning" emoji="ℹ⚠️">
+  Le plan `gratuit` ne permet pas de rajouter des tâches de lint personnalisées.
+</Callout>
 
 ### Pre-build
 
+La phase de `pre-build` est responsable de la préparation de l'environnement de construction. Elle assure la récupération des artefacts distants, la création des répertoires de construction, etc. [En savoir plus](/docs/pre-build).
 
 ### Build
 
+La phase de `build` est responsable de la construction du package. Elle assure l'assemblage des resources dans le package. [En savoir plus](/docs/build).
 
 ### Post-build
 
+La phase de `post-build` est utilisée pour réaliser de tâches qui n’ont pas de sens à être inclue dans le phase de `build`. Par example, vous pourriez être amené à vouloir générer un fond d’écran pour un client qui affiche en texte des métadonnées relatives au système cible. Toutes manipulation du packages temporaire après `build` doit être fait dans cette phase. [En savoir plus](/docs/post-build).
+
+<Callout type="info" emoji="ℹ️">
+  Pour rappel, un rapport est généré à la fin de la phase de `post-build` en comparant le package avant et après cette phase. Ce rapport est stocké dans le répertoire de construction.
+
+  De plus, il est possible de rajouter des tâches de post-build personnalisées pour réaliser des actions spécifiques à votre projet.
+</Callout>
+
+<Callout type="warning" emoji="ℹ⚠️">
+  Le plan `gratuit` ne permet pas de rajouter des tâches de lint personnalisées.
+</Callout>
 
 ### Seal
 
+La phase `seal` est une étape où les plusieurs tâches sont effectuées pour finaliser et rendre le package prêt à être distribué dans la phase suivante. [En savoir plus](/docs/seal).
 
 ### Deploy
 
-
-## Cycle de vie des packages
-
-### Création
-
-### Developpements
-
-### Maintenance
-
-### Deploiement
-
-### Versionning
-
+La phase `deploy` est responsable de la distribution du package. Elle assure l'envoi du package dans des gestionnaires de référentiels d'artefacts universels et/ou le déploiement des systèmes cible directement. [En savoir plus](/docs/deploy).

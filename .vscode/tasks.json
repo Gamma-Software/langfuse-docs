@@ -6,7 +6,7 @@
         {
             "label": "Start dev docs",
             "type": "shell",
-            "command": "pnpm dev",
+            "command": "pnpm dev -p 3334",
             "problemMatcher": []
         },
         {
