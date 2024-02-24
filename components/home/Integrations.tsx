@@ -7,6 +7,10 @@ import { Code } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
 import { SiOpenai, SiPython, SiTypescript } from "react-icons/si";
+import { FaFilePdf } from "react-icons/fa";
+import ArtifactoryLogo from "./img/artifactory.png";
+import NexusLogo from "./img/nexus.webp";
+import AiopLogo from "public/logo_180.png";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -49,7 +53,7 @@ export function Integrations() {
     <HomeSection>
       <Header
         title="Intégrations"
-        description="Intégration native des registres d'artefactes. Nous avons oublié une intégration? Dites le nous!"
+        description="Intégration native des registres d'artefacts et librairies. Nous avons oublié une intégration? Dites le nous!"
         button={{
           href: "/docs/integrations/overview",
           text: "Documentation",
@@ -66,27 +70,27 @@ export function Integrations() {
             </Circle>
           </div>
           <div className="flex flex-row items-center justify-between">
-            <Circle ref={inTypescriptRef} title="JS/TS SDK">
-              <SiTypescript className="h-6 w-6" />
+            <Circle ref={inTypescriptRef} title="Artifactory">
+              <img src={ArtifactoryLogo.src} alt="Logo"/>
             </Circle>
             <Circle ref={out1ref} className="hidden">
               <Code className="h-6 w-6" />
             </Circle>
           </div>
           <div className="flex flex-row items-center justify-between">
-            <Circle ref={inOpenAiRef} title="OpenAI SDK">
-              <SiOpenai className="h-6 w-6" />
+            <Circle ref={inOpenAiRef} title="Nexus">
+              <img src={NexusLogo.src} alt="Logo"/>
             </Circle>
             <Circle ref={langfuseNodeRef} className="h-16 w-16">
-              <span className="text-3xl">🪢</span>
+              <img src={AiopLogo.src} alt="Logo" className="-translate-y-1"/>
             </Circle>
             <Circle ref={out2ref} className="hidden">
               <Code className="h-6 w-6" />
             </Circle>
           </div>
           <div className="flex flex-row items-center justify-between">
-            <Circle ref={inLangchainRef} title="Langchain">
-              <span>🦜&nbsp;🔗</span>
+            <Circle ref={inLangchainRef} title="PDF">
+              <FaFilePdf className="h-6 w-6" />
             </Circle>
             <Circle ref={out3ref} className="hidden">
               <Code className="h-6 w-6" />
