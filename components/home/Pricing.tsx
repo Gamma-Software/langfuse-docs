@@ -28,7 +28,7 @@ const tiers = [
       "Limité à 1 playbook par compte et par personne",
       "Support de la communauté (Discord & Gitlab & Slack)",
     ],
-    cta: "S’inscrire",
+    cta: "Commencer gratuitement",
   },
   {
     name: "Pro",
@@ -48,9 +48,9 @@ const tiers = [
       "Génération de packages illimitée",
       "Playbooks illimités, mais limité à 1 personne",
       "Accès à des cookbook CI/CD",
-      "Support dédié en plus de la communauté",
+      "Support dédié en plus de la communauté"
     ],
-    cta: "S’inscrire",
+    cta: "S’abonner",
   },
   {
     name: "Team",
@@ -569,8 +569,8 @@ export function Pricing({
 
                                             <span className="sr-only">
                                               {feature.tiers[tier.name] === true
-                                                ? "Yes"
-                                                : "No"}
+                                                ? "Oui"
+                                                : "Non"}
                                             </span>
                                           </>
                                         )}
@@ -610,9 +610,9 @@ export function Pricing({
           </>
         ) : (
           <div className="text-center mt-10">
-            For a detailed comparison and FAQ, see our{" "}
+            Pour une comparaison détaillée et des questions fréquentes, consultez notre{" "}
             <Link href="/pricing" className="underline">
-              pricing page
+              page de tarification
             </Link>
             .
           </div>
@@ -624,29 +624,24 @@ export function Pricing({
 
 const faqs = [
   {
-    question: "What is the easiest way to try Langfuse?",
+    question: "Pourquoi payer un abonnement?",
     answer:
-      "You can view the <a class='underline' href='/demo'>public demo project</a> or sign up for a <a class='underline' href='https://cloud.aiop.fr'>free account</a> to try Langfuse with your own data. The Hobby plan is completeley free and does not require a credit card.",
+      "Aiop vous est proposé gratuitement pour les projets personnels et les projets open-source. Pour les projets professionnels, nous facturons un abonnement pour couvrir les coûts d'infrastructure et de support. Nous offrons également des <a class='underline' href='/docs/plugins'>fonctionnalités</a> avancées pour les équipes et les entreprises.",
   },
   {
-    question: "What is an observation?",
+    question: "Pourquoi dois-je créer un compte pour utiliser Aiop?",
     answer:
-      "Traces in Langfuse include a set of observations. An observation is a single event that occurred in your system. For example, a single LLM call, a single HTTP request, a single log object, or a database query. Check out the <a class='underline' href='/docs/tracing'>Langfuse Tracing docs<a/> for more details.",
+      "Pour les project personnels et open-source, vous n'avez pas besoin de créer un compte. Pour les projets professionnels, nous avons besoin de votre coordonnées personnelles pour créer un compte Aiop cloud et bénéficier de plugins. Nous ne vendons pas vos données à des tiers. Votre adresse email est utilisée uniquement pour vous contacter à propos de votre compte Aiop.",
   },
   {
-    question: "Do I need to use Langfuse Cloud?",
+    question: "Où est stocké mes coordonnées personnelles?",
     answer:
-      "No, Langfuse Cloud is the managed service offered by the Langfuse team. Langfuse is open source and you can run Langfuse <a class='underline' href='/docs/deployment/local'>locally using docker compose<a/> or for <a class='underline' href='/docs/deployment/self-host'>production use via docker<a/> and a standalone database.",
+      "Aiop Cloud est hébergé sur AWS et les données sont stockées dans l'UE en fonction de votre choix. Consultez notre <a class='underline' href='/docs/data-security-privacy'>documentation sur la sécurité et la confidentialité</a> pour plus de détails.",
   },
   {
-    question: "Where is the data stored?",
+    question: "Est-ce que vous faites de promotions?",
     answer:
-      "Langfuse Cloud is hosted on AWS and data is stored in the US or EU depending on your selection. See our <a class='underline' href='/docs/data-security-privacy'>security and privacy documentation</a> for more details.",
-  },
-  {
-    question: "Do you offer discounts?",
-    answer:
-      "Yes, we offer discounts for students, academics and open-source projects. If you believe your situation warrants a discount, please contact us at sales@aiop.fr with details about your project.",
+      "Oui, nous offrons des réductions pour les étudiants et les universitaires. Si vous pensez que votre situation justifie une réduction, veuillez nous contacter à <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>cette adresse mail</a>.",
   },
 ];
 
