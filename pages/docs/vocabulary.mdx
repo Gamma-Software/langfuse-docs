@@ -30,9 +30,13 @@ Un [playbook](#playbook) est extensible via des scripts python customizé. Ces s
 
 Aiop est extensible via des plugins. Un plugin est une extension qui permet d’ajouter des fonctionnalités à Aiop. [En savoir plus](../plugin/)
 
-## Package
+## Registres d'artefacts
 
-Un `package` est le résultat de génération de Aiop. C'est la combinaison de toutes les resources compatibles par une cible donnée.
+Les registres d'artefacts sont des systèmes de stockage de fichiers binaires. Ils sont utilisés pour stocker les [artefacts](#artefact) générés par Aiop. [En savoir plus](../registre/)
+
+## Artefact
+
+Les artefacts sont des éléments qui représentent les entités physiques dans un système logiciel. Les artefacts représentent des unités physiques d'implémentation, telles que des fichiers exécutables, des bibliothèques, des composants de logiciel (binaires ou fichiers de configuration), des documents, et bases de documents.
 
 ## Cible (Système)
 
@@ -60,6 +64,10 @@ Une déclaration correspond à une resources décrite dans un [.aml](#aml). [En 
 ## Inventaire
 
 Un inventaire est une liste de cibles. Pour chaque cible des packages peuvent être généré. [En savoir plus](../inventaire/)
+
+## Package As Code (PAC)
+
+Le package as code est une méthode de gestion de packages qui consiste à décrire les packages à l'aide d’un fichier textuel compréhensible par tous.
 
 ## Playbook
 

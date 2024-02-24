@@ -2,14 +2,76 @@
 description: Get an overview of the core of Aiops functionnality, way of working and how to use it.
 ---
 
-# Aperçu
+import { Callout } from "nextra-theme-docs";
+
+
+# Aiop Core
+
+[Aiop Core](/docs/vocabulary#aiop-core) est le noyaux de la solution Aiop. Il est composé de plusieurs modules qui permettent de gérer les différentes phases de construction d'un package. Voyons les concepts de base et le fonctionnement de Aiop Core.
 
 ## Concepts de base
 
-### Philosophie
+Aiop Core est basé sur plusieurs concepts de base. Ces concepts sont les fondations de la solution Aiop.
 
+### Package
 
-#### Validation et erreurs remontés
+Un package est un ensemble d’[artefacts](/docs/vocabulary#artefact) qui compose une application. Un package peut être une application web, une application mobile, une application de bureau, une ou un ensemble d’application embarquée, un service, une librairie, etc...
+
+<Callout type="info" emoji="ℹ️">
+  À l'[origine](/docs#origine), l'objectif d'AIOP était de concevoir des packages pour des applications embarquées. Cependant, la solution a été conçue pour être utilisée dans n'importe quel autres types de projet. Si toutefois vous avez des besoins spécifiques, n'hésitez pas à nous [contacter](/meeting).
+</Callout>
+
+#### Composition
+
+{/* Create package beam to explain the composition of a package <PackageBeam/> */}
+
+Un package est composé de plusieurs artefacts. Ces artefacts sont des fichiers ou des dossiers.
+
+Les artefacts peuvent être des fichiers textuels:
+ - du code source,
+ - du paramétrage,
+ - de la donnée,
+ - de la documentation,
+ - des rapports,
+ - des fichiers de licences,
+ - des certificats,
+ - des fichiers de logs,
+ - etc... tout ce qui est lisible par un humain.
+
+Les artefacts peuvent être des fichiers binaires:
+ - des archives (zip),
+ - des exécutables,
+ - des librairies,
+ - des images,
+ - des vidéos,
+ - des sons,
+ - des documents cryptés,
+ - des bases de données,
+ - etc...
+
+#### Sources des artefacts
+
+Les artefacts peuvent être issus de plusieurs sources:
+ - des fichiers locaux,
+ - des fichiers distants
+
+#### Organisation des artefacts
+
+Vous êtes libre d'organiser les artefacts comme vous le souhaitez. Aiop ne vous impose pas de structure. Cependant, il est recommandé d'adopter une structure standard pour l'ensemble de vos packages.
+
+<Callout emoji="💡">
+  L'avantage d'AIOP réside dans sa capacité à établir une structure d'artefacts standard pour l'ensemble de vos packages définit par vous et votre équipe. Cette approche facilite la maintenance et le débogage des packages, car toutes les personnes impliquées connaîtront cette structure et seront habituées à naviguer à l'intérieur.
+</Callout>
+
+### Validation et erreurs remontés
+
+Aiop Core est pensé pour afficher le plus d'informations possible sur les erreurs rencontrées avant et pendant la construction d'un package. Les erreurs sont remontées à l'utilisateur sous forme de rapports dans la console.
+
+Aiop remonte les erreurs **le plus tôt possible** pour que l'utilisateur puisse les corriger rapidement.
+
+<Callout emoji="🚨">
+  Il est important de noter que Aiop ne corrige pas les erreurs pour vous ([Mais ça ne serait tarder](/docs/roadmap)). Il vous informe des erreurs et vous donne des indications pour les corriger. C'est à vous de les corriger.
+</Callout>
 
 
 ### Configurations

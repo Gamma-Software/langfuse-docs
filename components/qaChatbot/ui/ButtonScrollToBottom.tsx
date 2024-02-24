@@ -32,7 +32,7 @@ export function ButtonScrollToBottom({
       {...props}
     >
       <ArrowDown className="h-4 w-4" />
-      <span className="sr-only">Scroll to bottom</span>
+      <span className="sr-only">Remonter</span>
     </Button>
   );
 }

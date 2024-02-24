@@ -6,7 +6,7 @@ import { forwardRef, useRef, type ReactNode } from "react";
 import { Code } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
-import { SiOpenai, SiPython, SiTypescript } from "react-icons/si";
+import { SiPython } from "react-icons/si";
 import { FaFilePdf } from "react-icons/fa";
 import ArtifactoryLogo from "./img/artifactory.png";
 import NexusLogo from "./img/nexus.webp";
