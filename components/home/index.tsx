@@ -11,7 +11,7 @@ import { FromTheBlog } from "./FromTheBlog";
 export const Home = () => (
   <>
     <main className="relative overflow-hidden w-full">
-      <Hero />
+      <Hero/>
       {/* <Users /> */}
       <FeatureBento />
       <Integrations />
