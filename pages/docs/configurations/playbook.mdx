@@ -1,8 +1,30 @@
 ---
 description: Aiop provides an extensive configuration file to customize the behavior of the application for the playbook.
 ---
+import { Callout } from "nextra-theme-docs";
 
 # Configuration du playbook
+
+Le playbook doit être configuré pour répondre à votre besoin. Le fichier de configuration est situé dans le répertoire du relatif au playbook:
+- Unix: `<racine_playbook>/.aiop/playbook.yaml`
+- Windows: `<racine_playbook>\.aiop\playbook.yaml`
+
+Le playbook doit également contenir un fichier inventaire qui répertorie les systèmes cibles et ces caractéristiques. Le fichier d'inventaire est situé dans le répertoire du relatif au playbook:
+- Unix: `<racine_playbook>/.aiop/inventory.yaml`
+- Windows: `<racine_playbook>\.aiop\inventory.yaml` et `<racine_playbook>\.aiop\inventory_config.yml`
+
+
+Un fichier de configuration vient par dessus
+
+
+> `<racine_playbook>` est le répertoire racine du playbook.
+
+
+<Callout type="info" emoji="ℹ️">
+  À l’installation de Aiop, un fichier de configuration par défaut est créé. Il est possible de le [modifier](#personalisation) pour personnaliser le comportement de l’application.
+</Callout>
+
+Le fichier de configurartion est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser son comportement.
 
 ## Base
 
