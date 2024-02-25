@@ -1,0 +1,82 @@
+---
+description: See the basic structure of a playbook. A project of Aiop.
+---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Structure d’un Playbook
+
+Un `playbook` est le projet qu’Aiop va utiliser pour construire les packages. Il est composé de plusieurs fichiers et dossiers. Il y a des fichiers obligatoires et d’autres optionnels.
+
+Voici un example de structure d’un `playbook`:
+
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop" defaultOpen>
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.Folder name="locales" defaultOpen>
+            <FileTree.File name="resource_locale_1.txt" />
+            <FileTree.File name="resource_locale_2.md" />
+        </FileTree.Folder>
+        <FileTree.File name="resources_locales.aml" />
+        <FileTree.File name="resources_distantes.aml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="custom_jobs" defaultOpen>
+        <FileTree.File name="snake_case_lint.py" />
+        <FileTree.File name="apply_patch.py" />
+    </FileTree.Folder>
+    <FileTree.File name=".amlignore" />
+    <FileTree.File name="README.md" />
+    <FileTree.File name="CHANGELOG.md" />
+  </FileTree.Folder>
+</FileTree>
+
+Vous remarquerez que le dossier `.git` est présent. C’est parce que le playbook est un projet git ce qui est recommandé ce qui permet de versionner le playbook et de collaborer efficacement. Le playbook est un projet git comme un autre et vous pouvez utiliser toutes les fonctionnalités de [git](/docs/vocabulary#git).
+
+
+<Callout type="info" emoji="ℹ️">
+  Le seul dossier obligatoire est `.aiop` qui contient les fichiers de configuration également obligatoires. Bien entendu, le playbook doit au moins contenir un fichier `.aml` pour créer un package sinon Aiop ne va pas se lancer.
+</Callout>
+
+## Détails des fichiers et dossiers
+
+### Le dossier `.aiop`
+
+Ce dossier contient les fichiers de configuration du playbook. Il est obligatoire et doit contenir les fichiers suivants:
+
+- `inventory_config.yml`: Fichier de configuration de l’inventaire. [En savoir plus](/docs/configurations/playbook#inventaire).
+- `inventory.yml`: Fichier de l’inventaire. [En savoir plus](/docs/configurations/playbook#inventaire).
+- `playbook.yml`: Fichier de configuration du playbook. [En savoir plus](/docs/configurations/playbook#base).
+
+### Le dossier `resources`
+
+Pour cet example, le dossier nommé `resources` contient les ressources du playbook. Il est bien sur optionnel et vous pouvez le nommer comme vous le souhaitez. Il contient un dossier `locales` avec deux fichiers avec l’extension `.aml`. Le dossier `locales` contient deux resources locales.
+
+### Le dossier `custom_jobs`
+
+Ce dossier est optionnel et contient des scripts python qui peuvent être utilisés dans les tâches personnalisées de génération du package. Les scripts python doivent être placés dans un dossier de votre choix (nom et emplacement) et indiqué dans le fichier de configuration du playbook. [En savoir plus](/docs/configurations/playbook)
+
+<Callout type="warning" emoji="⚠️">
+  Le plan `gratuit` ne permet pas de rajouter des tâches de personnalisées et seront alors ignorées.
+</Callout>
+
+### Le fichier `.aml`
+
+
+Le fichier [`.aml`](/docs/vocabulary#aml) constitue le point d'entrée des ressources envoyées à Aiop. L'outil lit ce fichier pour interpréter les resources et construire les packages associés. Bien qu'optionnel, ce fichier peut être placé n'importe où dans le playbook mais si Aiop ne trouve aucun fichier `.aml` dans le projet ou ses sous-dossiers, aucune génération de package ne sera lancée.
+
+### Le fichier `.amlignore`
+
+Le fichier `.amlignore` est un fichier de configuration qui permet d’ignorer certains fichiers ou dossiers lors de la génération des packages. Il est optionnel mais vous êtes obligé de le nommer `.amlignore` et le placer à la racine du playbook. Le format de ce fichier est le même que celui de `.gitignore` vous pouvez retrouver de la documentation pour ajouter des fichiers et dossiers à ignorer [ici](https://git-scm.com/docs/gitignore).
+
+### Les fichiers `README.md` et `CHANGELOG.md`
+
+Ces fichiers sont optionnels mais recommandés. Ils permettent de documenter le projet et de suivre les changements apportés au projet. Le fichier `README.md` est le fichier de documentation du projet et le fichier `CHANGELOG.md` est le fichier qui contient les changements apportés au projet.

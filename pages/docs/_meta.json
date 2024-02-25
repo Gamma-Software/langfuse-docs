@@ -13,6 +13,7 @@
     "title": "Core"
   },
   "core-index": "Aperçu",
+  "playbook_structure": "Structure d’un playbook",
   "configurations": "Configurations",
   "declarations": "Declarations",
   "integrations": "Integrations",
