@@ -1,4 +1,5 @@
 {
   "user": "Utilisateur",
-  "playbook": "Playbook"
+  "playbook": "Playbook",
+  "inventory": "Inventaire"
 }

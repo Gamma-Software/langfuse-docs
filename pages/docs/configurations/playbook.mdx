@@ -23,11 +23,9 @@ Le playbook doit également contenir un fichier de configuration de l’inventai
   Les plugins peuvent également apporter des options de configuration supplémentaires. Veuillez consulter la documentation du plugin pour plus d'informations. [Contactez](mailto:valentin.rudloff.perso@gmail.com) le support technique pour toute question.
 </Callout>
 
-## Base
-
 Le fichier de configurartion est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser le playbook.
 
-### Structure du fichier de configuration
+## Structure du fichier de configuration
 
 Ce fichier de configuration est spécifique à votre playbook. Il contient des informations sur les plugins, les dépots distants, les règles de validation et post-build personalisées et d’autres options de personnalisation qui pourrait venir de plugins.
 
@@ -49,7 +47,7 @@ post_scripts:
     path: {chemin relatif vers le script}
 ```
 
-### Personalisation
+## Personalisation
 
 
 Pour personnaliser , il suffit d’ouvrir et de modifier le fichier de configuration.
@@ -78,11 +76,11 @@ Tous ces champs sont optionnels.
   Dans le cas où vous n’avez ni de plugins, ni de dépots distants, ni de règles de validation, ni de scripts post-build, vous pouvez supprimer les sections correspondantes **mais vous devez tout de même mettre un fichier vide**.
 </Callout>
 
-#### `plugins`
+### `plugins`
 
 La section `plugins` est une liste de plugins à utiliser pour le playbook. Chaque plugin doit avoir un nom et une version. Vous n’êtes pas limité en nombre de plugins.
 
-#### `repositories`
+### `repositories`
 
 
 La section `repositories` est une liste de dépots distants à utiliser pour le playbook. Vous n’êtes pas limité en nombre de dépots. Chaque dépot doit avoir un nom, une instance, un type, une base de l’url et une regex. Voici une explication de chaque champ:
@@ -97,12 +95,12 @@ La section `repositories` est une liste de dépots distants à utiliser pour le 
 
 - **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la resource distante est correcte et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la resource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#amllint_rules-et-post_scripts).
 
-#### `amllint_rules` et `post_scripts`
+### `amllint_rules` et `post_scripts`
 
 La section `amllint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
 
 
-### Modèle de configuration
+## Modèle de configuration
 
 Ce fichier de paramètre peut être difficile à mettre en place c’est pourquoi nous avons créé un modèle d’inventaire pour vous aider à démarrer. Par défaut, Aiop vous le créer lors de l’initialisation du projet.
 
@@ -114,28 +112,80 @@ repositories:
   - name: release
     instance: artifactory-tesla-repo
     type: artifactory
-    base_url: https://artifactory.tesla.com/artifactory/release
-    repository_regex: (?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+    base_url: https://artifactory.tesla.com/artifactory/release/
+    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+  - name: qa
+    instance: artifactory-tesla-repo
+    type: artifactory
+    base_url: https://artifactory.tesla.com/artifactory/qa/
+    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
 amllint_rules:
-  - classname: {nom de la classe de la règle à exécuter à la validation}
-    path: {chemin relatif vers le script}
+  - classname: SnakeCaseRule
+    path: .aiop/rules/snake_case_rule.py
 post_scripts:
-  - classname: {nom de la classe de la règle à exécuter après le build}
-    path: {chemin relatif vers le script}
+  - classname: ApplyPatch
+    path: .aiop/rules/apply_patch.py
 ```
 
-## Inventaire
+Voyons cela en détail:
 
+<Steps>
 
-### Structure de l'inventaire
+```yaml
+plugins:
+  - name: tesla-plugin
+    version: "0.2"
+```
 
+Le playbook à besoin du plugin nommé `tesla-plugin` avec la version `0.2`. Rappelons que vous pouvez avoir autant de plugins que vous le souhaitez.
 
-### Personalisation
+<Callout type="warning" emoji="⚠️">
+  Vous devez avoir les droits pour accéder à ce plugin. Si vous ne l’avez pas, vous pouvez [contacter](mailto:valentin.rudloff.perso@gmail.com) le support technique pour obtenir de l’aide.
+</Callout>
 
+```yaml
+repositories:
+  - name: release
+    instance: artifactory-tesla-repo
+    type: artifactory
+    base_url: https://artifactory.tesla.com/artifactory/release/
+    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+  - name: dev
+    instance: artifactory-tesla-repo
+    type: artifactory
+    base_url: https://artifactory.tesla.com/artifactory/dev/
+    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+```
 
-### Modèle d'inventaire
+Il y a deux dépots distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les resources de production et `dev` celle de développement. Il s’agit du même dépot distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la resource, sa version et son nom.
 
+```yaml
+amllint_rules:
+  - classname: SnakeCaseRule
+    path: .aiop/rules/snake_case_rule.py
+```
+
+La règle `SnakeCaseRule` est définie dans le fichier `.aiop/rules/snake_case_rule.py`. Pour cet example, cette règle vérifie que les noms de fichiers sont en snake_case.
+
+```yaml
+post_scripts:
+  - classname: ApplyPatch
+    path: .aiop/rules/apply_patch.py
+```
+
+Le script `ApplyPatch` est défini dans le fichier `.aiop/rules/apply_patch.py`. Pour cet example, ce script applique un patch sur le package généré.
+
+</Steps>
 
 ## Ignorer des fichiers
 
+Il est possible d’ignorer des fichiers dans le playbook. Pour cela, il suffit de créer un fichier `.amlignore` à la racine du playbook. Ce fichier suit la même syntaxe que le fichier `.gitignore`. Par exemple, pour ignorer tous les fichiers avec l’extension `.jar`:
 
+```plaintext filename=".amlignore"
+*.jar
+```
+
+Ou tous les fichiers dans le répertoire `target`:
+```plaintext filename=".amlignore"
+target/
+```
