@@ -17,9 +17,15 @@ Le fichier de configurartion est au format YAML. Il est possible de le modifier 
 
 ## Structure du fichier de configuration
 
-Voici la structure du fichier de configuration. Nous allons ensuite détailler chaque section.
+Voici la structure du fichier de configuration. Il comprend des paramètres permettant de personnaliser le comportement de l'application, ainsi que des réglages pour les journaux, les dépôts distants et les informations de licence.
 
-```yaml
+Les dépôts distants exigent une authentification pour télécharger des ressources distantes. Si l'un des playbooks sur lesquels vous travaillez nécessite une connexion à un dépôt distant, vous devez ajouter les informations de connexion dans la section `repositories`.
+
+La licence est utilisée pour l'authentification à Aiop. Si vous avez une licence, vous devez ajouter les informations correspondantes dans la section `license`.
+
+Dans le cas où un plugin nécessite une configuration spécifique, il doit être intégré dans la section `plugin_config`. Veuillez vous référer à la documentation du plugin ou contacter le support via [valentin.rudloff.perso@gmail.com] pour plus d'informations.
+
+```yaml filename="~/.aiop/config.yaml"
 build_timeout: {valeur numérique}
 check_update: {true|false}
 default_package_path: {chemin absolu ou relatif à la racine du playbook}
