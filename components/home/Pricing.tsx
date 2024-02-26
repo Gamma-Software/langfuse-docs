@@ -267,7 +267,7 @@ export function Pricing({
                                 tier.featured ? "text-gray-900" : "text-white"
                               }
                             >
-                              USD
+                              EUR
                             </p>
                             <p
                               className={
@@ -275,7 +275,7 @@ export function Pricing({
                                   ? "text-gray-500"
                                   : "text-gray-400"
                               }
-                            >{`Billed monthly`}</p>
+                            >{`Souscription mensuelle`}</p>
                           </div>
                         )}
                       </div>
