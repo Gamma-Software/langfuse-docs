@@ -92,6 +92,9 @@ const config: DocsThemeConfig = {
   editLink: {
     text: "Êditer cette page sur Github",
   },
+  feedback: {
+    content	: "Question ? Faites nous un retour.",
+  },
   toc: {
     backToTop: true,
   },

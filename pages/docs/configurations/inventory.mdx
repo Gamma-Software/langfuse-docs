@@ -61,14 +61,14 @@ compatibility:
       - prod
 ```
 
-## Personalisation
+### Personalisation
 
 Nous pouvons voir que le fichier de configuration de l’inventaire contient deux sections:
 
 - `system`: Cette section décrit les systèmes autorisés. Il est possible de définir l’ordre des champs et les valeurs autorisées pour chaque champ.
 - `compatibility`: Cette section contient les règles pour les variables spécifiques à chaque système. Il est possible de définir les valeurs autorisées pour chaque variable et les règles de validation.
 
-### `system`
+#### `system`
 
 La section `system` contient les règles pour les systèmes.
 
@@ -103,9 +103,9 @@ La section `system` contient les règles pour les systèmes.
   Vous ne pouvez pas mettre de valeurs contenant des espaces.
 </Callout>
 
-### `compatibility`
+#### `compatibility`
 
-La section `compatibility` contient les règles pour les paramètres à chaque système. C’est ici que vous allez indiquer les valeurs autorisées pour chaque paramètre et les règles de validation.
+La section `compatibility` contient les règles pour les paramètres de chaque système. C’est ici que vous allez indiquer les valeurs autorisées pour chaque paramètre et les règles de sélection.[En savoir plus sur les règles de sélection](#règles-de-sélection)
 
 - **`apps`:** Les valeurs autorisées pour les applications. Il est possible de définir les valeurs autorisées pour les applications. Par exemple, `app1`, `app2` et `app3` sont les valeurs autorisées pour les applications. La règle est `least_diff` ce qui signifie que pour qu’une déclaration soit sélectionnée, elle doit avoir le moins de différence possible avec les valeurs autorisées comparée aux autres déclarations.
 
@@ -128,42 +128,62 @@ La section `compatibility` contient les règles pour les paramètres à chaque s
   ```
 </Callout>
 
-### Modèle de configuration
+### Example de configuration
 
-Reprenons l’example de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous avons deux architectures, trois modèles de gamme et quatre modèles. Nous avons trois applications, deux contextes et quatre environnements. Nous pouvons donc définir le fichier de configuration de l’inventaire comme suit:
+Reprenons l’example de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier de configuration de l’inventaire comme suit. Voyons d'abord la configuration système et ensuite les règles de sélection et les options.
 
 ```yaml filename=".aiop/inventory_config.yml"
 system:
-  order: architecture/model_range/model
-  architecture:
+  order: type/model/phase
+  type:
     allowed:
-      - archi1
-      - archi2
-  model_range:
-    allowed:
-      - model_range1
-      - model_range2
-      - model_range3
+      - suv
+      - sedan
+      - roadster
+      - truck
   model:
     allowed:
-      - model1
-      - model2
+      - modelS
       - model3
-      - model4
+      - modelX
+      - modelY
+      - cybertruck
+      - roadster
+      - semi
+  phase:
+    allowed:
+      - phase1
+      - phase2
+    ```
+
+Nous pouvons voir que l’inventaire de Tesla contient trois champs: `type`, `model` et `phase`. Nous avons défini l’ordre des champs comme `type/model/phase`. Le `type`indique le type de véhicule, le `model` indique le modèle du véhicule et le `phase` indique la phase de développement du véhicule. Un exemple de système cible serait `suv/modelX/phase1` qui indique un SUV Model X en phase 1 de développement. Toutefois, il est nécessaire de définir les systèmes cibles dans le [fichier d’inventaire](#structure-du-fichier-dinventaire).
+
+Définissons maintenant les règles de sélection et les options pour les systèmes cibles.
+
+```yaml filename="(suite de) .aiop/inventory_config.yml"
 compatibility:
-    apps:
+    functions:
         rule: least_diff
-        description: "List of apps compatible with the package"
+        description: "List of functionnalities compatible with the Tesla vehicles"
         allowed:
-        - app1
-        - app2
-        - app3
-    contexts:
-        rule: one_of
-        description: "Contexts where the package can be installed"
-        allowed:
-        - context1
-        - context2
+        - park-assist
+        - air-conditioning
+        - climate-control
+        - ludicrous
+        - towing
+        - four-wheel-drive
+        - two-wheel-drive
+        - regenerative-braking
+        - summon
+        - valet-mode
+        - energy-saving
+        - navigation
+        - entertainment
+        - battery-heating
+        - battery-cooling
+        - over-the-air-updates
+        - adaptive-cruise-control
+        - lane-keeping-assist
     envs:
         rule: one_of
         description: "Environment where the package can be installed"
@@ -174,10 +194,13 @@ compatibility:
         - prod
     ```
 
+Nous pouvons voir que l’inventaire de Tesla contient deux paramètres permettant la sélection future des déclarations: `functions` et `envs`. Le paramètre `functions` indique les fonctionnalités compatibles avec les véhicules Tesla. Le paramètre `envs` indique l’environnement où le package peut être installé. La règle pour le paramètre `functions` est `least_diff` ce qui signifie que pour qu’une déclaration soit sélectionnée, elle doit avoir le moins de différence possible avec les valeurs autorisées comparée aux autres déclarations. La règle pour le paramètre `envs` est `one_of` ce qui signifie que pour qu’une déclaration soit sélectionnée, elle doit avoir au moins une valeur autorisée.
+
+Vous pouvez contaster que le nombre de functionnalitée est grande et il n'y aucune restriction au nombre de valeurs. Cela signifie que vous pouvez ajouter autant de valeurs que vous le souhaitez.
 
 ## Structure du fichier d’inventaire
 
-Le fichier d'inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop.
+Le fichier d'inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop. C'est ce fichier qui contient les systèmes cibles et les variables spécifiques à chaque système.
 
 ```yaml filename=".aiop/inventory.yml"
 inventory:
@@ -226,13 +249,16 @@ inventory:
         - prod
 ```
 
-Nous pouvons voir que l’inventaire
-
+Nous pouvons voir que l’inventaire propose de générer trois systèmes cibles. Le premier système cible est `archi1/model_range1/model1` avec les applications `app1`, `app2` et `app3`, les contextes `context1` et `context2` et les environnements `dev`, `test`, `bench` et `prod`. Le deuxième système cible est `archi1/model_range1/model2` avec les applications `app1`, `app2` et `app3`, les contextes `context1` et `context2` et l’environnement `prod`. Le troisième système cible est `archi2/model_range2/model3` avec l’application `app1`, le contexte `context1` et les environnements `dev` et `prod`.
 
 ### Personalisation
 
+Vous pouvez ajouter autant de systèmes cibles que vous le souhaitez dans le fichier d’inventaire. Vous pouvez également ajouter autant de variables spécifiques à chaque système que vous le souhaitez. Tout cela dans la limite des possibilités offertes par les valeurs autorisée dans le fichier de configuration de l'inventaire.
 
 ### Modèle de configuration
 
 
 
+
+
+## Règles de sélection
