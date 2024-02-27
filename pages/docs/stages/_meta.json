@@ -1,8 +1,3 @@
 {
-  "lint": "lint",
-  "pre-build": "pre-build",
-  "build": "build",
-  "post-build": "post-build",
-  "seal": "seal",
-  "deploy": "deploy"
+  "maintenance": "(Attention) En Construction"
 }

@@ -4,10 +4,12 @@ description: AML file declaration are the fundation of Aiop.
 
 # Aperçu
 
-## Déclaration de base
+**Les déclarations sont les éléments de base de Aiop**. Elles sont utilisées pour déclarer une resource quelquonque. Après avoir [configuré le playbook](/docs/configurations/playbook) et l’[inventaire](/docs/configurations/inventory) vous pouvez commencer à écrire des déclarations pour déclarer des ressources. Voyons comment cela fonctionne en détail.
 
-## Sélection des déclarations
+## Déclarations
+
+Une déclaration est un fichier `.aml` qui contient une ou plusieurs déclarations. Vous pouvez déclarer un grand nombre de resources différentes (voir [liste des resources](/docs/core-index#composition)) et les organiser dans l’ordre que vous souhaitez et séparé dans autant de fichiers que vous le souhaitez. En effet, Aiop n’est pas censé respecter un ordre particulier pour prendre en compte les déclarations. Cependant, il est recommandé de les organiser de manière logique pour faciliter la lecture et la maintenance.
 
 ## Gestion des conflits
 
-
+Un conflit entre deux déclarations est une situation où deux déclarations sont en contradiction. La contradiction se manifeste uniquement dans le cas où deux déclarations ont la même `destination` dans le package et qu’elle sont toutes les deux compatibles avec la cible choisie pour la génération du package. En effet, cette situation n’est possible que si Aiop sais de quel cible il s’agit. Dans le cas où deux déclarations viendrais à se contredire, Aiop ne gère pas les conflits mais remontera une erreur assez explicite (avec une astuce) pour vous permettre de corriger le problème.

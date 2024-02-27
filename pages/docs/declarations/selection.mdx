@@ -1,10 +1,28 @@
 ---
 description: Declaration are static and are dynamically filtered by the user's system target in runtime.
 ---
+import { Callout } from "nextra-theme-docs";
 
-# Sélection des declarations
+# Sélection des déclarations
+
+La sélection des déclaration est un mécanisme qui permet de filtrer les déclarations en fonction du système cible et de ses paramètres. Cela permet de définir des déclarations spécifiques à un système cible, et de les rendre disponibles uniquement pour ce système cible.
 
 ## Système cible
+
+Les systèmes cibles compatibles avec le playbook est difini par le fichier `.aiop/inventory.yml`. L’utilisateur final indique ensuite le système cible pour lequel il souhaite générer le playbook.
+
+Si nous reprenons l’[example de la société Tesla ](/docs/configurations/inventory#example) le système cible pourrais être:
+- `suv/modelX/phase2`
+- `sedan/model3/phase2`
+- `truck/cybertruck/phase1`
+
+Ou encore:
+- `suv/modelX/phase1`
+- `sedan/modelS/phase1`
+
+<Callout type="warning" emoji="⚠️">
+ Vous devez séparer les éléments de votre système cible par des `/` et respecter l’ordre définit dans le [fichier de configuration de l’inventaire](/docs/configurations/inventory#example-de-configuration).
+</Callout>
 
 ## Compatibilité
 
