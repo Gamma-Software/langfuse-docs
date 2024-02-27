@@ -184,6 +184,10 @@ compatibility:
         - over-the-air-updates
         - adaptive-cruise-control
         - lane-keeping-assist
+        - 5-seats
+        - 7-seats
+        - 2-seats
+        - butterfly-doors
     envs:
         rule: one_of
         description: "Environment where the package can be installed"
@@ -255,10 +259,75 @@ Nous pouvons voir que l’inventaire propose de générer trois systèmes cibles
 
 Vous pouvez ajouter autant de systèmes cibles que vous le souhaitez dans le fichier d’inventaire. Vous pouvez également ajouter autant de variables spécifiques à chaque système que vous le souhaitez. Tout cela dans la limite des possibilités offertes par les valeurs autorisée dans le fichier de configuration de l'inventaire.
 
+#### `inventory`
+
+La section `inventory` contient les systèmes cibles et les variables spécifiques à chaque système. Chaque système cible est défini par un objet avec deux champs: `system` et `compatibility`; similaire à la configuration de l’inventaire. En effet, vous êtes obligé de respecter l’ordre des champs et les valeurs autorisée défini dans le fichier de configuration de l’inventaire.
+
 ### Modèle de configuration
 
+Reprenons l’example de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier d’inventaire comme suit.
 
+```yaml filename=".aiop/inventory.yml"
 
+inventory:
+  - system:
+      type: suv
+      model: modelX
+      phase: phase2
+    compatibility:
+      functions:
+        - four-wheel-drive
+        - towing
+        - 7-seats
+        - butterfly-doors
+        - ... # Autres fonctions
+      envs:
+        - dev
+        - test
+        - bench
+  - system:
+      type: sedan
+      model: model3
+      phase: phase2
+    compatibility:
+      functions:
+        - 5-seats
+        - ludicrous
+        - ... # Autres fonctions
+      envs:
+        - dev
+        - test
+        - bench
+        - prod
+  - system:
+      type: truck
+      model: cybertruck
+      phase: phase1
+    compatibility:
+      functions:
+        - 5-seats
+        - towing
+        - ... # Autres fonctions
+      envs:
+        - dev
+        - test
+        - bench
+        - prod
+  - ... # Autres systèmes cibles
+```
 
+<Callout type="info" emoji="ℹ️">
+  Par soucis de lisibilité, nous avons omis certaines valeurs pour les fonctions.
+</Callout>
+
+Voici un exemple de fichier d’inventaire pour la société Tesla. Nous pouvons voir que l’inventaire propose de générer trois systèmes cibles.
+
+Le premier système cible est `suv/modelX/phase1` avec les fonctionnalités `four-wheel-drive`, `towing`, `7-seats`, `butterfly-doors` (et plus encore) et l’environnement `dev`, `test` et `bench`. `test`, `bench` et `prod`. Le Model X de Tesla est un SUV qui à la particularité de posséder 7 places et des portes papillons. Il en phase 2 de développement et n'est pas encore disponible pour la production, c'est la raison pour laquelle l'environnement `prod` n'est pas autorisé.
+
+Le second système cible est `sedan/model3/phase2` avec les fonctionnalités `5-seats`, `ludicrous` (et plus encore) et l’environnement `dev`, `test`, `bench` et `prod`. Le Model 3 de Tesla est une berline qui à la particularité de posséder 5 places et une accélération fulgurante. Il est en phase 2 de développement et est disponible pour la production.
+
+Le troisième système cible est `truck/cybertruck/phase1` avec les fonctionnalités `5-seats`, `towing` (et plus encore) et l’environnement `dev`, `test`, `bench` et `prod`. Le Cybertruck de Tesla est un pick-up qui à la particularité de posséder 5 places et une capacité de remorquage impressionnante. Il est en phase 1 de développement et est disponible pour la production.
+
+Vous pouvez ajouter autant de systèmes cibles que vous le souhaitez dans le fichier d’inventaire. Vous pouvez également ajouter autant de variables spécifiques à chaque système que vous le souhaitez. Tout cela donne des possibilités infinies pour la génération de packages.
 
 ## Règles de sélection
