@@ -331,3 +331,31 @@ Le troisième système cible est `truck/cybertruck/phase1` avec les fonctionnali
 Vous pouvez ajouter autant de systèmes cibles que vous le souhaitez dans le fichier d’inventaire. Vous pouvez également ajouter autant de variables spécifiques à chaque système que vous le souhaitez. Tout cela donne des possibilités infinies pour la génération de packages.
 
 ## Règles de sélection
+
+<Callout type="warning" emoji="ℹ️">
+  C’est la partie la plus importante de la documentation, car elle permet de comprendre comment les déclarations sont sélectionnées en fonction des règles de sélection définies dans le fichier de configuration de l’inventaire.
+</Callout>
+
+Les règles de sélection sont utilisées pour filtrer les déclarations en fonction de leurs compatibilités spécifiques définies par l'utilisateur. Il existe quatre règles de sélection :
+
+- `one_of` : Pour qu'une déclaration soit sélectionnée, le paramètre demandé par l'utilisateur doit être inclus dans les valeurs autorisées.
+- `all_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées et aucun paramètre compatible ne doit être manquant.
+- `least_diff` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le moins de différence possible avec les valeurs autorisées par rapport aux autres déclarations pour être sélectionnées. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](docs/declarations/conflicts).
+- `most_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le plus de similarités possibles avec les valeurs autorisées par rapport aux autres déclarations. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](docs/declarations/conflicts).
+
+De plus il sera demandé à l’utilisateur final plus ou moins d’arguments en fonction de la règle de sélection. Par exemple:
+- `one_of`: Il pourra renseigner une seule des valeurs autorisées.
+- `all_of`: Il pourra renseigner une ou plusieurs des valeurs autorisées.
+- `least_diff`: Il pourra renseigner une ou plusieurs des valeurs autorisées.
+- `most_of`: Il pourra renseigner une ou plusieurs des valeurs autorisées.
+
+### Example
+
+Reprenons l’example de la société Tesla. Nous pourrions ainsi demander de créer des packages pour :
+| Cible | Fonctionnalités | Environnement |
+| --- | --- | --- |
+| `suv/modelX/phase2` | `four-wheel-drive` `butterfly-doors` | `dev` |
+| `sedan/model3/phase2` | `5-seats` `ludicrous` | `prod` |
+| `truck/cybertruck/phase1` | `5-seats` `towing` | `test` |
+
+Dans le premier cas, l’utilisateur demande de générer un package pour un Model X avec les fonctionnalités `four-wheel-drive` et `butterfly-doors` fonctionnant dans environnement `dev`. La règle des fonctionnalités étant `least_diff`, l’utilisateur pourra renseigner une ou plusieurs des fonctionnalités autorisées. La règle de l’environnement étant `one_of`, l’utilisateur pourra renseigner une seule des valeurs autorisées. De cette manière Aiop pourra générer un package pour un Model X avec les fonctionnalités `four-wheel-drive` et `butterfly-doors` fonctionnant dans environnement `dev`.
