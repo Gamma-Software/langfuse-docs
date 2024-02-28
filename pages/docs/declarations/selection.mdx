@@ -29,112 +29,112 @@ Ou encore:
 ## Compatibilité
 
 Les déclarations sont également filtrées en fonction de la compatibilité avec le système cible. La compatibilité d'une déclaration est définie dans le champ `compatibility` de la déclaration.
-
+Reprenons l’exemple de la société Tesla avec le système cible `truck/cybertruck/phase1`.
 
 ### Système compatible
 
-Dans ce cas, tous les models de la gamme `model_range1` de l’architecture `archi1` sont compatibles avec la déclaration:
+Vous pouvez déclarer que la déclaration est compatible avec un système spécifique. Mais aussi avec une gamme de modèles ou avec tous les modèles d'une architecture. Dans ce cas, tous les models de la gamme `model_range1` de l’architecture `archi1` sont compatibles avec la déclaration. Ici nous déclarons le binaire d'un logiciel de monitoring de couple de remorquage compatible compatible avec le système `truck/cybertruck/phase1`:
 
 ```yaml {4}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1:
-        envs: {environnements de déploiement compatibles}
-        ...
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
 ```
 
-Similairement vous pouvez indiquer que la déclaration est compatible avec toutes les gammes de modèles de l'architecture `archi1`:
+Similairement vous pouvez indiquer que la déclaration est compatible avec toutes les gammes de modèles Cybertruck (si une gamme de Cybertruck existait) ou de l'architecture `truck`:
 
 ```yaml {4}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1:
-        envs: {environnements de déploiement compatibles}
-        ...
+    - truck/cybertruck:
+        functions: [towing]
+        envs: [dev, test]
 ```
 
 Enfin vous pouvez indiquer que la déclaration est compatible avec tous les systèmes avec la valeur `all`:
 
 ```yaml {4}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
     - all:
-        envs: {environnements de déploiement compatibles}
-        ...
+        functions: [towing]
+        envs: [dev, test]
 ```
 
-Vous constaterez que les champ `compatibility` attend un liste de combinaison système/paramètres compatibles. Il est donc possible de déclarer pour une resource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la resource est compatible avec 2 models spécifiquement:
+Vous constaterez que les champ `compatibility` attend un liste de combinaison système/paramètres compatibles. Il est donc possible de déclarer pour une resource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la resource est compatible avec 2 phases de développement spécifiquement (`phase1`et `phase2`):
 
-```yaml {4-9}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+```yaml {4-12}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
-        ...
-    - archi1/model_range1/model2:
-        envs: {environnements de déploiement compatibles}
-        ...
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
+    - truck/cybertruck/phase2:
+        functions: [towing]
+        envs: [dev, test]
 ```
 
 ### Paramètres de compatibilité
 
-Dans notre cas `envs` est le paramètre à remplir pour indiquer la liste des valeurs compatibles avec la déclaration. Attention à ce que la valeur compatible soit effectivement compatible avec le système compatible déclaré plus haut.
+Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiquer les fonctionalités et les environnements compatibles avec la déclaration. Concentrons nous sur le paramètre `envs` pour l'instant.
 
 ```yaml {5}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
-        ...
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
 ```
 
-Admettons que pour le système compatible `archi1/model_range1/model1`, les valeurs autorisée d'`envs` (pour rappel cette liste de valeurs est à définir dans l'inventaire et sa configuration) soient `test`, `bench`, `prod` et `dev` et que la règle de sélection ([En savoir plus sur les règles de sélection](/docs/configurations/inventory#règles-de-sélection)) est `one_of`. Dans ce cas nous avons la possibilité de déclarer que la resource est uniquement compatible avec l’environnement `test`:
+Pour rappel les valeurs autorisée de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la resource est uniquement compatible avec l’environnement `test`:
 
 ```yaml {5}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1/model1:
+    - truck/cybertruck/phase1:
+        functions: [towing]
         envs: [test]
-        ...
 ```
 
 Ou bien avec les environnements `test` et `bench`:
 
 ```yaml {5}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1/model1:
+    - truck/cybertruck/phase1:
+        functions: [towing]
         envs: [test, bench]
-        ...
 ```
 
 Ou bien avec tous les environnements:
 
 ```yaml {5}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1/model1:
+    - truck/cybertruck/phase1:
+        functions: [towing]
         envs: [test, bench, prod, dev]
-        ...
 ```
 
 Ou encore avec la valeur `all` pour indiquer que la resource est compatible avec tous les valeurs possibles d'`envs`:
 
 ```yaml {5}
-- source: {resource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
   compatibility:
-    - archi1/model_range1/model1:
+    - truck/cybertruck/phase1:
+        functions: [towing]
         envs: [all]
-        ...
 ```
 
 Il n'y a pas d'ordre dans la liste de valeurs d'`envs`. Cependant, il est recommandé de les organiser de manière logique par rapport aux autres déclaration pour faciliter la lecture et la maintenance.
