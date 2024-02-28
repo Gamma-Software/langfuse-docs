@@ -9,7 +9,9 @@ La sélection des déclaration est un mécanisme qui permet de filtrer les décl
 
 ## Système cible
 
-Les systèmes cibles compatibles avec le playbook est difini par le fichier `.aiop/inventory.yml`. L’utilisateur final indique ensuite le système cible pour lequel il souhaite générer le playbook.
+Les systèmes cibles compatibles avec le playbook est difini par le fichier `.aiop/inventory.yml`. L’utilisateur final indique ensuite le système cible pour lequel il souhaite générer le playbook. Le système cible sera pris en compte pour filtrer les déclarations.
+
+### Example
 
 Si nous reprenons l’[example de la société Tesla ](/docs/configurations/inventory#example) le système cible pourrais être:
 - `suv/modelX/phase2`
@@ -21,9 +23,118 @@ Ou encore:
 - `sedan/modelS/phase1`
 
 <Callout type="warning" emoji="⚠️">
- Vous devez séparer les éléments de votre système cible par des `/` et respecter l’ordre définit dans le [fichier de configuration de l’inventaire](/docs/configurations/inventory#example-de-configuration).
+ Vous devez séparer les éléments de votre système cible par des slash `/` et respecter l’ordre définit dans le [fichier de configuration de l’inventaire](/docs/configurations/inventory#example-de-configuration).
 </Callout>
 
 ## Compatibilité
 
-## Options de compatibilité
+Les déclarations sont également filtrées en fonction de la compatibilité avec le système cible. La compatibilité d'une déclaration est définie dans le champ `compatibility` de la déclaration.
+
+
+### Système compatible
+
+Dans ce cas, tous les models de la gamme `model_range1` de l’architecture `archi1` sont compatibles avec la déclaration:
+
+```yaml {4}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1:
+        envs: {environnements de déploiement compatibles}
+        ...
+```
+
+Similairement vous pouvez indiquer que la déclaration est compatible avec toutes les gammes de modèles de l'architecture `archi1`:
+
+```yaml {4}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1:
+        envs: {environnements de déploiement compatibles}
+        ...
+```
+
+Enfin vous pouvez indiquer que la déclaration est compatible avec tous les systèmes avec la valeur `all`:
+
+```yaml {4}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - all:
+        envs: {environnements de déploiement compatibles}
+        ...
+```
+
+Vous constaterez que les champ `compatibility` attend un liste de combinaison système/paramètres compatibles. Il est donc possible de déclarer pour une resource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la resource est compatible avec 2 models spécifiquement:
+
+```yaml {4-9}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {environnements de déploiement compatibles}
+        ...
+    - archi1/model_range1/model2:
+        envs: {environnements de déploiement compatibles}
+        ...
+```
+
+### Paramètres de compatibilité
+
+Dans notre cas `envs` est le paramètre à remplir pour indiquer la liste des valeurs compatibles avec la déclaration. Attention à ce que la valeur compatible soit effectivement compatible avec le système compatible déclaré plus haut.
+
+```yaml {5}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {environnements de déploiement compatibles}
+        ...
+```
+
+Admettons que pour le système compatible `archi1/model_range1/model1`, les valeurs autorisée d'`envs` (pour rappel cette liste de valeurs est à définir dans l'inventaire et sa configuration) soient `test`, `bench`, `prod` et `dev` et que la règle de sélection ([En savoir plus sur les règles de sélection](/docs/configurations/inventory#règles-de-sélection)) est `one_of`. Dans ce cas nous avons la possibilité de déclarer que la resource est uniquement compatible avec l’environnement `test`:
+
+```yaml {5}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: [test]
+        ...
+```
+
+Ou bien avec les environnements `test` et `bench`:
+
+```yaml {5}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: [test, bench]
+        ...
+```
+
+Ou bien avec tous les environnements:
+
+```yaml {5}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: [test, bench, prod, dev]
+        ...
+```
+
+Ou encore avec la valeur `all` pour indiquer que la resource est compatible avec tous les valeurs possibles d'`envs`:
+
+```yaml {5}
+- source: {resource à récupérer localement ou à distance}
+  destination: {destination d'artefact dans le package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: [all]
+        ...
+```
+
+Il n'y a pas d'ordre dans la liste de valeurs d'`envs`. Cependant, il est recommandé de les organiser de manière logique par rapport aux autres déclaration pour faciliter la lecture et la maintenance.
