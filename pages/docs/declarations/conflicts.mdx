@@ -1,9 +1,89 @@
 ---
 description: Declaration may be conflicting each other at filtering depending on the target system. Aiop provides usefull hints.
 ---
+import { Callout } from "nextra-theme-docs";
 
 # Conflits de déclarations
 
-## Examples de conflits
+Les conflits de déclarations sont des situations où deux déclarations (ou plus) sont en conflit. Pour les personnes débutantes, résoudre ces situations peut s'avérer complexe, mais avec l'expérience, cela devient plus accessible. Pour vous aider à les résoudre, il est **important** de comprendre le fonctionnement de la sélection des déclarations (consultez [Sélection des déclarations](/docs/declarations/selection)). Tout d'abord, examinons un exemple de conflit, puis nous verrons comment le résoudre.
 
-## Gestion des conflits
+## Example de conflits
+
+Reprenons l'example de la société Tesla. Imaginons que nous ayons deux déclarations en conflit pour la société Tesla. Pour rappel, cela se produit car les deux déclarations sont en concurrence pour la même cible et la même destination.
+
+Voici la première déclaration :
+
+```yaml
+- source: parameters/dev/param.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
+````
+
+Et voici la deuxième déclaration. La différence est que la source est différente et la cible regroupe toutes les phases de développement du Cybertruck:
+
+```yaml
+- source: parameters/test/towing.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck:
+        functions: [towing]
+        envs: [dev, test]
+````
+
+Et voici la cible du package: système `truck/cybertruck/phase1` et les fonctions `towing` et l'environnement `dev`.
+
+Vous pouvez voir que les deux déclarations sont en conflit car elles ont la **même destination** et sont compatibles toutes les deux avec la cible. Cela signifie que les deux déclarations sont en concurrence pour la même cible et la même destination.
+
+> **Méthode pour résoudre le conflit**
+>
+> 1. Le premier réflexe est d'isoler les deux déclarations et les comparer.
+> 2. Puis tentez de comprendre le but de chacune des déclarations.
+> 3. Enfin, décidez de la suppression, de la modification ou de la fusion des déclarations.
+
+Pour résoudre ce cas, voici le raisonnement:
+
+1. Nous isolons les deux déclarations et constatons les différences. Nous observons que dans la première déclaration la resource est plus spécifique que dans la deuxième déclaration car elle est liée à la phase 1 du Cybertruck. La deuxième déclaration est plus générale car elle est liée à toutes les phases de développement du Cybertruck.
+2. Les deux déclarations souhaites ajouter au package un fichier de paramètre pour le Cybertruck pour la fonction de remorquage et l'environnement de développement. Nous pouvons remarquer que la deuxième déclaration est certe plus générale  mais la source semble indiquer que le paramètre est compatible avec l'environnement de test uniquement. Cela peut être une erreur de l'auteur de la déclaration. Nous devons donc vérifier la source (et surtout en discuter avec l'auteur de la source) pour confirmer cette hypothèse.
+3. Nous pouvons donc décider de modifier les deux déclarations pour que dans la première l'environnement soit `dev` et le deuxième soit `test`.
+
+La première déclaration deviendrait donc:
+```yaml
+- source: parameters/dev/param.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev]
+````
+
+Et la deuxième déclaration deviendrait:
+
+```yaml
+- source: parameters/test/towing.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck:
+        functions: [towing]
+        envs: [test]
+```
+
+Ainsi les deux déclarations ne sont plus en conflit et d'après la cible de génération du package, la première déclaration sera pris en compte.
+
+<Callout type="info" emoji="ℹ️">
+  A noter qu'ici nous fait certaines hypothèses sur le contenu des sources. Il est important de vérifier les sources et de discuter avec vos collègues (surtout l'auteur de la déclaration) pour confirmer ces hypothèses.
+</Callout>
+
+## Raisons des conflits
+
+**Raisons pour laquelle les conflits se produisent et comment les éviter**
+
+Il existe plusieurs raisons pour lesquelles les conflits de déclarations se produisent. Voici quelques-unes des raisons les plus courantes:
+
+1. **Déclarations mal conçues**: Les déclarations peuvent être mal conçues, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal conçues si elles ne sont pas compatibles avec la cible ou si elles ont des destinations incorrectes.
+2. **Déclarations mal documentées**: Les déclarations peuvent être mal documentées, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal documentées si elles ne sont pas claires sur leur but ou leur contenu.
+3. **Merges incorrects**: Les conflits peuvent également se produire si les merges sont incorrects. Il peut arriver qu'un merge de branche entraîne un conflit. Par exemple, un développeur à ajouté une déclaration pour une nouvelle fonctionnalité mais un merge précédent avait également ajouté cette déclaration. Dans ce cas à la suite de ce nouveau merge, les deux déclarations seront en conflit.
+
+Le maitre mot ici est la **communication**. Il est important de communiquer avec les auteurs des déclarations pour comprendre leur but et leur contenu. Cela vous permettra de comprendre les raisons pour lesquelles les déclarations sont en conflit et de les résoudre.

@@ -1,0 +1,53 @@
+---
+description: >-
+  This page explain how to deal with the executables resources in the package
+---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Resources executables
+
+Une resource executable est un fichier qui peut être exécuté. Il peut s'agir d'un fichier avec une extension `.exe`, `.sh`, `.bat`, etc. Vous pouvez retrouver une liste des extensions de fichiers executables [ici](https://aerorock.co.nz/list-of-executable-file-extensions-windows/).
+
+## Déclaration
+
+Dans le cas où vous avez des resources qui sont des executables, vous pouvez les déclarer dans le fichier `.aml` pour qu'ils soient copiés dans le package avec le mode d'execution qui leur est associé. Il suffit d'ajouter le champ executable à `True`.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="app1.py" />
+        <FileTree.File name="app2.sh" />
+        <FileTree.File name="app3" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {3, 8, 13} filename="resources/.aml"
+- source: app1.py
+  destination: app1.py
+  executable: True
+  compatibility:
+    - ...
+- source: app2.sh
+  destination: app2.sh
+  executable: True
+  compatibility:
+    - ...
+- source: app3
+  destination: app1
+  executable: True
+  compatibility:
+    - ...
+```
+
+Par défaut ce champ est à `False`. Si vous ne le déclarez pas, le fichier sera copié dans le package mais ne sera pas exécutable.

@@ -2,6 +2,65 @@
 description: >-
   This page explain how to deal with the simplest form of declaration and resources in a project.
 ---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
 
 # Resources en local
 
+Une resource en local est une resource qui est stockée dans le projet. Cela peut prendre la forme d'un fichier, d'un dossier, d'une image, d'un fichier de configuration, etc.
+
+## Déclaration
+
+Pour déclarer une resource en local, il suffit d'indiquer dans le champ `source` le chemin vers la resource relativement au fichier `.aml` dans lequel la déclaration figure. Par exemple, si vous avez un fichier `image.png` et qu'il se trouve dans le même dossier que le fichier `.aml` dans lequel vous déclarez la resource, vous pouvez indiquer `source: image.png`.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="image.png" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {1-2} filename="resources/.aml"
+- source: image.png
+  destination: destination_dans_le_package/image.png
+  compatibility:
+    - ...
+```
+
+Bien entendu, vous pouvez charger n'importe quel type de fichier, pas seulement des images et aussi des dossiers. Dans ce cas vous pourrez ajouter tous les dossiers et fichiers qu'il contient:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+      <FileTree.Folder name="dossier" defaultOpen>
+        <FileTree.File name="image.png" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml filename="resources/.aml" /dossier/
+- source: dossier/
+  destination: destination_dans_le_package/
+  compatibility:
+    - ...
+```

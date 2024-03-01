@@ -84,7 +84,7 @@ Vous constaterez que les champ `compatibility` attend un liste de combinaison sy
 
 Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiquer les fonctionalités et les environnements compatibles avec la déclaration. Concentrons nous sur le paramètre `envs` pour l'instant.
 
-```yaml {5}
+```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
   destination: software/towing-torque-monitor
   compatibility:
@@ -95,7 +95,7 @@ Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiqu
 
 Pour rappel les valeurs autorisée de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la resource est uniquement compatible avec l’environnement `test`:
 
-```yaml {5}
+```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
   destination: software/towing-torque-monitor
   compatibility:
@@ -106,7 +106,7 @@ Pour rappel les valeurs autorisée de `envs` pour le système `truck/cybertruck/
 
 Ou bien avec les environnements `test` et `bench`:
 
-```yaml {5}
+```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
   destination: software/towing-torque-monitor
   compatibility:
@@ -117,7 +117,7 @@ Ou bien avec les environnements `test` et `bench`:
 
 Ou bien avec tous les environnements:
 
-```yaml {5}
+```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
   destination: software/towing-torque-monitor
   compatibility:
@@ -128,7 +128,7 @@ Ou bien avec tous les environnements:
 
 Ou encore avec la valeur `all` pour indiquer que la resource est compatible avec tous les valeurs possibles d'`envs`:
 
-```yaml {5}
+```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
   destination: software/towing-torque-monitor
   compatibility:
