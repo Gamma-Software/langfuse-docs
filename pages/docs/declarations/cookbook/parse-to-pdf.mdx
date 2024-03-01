@@ -30,12 +30,13 @@ Pour déclarer une resource Markdown à convertir en pdf, il suffit de déclarer
   </FileTree.Folder>
 </FileTree>
 
-```yaml showLineNumbers {4-7} filename="resources/.aml"
+```yaml {2} filename="resources/.aml" /doc.pdf/
 - source: doc.md
-  destination: doc-pdf.pdf
+  destination: doc.pdf
   compatibility:
-    - os/linux:
-        app: [applinux]
-    - os/windows:
-        app: [appwin]
+    - ...
 ```
+
+Le package généré contiendra le fichier `doc.pdf` qui sera une conversion du fichier `doc.md` en pdf.
+
+> La librairie utilisée pour la génération de ce pdf depuis un fichier markdown est [mdpdf](https://github.com/normanlorrain/mdpdf).

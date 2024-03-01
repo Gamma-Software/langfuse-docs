@@ -2,9 +2,112 @@
 description: >-
   Remote resources can fetched from different artifact registry.
 ---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
 
 # Resources à distance
 
+Aiop permet de récupérer des ressources à distance depuis différents registres d'artefacts (ou dépôt). C'est une fonctionnalité très utile pour récupérer des ressources depuis une diversité de servers distants. Pour le moment, les dépôt suivants sont supportés :
+
+- [Artifactory](./artifactory)
+- [Nexus](./nexus)
+
+Il reste encore d'autres dépôt à supporter. Si vous avez un besoin spécifique, n'hésitez pas à nous contacter.
+
+
+<Callout type="info" emoji="ℹ️">
+  Il faut que l'accès au servers distants et surtout le paramétrage de Aiop soient fait. Pour plus d'informations, veuillez consulter la section [Configuration Utilisateur](/docs/configurations/user#structure-du-fichier-de-configuration) et la section [Playbook](/docs/configurations/playbook).
+</Callout>
+
+Prenons l'example des fichiers de configuration suivante:
+
+```yaml {5-9} filename="~/.aiop/config.yaml"
+plugins:
+  - name: ...
+    version: ...
+repositories:
+  - name: ...
+    instance: ...
+    type: ...
+    base_url: ...
+    repository_regex: ...
+amllint_rules:
+  - classname: ...
+    path: ...
+post_scripts:
+  - classname: ...
+    path: ...
+```
+
+```yaml {11-14} filename="~/.aiop/config.yaml"
+build_timeout: ...
+check_update: ...
+default_package_path: ...
+download_retries: ...
+plugin_config: ...
+logs:
+  level: ...
+  output: ...
+  pathdir: ...
+repositories:
+  - instance: ...
+    username: ...
+    password: ...
+    auth_type: ...
+license:
+  key: ...
+  username: ...
+  password: ...
+  api_token: ...
+```
+
 ## Artifactory
 
+
+
 ## Nexus
+
+
+# Combiner des resources
+
+Vous pouvez générer des fichiers quelconques ou des fichiers de paramètres à partir de plusieurs fichiers de ressources. Cela peut être utile pour le paramétrage de vos applications en fonction des compatibilités de vos cibles.
+
+## Déclaration
+
+Commençons par le plus simple avec la combinaison de textes. Pour combiner les fichiers de textes il faut déclarer la source des fichiers à la suite avec une délimitation de trait droit `|`. Voici un example concret pour combiner 3 fichiers de paramètres en un seul fichier de paramètres.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.txt" />
+        <FileTree.File name="param2.txt" />
+        <FileTree.File name="param3.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.txt | param2.txt | param3.txt
+  destination: param.txt
+  compatibility:
+    - ...
+```
+
+Le ficher `param.txt` généré dans le package sera la combinaison des fichiers `param1.txt`, `param2.txt` et `param3.txt`.
+
+
+
+{/*
+## Combinaison de paramètres
+
+## Combinaison de Markdown */}

@@ -3,11 +3,52 @@ description: >-
   Package Resources can be combined to create a new resource in runtime. Thus
   creating a new resource that is a combination of the original resources.
 ---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
 
 # Combiner des resources
 
-## Combinaison de textes
+Vous pouvez générer des fichiers quelconques ou des fichiers de paramètres à partir de plusieurs fichiers de ressources. Cela peut être utile pour le paramétrage de vos applications en fonction des compatibilités de vos cibles.
 
+## Déclaration
+
+Commençons par le plus simple avec la combinaison de textes. Pour combiner les fichiers de textes il faut déclarer la source des fichiers à la suite avec une délimitation de trait droit `|`. Voici un example concret pour combiner 3 fichiers de paramètres en un seul fichier de paramètres.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.txt" />
+        <FileTree.File name="param2.txt" />
+        <FileTree.File name="param3.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.txt | param2.txt | param3.txt
+  destination: param.txt
+  compatibility:
+    - ...
+```
+
+Le ficher `param.txt` généré dans le package sera la combinaison des fichiers `param1.txt`, `param2.txt` et `param3.txt`.
+
+<Callout type="warning" emoji="⚠️">
+  Il n'y a pas de retour à la ligne ou de séparateur entre les fichiers à combiner. Le contenu des fichiers est simplement concaténé.
+</Callout>
+
+
+{/*
 ## Combinaison de paramètres
 
-## Combinaison de Markdown
+## Combinaison de Markdown */}
