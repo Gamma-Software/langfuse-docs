@@ -3,6 +3,57 @@ description: >-
   Declarations can be compatible with multiple system target and system compatibility arguments
 ---
 
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
 # Compatibilité multiples
 
+Vous pouvez déclarer des resources avec différentes compatibilités pour les systèmes cible.
+
+## Déclaration
+
+Pour déclarer des compatibilités multiples, vous ajoutez simplement une nouvelle entrée dans le tableau `compatibility` pour chaque système cible. Par exemple, si vous avez un fichier qui doit être copié dans les packages pour les systèmes cible `os/linux` et `os/windows` et que l’application compatible pour en différentes entre ces deux systèmes, vous pouvez le déclarer comme suit:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="fichier.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml showLineNumbers {4-7} filename="resources/.aml"
+- source: fichier.txt
+  destination: fichier.txt
+  compatibility:
+    - os/linux:
+        app: [applinux]
+    - os/windows:
+        app: [appwin]
+```
+
+Cela évite d’avoir à déclarer la resource deux fois, une fois pour chaque système cible.
+
+```yaml showLineNumbers {4-5, 10-11} filename="resources/.aml"
+- source: fichier.txt
+  destination: fichier.txt
+  compatibility:
+    - os/linux:
+        app: [applinux]
+
+- source: fichier.txt
+  destination: fichier.txt
+  compatibility:
+    - os/windows:
+        app: [appwin]
+```
 
