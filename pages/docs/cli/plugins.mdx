@@ -2,4 +2,108 @@
 description: Handle aiop plugins
 ---
 
-# Commande Plugins
+# Commandes `plugins`
+
+Les commandes plugins permettent de gérer les plugins installés sur votre instance aiop.
+
+## Sous-commandes
+
+Les commandes `plugins` possèdent plusieurs sous-commandes.
+
+```ansi
+usage: aiop plugins [-h] {fetch,update,list} ...
+
+Manage plugins
+
+positional arguments:
+  {fetch,update,list}  sub-command help
+    fetch              Fetch all the plugins or a specific one (if name and version are specified)
+    update             Update all the plugins or a specific one (if name and version are specified)
+    list               List your plugins (installed and available ones)
+
+options:
+  -h, --help           show this help message and exit
+```
+
+- `fetch` : Télécharge un plugin ou tous les plugins disponibles sur votre instance aiop
+- `update` : Met à jour un plugin ou tous les plugins installés sur votre instance aiop
+- `list` : Liste les plugins installés sur votre instance aiop
+
+### `fetch`
+
+La commande `fetch` permet de télécharger un plugin ou tous les plugins disponibles sur votre instance aiop. Pour télécharger un plugin spécifique, vous pouvez spécifier le nom et la version du plugin.
+
+```ansi
+usage: aiop plugins fetch [-h] [--username USERNAME] [--password PASSWORD] [--license LICENSE] [--name NAME]
+                          [--version VERSION]
+
+Fetch all the plugins or a specific one (if name and version are specified)
+
+options:
+  -h, --help            show this help message and exit
+  --username USERNAME, -u USERNAME
+                        Username for the user
+  --password PASSWORD, -p PASSWORD
+                        Password for the user
+  --license LICENSE, -l LICENSE
+                        License key for the user
+  --name NAME, -n NAME  Name of the plugin to update
+  --version VERSION, -v VERSION
+                        Version to update the plugin to
+```
+
+### `update`
+
+La commande `update` permet de mettre à jour un plugin ou tous les plugins installés sur votre instance aiop. Pour mettre à jour un plugin spécifique, vous pouvez spécifier le nom et la version du plugin.
+
+```ansi
+sage: aiop plugins update [-h] [--username USERNAME] [--password PASSWORD] [--license LICENSE] [--name NAME]
+                           [--version VERSION]
+
+Update all the plugins or a specific one (if name and version are specified)
+
+options:
+  -h, --help            show this help message and exit
+  --username USERNAME, -u USERNAME
+                        Username for the user
+  --password PASSWORD, -p PASSWORD
+                        Password for the user
+  --license LICENSE, -l LICENSE
+                        License key for the user
+  --name NAME, -n NAME  Name of the plugin to update
+  --version VERSION, -v VERSION
+                        Version to update the plugin to
+```
+
+| Option | Description | Défaut |
+| --- | --- | --- |
+| `username` | Nom d'utilisateur du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `password` | Mot de passe du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `license` | Clé de licence de l'application Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `name` | Nom du plugin à mettre à jour | `None` |
+| `version` | Version du plugin à mettre à jour | `None` |
+
+### `list`
+
+La commande `list` permet de lister les plugins installés sur votre instance aiop.
+
+```ansi
+usage: aiop plugins list [-h] [--username USERNAME] [--password PASSWORD] [--license LICENSE]
+
+List your plugins (installed and available ones)
+
+options:
+  -h, --help            show this help message and exit
+  --username USERNAME, -u USERNAME
+                        Username for the user
+  --password PASSWORD, -p PASSWORD
+                        Password for the user
+  --license LICENSE, -l LICENSE
+                        License key for the user
+```
+
+| Option | Description | Défaut |
+| --- | --- | --- |
+| `username` | Nom d'utilisateur du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `password` | Mot de passe du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `license` | Clé de licence de l'application Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
