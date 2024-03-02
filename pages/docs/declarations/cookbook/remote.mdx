@@ -9,72 +9,95 @@ import { Callout } from "nextra-theme-docs";
 
 Aiop permet de récupérer des ressources à distance depuis différents registres d'artefacts (ou dépôt). C'est une fonctionnalité très utile pour récupérer des ressources depuis une diversité de servers distants. Pour le moment, les dépôt suivants sont supportés :
 
-- [Artifactory](./artifactory)
-- [Nexus](./nexus)
-
-Il reste encore d'autres dépôt à supporter. Si vous avez un besoin spécifique, n'hésitez pas à nous contacter.
-
+- [Artifactory](#artifactory)
+- [Nexus](#nexus)
 
 <Callout type="info" emoji="ℹ️">
-  Il faut que l'accès au servers distants et surtout le paramétrage de Aiop soient fait. Pour plus d'informations, veuillez consulter la section [Configuration Utilisateur](/docs/configurations/user#structure-du-fichier-de-configuration) et la section [Playbook](/docs/configurations/playbook).
+Il reste encore d'autres dépôt à supporter. Si vous avez un besoin spécifique, n'hésitez pas à nous contacter.
 </Callout>
 
-Prenons l'example des fichiers de configuration suivante:
+Vous pouvez récupérer n’importe quel type de resource.
 
-```yaml {5-9} filename="~/.aiop/config.yaml"
-plugins:
-  - name: ...
-    version: ...
+## Prérequis de Paramétrages
+
+Il faut que l'accès au servers distants et surtout le paramétrage de Aiop soient fait. Pour plus d'informations, veuillez consulter la section [Configuration Utilisateur](/docs/configurations/user#structure-du-fichier-de-configuration) et la section [Playbook](/docs/configurations/playbook).
+
+### Configuration Playbook
+
+Prenons l'example de fichier de configuration du playbook suivante. Concentrons nous sur les deux premiers élements de la liste de `repositories`:
+
+```yaml {3-12} filename="~/.aiop/config.yaml"
+...
 repositories:
-  - name: ...
-    instance: ...
-    type: ...
-    base_url: ...
-    repository_regex: ...
-amllint_rules:
-  - classname: ...
-    path: ...
-post_scripts:
-  - classname: ...
-    path: ...
+  - name: artifactory-release
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/release
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$
+  - name: artifactory-develop
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+  - name: nexus-develop
+    instance: nexus-company
+    type: nexus
+    base_url: https://nexus.my-company.com/repo/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+...
 ```
 
-```yaml {11-14} filename="~/.aiop/config.yaml"
-build_timeout: ...
-check_update: ...
-default_package_path: ...
-download_retries: ...
-plugin_config: ...
-logs:
-  level: ...
-  output: ...
-  pathdir: ...
+Nous avons paramétré une instance de registre d’artefact que l’on a nommé `artifactory-company` avec deux dépôts `artifactory-release` et `artifactory-develop`. Ces dépôts ont des URLs de base différentes car elles ne pointes pas vers le même dépôt d’artefact. Ils ont aussi des expressions régulières différentes pour filtrer les ressources à récupérer.
+
+Décortiquons l’expression régulière du premier dépôt `^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$`. Pour rappel le nommage des groupes permet de récupérer les valeurs et de les utiliser pendant la génération du package:
+- `(?P<app_name>.+)` : le nom de l’application (nom quelconque sans limite et contraintes de caractères)
+- `(?P<version>\d+\.\d+)` : la version de l’application (2 nombres entiers avec un point comme séparateur)
+- `(?P<filename>.+)` : le nom du fichier (nom quelconque sans limite et contraintes de caractères)
+
+Vous remarquerez que le deuxième dépôt `artifactory-develop` a une expression régulière différente `^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$`. Cela permet de récupérer les ressources qui ont une version de développement, d’où le `-dev` ajouté dans la version de l’application `(?P<version>\d+\.\d+-dev)`.
+
+```yaml {13-17} filename="~/.aiop/config.yaml"
+...
 repositories:
-  - instance: ...
-    username: ...
-    password: ...
-    auth_type: ...
-license:
-  key: ...
-  username: ...
-  password: ...
-  api_token: ...
+  - name: artifactory-release
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/release
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$
+  - name: artifactory-develop
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+  - name: nexus-develop
+    instance: nexus-company
+    type: nexus
+    base_url: https://nexus.my-company.com/repo/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+...
 ```
+
+Par la suite, nous avons configuré une autre instance de registre d'artefact que nous avons appelée `nexus-company` avec un dépôt `nexus-develop`. Dans un souci de clarté dans l'explication, nous avons opté pour la même expression régulière que celle utilisée pour le deuxième dépôt `artifactory-develop`.
+
+### Configuration Utilisateur
+
+Voyons ensuite la configuration de l’utilisateur pour l’authentification sur le serveur distant d’`artifactory`.
+
+```yaml {3-6} filename="~/.aiop/config.yaml"
+...
+repositories:
+  - instance: artifactory-company
+    username: admin
+    password: KhH479X66hH98i
+    auth_type: basic
+...
+```
+
+Vous constaterez que l’instance `artifactory-company` correspond à celui paramétré dans le playbook. Ici l’utilisateur décide de s’authentifier avec un nom d’utilisateur `admin` et un mot de passe `KhH479X66hH98i` en utilisant le type d’authentification `basic`. (Voir la section [Configuration Utilisateur](/docs/configurations/user#personalisation) pour plus d’informations)
 
 ## Artifactory
 
-
-
-## Nexus
-
-
-# Combiner des resources
-
-Vous pouvez générer des fichiers quelconques ou des fichiers de paramètres à partir de plusieurs fichiers de ressources. Cela peut être utile pour le paramétrage de vos applications en fonction des compatibilités de vos cibles.
-
-## Déclaration
-
-Commençons par le plus simple avec la combinaison de textes. Pour combiner les fichiers de textes il faut déclarer la source des fichiers à la suite avec une délimitation de trait droit `|`. Voici un example concret pour combiner 3 fichiers de paramètres en un seul fichier de paramètres.
+Les configurations ont été définies précédemment. Nous sommes maintenant en mesure de récupérer des ressources à partir du serveur distant d'`Artifactory`. Voici un exemple concret de récupération d'un fichier de paramètres depuis le dépôt `artifactory-release`:
 
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
@@ -88,26 +111,64 @@ Commençons par le plus simple avec la combinaison de textes. Pour combiner les 
     </FileTree.Folder>
     <FileTree.Folder name="resources" defaultOpen>
         <FileTree.File name=".aml" />
-        <FileTree.File name="param1.txt" />
-        <FileTree.File name="param2.txt" />
-        <FileTree.File name="param3.txt" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
+<Callout type="info" emoji="ℹ️">
+Vous constaterez qu’il n’y a pas de resource en local dans le dossier `resources` car tout est à distance sur le serveur.
+</Callout>
 
-```yaml showLineNumbers {1} filename="resources/.aml"
-- source: param1.txt | param2.txt | param3.txt
-  destination: param.txt
+```yaml {1, 6} filename="resources/.aml" /<artifactory-release>/ /<artifactory-develop>/
+- source: <artifactory-release>my-app/1.0/fichier
+  destination: fichier
+  compatibility:
+    - apps: [my-app]
+      envs: [prod]
+- source: <artifactory-develop>my-app/1.0-dev/fichier
+  destination: fichier
+  compatibility:
+    - apps: [my-app]
+      envs: [dev]
+```
+
+Dans la première déclaration, le fichier `fichier` sera récupéré depuis le dépôt `artifactory-release` de l’instance `artifactory-company` avec le nom de l’application `my-app` et la version `1.0` et placé dans le package à sa racine avec le nom `fichier`. Le fichier sera récupéré du dépôt distant vérifié par l’expression régulière `^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$` et vérifié également par son hashage pour garantir son intégrité et sa sécurité.
+
+Dans la deuxième déclaration, le fichier `bin` sera récupéré depuis le dépôt `artifactory-release` de l’instance `artifactory-company` avec le nom de l’application `my-app` et la version `1.0` et placé dans le package à sa racine avec le nom `fichier`. Le fichier sera récupéré du dépôt distant vérifié par l’expression régulière `^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$` et vérifié également par son hashage pour garantir son intégrité et sa sécurité.
+
+<Callout type="info" emoji="ℹ️">
+Vous constaterez que le binaire de la deuxième déclaration sera récupéré seulement lorsque le package souhaité est destiné à l’environnement de **développement**. Cela est possible grâce à la compatibilité déclarée dans la deuxième déclaration. Et la source ne vient pas du même dépôt que la première déclaration.
+</Callout>
+
+## Nexus
+
+Les paramétrages ont été fait plus haut, nous pouvons maintenant récupérer des ressources depuis le serveur distant d’`artifactory`. Voici un example concret pour récupérer un fichier de paramètres depuis le dépôt `artifactory-release`:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {1} filename="resources/.aml" /<nexus-develop>/
+- source: <nexus-develop>my-app-from-nexus/1.0-dev/fichier
+  destination: fichier
   compatibility:
     - ...
 ```
 
-Le ficher `param.txt` généré dans le package sera la combinaison des fichiers `param1.txt`, `param2.txt` et `param3.txt`.
+Dans ce cas, le fichier `fichier` sera récupéré depuis le dépôt `nexus-develop` de l’instance `nexus-company` avec le nom de l’application `my-app-from-nexus` et la version `1.0-dev` et placé dans le package à sa racine avec le nom `app`. Le fichier sera récupéré du dépôt distant vérifié par l’expression régulière `^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$` et vérifié également par son hashage pour garantir son intégrité et sa sécurité.
 
+## Caching et vérifications
 
-
-{/*
-## Combinaison de paramètres
-
-## Combinaison de Markdown */}
+Sachez que les resources distantes sont stockées dans le cache local pour éviter de les récupérer à chaque génération de package ([En savoir plus sur le caching](/docs/caching)). En revanche elles sont vérifiée à chaque génération de package pour garantir que la resources est à jour par rapport à la dernière version disponible sur le serveur distant ([En savoir plus sur la vérification](/docs/cli/build)).
