@@ -2,4 +2,59 @@
 description: The build command is used to build a package based on user system target and properties.
 ---
 
-# Commande de Build
+# Commande `build`
+
+La commande de `build` permet de construire un package basé sur la cible système de l'utilisateur et ses propriétés. Il y a aussi des options que nous allons détailler.
+
+```bash
+aiop build {system_target} {params}
+```
+> `system_target` : La cible système pour laquelle générer le package
+
+> `params` : Les paramètres de compatibilité de la cible système. Ces paramètres obligatoires seront différents selon le playbook et ses configurations car il est défini par le fichier de configuration `.aiop/inventory_config.yml` dans le champ `compatibility` ([En savoir plus](/docs/configurations/inventory)).
+
+En lançant la commande d'aide voici les options disponibles:
+
+```ansi
+usage: aiop build [-h] [--destination_path DESTINATION_PATH] [--dryrun] [--force] [--no_caching] [--no_verify]
+                  [--retries RETRIES] [--zip_pack] [--goto_pack] [--init_ref] [--upload UPLOAD]
+                  system_target
+
+Build a package from a playbook. Be aware that the current positionnal arguments are dynamic and corresponds to
+the compatibility arguments defined in the playbook.In order to build a package, you need to be at the root
+folder of the playbook.
+
+positional arguments:
+  system_target         System target for which to create a package
+
+options:
+  -h, --help            show this help message and exit
+  --destination_path DESTINATION_PATH
+                        Path to destination. By default it will be generated in the root of the playbook_path
+                        in the .build folder
+  --force               Use destination_path even if it is not empty
+  --no_caching          The binaries are copied to the destination folder (not from the cache)
+  --no_verify           Do not verify the Artifact integrity. It will not betaken into account if
+                        `--no_caching` is not set or the Artifact is not in cache. (default: False, means
+                        verifythe artifact integrity)
+  --retries RETRIES     Number of retries when downloading an artifact.One retry means that the download was
+                        not successful because of an invalid file integrity (checksum).This parameter will
+                        override [download_retries] in the user configuration file. - default: 3
+  --zip_pack            Zip the built package (default: False)
+  --goto_pack           Open in the explorer the newly created package (default: False)
+  --upload UPLOAD       Upload the generated installer to a repository (default: ). Requires ' --installer'
+                        option
+```
+
+## Options
+
+| Option | Description | Défaut |
+| --- | --- | --- |
+| `destination_path` | Chemin de destination du package | a la racine du chemin du playbook dans le dossier `.build` |
+| `force` | Supprimer le dossier du chemin `destination_path` peut importe ce qu'il contient | `False`: Ne forcera pas la création |
+| `no_caching` | Ne pas utiliser le cache pour récupérer les resources distantes déjà téléchargées | `False`: Les resources distantes sont copiés depuis le cache, si elles existent |
+| `no_verify` | Ne pas vérifier l'intégrité de la resource distante| `False`: Vérifie l'intégrité de l'artifact |
+| `retries` | Nombre de tentatives de téléchargement d'un artifact. Surcharge la configuration utilisateur | 3 |
+| `zip_pack` | Zip le package généré | `False`: Ne le zip pas |
+| `goto_pack` | Ouvre l'explorateur de fichier sur le package généré | `False`: Ne l'ouvre pas |
+| `upload` | Dépose le package dans un dépôt distante | `None`: Ne l'envoie pas dans le dépôt distant |
