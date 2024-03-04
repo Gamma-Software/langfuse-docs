@@ -5,7 +5,7 @@ import { SparklesCore } from "../aceternityui/sparkles";
 
 export function SparklesPreview() {
     return (
-      <>
+    <div className="flex">
         <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
           Aceternity
         </h1>
@@ -29,6 +29,6 @@ export function SparklesPreview() {
           {/* Radial Gradient to prevent sharp edges */}
           <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
         </div>
-      <>
+    </div>
     );
-  }
+};
