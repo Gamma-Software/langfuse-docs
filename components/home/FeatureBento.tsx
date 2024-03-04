@@ -2,6 +2,10 @@ import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import {
   Boxes,
   GanttChart,
+  Workflow,
+  UserRoundCog,
+  Blocks,
+  DraftingCompass,
   GitPullRequestArrow,
   LineChart,
   Users,
@@ -60,10 +64,11 @@ const BentoBgImage = ({
 
 const features = [
   {
-    Icon: GanttChart,
-    name: "Language universel",
-    description: "Déclarez vos resources, configurez et persionalisez le projet, dans un language compréhensible par tous.",
-    href: "/docs/languages",
+    Icon: Blocks,
+    name: "Extensible",
+    description:
+      "Etendez les fonctionnalités de l’application pour correspondre à vos besoins. Notre équipe est là pour vous accompagner.",
+    href: "/docs/lib-index",
     cta: "En savoir plus",
     background: (
       <BentoBgImage
@@ -79,7 +84,7 @@ const features = [
     name: "Gestion des packages",
     description:
       "Gérez et versionnez tous vos packages d'un seul endroit. Suivez les évolutions et debuggez plus facilement.",
-    href: "/docs/prompts",
+    href: "/docs",
     cta: "En savoir plus",
     background: (
       <BentoBgImage
@@ -91,21 +96,21 @@ const features = [
     className: "md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3",
   },
   {
-    Icon: Rocket,
-    name: "Rapidité",
+    Icon: DraftingCompass,
+    name: "Outils",
     description:
-      "Obtenez rapidement des résultats et générer vos packages en un éclair !",
+      "Aiop propose une suite d'outils (En expension) pour vous aider à la maintenance, conception et la production des packages.",
     href: "/docs",
     cta: "En savoir plus",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "md:col-start-1 md:col-end-2 md:row-start-3 md:row-end-4",
   },
   {
-    Icon: Cable,
+    Icon: UserRoundCog,
     name: "Personnalisation",
     description:
       "Personnalisez le comportement de Aiop et de vos projets pour correspondre à vos problématiques.",
-    href: "/docs",
+    href: "/docs/configurations/user",
     cta: "En savoir plus",
     background: <img className="absolute -right-20 -top-20 opacity-60" />,
     className: "md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-2",
@@ -113,8 +118,8 @@ const features = [
   {
     Icon: Users,
     name: "Collaboration",
-    description: "Travaillez à plusieurs sur un même projet; à distance. Partagez vos packages, ressources et vos connaissances.",
-    href: "/docs/collaboration",
+    description: "Travaillez à plusieurs sur un même projet; à distance. Partagez vos packages, ressources et vos connaissances entre équipes. Gagnez en productivité et en qualité.",
+    href: "/docs",
     cta: "En savoir plus",
     background: (
       <BentoBgImage
@@ -131,9 +136,9 @@ export function FeatureBento() {
   return (
     <HomeSection id="features">
       <Header
-        title="Des fonctionnalitées"
-        description="pour tous vos besoins."
-        button={{ href: "/docs", text: "Explore docs" }}
+        title="Les Points Forts"
+        description="répondant à vos éxigences"
+        button={{ href: "/docs", text: "Documentation" }}
       />
       <BentoGrid>
         {features.map((feature) => (

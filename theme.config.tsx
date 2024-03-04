@@ -22,7 +22,6 @@ const footerNav = [
     name: "Participer à une démo",
     href: "/schedule-demo",
   },
-  { name: "Carrière", href: "/careers" },
   {
     name: "Status",
     href: "https://aiop-uptime.pival.fr/status/services",

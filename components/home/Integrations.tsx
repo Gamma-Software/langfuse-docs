@@ -53,7 +53,7 @@ export function Integrations() {
     <HomeSection>
       <Header
         title="Intégrations"
-        description="Intégration native des registres d'artefacts et librairies. Nous avons oublié une intégration? Dites le nous!"
+        description="Intégration native des registres d'artefacts et librairies."
         button={{
           href: "/docs/integrations/overview",
           text: "Documentation",
