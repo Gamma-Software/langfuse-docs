@@ -38,8 +38,14 @@
     "title": "Boite à outils",
     "display": "hidden"
   },
-  "tools-compare": {"name":"Comparateur","display": "hidden"},
-  "tools-ci-cd": {"name":"CI-CD", "display": "hidden"},
+  "tools-compare": {
+    "name":"Comparateur",
+    "display": "hidden"
+  },
+  "tools-ci-cd": {
+    "name":"CI-CD",
+    "display": "hidden"
+  },
 
   "-- More": {
     "type": "separator",

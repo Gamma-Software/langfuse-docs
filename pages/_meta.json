@@ -55,17 +55,13 @@
     "title": "Demo",
     "type": "menu",
     "items": {
-      "try-yourself": {
-        "title": "Interactive demo",
-        "href": "/docs/demo"
-      },
       "video": {
         "title": "Video (2 min)",
         "href": "/docs/demo"
       },
       "schedule-demo": {
-        "title": "Schedule demo",
-        "href": "/meeting"
+        "title": "Participer à une démo",
+        "href": "/schedule-demo"
       }
     }
   },

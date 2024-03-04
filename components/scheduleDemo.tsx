@@ -7,11 +7,19 @@ export function ScheduleDemoPage() {
   return (
     <section className="flex flex-col gap-10 w-full min-h-screen items-center py-20">
       <Header
-        title="Talk to us"
-        description="Get a demo by the founder to learn more about aiop and how it can help your business."
+        title="Discutez avec nous"
+        description=" Nous pourrons vous faire un démonstration de la solution Aiop et comment elle peut vous aider dans votre entreprise."
         h="h1"
       />
-      <ScheduleDemo />
+
+      <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <iframe id="inlineFrameExample"
+            title="Inline Frame Example"
+            src="https://calendly.com/valentin-rudloff/aiop-demo"
+            style={{ width: '80%', height: '80%', border: 'none' }}>
+        </iframe>
+      </div>
+      {/* <ScheduleDemo /> */}
       <Background />
     </section>
   );
