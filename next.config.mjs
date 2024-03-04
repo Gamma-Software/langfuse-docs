@@ -65,8 +65,8 @@ const nonPermanentRedirects = [
 
   ["/security", "/docs/data-security-privacy"],
   ["/idea", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new?issuable_template=idea&issue%5Bissue_type%5D=idea"],
-  ["/new-idea", "https://github.com/orgs/langfuse/discussions/new?category=ideas"],
-  ["/ideas", "https://github.com/orgs/langfuse/discussions/categories/ideas"],
+  ["/new-idea", "https://github.com/orgs/aiop/discussions/new?category=ideas"],
+  ["/ideas", "https://github.com/orgs/aiop/discussions/categories/ideas"],
 
   // Redirect to overview pages
   ...[
