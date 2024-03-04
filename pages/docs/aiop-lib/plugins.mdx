@@ -1,5 +1,59 @@
 ---
 description: Plugins allow to extend the functionality of Aiop. Theses should be used to add new commands, configurations, declarations possibilities. They are only available for Pro / Team plan users and are not available for the free plan. They are custom made for each pro user / team / compagny.
 ---
+import { Callout } from "nextra-theme-docs";
 
 # Plugins
+
+Les plugins sont des extensions qui permettent d'ajouter de nouvelles fonctionnalités à Aiop. Ils sont utilisés pour ajouter de nouvelles commandes, configurations, possibilités de déclarations et des tâches spécifiques (en dehors de l’étape `lint` et `post-build`) à un utilisateur et/ou entreprise. Par exemple, un plugin pourrait être utilisé pour ajouter la possibilité de lire, comprendre et manipuler des fichiers propriétaires à des entreprises.
+
+<Callout type="info" emoji="ℹ️">
+  Les plugins ne sont disponibles que pour les utilisateurs des `plans Pro` / `Team`.
+</Callout>
+
+## Comment ça marche ?
+
+Les plugins sont téléchargés automatiquement lors du démarrage d’Aiop. Ils sont ensuite chargés en mémoire et utilisés pour étendre les fonctionnalités d’Aiop. Chaque utilisateur ayant les droits d’utiliser le plugin pourrons les utiliser pour la génération de packages.
+
+## Configurations
+
+Pour utiliser un plugin, il faut que le playbook déclare le plugin et sa version dans la section `plugins` du fichier `aiop.yml`.
+
+```yaml filename="<playbook_racine>/.aiop/playbook.yml"
+plugins:
+  - name: my-plugin
+    version: 1.0
+```
+
+> `my-plugin` est le nom du plugin et `1.0` est la version du plugin.
+
+Pour créer des packages depuis le playbook qui inclue ce plugin, il faut que l’utilisateur dispose des droits d’accès au plugin. Autrement dit, il doit avoir une license et un compte Aiop associé à ce plugin (Pour cela contactez le [support](mailto:valentin.rudloff.perso@gmail.com)):
+
+```yaml {2-6} filename="~/.aiop/aiop.yml"
+...
+license:
+  key: "clé de licence" # La clé de licence est fournie par l'administrateur et associée à un plugin
+  username: "nom d'utilisateur"
+  password: "mot de passe"
+  api_token: "token d'api"
+...
+```
+
+Il faut également que l’utilisateur ait déclaré les configurations du plugin dans la section `plugin_config` du fichier `aiop.yml`.
+
+```yaml {3} filename="~/.aiop/aiop.yml"
+...
+plugin_config:
+  param_config: value
+...
+```
+
+Le `param_config` est le nom de la configuration spécifique au plugin. Veuillez vous référer à la documentation du plugin pour connaître les configurations disponibles. Contactez le [support](mailto:valentin.rudloff.perso@gmail.com) pour obtenir de l’aide.
+
+## Comment créer un plugin ?
+
+<Callout type="warning" emoji="⚠️">
+    Aujourd’hui nous ne proposons pas de système de création de plugins en libre service. Pour créer un plugin pour Aiop, vous devez contacter le [support](mailto:valentin.rudloff.perso@gmail.com)
+</Callout>
+
+Une fois le plugin créé nous l’associerons à vos licenses. Aiop téléchargera automatiquement le plugin lors de son démarrage.
