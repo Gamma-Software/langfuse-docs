@@ -47,7 +47,7 @@
   },
   "third-party": "Librairies tierces",
   "qna": "FAQ",
-  "troubleshooting": "Diagnostic les problèmes",
+  "troubleshooting": {"name":"Diagnostiquer les problèmes", "display": "hidden"},
   "data-security-privacy": "Propriété des données et sécurité",
   "even-more": "Encore plus loin"
 }

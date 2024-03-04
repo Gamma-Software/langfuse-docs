@@ -4,6 +4,36 @@ description: This guide will help you uninstall and remove configurations of Aio
 
 # Désinstallation
 
+La désinstallation est simple. Aiop dispose d’un outil de désinstallation qui vous aides à la désinstallation de Aiop de votre machine.
 
+```bash
+aiop_uninstall
+```
 
+Il vous propose de supprimer les fichiers de configuration et l’application. Si vous choisissez de supprimer les fichiers de configuration il seront perdu. Si toutefois vous ne les supprimez pas, à la prochaine réinstallation, Aiop utilisera les anciennes configurations.
 
+## Désinstallation manuelle
+
+Si vous avez demandé de désinstaller Aiop sans supprimer les fichiers de configuration, vous pouvez les supprimer manuellement:
+
+<Tabs items={["Windows","Ubuntu","Mac OS"]}>
+
+<Tab>
+{/* Windows */}
+```cmd
+rmdir /s /q %APPDATA%\aiop
+```
+</Tab>
+<Tab>
+{/* Ubuntu */}
+```bash
+rm -Rf ~/.aiop
+```
+</Tab>
+<Tab>
+{/* Mac OS */}
+```bash
+rm -Rf ~/.aiop
+```
+</Tab>
+</Tabs>
