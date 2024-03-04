@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
 import { Textarea } from "./ui/textarea";
-import { openChat } from "./supportChat";
 import { Background } from "./Background";
 import cookbookRoutes from "../cookbook/_routes.json";
 import { NotebookBanner } from "./NotebookBanner";
@@ -71,9 +70,6 @@ export const DocsSupport = () => {
             <span>Discord</span>
             <RxDiscordLogo className="h-4 w-4 ml-3" />
           </a>
-        </Button>
-        <Button variant="outline" size="sm" onClick={() => openChat()}>
-          <span>Chat</span> <MessageSquare className="h-4 w-4 ml-3" />
         </Button>
         <Button variant="outline" size="sm" asChild>
           <a href="mailto:valentin.rudloff.perso@gmail.com" target="_blank">
