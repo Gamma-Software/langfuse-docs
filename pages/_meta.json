@@ -51,6 +51,13 @@
     },
     "display": "hidden"
   },
+  "roadmap": {
+    "title": "Feuille de route",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
   "demo": {
     "title": "Demo",
     "type": "menu",

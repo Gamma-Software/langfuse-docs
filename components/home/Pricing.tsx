@@ -37,7 +37,7 @@ const tiers = [
     featured: true,
     description:
       "Pour des projets serieux. Inclus des fonctionnalités avancées de CI/CD et du support dédié.",
-    price: "99€",
+    price: "--€",
     mainFeatures: [
       "Toutes les fonctionnalités de la version gratuite",
       "Linting / Post-Build personnalisation des tâches",
@@ -57,7 +57,7 @@ const tiers = [
     id: "tier-team",
     href: "/schedule-demo",
     featured: false,
-    price: "Démarre à 499€",
+    price: "Démarre à ---€",
     description:
       "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
     mainFeatures: [
