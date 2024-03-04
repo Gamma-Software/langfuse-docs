@@ -35,10 +35,11 @@
 
   "-- Tools": {
     "type": "separator",
-    "title": "Boite à outils"
+    "title": "Boite à outils",
+    "display": "hidden"
   },
-  "compare": "Comparateur",
-  "ci-cd": "CI-CD",
+  "tools-compare": {"name":"Comparateur","display": "hidden"},
+  "tools-ci-cd": {"name":"CI-CD", "display": "hidden"},
 
   "-- More": {
     "type": "separator",

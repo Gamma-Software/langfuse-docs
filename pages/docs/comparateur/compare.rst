@@ -21,7 +21,7 @@ Comparing 2 packages built by different commits is done by running the following
 
 .. code-block:: shell
 
-   aiop_compare compare_by_commit--help
+   aiop_compare compare_by_commit --help
 
 .. program-output:: aiop_compare compare_by_commit --help
 

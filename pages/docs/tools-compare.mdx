@@ -1,0 +1,141 @@
+---
+description: >-
+  Tools: Aiop allows you to compare two packages based on commit or system target
+---
+import { Callout } from "nextra-theme-docs";
+
+# Comparer des packages
+
+Aiop vous permet de comparer deux packages basés sur plusieurs critères:
+- Comparer deux packages avec la même cible système sur **deux commits différents**
+- Comparer deux packages avec **deux cibles système différents** sur le même commit
+
+## Par commit
+
+La commande pour comparer deux packages sur deux commits différents est la suivante:
+
+```bash
+aiop_compare compare_by_commit <commit1> <commit2> <cible_package1> <cible_package2>
+```
+
+- `commit1` et `commit2` sont les deux sha1 complets des commits à comparer
+- `cible_package1` et `cible_package2` sont les deux cibles des packages à comparer
+
+Le paramètre optionnel `--save_diff` permet de sauvegarder le rapport dans un fichier texte.
+
+<Callout type="info" emoji="ℹ️">
+  L’outil de comparaison remonte une erreur si les commits n’existent pas ou si les cibles système ne permettent pas de générer un package.
+</Callout>
+
+L’outil créera ensuite un rapport sous format texte qui indique les différences entre les deux packages. Veuillez vous référer à la section [Rapport](#rapport) pour plus d’informations.
+
+### Comment ça marche
+
+Les étapes de fonctionnement de la comparaison par commit sont les suivantes:
+- Copie du playbook dans une dossier temporaire
+- Checkout du premier commit (commit1)
+- Génération du package pour la cible système 1 (cible_système1)
+- Checkout du deuxième commit (commit2)
+- Génération du package pour la cible système 2 (cible_système2)
+- Comparaison des dossiers, sous-dossiers et fichiers des deux packages et génération du rapport
+- Suppression du dossier temporaire
+
+## Par cible
+
+La commande pour comparer deux packages sur deux cibles système différentes est la suivante:
+
+```bash
+aiop_compare compare_by_config <cible_package1> <cible_package2>
+```
+
+- `cible_package1` et `cible_package2` sont les deux cibles des packages à comparer
+
+Le paramètre optionnel `--save_diff` permet de sauvegarder le rapport dans un fichier texte.
+
+<Callout type="info" emoji="ℹ️">
+  L’outil de comparaison remonte une erreur si les commits n’existent pas ou si les cibles système ne permettent pas de générer un package.
+</Callout>
+
+L’outil créera ensuite un rapport sous format texte qui indique les différences entre les deux packages. Veuillez vous référer à la section [Rapport](#rapport) pour plus d’informations.
+
+### Comment ça marche
+
+Les étapes de fonctionnement de la comparaison par commit sont les suivantes:
+- Copie du playbook dans une dossier temporaire
+- Génération du package pour la cible système 1 (cible_système1)
+- Génération du package pour la cible système 2 (cible_système2)
+- Comparaison des dossiers, sous-dossiers et fichiers des deux packages et génération du rapport
+
+L’outil créera ensuite un rapport sous format texte qui indique les différences entre les deux packages. Veuillez vous référer à la section [Rapport](#rapport) pour plus d’informations.
+
+## Rapport
+
+Voici un exemple de rapport:
+
+```text
+Diff have been found: 12 added, 9 deleted and 1 modified.
+
+Deleted:
+- package_b\step1.M93
+
+- package_b\step2.M93
+
+- package_b\sdk_addon\addon\unattended\unattended.M93
+
+- package_b\sdk_addon\param\unattended\UCM_SELF2000_Z0.par
+
+- package_b\sdk_addon\sdk\9990044533122400_WIDGET240_320.P3P
+
+- package_b\sdk_addon\sdk\9990044543122400_STON_SK240_320.P3P
+
+- package_b\sdk_addon\sdk\9992048032440011_SDKSELF2000.P3P
+
+- package_b\sdk_addon\sdk\camera.M93
+
+- package_b\sdk_addon\sdk\full_conf.M93
+Added:
++ package_b\step1.M94
+
++ package_b\step2.M94
+
++ package_b\sdk_addon\addon\unattended\9990047256000300_APP_UPGRAD_FREQ.P3T
+
++ package_b\sdk_addon\addon\unattended\SELF4000_Addon_Unattended.M94
+
++ package_b\sdk_addon\kernel\contact
+
++ package_b\sdk_addon\param\unattended\UCM_SELF4000_Z0.par
+
++ package_b\sdk_addon\sdk\9990044320122400_GOAL_PLGMMEDIA.P3L
+
++ package_b\sdk_addon\sdk\9990044531122400_WIDGET640_240.P3P
+
++ package_b\sdk_addon\sdk\9990044541122400_STON_SK640_240.P3P
+
++ package_b\sdk_addon\sdk\9992048036440011_SDKSELF4000.P3P
+
++ package_b\sdk_addon\sdk\camera.M94
+
++ package_b\sdk_addon\sdk\full_conf.M94
+Modified:
+~ package_b\readme.md
+Modified details:
+*** expected_readme.md
+--- readme.md
+***************
+*** 1,6 ****
+! # Self 2000
+
+! This is the Vending package for the model Self 2000. The purpose of this repository is to store the ready to use package for anyone who wants to quickly setup the test environment.
+
+  ## Interface and protocols
+
+--- 1,6 ----
+! # Self 4000
+
+! This is the Vending package for the model Self 4000. The purpose of this repository is to store the ready to use package for anyone who wants to quickly setup the test environment.
+
+  ## Interface and protocols
+
+
+```
