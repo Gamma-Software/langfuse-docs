@@ -16,16 +16,16 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import { LangfuseWeb } from "langfuse";
+// import { LangfuseWeb } from "langfuse";
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 
-const langfuse = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+/*const langfuse = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   ? new LangfuseWeb({
       publicKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       baseUrl: process.env.NEXT_PUBLIC_LANGFUSE_BASE_URL ?? undefined,
     })
-  : undefined;
+  : undefined;*/
 // langfuse.debug();
 
 type Feedback = "positive" | "negative";
@@ -61,12 +61,12 @@ export function ChatMessageActions({
     message.role === "assistant" && conversationId && message.id.length > 34; // Need to wait until server-side langfuse id is available
 
   const handleSubmit = () => {
-    if (!langfuse) return;
+//    if (!langfuse) return;
     if (currentFeedback === "submitting" || !modalState) return;
 
     setCurrentFeedback("submitting");
 
-    langfuse
+/*    langfuse
       .score({
         traceId: message.id,
         name: "user-feedback",
@@ -79,7 +79,7 @@ export function ChatMessageActions({
       .catch((err) => {
         console.error(err);
         setCurrentFeedback(null);
-      });
+      });*/
 
     // close modal
     setModalState(null);
