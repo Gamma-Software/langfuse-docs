@@ -1,7 +1,6 @@
 ---
 description: Get an overview of the core of Aiops functionnality, way of working and how to use it.
 ---
-
 import { Callout } from "nextra-theme-docs";
 import { IntegrationBeam } from "../../components/docs/aiop-core/IntegrationBeam.tsx";
 
@@ -161,7 +160,7 @@ La phase de `build` est responsable de la construction du package. Elle assure l
 
 ### Post-build
 
-La phase de `post-build` est utilisée pour réaliser de tâches qui n’ont pas de sens à être inclue dans le phase de `build`. Par example, vous pourriez être amené à vouloir générer un fond d’écran pour un client qui affiche en texte des métadonnées relatives au système cible. Toutes manipulation du packages temporaire après `build` doit être fait dans cette phase. [En savoir plus](/docs/post-build).
+La phase de `post-build` est utilisée pour réaliser de tâches qui n’ont pas de sens à être inclue dans le phase de `build`. Par exemple, vous pourriez être amené à vouloir générer un fond d’écran pour un client qui affiche en texte des métadonnées relatives au système cible. Toutes manipulation du packages temporaire après `build` doit être fait dans cette phase. [En savoir plus](/docs/post-build).
 
 <Callout type="info" emoji="ℹ️">
   Pour rappel, un rapport est généré à la fin de la phase de `post-build` en comparant le package avant et après cette phase. Ce rapport est stocké dans le répertoire de construction.

@@ -100,7 +100,7 @@ La section `repositories` est une liste de dépots distants à utiliser pour le 
 La section `amllint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
 
 
-## Example de configuration
+## Exemple de configuration
 
 Ce fichier de paramètre peut être difficile à mettre en place c’est pourquoi nous avons créé un modèle d’inventaire pour vous aider à démarrer. Par défaut, Aiop vous le créer lors de l’initialisation du projet.
 
@@ -165,7 +165,7 @@ amllint_rules:
     path: .aiop/rules/snake_case_rule.py
 ```
 
-La règle `SnakeCaseRule` est définie dans le fichier `.aiop/rules/snake_case_rule.py`. Pour cet example, cette règle vérifie que les noms de fichiers sont en snake_case.
+La règle `SnakeCaseRule` est définie dans le fichier `.aiop/rules/snake_case_rule.py`. Pour cet exemple, cette règle vérifie que les noms de fichiers sont en snake_case.
 
 ```yaml
 post_scripts:
@@ -173,7 +173,7 @@ post_scripts:
     path: .aiop/rules/apply_patch.py
 ```
 
-Le script `ApplyPatch` est défini dans le fichier `.aiop/rules/apply_patch.py`. Pour cet example, ce script applique un patch sur le package généré.
+Le script `ApplyPatch` est défini dans le fichier `.aiop/rules/apply_patch.py`. Pour cet exemple, ce script applique un patch sur le package généré.
 
 </Steps>
 

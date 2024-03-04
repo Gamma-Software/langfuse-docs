@@ -114,7 +114,7 @@ La section `compatibility` contient les règles pour les paramètres de chaque s
 - **`envs`:** Les valeurs autorisées pour les environnements. Il est possible de définir les valeurs autorisées pour les environnements. Par exemple, `dev`, `test`, `bench` et `prod` sont les valeurs autorisées pour les environnements.
 
 <Callout type="info" emoji="ℹ️">
-  Dans cet example nous avons trois paramètres: `apps`, `contexts` et `envs`. Vous pouvez ajouter autant de paramètres que vous le souhaitez dans la section `compatibility`. Si vous souhaitez uniquement différencier les déclarations par l’environement de fonctionnement, vous pouvez supprimer les champs `apps` et `contexts`, cela donne:
+  Dans cet exemple nous avons trois paramètres: `apps`, `contexts` et `envs`. Vous pouvez ajouter autant de paramètres que vous le souhaitez dans la section `compatibility`. Si vous souhaitez uniquement différencier les déclarations par l’environement de fonctionnement, vous pouvez supprimer les champs `apps` et `contexts`, cela donne:
   ``` yaml
   compatibility:
     envs:
@@ -128,9 +128,9 @@ La section `compatibility` contient les règles pour les paramètres de chaque s
   ```
 </Callout>
 
-### Example de configuration
+### Exemple de configuration
 
-Reprenons l’example de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier de configuration de l’inventaire comme suit. Voyons d'abord la configuration système et ensuite les règles de sélection et les options.
+Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier de configuration de l’inventaire comme suit. Voyons d'abord la configuration système et ensuite les règles de sélection et les options.
 
 ```yaml filename=".aiop/inventory_config.yml"
 system:
@@ -265,7 +265,7 @@ La section `inventory` contient les systèmes cibles et les variables spécifiqu
 
 ### Modèle de configuration
 
-Reprenons l’example de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier d’inventaire comme suit.
+Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier d’inventaire comme suit.
 
 ```yaml filename=".aiop/inventory.yml"
 
@@ -349,9 +349,9 @@ De plus il sera demandé à l’utilisateur final plus ou moins d’arguments en
 - `least_diff`: Il pourra renseigner une ou plusieurs des valeurs autorisées.
 - `most_of`: Il pourra renseigner une ou plusieurs des valeurs autorisées.
 
-### Example
+### Exemple
 
-Reprenons l’example de la société Tesla. Nous pourrions ainsi demander de créer des packages pour :
+Reprenons l’exemple de la société Tesla. Nous pourrions ainsi demander de créer des packages pour :
 | Cible | Fonctionnalités | Environnement |
 | --- | --- | --- |
 | `suv/modelX/phase2` | `four-wheel-drive` `butterfly-doors` | `dev` |
