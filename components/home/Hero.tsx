@@ -38,6 +38,7 @@ export function Hero() {
           </Button>
         </div>
       </div>
+
       {/* Badges */}
       {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap"> */}
       {/* <div className="grid grid-cols-1 md:grid-cols-1 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap">
