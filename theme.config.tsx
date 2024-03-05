@@ -229,10 +229,10 @@ const config: DocsThemeConfig = {
     Cards,
   },
   banner: {
-    key: "golden-kitty-banner",
+    key: "beta-banner",
     dismissible: false,
     text: (
-      <Link href="/docs#beta">
+      <Link href="/changelog/2024-03-05-beta-phase">
         {/* mobile */}
         <span className="sm:hidden">Aiop est en Bêta →</span>
         {/* desktop */}
