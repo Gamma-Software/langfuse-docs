@@ -29,6 +29,7 @@ const features: { name: string; checked: boolean }[] = [
     { name: "Faire de Pydantic la base du typing pour toute l’application", checked: false },
     { name: "Ajout de l’auto-complétion de la CLI", checked: false },
     { name: "Obtenir la liste des systèmes cibles et les paramètres par command et en auto-complétion", checked: false },
+    { name: "Faire un `dry-run` de la génération de build", checked: false },
     { name: "Upload du package dans les dépôts", checked: false },
     { name: "Traçabilité des packages par app cloud", checked: false },
     { name: "Ajout de statistiques locales", checked: false },
