@@ -228,20 +228,20 @@ const config: DocsThemeConfig = {
     Card,
     Cards,
   },
-  // banner: {
-  //   key: "golden-kitty-banner",
-  //   dismissible: true,
-  //   text: (
-  //     <Link href="https://www.producthunt.com/golden-kitty-awards/hall-of-fame">
-  //       {/* mobile */}
-  //       <span className="sm:hidden">aiop won a Golden Kitty Award →</span>
-  //       {/* desktop */}
-  //       <span className="hidden sm:inline">
-  //         aiop won a Golden Kitty Award in AI Infra →
-  //       </span>
-  //     </Link>
-  //   ),
-  // },
+  banner: {
+    key: "golden-kitty-banner",
+    dismissible: false,
+    text: (
+      <Link href="/docs#beta">
+        {/* mobile */}
+        <span className="sm:hidden">Aiop est en Bêta →</span>
+        {/* desktop */}
+        <span className="hidden sm:inline">
+          Aiop est en Bêta →
+        </span>
+      </Link>
+    ),
+  },
 };
 
 export default config;

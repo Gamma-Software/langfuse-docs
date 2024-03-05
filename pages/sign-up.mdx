@@ -1,0 +1,33 @@
+---
+title: "Sign up"
+description: "Pour le moment la création d’un compte se fait par mail. Contactez-nous pour en savoir plus."
+---
+
+import { Callout } from "nextra-theme-docs";
+import { SiMinutemailer } from "react-icons/si";
+import Link from "next/link";
+import { StarCount } from "@/components/GitHubBadge";
+import { Header } from "@/components/Header";
+
+import ShimmerButton from "@/components/magicui/shimmer-button";
+
+<div className="md:container">
+
+  <div className="flex flex-col items-center content-center text-center my-10">
+
+    <Header
+      title="Création de compte Aiop"
+      description="Pour le moment la création d’un compte se fait par mail. Nous vous enverrons un mot de passe temporaire et vous pourrez le changer."
+      className="mb-8"
+      h="h1"
+    />
+  <Link href="mailto:valentin.rudloff.perso@gmail.com">
+    <ShimmerButton borderRadius="0.25rem" className="mt-11">
+        <div className="flex gap-4 items-center whitespace-pre-wrap bg-gradient-to-b from-white from-30% to-gray-300/70 bg-clip-text text-center text-md font-semibold leading-none tracking-tight text-transparent">
+        <SiMinutemailer size={28} className="text-white" />
+        <span>Nous contacter</span>
+        </div>
+    </ShimmerButton>
+    </Link>
+  </div>
+</div>

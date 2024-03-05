@@ -16,7 +16,7 @@ export function Hero() {
       {/* HERO */}
       {/* <Meteors/> */}
       <div className="flex flex-col items-start justify-center gap-3 md:min-h-[calc(60vh-100px)] pb-12 lg:py-20">
-        <h1 className="text-4xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
           All-In-One
           <br />
           Packager

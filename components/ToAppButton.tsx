@@ -32,10 +32,11 @@ export const ToAppButton = () => {
         href={
           signedIn === "US"
             ? "https://us.cloud.aiop.fr"
-            : "https://cloud.aiop.fr"
+            //: "https://cloud.aiop.fr"
+            : "/sign-up"
         }
       >
-        {signedIn ? "To App" : "Sign Up"}
+        {signedIn ? "Compte" : "S’incrire"}
       </Link>
     </Button>
   );
