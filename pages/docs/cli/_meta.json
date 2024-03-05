@@ -1,6 +1,5 @@
 {
     "init": "Init",
     "lint": "Lint",
-    "build": "Build",
-    "plugins": "Plugins"
+    "build": "Build"
 }

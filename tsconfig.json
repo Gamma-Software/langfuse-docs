@@ -31,7 +31,7 @@
     "**/*.tsx",
     "**/*.mdx",
     "pages/changelog/2023-07-19-launch.mdx.disabled"
-  ],
+, "pages/docs/cli/plugins.mdx.disabled"  ],
   "exclude": [
     "node_modules"
   ],
