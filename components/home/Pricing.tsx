@@ -24,8 +24,10 @@ const tiers = [
       "Carte de crédit non requise",
       "Toutes le fonctionnalités de base",
       "Linting / Post-Build personnalisation des tâches",
-      "Limité à 10 packages générés / mois",
-      "Limité à 1 playbook par compte et par personne",
+      "Usage personnel uniquement",
+      //"Limité à 10 packages générés / mois",
+      //"Limité à 2 systèmes cibles",
+      //"Limité à 1 playbook par compte et par personne",^
       "Support de la communauté (Discord & Gitlab & Slack)",
     ],
     cta: "Commencer gratuitement",
@@ -36,18 +38,18 @@ const tiers = [
     href: "https://cloud.aiop.fr",
     featured: true,
     description:
-      "Pour des projets serieux. Inclus des fonctionnalités avancées de CI/CD et du support dédié.",
-    price: "--€",
+      "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié.",
+    price: "99€",
     mainFeatures: [
       "Toutes les fonctionnalités de la version gratuite",
-      "Linting / Post-Build personnalisation des tâches",
       "Accès à des cookbook de tâches personnalisées",
-      "Accès à des workshops et formations",
+      //"Accès à des cookbook CI/CD",
+      "Accès à des cookbook de playbook",
       "Outil de comparaison de playbooks et packages",
       "Système de cache avancé",
       "Génération de packages illimitée",
-      "Playbooks illimités, mais limité à 1 personne",
-      "Accès à des cookbook CI/CD",
+      "Playbooks illimités",
+      "Usage professionnel",
       "Support dédié en plus de la communauté"
     ],
     cta: "S’abonner",
@@ -57,69 +59,76 @@ const tiers = [
     id: "tier-team",
     href: "/schedule-demo",
     featured: false,
-    price: "Démarre à ---€",
+    price: "Démarre à 499€",
     description:
       "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
     mainFeatures: [
       "Toutes les fonctionnalités de la version Pro",
-      "Statistiques",
+      //"Statistiques",
+      "Accès à des workshops et formations",
       "Playbooks illimités, pas de limites de personnes",
       "Collaboration active sur les playbooks",
-      "Accès à des fonctionnalités avancées de la CI/CD",
+      //"Accès à des fonctionnalités avancées de la CI/CD",
       "Développement de fonctionnalités sur mesure (plugins)",
-      "Support personnalisé, Garantie de disponibilité",
+      "Support personnalisé, hotfixes",
     ],
     cta: "En discuter",
   },
 ] as const;
+
 const sections = [
   {
-    name: "Tracing",
+    name: "Règles",
     features: [
       {
-        name: "Included usage",
+        name: "Playbooks",
         tiers: {
-          Hobby: "50k observations",
-          Pro: "100k observations",
-          Team: "Custom",
+          Free: "1 playbook",
+          Pro: "1 playbook",
+          Team: "Illimité",
         },
       },
       {
-        name: "Additional usage",
+        name: "Inventaire",
         tiers: {
-          Hobby: false,
-          Pro: "$10 / 100k observations",
-          Team: "Custom",
+          Free: "2 systèmes cibles",
+          Pro: "5 systèmes cibles",
+          Team: "Illimité",
         },
       },
       {
-        name: "Data access",
+        name: "Packages",
         tiers: {
-          Hobby: "30 days",
-          Pro: "Unlimited",
-          Team: "Unlimited",
-        },
-      },
-      {
-        name: "Ingestion throughput",
-        tiers: {
-          Hobby: "1000 requests / min",
-          Pro: "1000 requests / min",
-          Team: "Custom",
+          Free: "10 générations de packages / mois",
+          Pro: "300 générations de packages / mois",
+          Team: "Illiimité",
         },
       },
     ],
   },
   {
-    name: "Collaboration",
+    name: "Outils annexes",
     features: [
       {
-        name: "Projects",
-        tiers: { Hobby: "3", Pro: "Unlimited", Team: "Unlimited" },
+        name: "CI/CD",
+        tiers: { Free: false, Pro: true, Team: true},
       },
       {
-        name: "Members / project",
-        tiers: { Hobby: "3", Pro: "Unlimited", Team: "Unlimited" },
+        name: "Comparaisons de playbooks et packages",
+        tiers: { Free: false, Pro: true, Team: true },
+      },
+    ],
+  },
+  {
+    name: "Formations",
+    features: [
+      {
+        name: "Cookbooks",
+        tiers: { Free: false, Pro: "Tâches personnalisées & playbook", Team: "Tâches personnalisées & playbook" },
+      },
+      {
+        name: "Formations",
+        tiers: { Free: false, Pro: "Sur demande", Team: "Sur demande (prioritaire)" },
       },
     ],
   },
@@ -127,85 +136,23 @@ const sections = [
     name: "Support",
     features: [
       {
-        name: "Community (GitHub, Discord)",
-        tiers: { Hobby: true, Pro: true, Team: true },
+        name: "Communautée (Discord, GitLab, Slack)",
+        tiers: { Free: true, Pro: true, Team: true },
       },
       {
-        name: "Dedicated (Slack, Discord, Email)",
-        tiers: { Hobby: false, Pro: true, Team: true },
+        name: "Dédié (Slack, Discord, Email)",
+        tiers: { Free: false, Pro: true, Team: true },
       },
       {
-        name: "Phone",
-        tiers: { Hobby: false, Pro: false, Team: true },
+        name: "Canal personnel (Slack, Discord, Email)",
+        tiers: { Free: false, Pro: false, Team: true },
       },
       {
-        name: "SLAs",
-        tiers: { Hobby: false, Pro: false, Team: "Available" },
+        name: "Téléphone",
+        tiers: { Free: false, Pro: false, Team: true },
       },
     ],
-  },
-  {
-    name: "Security",
-    features: [
-      {
-        name: "SSO",
-        tiers: { Hobby: true, Pro: true, Team: true },
-      },
-      {
-        name: "SSO enforcement",
-        tiers: { Hobby: false, Pro: false, Team: true },
-      },
-      {
-        name: "Role-based access control",
-        tiers: {
-          Hobby: "Standard roles",
-          Pro: "Standard roles",
-          Team: "Custom roles",
-        },
-      },
-      {
-        name: "Data retention",
-        tiers: {
-          Hobby: false,
-          Pro: false,
-          Team: true,
-        },
-      },
-      {
-        name: "Data region",
-        tiers: {
-          Hobby: "US or EU",
-          Pro: "US or EU",
-          Team: "Custom regions available",
-        },
-      },
-      {
-        name: "Dedicated managed instance",
-        tiers: {
-          Hobby: false,
-          Pro: false,
-          Team: "Talk to us",
-        },
-      },
-    ],
-  },
-  {
-    name: "Compliance",
-    features: [
-      {
-        name: "Data processing agreement (GDPR)",
-        tiers: { Hobby: false, Pro: true, Team: true },
-      },
-      {
-        name: "SOC2 Type II and ISO27001 reports",
-        tiers: { Hobby: false, Pro: false, Team: "Q1 2024" },
-      },
-      {
-        name: "Security reviews",
-        tiers: { Hobby: false, Pro: false, Team: true },
-      },
-    ],
-  },
+  }
 ];
 
 export function Pricing({
