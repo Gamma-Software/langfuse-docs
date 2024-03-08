@@ -16,7 +16,7 @@ export function Hero() {
       {/* HERO */}
       {/* <Meteors/> */}
       <div className="flex flex-col items-start justify-center gap-3 md:min-h-[calc(60vh-100px)] pb-12 lg:py-20">
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  font-sans font-bold">
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-400 to-neutral-600  font-sans font-bold">
           All-In-One
           <br />
           Packager
@@ -26,7 +26,7 @@ export function Hero() {
           <span className="underline">Construire</span>,{" "}
           <span className="underline">Déployer</span> et{" "}
           <span className="underline">Contrôler</span><br/>
-          vos packages pour tous vos <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.pink.400),theme(colors.orange.400),theme(colors.pink.400))] bg-[length:200%_auto] animate-gradient">clients</span> et <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.pink.400),theme(colors.orange.400),theme(colors.pink.400))] bg-[length:200%_auto] animate-gradient">configurations</span>.
+          vos packages pour tous vos <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">clients</span> et <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">configurations</span>.
         </span>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">

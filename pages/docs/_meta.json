@@ -33,27 +33,12 @@
   "lib-index": "Aperçu",
   "aiop-lib": "Developpement",
 
-  "-- Tools": {
-    "type": "separator",
-    "title": "Boite à outils",
-    "display": "hidden"
-  },
-  "tools-compare": {
-    "name":"Comparateur",
-    "display": "hidden"
-  },
-  "tools-ci-cd": {
-    "name":"CI-CD",
-    "display": "hidden"
-  },
-
   "-- More": {
     "type": "separator",
     "title": "Pour aller plus loin"
   },
   "third-party": "Librairies tierces",
   "qna": "FAQ",
-  "troubleshooting": {"name":"Diagnostiquer les problèmes", "display": "hidden"},
   "data-security-privacy": "Propriété des données et sécurité",
   "even-more": "Encore plus loin"
 }

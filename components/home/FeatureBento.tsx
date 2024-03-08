@@ -136,8 +136,8 @@ export function FeatureBento() {
   return (
     <HomeSection id="features">
       <Header
-        title="Les Points Forts"
-        description="répondant à vos éxigences"
+        title="Vos exigences"
+        description="notre priorité"
         button={{ href: "/docs", text: "Documentation" }}
       />
       <BentoGrid>
