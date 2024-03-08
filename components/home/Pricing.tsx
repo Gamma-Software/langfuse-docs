@@ -15,8 +15,7 @@ const tiers = [
   {
     name: "Free",
     id: "tier-free",
-    //href: "https://cloud.aiop.fr",
-    href: "sign-up",
+    href: "https://cloud.aiop.fr",
     featured: false,
     description:
       "Démarrez dès maintenant ! carte de crédit non requise. Parfait pour essayer l’outil.",
@@ -34,8 +33,7 @@ const tiers = [
   {
     name: "Pro",
     id: "tier-pro",
-    //href: "https://cloud.aiop.fr",
-    href: "sign-up",
+    href: "https://cloud.aiop.fr",
     featured: true,
     description:
       "Pour des projets serieux. Inclus des fonctionnalités avancées de CI/CD et du support dédié.",

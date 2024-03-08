@@ -102,11 +102,6 @@
     "type": "page",
     "display": "hidden"
   },
-  "sign-up": {
-    "title": "Création de compte",
-    "type": "page",
-    "display": "hidden"
-  },
   "404": {
     "type": "page",
     "theme": {

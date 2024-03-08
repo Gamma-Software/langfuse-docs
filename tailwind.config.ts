@@ -151,7 +151,7 @@ module.exports = {
         },
       },
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [require("tailwindcss-animate"), addVariablesForColors],
   },
   plugins: [require("@tailwindcss/aspect-ratio"), addVariablesForColors],
 }

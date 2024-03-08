@@ -79,7 +79,7 @@ import { FileTree } from "nextra/components";
 
 <Callout type="info" emoji="ℹ️">
   Want to explore the project in Langfuse yourself? [Create
-  account](https://cloud.aiop.fr/auth/sign-up) to get view-only access to
+  account](https://cloud.aiop.fr) to get view-only access to
   this project in Langfuse.
 </Callout>
 
