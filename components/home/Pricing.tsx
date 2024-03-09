@@ -92,7 +92,7 @@ const sections = [
         name: "Inventaire",
         tiers: {
           Free: "2 systèmes cibles",
-          Pro: "5 systèmes cibles",
+          Pro: "Illimité",
           Team: "Illimité",
         },
       },
@@ -120,7 +120,28 @@ const sections = [
     ],
   },
   {
-    name: "Formations",
+    name: "Personnalisations",
+    features: [
+      {
+        name: "Utilisateur",
+        tiers: { Free: true, Pro: true, Team: true},
+      },
+      {
+        name: "Playbook",
+        tiers: { Free: true, Pro: true, Team: true},
+      },
+      {
+        name: "Tâches personnalisée",
+        tiers: { Free: true, Pro: true, Team: true },
+      },
+      {
+        name: "Plugins",
+        tiers: { Free: false, Pro: false, Team: true },
+      },
+    ],
+  },
+  {
+    name: "Formations & Consulting",
     features: [
       {
         name: "Cookbooks",
@@ -128,7 +149,11 @@ const sections = [
       },
       {
         name: "Formations",
-        tiers: { Free: false, Pro: "Sur demande", Team: "Sur demande (prioritaire)" },
+        tiers: { Free: false, Pro: "Sur demande - surcoût", Team: "Sur demande (prioritaire) - surcoût" },
+      },
+      {
+        name: "Conseil",
+        tiers: { Free: false, Pro: false, Team: "Développements de plugins - surcoût" },
       },
     ],
   },
@@ -140,12 +165,8 @@ const sections = [
         tiers: { Free: true, Pro: true, Team: true },
       },
       {
-        name: "Dédié (Slack, Discord, Email)",
-        tiers: { Free: false, Pro: true, Team: true },
-      },
-      {
         name: "Canal personnel (Slack, Discord, Email)",
-        tiers: { Free: false, Pro: false, Team: true },
+        tiers: { Free: false, Pro: true, Team: true },
       },
       {
         name: "Téléphone",
@@ -166,9 +187,8 @@ export function Pricing({
         <div className="flow-root pb-16 lg:pb-0">
           <div className="mx-auto max-w-7xl">
             <Header
-              title="Des prix pour tous les projets."
+              title="Tarification"
               description="Commencez dès maintenant avec la version gratuite ! Pas besoin de carte de crédit."
-              h="h1"
             />
 
             <div className="relative mx-auto mt-10 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -598,7 +618,7 @@ export function PricingFAQ() {
       <div className="mx-auto max-w-7xl px-6 pb-24 lg:pt-16 lg:px-8">
         <div className="mx-auto max-w-4xl divide-y divide-primary/10">
           <h2 className="text-2xl font-bold leading-10 tracking-tight text-primary">
-            Frequently asked questions
+            Question fréquentes
           </h2>
           <dl className="mt-10 space-y-6 divide-y divide-primary/10">
             {faqs.map((faq) => (
