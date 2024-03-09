@@ -8,6 +8,7 @@ import { FeatureBento } from "./FeatureBento";
 import { Integrations } from "./Integrations";
 import { FromTheBlog } from "./FromTheBlog";
 import { Avantages } from "./Avantages";
+import { Clients } from "./Clients";
 
 export const Home = () => (
   <>
@@ -16,6 +17,7 @@ export const Home = () => (
       {/* <Users /> */}
       <FeatureBento />
       <Avantages />
+      <Clients />
       <Integrations />
       {/* <OpenSource /> */}
       <Pricing />
