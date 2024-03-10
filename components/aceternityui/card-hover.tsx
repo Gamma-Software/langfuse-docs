@@ -10,7 +10,6 @@ export const HoverEffect = ({
   items: {
     title: string;
     description: string;
-    link: string;
   }[];
   className?: string;
 }) => {
@@ -34,11 +33,6 @@ export const HoverEffect = ({
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-          {item.link && (
-            <Link href={item.link}>
-              <a className="absolute inset-0" />
-            </Link>
-          )}
         </div>
       ))}
     </div>
