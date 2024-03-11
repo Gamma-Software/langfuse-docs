@@ -39,7 +39,7 @@ repositories:
     type: {type du dépot}
     base_url: {base de l’url du dépot}
     repository_regex: {regex pour filtrer les dépots}
-amllint_rules:
+lint_rules:
   - classname: {nom de la classe de la règle à exécuter à la validation}
     path: {chemin relatif vers le script}
 post_scripts:
@@ -63,12 +63,12 @@ Pour personnaliser , il suffit d’ouvrir et de modifier le fichier de configura
 | [`repositories.type`](#repositories)  | `str` | Type du dépot |
 | [`repositories.base_url`](#repositories)  | `str` | Base de l’url du dépot |
 | [`repositories.repository_regex`](#repositories)  | `str` | Regex pour filtrer les dépots |
-| [`amllint_rules`](#amllint_rules-et-post_scripts) | `list` | Liste des règles de validation à exécuter. | `classname` : Nom de la classe de la règle à exécuter à la validation. <br/>`path` : Chemin relatif vers le script. |
-| [`amllint_rules.classname`](#amllint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter à la validation. | |
-| [`amllint_rules.path`](#amllint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
-| [`post_scripts`](#amllint_rules-et-post_scripts) | `list` | Liste des scripts à exécuter après le build. | `classname` : Nom de la classe de la règle à exécuter après le build. <br/>`path` : Chemin relatif vers le script. |
-| [`post_scripts.classname`](#amllint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter après le build. | |
-| [`post_scripts.path`](#amllint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
+| [`lint_rules`](#lint_rules-et-post_scripts) | `list` | Liste des règles de validation à exécuter. | `classname` : Nom de la classe de la règle à exécuter à la validation. <br/>`path` : Chemin relatif vers le script. |
+| [`lint_rules.classname`](#lint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter à la validation. | |
+| [`lint_rules.path`](#lint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
+| [`post_scripts`](#lint_rules-et-post_scripts) | `list` | Liste des scripts à exécuter après le build. | `classname` : Nom de la classe de la règle à exécuter après le build. <br/>`path` : Chemin relatif vers le script. |
+| [`post_scripts.classname`](#lint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter après le build. | |
+| [`post_scripts.path`](#lint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
 
 Tous ces champs sont optionnels.
 
@@ -93,11 +93,11 @@ La section `repositories` est une liste de dépots distants à utiliser pour le 
 
 - **`base_url`** l’url de base du dépot. Par exemple, pour un dépot artifactory, l’url de base est `https://artifactory.mon-entreprise.com/artifactory/`.
 
-- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la resource distante est correcte et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la resource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#amllint_rules-et-post_scripts).
+- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la resource distante est correcte et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la resource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#lint_rules-et-post_scripts).
 
-### `amllint_rules` et `post_scripts`
+### `lint_rules` et `post_scripts`
 
-La section `amllint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
+La section `lint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
 
 
 ## Exemple de configuration
@@ -119,7 +119,7 @@ repositories:
     type: artifactory
     base_url: https://artifactory.tesla.com/artifactory/qa/
     repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
-amllint_rules:
+lint_rules:
   - classname: SnakeCaseRule
     path: .aiop/rules/snake_case_rule.py
 post_scripts:
@@ -160,7 +160,7 @@ repositories:
 Il y a deux dépots distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les resources de production et `dev` celle de développement. Il s’agit du même dépot distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la resource, sa version et son nom.
 
 ```yaml
-amllint_rules:
+lint_rules:
   - classname: SnakeCaseRule
     path: .aiop/rules/snake_case_rule.py
 ```
