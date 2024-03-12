@@ -61,9 +61,9 @@ export default async function handler(request: NextRequest) {
           >
             <img width="50" height="50" src={imageData} />
             <span style={{ fontWeight: 800 }}>
-              Langfuse
+              Aiop
               <span style={{ marginLeft: 10, fontWeight: 400 }}>
-                – Open Source LLM Engineering Platform
+                – Package generation toolbelt
               </span>
             </span>
           </div>

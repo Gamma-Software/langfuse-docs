@@ -8,7 +8,7 @@ import { TbBrandVscode } from "react-icons/tb";
 
 # Démarrage
 
-Cette introduction rapide vous aide à commencer à utiliser Aiop rapidement.
+Cette introduction rapide vous aide à commencer à utiliser Aiop rapidement. N’hesitez pas à consulter la vidéo démonstration qui reprend les éléments de cette page.
 
 ## Prerequis
 
@@ -135,26 +135,17 @@ Vous pouvez télécharger Visual Studio Code en cliquant sur le bouton ci-dessou
 
 <Steps>
 
-### Créez un compte aiop
+### Créer un compte aiop (Optionnel)
 
 Commencez par créer un compte aiop. Si vous n’avez pas de compte, appuiyez sur le bouton ci-dessous pour en créer un.
 
-<Button asChild className="mt-3">
-  <a
-    href="https://cloud.aiop.fr/"
-    target="_blank"
-    rel="noopener"
-  >
-    Créer un compte aiop
-  </a>
-</Button>
 
 
-### Installez aiop
+### Installer aiop
 Installer aiop est simple. Ouvrez un terminal et exécutez la commande suivante:
 
 ```bash copy
-pip install aiop
+pip install aiop --index-url https://gitlab.com/api/v4/projects/52727704/packages/pypi/simple
 ```
 
 Cela installera aiop et toutes ses dépendances.
@@ -162,13 +153,13 @@ Cela installera aiop et toutes ses dépendances.
 
 ### Télécharger un modèle de playbook
 
-Pour utiliser aiop, vous avez besoin d’un [playbook](/docs/vocabulaire#playbook). Vous pouvez installer un modèle de playbook en exécutant la commande suivante:
+Pour utiliser aiop, vous avez besoin d’un [playbook](/docs/vocabulary#playbook). Vous pouvez installer un modèle démonstratif de playbook en exécutant la commande suivante:
 
 ```bash copy
-aiop init ./my-playbook
+aiop demo ./my-demo-playbook
 ```
 
-Cela téléchargera un modèle de playbook dans le dossier `my-playbook`.
+Cela téléchargera le modèle de playbook dans le dossier `my-playbook`.
 
 ### Générer sont premier package
 
@@ -176,14 +167,17 @@ Vous y êtes enfin ! Vous pouvez maintenant générer votre premier package en e
 
 ```bash copy
 cd my-playbook
-aiop build archi1/model_range/model1 --apps app1 app2
+aiop build archi1/model_range1/model1 --apps app1 --envs dev --contexts context1
 ```
+
+<Callout type="info" emoji="✅">
+  Terminé, vous venez de générer votre premier package !
+</Callout>
+
+Vous pouvez maintenant voir le package généré dans le dossier `.build` à la racine du playbook.
 
 </Steps>
 
-<Callout type="info" emoji="✅">
-  Terminé, vous avez généré votre premier package !
-</Callout>
 
 
 ## Que faire ensuite ?
