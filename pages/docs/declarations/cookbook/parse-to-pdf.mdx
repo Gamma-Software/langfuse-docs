@@ -1,6 +1,6 @@
 ---
 description: >-
-  Aiop is capable of parsing resources to pdf in runtime
+  Aiop est capable de convertir des ressources en PDF pendant l'exécution.
 ---
 import { FileTree } from 'nextra/components'
 import { Callout } from "nextra-theme-docs";
@@ -11,7 +11,7 @@ Aiop est capable de convertir des ressources en pdf. Pour le moment c’est limi
 
 ## Depuis un Markdown
 
-Pour déclarer une resource Markdown à convertir en pdf, il suffit de déclarer le fichier avec l’extension `.md` et d’indiquer la destination comme étant un fichier `.pdf` dans le fichier de déclaration `.aml`.
+Pour déclarer une ressource Markdown à convertir en pdf, il suffit de déclarer le fichier avec l’extension `.md` et d’indiquer la destination comme étant un fichier `.pdf` dans le fichier de déclaration `.aml`.
 
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
@@ -23,14 +23,14 @@ Pour déclarer une resource Markdown à convertir en pdf, il suffit de déclarer
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
         <FileTree.File name="doc.md" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-```yaml {2} filename="resources/.aml" /doc.pdf/
+```yaml {2} filename="ressources/.aml" /doc.pdf/
 - source: doc.md
   destination: doc.pdf
   compatibility:

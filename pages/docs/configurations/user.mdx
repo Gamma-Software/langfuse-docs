@@ -1,5 +1,5 @@
 ---
-description: Aiop provides an extensive configuration file to customize the behavior of the application for a user.
+description: Aiop fournit un fichier de configuration étendu pour personnaliser le comportement de l'application pour un utilisateur.
 ---
 import { Callout } from "nextra-theme-docs";
 
@@ -13,13 +13,13 @@ Aiop permet à l’utilisateur de personnaliser le comportement de l’applicati
   À l’installation de Aiop, un fichier de configuration par défaut est créé. Il est possible de le [modifier](#personalisation) pour personnaliser le comportement de l’application.
 </Callout>
 
-Le fichier de configurartion est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser son comportement.
+Le fichier de configuration est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser son comportement.
 
 ## Structure du fichier de configuration
 
-Voici la structure du fichier de configuration. Il comprend des paramètres permettant de personnaliser le comportement de l'application, ainsi que des réglages pour les journaux, les dépôts distants et les informations de licence.
+Voici la structure du fichier de configuration. Il comprend des paramètres donnant la possibilité de personnaliser le comportement de l'application, ainsi que des réglages pour les journaux, les dépôts distants et les informations de licence.
 
-Les dépôts distants exigent une authentification pour télécharger des ressources distantes. Si l'un des playbooks sur lesquels vous travaillez nécessite une connexion à un dépôt distant, vous devez ajouter les informations de connexion dans la section `repositories`.
+Les dépôts distants exigent une authentification pour télécharger des ressources distantes. Si l'un des playbooks sur lesquels vous travaillez nécessite une connexion à un dépôt distant, vous avez l'obligation d'ajouter les informations de connexion dans la section `repositories`.
 
 La licence est utilisée pour l'authentification à Aiop. Si vous avez une licence, vous devez ajouter les informations correspondantes dans la section `license`.
 
@@ -56,7 +56,7 @@ Pour personnaliser le comportement de l’application, il suffit d’ouvrir et d
 | build_timeout | int | Durée maximale en secondes pour la construction d’un package | > 0 | 300 |
 | check_update | bool | Activer ou désactiver la vérification des mises à jour à l’exécution de l’application | true, false | true |
 | default_package_path | str | Chemin par défaut ou stocker les packages générés | Chemin absolu ou relatif à la racine du playbook | `~/.aiop/packages` |
-| download_retries | int | Nombre de tentatives pour télécharger une resource distante | > 0 | 3 |
+| download_retries | int | Nombre de tentatives pour télécharger une ressource distante | > 0 | 3 |
 | plugin_config | dict | Configurations spécifique aux plugins. Se fier à la documentation du plugin pour plus d’informations. [Contacter le support](/support) pour plus d’informations | Dictionnaire | |
 | logs | dict | Configuration des logs | Dictionnaire |  |
 | logs.level | str | Niveau de log | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, DISABLED | DEBUG |

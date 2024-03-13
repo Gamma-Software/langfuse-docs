@@ -7,7 +7,7 @@ import { IntegrationBeam } from "../../components/docs/aiop-core/IntegrationBeam
 
 # Aiop Core
 
-[Aiop Core](/docs/vocabulary#aiop-core) est le noyaux de la solution Aiop. Il est composé de plusieurs modules qui permettent de gérer les différentes phases de construction d'un package. Voyons les concepts de base et le fonctionnement de Aiop Core.
+[Aiop Core](/docs/vocabulary#aiop-core) est le noyau de la solution Aiop. Il est composé de plusieurs modules qui permettent de gérer les différentes phases de construction d'un package. Voyons les concepts de base et le fonctionnement de Aiop Core.
 
 ## Concepts de base
 
@@ -18,7 +18,7 @@ Aiop Core est basé sur plusieurs concepts de base. Ces concepts sont les fondat
 Un package est un ensemble d’[artefacts](/docs/vocabulary#artefact) qui compose une application. Un package peut être une application web, une application mobile, une application de bureau, une ou un ensemble d’application embarquée, un service, une librairie, etc...
 
 <Callout type="info" emoji="ℹ️">
-  À l'[origine](/docs#origine), l'objectif d'AIOP était de concevoir des packages pour des applications embarquées. Cependant, la solution a été conçue pour être utilisée dans n'importe quel autres types de projet. Si toutefois vous avez des besoins spécifiques, n'hésitez pas à nous [contacter](/meeting).
+  À l'[origine](/docs#origine), l'objectif d'AIOP était de concevoir des packages pour des applications embarquées. Cependant, la solution a été conçue pour être utilisée dans n'importe quel autres types de projet. Si toutefois, vous avez des besoins spécifiques, n'hésitez pas à nous [contacter](/meeting).
 </Callout>
 
 #### Composition
@@ -79,12 +79,12 @@ Vous êtes libre d'organiser les artefacts comme vous le souhaitez. Aiop ne vous
 
 ### Validation et erreurs remontés
 
-Aiop Core est pensé pour afficher le plus d'informations possible sur les erreurs rencontrées avant et pendant la construction d'un package. Les erreurs sont remontées à l'utilisateur sous forme de rapports dans la console.
+Aiop Core est pensé pour afficher le plus d'information possible sur les erreurs rencontrées avant et pendant la construction d'un package. Les erreurs sont remontées à l'utilisateur sous forme de rapports dans la console.
 
 Aiop remonte les erreurs **le plus tôt possible** pour que l'utilisateur puisse les corriger rapidement.
 
 <Callout emoji="🚨">
-  Il est important de noter que Aiop ne corrige pas les erreurs pour vous ([Mais ça ne serait tarder](/docs/roadmap)). Il vous informe des erreurs et vous donne des indications pour les corriger. C'est à vous de les corriger.
+  Il est important de noter que Aiop ne corrige pas les erreurs pour vous ([cela ne tarderait pas à se produire.](/docs/roadmap)). Il vous informe des erreurs et vous donne des indications pour les corriger. C'est à vous de les corriger.
 </Callout>
 
 
@@ -95,7 +95,7 @@ Le comportement de Aiop Core peut être modifié par des configurations. Il exis
 
 ### Déclarations
 
-Aiop fonctionne sur le principe déclaratif de resources. Les déclarations sont des fichiers qui décrivent les artefacts d'un package ainsi que leurs compatibilités avec des systèmes. [En savoir plus](/docs/declarations).
+Aiop fonctionne sur le principe déclaratif de ressources. Les déclarations sont des fichiers qui décrivent les artefacts d'un package ainsi que leurs compatibilités avec des systèmes. [En savoir plus](/docs/declarations).
 
 ### Intégrations
 
@@ -103,7 +103,7 @@ Aiop Core inclut divers outils et services tiers pour exécuter différentes tâ
 
 <IntegrationBeam />
 
-Une multitude d'autres fonctionnalités et services arriverons dans les prochaines versions (voir la [feuille de route](/docs/roadmap)). [En savoir plus](/docs/integrations).
+Une multitude d'autres fonctionnalités et services arrivera dans les prochaines versions (voir la [feuille de route](/docs/roadmap)). [En savoir plus](/docs/integrations).
 
 ### Caching
 
@@ -156,7 +156,7 @@ La phase de `pre-build` est responsable de la préparation de l'environnement de
 
 ### Build
 
-La phase de `build` est responsable de la construction du package. Elle assure l'assemblage des resources dans le package. [En savoir plus](/docs/build).
+La phase de `build` est responsable de la construction du package. Elle assure l'assemblage des ressources dans le package. [En savoir plus](/docs/build).
 
 ### Post-build
 

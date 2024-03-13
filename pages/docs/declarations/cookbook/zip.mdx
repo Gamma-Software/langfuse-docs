@@ -1,6 +1,6 @@
 ---
 description: >-
-  Archives can be unzipped in runtime.
+  Les archives peuvent dézippée pendant l’éxecution.
 ---
 import { FileTree } from 'nextra/components'
 import { Callout } from "nextra-theme-docs";
@@ -11,7 +11,7 @@ Lorsque vous avez une archive à dézipper sur un système cible, vous pouvez ut
 
 ## Déclaration
 
-Dans le cas où vous avez une archive à dézipper, vous pouvez utiliser le champ `unzip` pour déclarer cette action. Il faut bien entendu que vous déclareriez un fichier avec les extensions suivante:
+Dans le cas où vous auriez une archive à dézipper, vous pouvez utiliser le champ `unzip` pour déclarer cette action. Il faut bien entendu que vous déclariez un fichier avec les extensions suivante:
 
 - `.zip`
 - `.tar`
@@ -21,7 +21,7 @@ Dans le cas où vous avez une archive à dézipper, vous pouvez utiliser le cham
 - `.rar`
 - `.7z`
 
-Et que vous indiqueiez le chemin du dossier destination. En effet, il est obligatoire de dézipper l'archive dans un dossier.
+Et que vous indiquerez le chemin du dossier destination. En effet, il est obligatoire de dézipper l'archive dans un dossier.
 
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
@@ -33,14 +33,14 @@ Et que vous indiqueiez le chemin du dossier destination. En effet, il est obliga
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
         <FileTree.File name="archive.zip" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-```yaml {2, 3} filename="resources/.aml" /dossier/
+```yaml {2, 3} filename="ressources/.aml" /dossier/
 - source: archive.zip
   destination: dossier/
   unzip: True

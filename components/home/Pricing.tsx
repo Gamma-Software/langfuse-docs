@@ -15,7 +15,7 @@ const tiers = [
   {
     name: "Free",
     id: "tier-free",
-    href: "https://cloud.aiop.fr",
+    href: "/docs/get-started",
     featured: false,
     description:
       "Démarrez dès maintenant ! carte de crédit non requise. Parfait pour essayer l’outil.",
@@ -35,11 +35,12 @@ const tiers = [
   {
     name: "Pro",
     id: "tier-pro",
-    href: "https://cloud.aiop.fr",
+    //href: "https://cloud.aiop.fr",
+    href: "/waiting-list",
     featured: true,
     description:
-      "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié.",
-    price: "99€",
+      "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
+    price: "--€",
     mainFeatures: [
       "Toutes les fonctionnalités de la version gratuite",
       "Accès à des cookbook de tâches personnalisées",
@@ -52,14 +53,15 @@ const tiers = [
       "Usage professionnel",
       "Support dédié en plus de la communauté"
     ],
-    cta: "S’abonner",
+    //cta: "S’abonner",
+    cta: "S'inscrire à la liste d’attente"
   },
   {
     name: "Team",
     id: "tier-team",
     href: "/schedule-demo",
     featured: false,
-    price: "Démarre à 499€",
+    price: "Démarre à ---€",
     description:
       "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
     mainFeatures: [

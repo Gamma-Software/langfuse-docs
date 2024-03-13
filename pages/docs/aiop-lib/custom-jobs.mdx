@@ -1,11 +1,11 @@
 ---
-description: Custom jobs are available for every subscription plan. They allows more flexibility and customization for a playbook. It permits to run custom Python scripts in the Linting and Post-Building stages.
+description: Des tâches personnalisées sont disponibles pour chaque plan d'abonnement. Elles offrent davantage de flexibilité et de personnalisation pour un playbook. Cela permet d'exécuter des scripts Python personnalisés lors des étapes de linting et de post-construction.
 ---
 import { Callout } from "nextra-theme-docs";
 
 # Tâches personnalisées
 
-Les tâches personnalisées permettent plus de flexibilité et de personnalisation pour un playbook. Elles permettent d'exécuter des scripts Python personnalisés dans les étapes de `lint` et de `post-build`. Vous pourriez par exemple utiliser des tâches personnalisées pour :
+Les tâches personnalisées permettent plus de flexibilité et de personnalisation pour un playbook. Elles donnent la possibilité d'exécuter des scripts Python personnalisés dans les étapes de `lint` et de `post-build`. Vous pourriez par exemple utiliser des tâches personnalisées pour :
 
 - `lint`
     - Ajouter des règles spécifique de nommage comme forcer les noms des dossiers à respecter le format `snake_case`.
@@ -18,7 +18,7 @@ Les tâches personnalisées permettent plus de flexibilité et de personnalisati
 
 ## Configuration
 
-Pour ajouter une tâche personnalisée, vous devez ajouter une section `custom_jobs` dans votre [fichier de configuration](/docs/configurations/playbook#amllint_rules-et-post_scripts). Cette section peut contenir deux sous-sections `lint` et `post_build` qui contiennent les tâches personnalisées pour les étapes de `lint` et de `post-build` respectivement.
+Pour ajouter une tâche personnalisée, vous devez ajouter une section `custom_jobs` dans votre [fichier de configuration](/docs/configurations/playbook#lint_rules-et-post_scripts). Cette section peut contenir deux sous-sections `lint` et `post_build` qui contiennent les tâches personnalisées pour les étapes de `lint` et de `post-build` respectivement.
 
 ```yaml
 custom_jobs:
@@ -40,7 +40,7 @@ Le chemin relative à la racine du playbook vers le script Python qui sera exéc
 
 ## Base d'un script personnalisé
 
-Le script personnalisé doit être un fichier Python valide. Il doit contenir une classe qui hérite de la classe `Job` du module `aiop.libs.job.base`. Cela est valide à la fois pour les tâches de `lint` et de `post-build`. La classe doit implémenter la méthode `prerequisites` et `run` qui sera appelée lors de l'exécution de la tâche.
+Le script personnalisé doit être un fichier Python valide. Il est contraint de contenir une classe qui hérite de la classe `Job` du module `aiop.libs.job.base`. Cela est valide à la fois pour les tâches de `lint` et de `post-build`. La classe doit implémenter la méthode `prerequisites` et `run` qui sera appelée lors de l'exécution de la tâche.
 
 Voici la structure de base d'un script personnalisé :
 

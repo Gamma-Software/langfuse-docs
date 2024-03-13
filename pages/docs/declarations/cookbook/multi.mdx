@@ -1,6 +1,6 @@
 ---
 description: >-
-  Declarations can be compatible with multiple system target and system compatibility arguments
+  Les déclarations peuvent être compatibles avec plusieurs cibles système et arguments de compatibilité système.
 ---
 
 import { FileTree } from 'nextra/components'
@@ -8,7 +8,7 @@ import { Callout } from "nextra-theme-docs";
 
 # Compatibilité multiples
 
-Vous pouvez déclarer des resources avec différentes compatibilités pour les systèmes cible.
+Vous pouvez déclarer des ressources avec différentes compatibilités pour les systèmes cible.
 
 ## Déclaration
 
@@ -24,14 +24,14 @@ Pour déclarer des compatibilités multiples, vous ajoutez simplement une nouvel
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
         <FileTree.File name="fichier.txt" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-```yaml showLineNumbers {4-7} filename="resources/.aml"
+```yaml showLineNumbers {4-7} filename="ressources/.aml"
 - source: fichier.txt
   destination: fichier.txt
   compatibility:
@@ -41,9 +41,9 @@ Pour déclarer des compatibilités multiples, vous ajoutez simplement une nouvel
         app: [appwin]
 ```
 
-Cela évite d’avoir à déclarer la resource deux fois, une fois pour chaque système cible.
+Cela évite d’avoir à déclarer la ressource deux fois, une fois pour chaque système cible.
 
-```yaml showLineNumbers {4-5, 10-11} filename="resources/.aml"
+```yaml showLineNumbers {4-5, 10-11} filename="ressources/.aml"
 - source: fichier.txt
   destination: fichier.txt
   compatibility:

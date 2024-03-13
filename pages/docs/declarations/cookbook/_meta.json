@@ -1,8 +1,8 @@
 {
-  "local": "Resource locale",
-  "remote": "Resource distante",
+  "local": "Ressource locale",
+  "remote": "Ressource distante",
   "zip": "Archive",
-  "combine": "Combinations de resources",
+  "combine": "Combinations de ressources",
   "parse-to-pdf": "Conversion PDF",
   "multi": "Compatibilité multiple",
   "executables": "Exécutables",

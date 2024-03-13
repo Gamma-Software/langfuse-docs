@@ -1,12 +1,11 @@
 ---
 description: >-
-  Package Resources can be combined to create a new resource in runtime. Thus
-  creating a new resource that is a combination of the original resources.
+  Les ressources peuvent être combinées pour créer une nouvelle ressource en temps d'exécution. Ainsi, on crée une nouvelle ressource qui est une combinaison des ressources originales.
 ---
 import { FileTree } from 'nextra/components'
 import { Callout } from "nextra-theme-docs";
 
-# Combiner des resources
+# Combiner des ressources
 
 Vous pouvez générer des fichiers quelconques ou des fichiers de paramètres à partir de plusieurs fichiers de ressources. Cela peut être utile pour le paramétrage de vos applications en fonction des compatibilités de vos cibles.
 
@@ -24,7 +23,7 @@ Commençons par le plus simple avec la combinaison de textes. Pour combiner les 
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
         <FileTree.File name="param1.txt" />
         <FileTree.File name="param2.txt" />
@@ -34,7 +33,7 @@ Commençons par le plus simple avec la combinaison de textes. Pour combiner les 
 </FileTree>
 
 
-```yaml showLineNumbers {1} filename="resources/.aml"
+```yaml showLineNumbers {1} filename="ressources/.aml"
 - source: param1.txt | param2.txt | param3.txt
   destination: param.txt
   compatibility:

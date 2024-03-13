@@ -19,7 +19,7 @@ const withNextra = nextra({
 // next config
 const nextraConfig = withNextra({
   experimental: {
-    scrollRestoration: true,
+    scrollRestoration: false,
   },
   transpilePackages: [
     'react-tweet',

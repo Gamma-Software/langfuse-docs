@@ -77,6 +77,11 @@
       }
     }
   },
+  "waiting-list": {
+    "title": "Liste d’attente",
+    "type": "page",
+    "display": "hidden"
+  },
   "careers": {
     "title": "Carrière",
     "type": "page",

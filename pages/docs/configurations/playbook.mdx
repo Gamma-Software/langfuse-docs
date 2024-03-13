@@ -1,5 +1,5 @@
 ---
-description: Aiop provides an extensive configuration file to customize the behavior of the application for the playbook.
+description: Aiop fournit un fichier de configuration étendu pour personnaliser le comportement de l'application pour le playbook.
 ---
 import { Callout } from "nextra-theme-docs";
 
@@ -9,7 +9,7 @@ Le playbook doit être configuré pour répondre à votre besoin. Le fichier de 
 - Unix: `<racine_playbook>/.aiop/playbook.yaml`
 - Windows: `<racine_playbook>\.aiop\playbook.yaml`
 
-Le playbook doit également contenir un fichier de configuration de l’inventaire qui répertorie les systèmes cibles et ces caractéristiques. Le fichier de configuration d'inventaire est situé dans le répertoire relatif au playbook:
+Le playbook doit également contenir un fichier de configuration de l’inventaire qui répertorie les systèmes cible et ces caractéristiques. Le fichier de configuration d'inventaire est situé dans le répertoire relatif au playbook:
 - Unix: `<racine_playbook>/.aiop/inventory.yaml`
 - Windows: `<racine_playbook>\.aiop\inventory.yaml` et `<racine_playbook>\.aiop\inventory_config.yml`
 
@@ -23,23 +23,23 @@ Le playbook doit également contenir un fichier de configuration de l’inventai
   Les plugins peuvent également apporter des options de configuration supplémentaires. Veuillez consulter la documentation du plugin pour plus d'informations. [Contactez](mailto:valentin.rudloff.perso@gmail.com) le support technique pour toute question.
 </Callout>
 
-Le fichier de configurartion est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser le playbook.
+Le fichier de configuration est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser le playbook.
 
 ## Structure du fichier de configuration
 
-Ce fichier de configuration est spécifique à votre playbook. Il contient des informations sur les plugins, les dépots distants, les règles de validation et post-build personalisées et d’autres options de personnalisation qui pourrait venir de plugins.
+Ce fichier de configuration est spécifique à votre playbook. Il contient des informations sur les plugins, les dépôts distants, les règles de validation et post-build personalisées et d’autres options de personnalisation qui pourrait venir de plugins.
 
 ```yaml filename=".aiop/playbook.yml"
 plugins:
   - name: {nom du plugin}
     version: {version du plugin}
 repositories:
-  - name: {nom du dépot}
+  - name: {nom du dépôt}
     instance: {nom de l'instance}
-    type: {type du dépot}
-    base_url: {base de l’url du dépot}
-    repository_regex: {regex pour filtrer les dépots}
-amllint_rules:
+    type: {type du dépôt}
+    base_url: {base de l’url du dépôt}
+    repository_regex: {regex pour filtrer les dépôts}
+lint_rules:
   - classname: {nom de la classe de la règle à exécuter à la validation}
     path: {chemin relatif vers le script}
 post_scripts:
@@ -50,54 +50,54 @@ post_scripts:
 ## Personalisation
 
 
-Pour personnaliser , il suffit d’ouvrir et de modifier le fichier de configuration.
+Pour personnaliser, il suffit d’ouvrir et de modifier le fichier de configuration.
 
 | **Nom** | **Type** | **Description** | **Valeurs possibles** |
 | :--- | :--- | :--- | :--- |
 | [`plugins`](#plugins) | `list` | Liste des plugins à utiliser pour le playbook. | `name` : Nom du plugin. <br/>`version` : Version du plugin. |
 | [`plugins.name`](#plugins) | `str` | Nom du plugin |  |
 | [`plugins.version`](#plugins) | `str` | Version du plugin |
-| [`repositories`](#repositories) | `list` | Liste des dépots distants à utiliser pour le playbook. | `name` : Nom du dépot. <br/>`instance` : Nom de l'instance. <br/>`type` : Type du dépot. <br/>`base_url` : Base de l’url du dépot. <br/>`repository_regex` : Regex pour filtrer les dépots. |
-| [`repositories.name`](#repositories)  | `str` | Nom du dépot |
+| [`repositories`](#repositories) | `list` | Liste des dépôts distants à utiliser pour le playbook. | `name` : Nom du dépôt. <br/>`instance` : Nom de l'instance. <br/>`type` : Type du dépôt. <br/>`base_url` : Base de l’url du dépôt. <br/>`repository_regex` : Regex pour filtrer les dépôts. |
+| [`repositories.name`](#repositories)  | `str` | Nom du dépôt |
 | [`repositories.instance`](#repositories)  | `str` | Nom de l'instance |
-| [`repositories.type`](#repositories)  | `str` | Type du dépot |
-| [`repositories.base_url`](#repositories)  | `str` | Base de l’url du dépot |
-| [`repositories.repository_regex`](#repositories)  | `str` | Regex pour filtrer les dépots |
-| [`amllint_rules`](#amllint_rules-et-post_scripts) | `list` | Liste des règles de validation à exécuter. | `classname` : Nom de la classe de la règle à exécuter à la validation. <br/>`path` : Chemin relatif vers le script. |
-| [`amllint_rules.classname`](#amllint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter à la validation. | |
-| [`amllint_rules.path`](#amllint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
-| [`post_scripts`](#amllint_rules-et-post_scripts) | `list` | Liste des scripts à exécuter après le build. | `classname` : Nom de la classe de la règle à exécuter après le build. <br/>`path` : Chemin relatif vers le script. |
-| [`post_scripts.classname`](#amllint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter après le build. | |
-| [`post_scripts.path`](#amllint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
+| [`repositories.type`](#repositories)  | `str` | Type du dépôt |
+| [`repositories.base_url`](#repositories)  | `str` | Base de l’url du dépôt |
+| [`repositories.repository_regex`](#repositories)  | `str` | Regex pour filtrer les dépôts |
+| [`lint_rules`](#lint_rules-et-post_scripts) | `list` | Liste des règles de validation à exécuter. | `classname` : Nom de la classe de la règle à exécuter à la validation. <br/>`path` : Chemin relatif vers le script. |
+| [`lint_rules.classname`](#lint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter à la validation. | |
+| [`lint_rules.path`](#lint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
+| [`post_scripts`](#lint_rules-et-post_scripts) | `list` | Liste des scripts à exécuter après le build. | `classname` : Nom de la classe de la règle à exécuter après le build. <br/>`path` : Chemin relatif vers le script. |
+| [`post_scripts.classname`](#lint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter après le build. | |
+| [`post_scripts.path`](#lint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
 
 Tous ces champs sont optionnels.
 
 <Callout type="info" emoji="ℹ️">
-  Dans le cas où vous n’avez ni de plugins, ni de dépots distants, ni de règles de validation, ni de scripts post-build, vous pouvez supprimer les sections correspondantes **mais vous devez tout de même mettre un fichier vide**.
+  Dans le cas où vous n’auriez ni de plugins, ni de dépôts distants, ni de règles de validation, ni de scripts post-build, vous pouvez supprimer les sections correspondantes **mais vous devez tout de même mettre un fichier vide**.
 </Callout>
 
 ### `plugins`
 
-La section `plugins` est une liste de plugins à utiliser pour le playbook. Chaque plugin doit avoir un nom et une version. Vous n’êtes pas limité en nombre de plugins.
+La section `plugins` est une liste de plugins à utiliser pour le playbook. Chaque plugin doit avoir un nom et une version. Vous êtes illimité en nombre de plugins.
 
 ### `repositories`
 
 
-La section `repositories` est une liste de dépots distants à utiliser pour le playbook. Vous n’êtes pas limité en nombre de dépots. Chaque dépot doit avoir un nom, une instance, un type, une base de l’url et une regex. Voici une explication de chaque champ:
+La section `repositories` est une liste de dépôts distants à utiliser pour le playbook. Vous n’êtes pas limité en nombre de dépôts. Chaque dépôt doit avoir un nom, une instance, un type, une base de l’url et une regex. Voici une explication de chaque champ:
 
-- **`name`:** Le nom du dépot. Ce nom est utilisé pour identifier le dépot dans les déclarations.
+- **`name`:** Le nom du dépôt. Ce nom est utilisé pour identifier le dépôt dans les déclarations.
 
-- **`instance`:** Le nom de l’instance correspond au paramètre dans le fichier de [configuration utilisateur](/docs/configurations/user). C’est l’instance d’un dépot distant que le playbook va utiliser.
+- **`instance`:** Le nom de l’instance correspond au paramètre dans le fichier de [configuration utilisateur](/docs/configurations/user). C’est l’instance d’un dépôt distant que le playbook va utiliser.
 
 - **`type`:** Le type peut aujourd’hui être `artifactory` ou `nexus`.
 
-- **`base_url`** l’url de base du dépot. Par exemple, pour un dépot artifactory, l’url de base est `https://artifactory.mon-entreprise.com/artifactory/`.
+- **`base_url`** l’url de base du dépôt. Par exemple, pour un dépôt artifactory, l’url de base est `https://artifactory.mon-entreprise.com/artifactory/`.
 
-- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la resource distante est correcte et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la resource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#amllint_rules-et-post_scripts).
+- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la ressource distante est correct et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la ressource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#lint_rules-et-post_scripts).
 
-### `amllint_rules` et `post_scripts`
+### `lint_rules` et `post_scripts`
 
-La section `amllint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
+La section `lint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
 
 
 ## Exemple de configuration
@@ -119,7 +119,7 @@ repositories:
     type: artifactory
     base_url: https://artifactory.tesla.com/artifactory/qa/
     repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
-amllint_rules:
+lint_rules:
   - classname: SnakeCaseRule
     path: .aiop/rules/snake_case_rule.py
 post_scripts:
@@ -157,10 +157,10 @@ repositories:
     repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
 ```
 
-Il y a deux dépots distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les resources de production et `dev` celle de développement. Il s’agit du même dépot distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la resource, sa version et son nom.
+Il y a deux dépôts distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les ressources de production et `dev` celle de développement. Il s’agit du même dépôt distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la ressource, sa version et son nom.
 
 ```yaml
-amllint_rules:
+lint_rules:
   - classname: SnakeCaseRule
     path: .aiop/rules/snake_case_rule.py
 ```

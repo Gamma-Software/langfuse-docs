@@ -26,7 +26,7 @@ export const projects = [
   {
     title: "Contrôle qualité",
     description:
-      "Faites en sorte de ne plus avoir de surprises lors de la génération de vos packages. Aiop vous permet de valider vos resources avant de les générer.",
+      "Faites en sorte de ne plus avoir de surprises lors de la génération de vos packages. Aiop vous permet de valider vos ressources avant de les générer.",
   },
   {
     title: "Versionning",

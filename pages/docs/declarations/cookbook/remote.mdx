@@ -1,13 +1,13 @@
 ---
 description: >-
-  Remote resources can fetched from different artifact registry.
+  Les ressources distantes peuvent être récupérées à partir de différents registres d'artefacts.
 ---
 import { FileTree } from 'nextra/components'
 import { Callout } from "nextra-theme-docs";
 
-# Resources à distance
+# Ressources à distance
 
-Aiop permet de récupérer des ressources à distance depuis différents registres d'artefacts (ou dépôt). C'est une fonctionnalité très utile pour récupérer des ressources depuis une diversité de servers distants. Pour le moment, les dépôt suivants sont supportés :
+Aiop permet de récupérer des ressources à distance depuis différents registres d'artefacts (ou dépôt). C'est une fonctionnalité très utile pour récupérer des ressources depuis une diversité de servers distants. Pour le moment, les dépôts suivants sont supportés :
 
 - [Artifactory](#artifactory)
 - [Nexus](#nexus)
@@ -16,7 +16,7 @@ Aiop permet de récupérer des ressources à distance depuis différents registr
 Il reste encore d'autres dépôt à supporter. Si vous avez un besoin spécifique, n'hésitez pas à nous contacter.
 </Callout>
 
-Vous pouvez récupérer n’importe quel type de resource.
+Vous pouvez récupérer n’importe quel type de ressource.
 
 ## Prérequis de Paramétrages
 
@@ -24,7 +24,7 @@ Il faut que l'accès au servers distants et surtout le paramétrage de Aiop soie
 
 ### Configuration Playbook
 
-Prenons l'exemple de fichier de configuration du playbook suivante. Concentrons nous sur les deux premiers élements de la liste de `repositories`:
+Prenons l'exemple de fichier de configuration du playbook suivante. Concentrons-nous sur les deux premiers éléments de la liste de `repositories`:
 
 ```yaml {3-12} filename="~/.aiop/config.yaml"
 ...
@@ -109,17 +109,17 @@ Les configurations ont été définies précédemment. Nous sommes maintenant en
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
 <Callout type="info" emoji="ℹ️">
-Vous constaterez qu’il n’y a pas de resource en local dans le dossier `resources` car tout est à distance sur le serveur.
+Vous constaterez qu’il n’y a pas de ressource en local dans le dossier `ressources` car tout est à distance sur le serveur.
 </Callout>
 
-```yaml {1, 6} filename="resources/.aml" /<artifactory-release>/ /<artifactory-develop>/
+```yaml {1, 6} filename="ressources/.aml" /<artifactory-release>/ /<artifactory-develop>/
 - source: <artifactory-release>my-app/1.0/fichier
   destination: fichier
   compatibility:
@@ -154,13 +154,13 @@ Les paramétrages ont été fait plus haut, nous pouvons maintenant récupérer 
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-```yaml {1} filename="resources/.aml" /<nexus-develop>/
+```yaml {1} filename="ressources/.aml" /<nexus-develop>/
 - source: <nexus-develop>my-app-from-nexus/1.0-dev/fichier
   destination: fichier
   compatibility:
@@ -171,4 +171,4 @@ Dans ce cas, le fichier `fichier` sera récupéré depuis le dépôt `nexus-deve
 
 ## Caching et vérifications
 
-Sachez que les resources distantes sont stockées dans le cache local pour éviter de les récupérer à chaque génération de package ([En savoir plus sur le caching](/docs/caching)). En revanche elles sont vérifiée à chaque génération de package pour garantir que la resources est à jour par rapport à la dernière version disponible sur le serveur distant ([En savoir plus sur la vérification](/docs/cli/build)).
+Sachez que les ressources distantes sont stockées dans le cache local pour éviter de les récupérer à chaque génération de package ([En savoir plus sur le caching](/docs/caching)). En revanche, elles sont vérifiées à chaque génération de packages pour garantir que la ressources est à jour par rapport à la dernière version disponible sur le serveur distant ([En savoir plus sur la vérification](/docs/cli/build)).
