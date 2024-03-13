@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Form,
   FormControl,
@@ -69,11 +70,17 @@ export function ProductWaitingList(props: {
             description={
               <>
                 Pour le moment Aiop est en version Bêta. Pour souscrire à la version Pro veuillez vous inscrire à la liste d’attente en indiquant votre email.
+                <br />
+                <br />
+                Vous pouvez tout de même commencer à utiliser Aiop gratuitement en cliquant sur le bouton ci-dessous.
               </>
             }
             className="mb-8"
             h="h1"
           />
+          <Button size="lg" asChild>
+            <Link href="/docs/get-started">Démarrer</Link>
+          </Button>
           <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
             <FormField
