@@ -52,7 +52,6 @@ export function ProductWaitingList(props: {
         "Content-Type": "application/json",
       },
     });
-
     if (!res.ok) {
       alert("Uh oh! Quelque chose s’est mal passé. Reessayez ou contacter nous directement par email: valentin.rudloff.perso@gmail.com");
     } else {
