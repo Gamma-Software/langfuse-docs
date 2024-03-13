@@ -2,27 +2,6 @@
 description: Les dernières mises à jours et livraisons de l’équipe Leapteach qui construit Aiop.
 ---
 
-import { BlogIndex } from "@/components/blog/BlogIndex";
-import { Header } from "@/components/Header";
-import { ProductUpdateSignup } from "@/components/productUpdateSignup";
-import Link from "next/link";
+import { ProductWaitingList } from "@/components/productWaitingList";
 
-<div className="md:container">
-  <div className="flex flex-col items-center content-center text-center my-10">
-    <Header
-      title="Liste d’attente"
-      description={
-        <>
-          Pour le moment Aiop est en version Bêta. Pour souscrire à la version Pro veuillez vous inscrire à la liste d’attente en indiquant votre email.
-        </>
-      }
-      className="mb-8"
-      h="h1"
-    />
-    <img src="https://media.giphy.com/media/fmZIpmxS5k0ksODwoZ/giphy.gif" alt="Charlie Chaplin waiting" />
-    <div className="mt-8">
-      <ProductUpdateSignup source="blog" />
-    </div>
-  </div>
-  <BlogIndex />
-</div>
+<ProductWaitingList source="waiting-list" />

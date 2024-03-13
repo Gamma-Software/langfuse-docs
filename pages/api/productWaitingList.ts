@@ -16,11 +16,11 @@ export default async function handler(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { email, source } = body;
+  const { email, job, message, source } = body;
 
   try {
     const [slackResponse, loopsResponse] = await Promise.all([
-      fetch(process.env.SLACK_WEBHOOK_URL, {
+      fetch(process.env.SLACK_WEBHOOK_WAITING_LIST, {
         method: "POST",
         body: JSON.stringify({ text: JSON.stringify(body, null, 2) }),
         headers: {
@@ -31,6 +31,8 @@ export default async function handler(req: NextRequest) {
         method: "POST",
         body: JSON.stringify({
           email,
+          job,
+          message,
           source,
           receiveProductUpdates: true,
         }),
