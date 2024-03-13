@@ -22,7 +22,7 @@ export default async function handler(req: NextRequest) {
     const slackResponse = await fetch(process.env.SLACK_WEBHOOK_FEEDBACK_URL, {
       method: "POST",
       body: JSON.stringify({
-        rawBody: JSON.stringify(
+        text: JSON.stringify(
           {
             type: "docs-feedback",
             ...body,

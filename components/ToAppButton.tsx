@@ -30,10 +30,12 @@ export const ToAppButton = () => {
     <Button size="xs" asChild className="whitespace-nowrap w-[70px]">
       <Link
         href={
-          signedIn === "US"
-            ? "https://us.cloud.aiop.fr"
-            //: "https://cloud.aiop.fr"
-            : "/sign-up"
+          //signedIn === "US"
+          //  ? "https://us.cloud.aiop.fr"
+          //  //: "https://cloud.aiop.fr"
+          //  //: "/sign-up"
+          //  : "/waiting-list"
+          "/waiting-list"
         }
       >
         {signedIn ? "Compte" : "S’incrire"}
