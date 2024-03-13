@@ -9,7 +9,7 @@ La sélection des déclaration est un mécanisme qui permet de filtrer les décl
 
 ## Système cible
 
-Les systèmes cibles compatibles avec le playbook est difini par le fichier `.aiop/inventory.yml`. L’utilisateur final indique ensuite le système cible pour lequel il souhaite générer le playbook. Le système cible sera pris en compte pour filtrer les déclarations.
+Les systèmes cible compatibles avec le playbook sont définis par le fichier `.aiop/inventory.yml`. L’utilisateur final indique ensuite le système cible pour lequel il souhaite générer le playbook. Le système cible sera pris en compte pour filtrer les déclarations.
 
 ### Exemple
 
@@ -23,7 +23,7 @@ Ou encore:
 - `sedan/modelS/phase1`
 
 <Callout type="warning" emoji="⚠️">
- Vous devez séparer les éléments de votre système cible par des slash `/` et respecter l’ordre définit dans le [fichier de configuration de l’inventaire](/docs/configurations/inventory#exemple-de-configuration).
+ Vous devez séparer les éléments de votre système cible par des slash `/` et respecter l’ordre défini dans le [fichier de configuration de l’inventaire](/docs/configurations/inventory#exemple-de-configuration).
 </Callout>
 
 ## Compatibilité
@@ -33,7 +33,7 @@ Reprenons l’exemple de la société Tesla avec le système cible `truck/cybert
 
 ### Système compatible
 
-Vous pouvez déclarer que la déclaration est compatible avec un système spécifique. Mais aussi avec une gamme de modèles ou avec tous les modèles d'une architecture. Dans ce cas, tous les models de la gamme `model_range1` de l’architecture `archi1` sont compatibles avec la déclaration. Ici nous déclarons le binaire d'un logiciel de monitoring de couple de remorquage compatible compatible avec le système `truck/cybertruck/phase1`:
+Vous pouvez déclarer que la déclaration est compatible avec un système spécifique. Mais aussi avec une gamme de modèles ou avec tous les modèles d'une architecture. Dans ce cas, tous les modèles de la gamme `model_range1` de l’architecture `archi1` sont compatibles avec la déclaration. Ici nous déclarons le binaire d'un logiciel de monitoring de couple de remorquage compatible avec le système `truck/cybertruck/phase1`:
 
 ```yaml {4}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -66,7 +66,7 @@ Enfin vous pouvez indiquer que la déclaration est compatible avec tous les syst
         envs: [dev, test]
 ```
 
-Vous constaterez que les champ `compatibility` attend un liste de combinaison système/paramètres compatibles. Il est donc possible de déclarer pour une ressource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la ressource est compatible avec 2 phases de développement spécifiquement (`phase1`et `phase2`):
+Vous constaterez que les champ `compatibility` attend une liste de combinaisons système/paramètres compatibles. Il est donc possible de déclarer pour une ressource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la ressource est compatible avec 2 phases de développement spécifiquement (`phase1`et `phase2`):
 
 ```yaml {4-12}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -82,7 +82,7 @@ Vous constaterez que les champ `compatibility` attend un liste de combinaison sy
 
 ### Paramètres de compatibilité
 
-Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiquer les fonctionalités et les environnements compatibles avec la déclaration. Concentrons nous sur le paramètre `envs` pour l'instant.
+Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiquer les fonctionnalités et les environnements compatibles avec la déclaration. Concentrons-nous sur le paramètre `envs` pour l'instant.
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -93,7 +93,7 @@ Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiqu
         envs: [dev, test]
 ```
 
-Pour rappel les valeurs autorisée de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la ressource est uniquement compatible avec l’environnement `test`:
+Pour rappel les valeurs autorisées de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la ressource est uniquement compatible avec l’environnement `test`:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -137,4 +137,4 @@ Ou encore avec la valeur `all` pour indiquer que la ressource est compatible ave
         envs: [all]
 ```
 
-Il n'y a pas d'ordre dans la liste de valeurs d'`envs`. Cependant, il est recommandé de les organiser de manière logique par rapport aux autres déclaration pour faciliter la lecture et la maintenance.
+Il n'y a pas d'ordre dans la liste de valeurs d'`envs`. Cependant, il est recommandé de les organiser de manière logique par rapport à l'autre déclaration pour faciliter la lecture et la maintenance.

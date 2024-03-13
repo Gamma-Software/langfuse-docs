@@ -1,15 +1,15 @@
 ---
-description: Declaration may be conflicting each other at filtering depending on the target system. Aiop provides usefull hints.
+description: Les déclarations peuvent entrer en conflit lors du filtrage en fonction du système cible. Aiop fournit des indications utiles.
 ---
 import { Callout } from "nextra-theme-docs";
 
 # Conflits de déclarations
 
-Les conflits de déclarations sont des situations où deux déclarations (ou plus) sont en conflit. Pour les personnes débutantes, résoudre ces situations peut s'avérer complexe, mais avec l'expérience, cela devient plus accessible. Pour vous aider à les résoudre, il est **important** de comprendre le fonctionnement de la sélection des déclarations (consultez [Sélection des déclarations](/docs/declarations/selection)). Tout d'abord, examinons un exemple de conflit, puis nous verrons comment le résoudre.
+Les conflits de déclarations sont des situations où deux déclarations (ou plus) sont en conflit. Pour les personnes débutantes, résoudre ces situations peut s'avérer complexe, mais avec l'expérience, cela devient plus accessible. Pour vous aider pour les résoudre, il est **important** de comprendre le fonctionnement de la sélection des déclarations (consultez [Sélection des déclarations](/docs/declarations/selection)). Tout d'abord, examinons un exemple de conflit, puis nous verrons comment le résoudre.
 
 ## Exemple de conflits
 
-Reprenons l'exemple de la société Tesla. Imaginons que nous ayons deux déclarations en conflit pour la société Tesla. Pour rappel, cela se produit car les deux déclarations sont en concurrence pour la même cible et la même destination.
+Reprenons l'exemple de la société Tesla. Imaginons que nous ayons deux déclarations en conflit pour la société Tesla. Pour rappel, cela se produit, car les deux déclarations sont en concurrence pour la même cible et la même destination.
 
 Voici la première déclaration :
 
@@ -39,7 +39,7 @@ Vous pouvez voir que les deux déclarations sont en conflit car elles ont la **m
 
 > **Méthode pour résoudre le conflit**
 >
-> 1. Le premier réflexe est d'isoler les deux déclarations et les comparer.
+> 1. Le premier réflexe est d'isoler les deux déclarations et de les comparer.
 > 2. Puis tentez de comprendre le but de chacune des déclarations.
 > 3. Enfin, décidez de la suppression, de la modification ou de la fusion des déclarations.
 
@@ -82,7 +82,7 @@ Ainsi les deux déclarations ne sont plus en conflit et d'après la cible de gé
 
 Il existe plusieurs raisons pour lesquelles les conflits de déclarations se produisent. Voici quelques-unes des raisons les plus courantes:
 
-1. **Déclarations mal conçues**: Les déclarations peuvent être mal conçues, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal conçues si elles ne sont pas compatibles avec la cible ou si elles ont des destinations incorrectes.
+1. **Déclarations mal conçues**: Les déclarations peuvent être mal conçues, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal conçues si elles sont incompatibles avec la cible ou si elles ont des destinations incorrectes.
 2. **Déclarations mal documentées**: Les déclarations peuvent être mal documentées, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal documentées si elles ne sont pas claires sur leur but ou leur contenu.
 3. **Merges incorrects**: Les conflits peuvent également se produire si les merges sont incorrects. Il peut arriver qu'un merge de branche entraîne un conflit. Par exemple, un développeur à ajouté une déclaration pour une nouvelle fonctionnalité mais un merge précédent avait également ajouté cette déclaration. Dans ce cas à la suite de ce nouveau merge, les deux déclarations seront en conflit.
 

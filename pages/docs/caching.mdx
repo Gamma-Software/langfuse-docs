@@ -1,6 +1,6 @@
 ---
 description: >-
-  Aiop has a cache system to avoid fetching again remote resources to speed up build time.
+  Aiop possède un système de cache pour éviter de recharger à nouveau les ressources distantes pour accélérer le temps de construction.
 ---
 # Système de mise en cache : Accélérez la construction du package
 
@@ -12,9 +12,9 @@ Le principe fondamental du système de cache d'Aiop est simple mais puissant : p
 
 Pour s’assurer que la ressource du cache est à jour Aiop vérifie si la ressource distante a été modifiée via le hachage ([En savoir plus sur le hachage](https://www.cnil.fr/fr/securite-chiffrer-garantir-lintegrite-ou-signer)). Si c'est le cas, Aiop télécharge la nouvelle version et met à jour le cache.
 
-À chaque fois qu’une ressource est récupérée du serveur distant, il compare le hachage de la ressource distante avec le hachage de la ressource en cache pour garantir l’intégrité de la ressource. Sinon il la retélécharge ou remonte au erreur après plusieurs tentatives. Le nombre de tentatives est configurable ([En savoir plus sur la configuration](/docs/configurations/user#structure-du-fichier-de-configuration)).
+À chaque fois qu’une ressource est récupérée du serveur distant, il compare le hachage de la ressource distante avec le hachage de la ressource en cache pour garantir l’intégrité de la ressource. Sinon il la télécharge de nouveau ou remonte au erreur après plusieurs tentatives. Le nombre de tentatives est configurable ([En savoir plus sur la configuration](/docs/configurations/user#structure-du-fichier-de-configuration)).
 
-Ce système est particulièrement utile pour les ressources qui sont fréquemment utilisées ou qui ont peu de chances de changer fréquemment. En stockant ces ressources localement, Aiop peut accélérer considérablement le processus de construction, en évitant les temps d'attente inutiles et en optimisant l'utilisation des ressources disponibles.
+Ce système est particulièrement utile pour les ressources sont fréquemment utilisées ou qui ont peu de chances de changer fréquemment. En stockant ces ressources localement, Aiop peut accélérer considérablement le processus de construction, en évitant les temps d'attente inutiles et en optimisant l'utilisation des ressources disponibles.
 
 ## Supprimer le Cache
 

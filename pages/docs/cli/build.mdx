@@ -1,15 +1,15 @@
 ---
-description: The build command is used to build a package based on user system target and properties.
+description: La commande de construction est utilisée pour construire un package en fonction de la cible système et des propriétés de l'utilisateur.
 ---
 
 # Commande `build`
 
-La commande de `build` permet de construire un package basé sur la cible système de l'utilisateur et ses propriétés. Il y a aussi des options que nous allons détailler.
+La commande de `build` permet de construire un package basé sur la cible système de l'utilisateur et ses propriétés. Il y a également des options que nous allons détailler.
 
 ```bash
 aiop build {system_target} {params}
 ```
-> `system_target` : La cible système pour laquelle générer le package
+> `system_target` : Le système cible pour laquelle générer le package
 
 > `params` : Les paramètres de compatibilité de la cible système. Ces paramètres obligatoires seront différents selon le playbook et ses configurations car il est défini par le fichier de configuration `.aiop/inventory_config.yml` dans le champ `compatibility` ([En savoir plus](/docs/configurations/inventory)).
 
@@ -52,7 +52,7 @@ options:
 | --- | --- | --- |
 | `destination_path` | Chemin de destination du package | a la racine du chemin du playbook dans le dossier `.build` |
 | `force` | Supprimer le dossier du chemin `destination_path` peut importe ce qu'il contient | `False`: Ne forcera pas la création |
-| `no_caching` | Ne pas utiliser le cache pour récupérer les resources distantes déjà téléchargées | `False`: Les resources distantes sont copiés depuis le cache, si elles existent |
+| `no_caching` | Ne pas utiliser le cache pour récupérer les ressources distantes déjà téléchargées | `False`: Les ressources distantes sont copiés depuis le cache, si elles existent |
 | `no_verify` | Ne pas vérifier l'intégrité de la ressource distante| `False`: Vérifie l'intégrité de l'artifact |
 | `retries` | Nombre de tentatives de téléchargement d'un artifact. Surcharge la configuration utilisateur | 3 |
 | `zip_pack` | Zip le package généré | `False`: Ne le zip pas |

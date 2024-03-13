@@ -21,7 +21,7 @@ Voici un exemple de structure d’un `playbook`:
         <FileTree.File name="inventory.yml" />
         <FileTree.File name="playbook.yml" />
     </FileTree.Folder>
-    <FileTree.Folder name="resources" defaultOpen>
+    <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.Folder name="locales" defaultOpen>
             <FileTree.File name="resource_locale_1.txt" />
             <FileTree.File name="resource_locale_2.md" />
@@ -56,9 +56,9 @@ Ce dossier contient les fichiers de configuration du playbook. Il est obligatoir
 - `inventory.yml`: Fichier de l’inventaire. [En savoir plus](/docs/configurations/playbook#inventaire).
 - `playbook.yml`: Fichier de configuration du playbook. [En savoir plus](/docs/configurations/playbook#base).
 
-### Le dossier `resources`
+### Le dossier `ressources`
 
-Pour cet exemple, le dossier nommé `resources` contient les ressources du playbook. Il est bien sur optionnel et vous pouvez le nommer comme vous le souhaitez. Il contient un dossier `locales` avec deux fichiers avec l’extension `.aml`. Le dossier `locales` contient deux resources locales.
+Pour cet exemple, le dossier nommé `ressources` contient les ressources du playbook. Il est bien sur optionnel et vous pouvez le nommer comme vous le souhaitez. Il contient un dossier `locales` avec deux fichiers avec l’extension `.aml`. Le dossier `locales` contient deux ressources locales.
 
 ### Le dossier `custom_jobs`
 
@@ -71,7 +71,7 @@ Ce dossier est optionnel et contient des scripts python qui peuvent être utilis
 ### Le fichier `.aml`
 
 
-Le fichier [`.aml`](/docs/vocabulary#aml) constitue le point d'entrée des ressources envoyées à Aiop. L'outil lit ce fichier pour interpréter les resources et construire les packages associés. Bien qu'optionnel, ce fichier peut être placé n'importe où dans le playbook mais si Aiop ne trouve aucun fichier `.aml` dans le projet ou ses sous-dossiers, aucune génération de package ne sera lancée.
+Le fichier [`.aml`](/docs/vocabulary#aml) constitue le point d'entrée des ressources envoyées à Aiop. L'outil lit ce fichier pour interpréter les ressources et construire les packages associés. Bien qu'optionnel, ce fichier peut être placé n'importe où dans le playbook mais si Aiop ne trouve aucun fichier `.aml` dans le projet ou ses sous-dossiers, aucune génération de package ne sera lancée.
 
 ### Le fichier `.amlignore`
 
