@@ -63,8 +63,9 @@ export default async function handler(request: NextRequest) {
             <span style={{ fontWeight: 800 }}>
               Aiop
               <span style={{ marginLeft: 10, fontWeight: 400 }}>
-                – Package generation toolbelt
+                – Boîte à outils de génération de packages
               </span>
+              {/* Package generation toolbelt */}
             </span>
           </div>
         ) : null}
