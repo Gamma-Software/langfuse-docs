@@ -45,7 +45,7 @@ Vous pouvez voir que les deux déclarations sont en conflit car elles ont la **m
 
 Pour résoudre ce cas, voici le raisonnement:
 
-1. Nous isolons les deux déclarations et constatons les différences. Nous observons que dans la première déclaration la resource est plus spécifique que dans la deuxième déclaration car elle est liée à la phase 1 du Cybertruck. La deuxième déclaration est plus générale car elle est liée à toutes les phases de développement du Cybertruck.
+1. Nous isolons les deux déclarations et constatons les différences. Nous observons que dans la première déclaration la ressource est plus spécifique que dans la deuxième déclaration car elle est liée à la phase 1 du Cybertruck. La deuxième déclaration est plus générale car elle est liée à toutes les phases de développement du Cybertruck.
 2. Les deux déclarations souhaites ajouter au package un fichier de paramètre pour le Cybertruck pour la fonction de remorquage et l'environnement de développement. Nous pouvons remarquer que la deuxième déclaration est certe plus générale  mais la source semble indiquer que le paramètre est compatible avec l'environnement de test uniquement. Cela peut être une erreur de l'auteur de la déclaration. Nous devons donc vérifier la source (et surtout en discuter avec l'auteur de la source) pour confirmer cette hypothèse.
 3. Nous pouvons donc décider de modifier les deux déclarations pour que dans la première l'environnement soit `dev` et le deuxième soit `test`.
 

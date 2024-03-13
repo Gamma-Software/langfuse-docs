@@ -93,7 +93,7 @@ La section `repositories` est une liste de dépots distants à utiliser pour le 
 
 - **`base_url`** l’url de base du dépot. Par exemple, pour un dépot artifactory, l’url de base est `https://artifactory.mon-entreprise.com/artifactory/`.
 
-- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la resource distante est correcte et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la resource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#lint_rules-et-post_scripts).
+- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la ressource distante est correcte et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la ressource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#lint_rules-et-post_scripts).
 
 ### `lint_rules` et `post_scripts`
 
@@ -157,7 +157,7 @@ repositories:
     repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
 ```
 
-Il y a deux dépots distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les resources de production et `dev` celle de développement. Il s’agit du même dépot distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la resource, sa version et son nom.
+Il y a deux dépots distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les resources de production et `dev` celle de développement. Il s’agit du même dépot distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la ressource, sa version et son nom.
 
 ```yaml
 lint_rules:

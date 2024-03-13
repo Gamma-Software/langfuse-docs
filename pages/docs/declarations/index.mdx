@@ -4,7 +4,7 @@ description: AML file declaration are the fundation of Aiop.
 
 # Aperçu
 
-**Les déclarations sont les éléments de base de Aiop**. Elles sont utilisées pour déclarer une resource quelquonque. Après avoir [configuré le playbook](/docs/configurations/playbook) et l’[inventaire](/docs/configurations/inventory) vous pouvez commencer à écrire des déclarations pour déclarer des ressources. Voyons comment cela fonctionne en détail.
+**Les déclarations sont les éléments de base de Aiop**. Elles sont utilisées pour déclarer une ressource quelquonque. Après avoir [configuré le playbook](/docs/configurations/playbook) et l’[inventaire](/docs/configurations/inventory) vous pouvez commencer à écrire des déclarations pour déclarer des ressources. Voyons comment cela fonctionne en détail.
 
 ## Déclarations
 
@@ -15,7 +15,7 @@ Une déclaration est un fichier `.aml` qui contient une ou plusieurs déclaratio
 Avant de rentrer dans les détails dans les prochains chapitres, voici la base d’une déclaration (les champs obligatoires) que nous détaillons ensuite.
 
 ```yaml
-- source: {resource à récupérer localement ou à distance}
+- source: {ressource à récupérer localement ou à distance}
   destination: {destination d'artefact dans le package}
   compatibility:
     - archi1/model_range1/model1:
@@ -26,7 +26,7 @@ Avant de rentrer dans les détails dans les prochains chapitres, voici la base d
 ### `source`
 
 ```yaml {1}
-- source: {resource à récupérer localement ou à distance}
+- source: {ressource à récupérer localement ou à distance}
   destination: {destination d'artefact dans le package}
   compatibility:
     - archi1/model_range1/model1:
@@ -34,13 +34,13 @@ Avant de rentrer dans les détails dans les prochains chapitres, voici la base d
         ...
 ```
 
-Le champ `source` est l’emplacement de la resource à récupérer. Elle peut être de différente forme. Cela peut être une resource local et relative au fichier de déclaration ou une resource distante. Dans le cas d’une resource distante, elle peut être une URL ou un chemin vers un fichier distant d'un dépôt. Aiop permet également de combiner des resources ([En savoir plus](/docs/declarations/cookbook/combine)).
+Le champ `source` est l’emplacement de la ressource à récupérer. Elle peut être de différente forme. Cela peut être une ressource local et relative au fichier de déclaration ou une ressource distante. Dans le cas d’une ressource distante, elle peut être une URL ou un chemin vers un fichier distant d'un dépôt. Aiop permet également de combiner des resources ([En savoir plus](/docs/declarations/cookbook/combine)).
 
 
 ### `destination`
 
 ```yaml {2}
-- source: {resource à récupérer localement ou à distance}
+- source: {ressource à récupérer localement ou à distance}
   destination: {destination d'artefact dans le package}
   compatibility:
     - archi1/model_range1/model1:
@@ -55,7 +55,7 @@ Le champ `destination` est l’emplacement de l’artefact venant de la `source`
 Le champ `compatibility` permet de déterminer si une déclaration est compatible avec la système (cible + paramètres) choisi pour la génération du package. En effet, commençons par déclarer le(s) système(s) cible(s) pour lequel(lesquels) la déclaration est compatible. Vous pourvez indiquer ici un model spécifique ou une gamme de model ou une architecture.
 
 ```yaml {4}
-- source: {resource à récupérer localement ou à distance}
+- source: {ressource à récupérer localement ou à distance}
   destination: {destination d'artefact dans le package}
   compatibility:
     - archi1/model_range1/model1:
@@ -66,7 +66,7 @@ Le champ `compatibility` permet de déterminer si une déclaration est compatibl
 Ensuite indiquez les paramètres pour lesquels la déclaration est compatible. Le nom des paramètre et les valeurs autorisées sont à définir dans l'inventaire ([En savoir plus](/docs/configurations/inventory#compatibility)).
 
 ```yaml {5-6}
-- source: {resource à récupérer localement ou à distance}
+- source: {ressource à récupérer localement ou à distance}
   destination: {destination d'artefact dans le package}
   compatibility:
     - archi1/model_range1/model1:

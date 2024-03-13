@@ -66,7 +66,7 @@ Enfin vous pouvez indiquer que la déclaration est compatible avec tous les syst
         envs: [dev, test]
 ```
 
-Vous constaterez que les champ `compatibility` attend un liste de combinaison système/paramètres compatibles. Il est donc possible de déclarer pour une resource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la resource est compatible avec 2 phases de développement spécifiquement (`phase1`et `phase2`):
+Vous constaterez que les champ `compatibility` attend un liste de combinaison système/paramètres compatibles. Il est donc possible de déclarer pour une ressource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la ressource est compatible avec 2 phases de développement spécifiquement (`phase1`et `phase2`):
 
 ```yaml {4-12}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -93,7 +93,7 @@ Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiqu
         envs: [dev, test]
 ```
 
-Pour rappel les valeurs autorisée de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la resource est uniquement compatible avec l’environnement `test`:
+Pour rappel les valeurs autorisée de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la ressource est uniquement compatible avec l’environnement `test`:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -126,7 +126,7 @@ Ou bien avec tous les environnements:
         envs: [test, bench, prod, dev]
 ```
 
-Ou encore avec la valeur `all` pour indiquer que la resource est compatible avec tous les valeurs possibles d'`envs`:
+Ou encore avec la valeur `all` pour indiquer que la ressource est compatible avec tous les valeurs possibles d'`envs`:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
