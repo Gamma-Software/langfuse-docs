@@ -11,7 +11,7 @@ export const projects = [
   {
     title: "3 heures -> 5 secondes",
     description:
-      "C’est le temps que vous économiserez en utilisant Aiop pour générer vos packages à la différence de le faire manuellement. Arrêtez de générer ces packages manuellement, chercher vos artefacts depuis des serveurs et laissez Aiop le faire à votre place. Nos utilisateurs en moyenne réduisent le temps de génération d’un package de 3h (manuellement) à 7 secondes (avec aiop). Ce qui représente une économie de 99.95%.",
+      "En moyenne, nos utilisateurs réduisent le temps de génération d'un package de 3 heures à seulement 7 secondes avec Aiop.",
   },
   {
     title: "Partage de connaissances",
