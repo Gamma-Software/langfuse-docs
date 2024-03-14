@@ -46,7 +46,7 @@ export const Clients = () => {
     <HomeSection className="flex flex-col items-center">
       <Header
         title="Développé par des ingénieurs pour des ingénieurs"
-        description='Initialement l’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués mais ne doit pas se limiter à cela. Aiop est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery manangers.'
+        description='Initialement l’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués mais ne doit pas se limiter à cela. Aiop est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery managers.'
         button={{
           href: "/docs",
           text: "Documentation",

@@ -6,17 +6,17 @@ export const projects = [
   {
     title: "Infinité de packages",
     description:
-      "Aiop est conçu pour gérer un nombre illimité de packages. Utilisez l’imbriquation de packages pour gérer des packages complexes.",
+      "Aiop est conçu pour gérer un nombre illimité de packages. Utilisez l’imbrication de packages pour gérer des packages complexes.",
   },
   {
     title: "3 heures -> 5 secondes",
     description:
-      "C’est le temps que vous économiserez en utilisant Aiop pour générer vos packages à la différence de le faire manuellement. Arrêtez de générer ces packages manuellement, chercher vos artefacts depuis des serveurs et laissez Aiop le faire à votre place. Nos utilisateurs en moyenne réduisent le temps de génération d’un package de 3h (manuellement) à 7 secondes (avec aiop). Ce qui représente une économie de 99.95%.",
+      "En moyenne, nos utilisateurs réduisent le temps de génération d'un package de 3 heures à seulement 7 secondes avec Aiop.",
   },
   {
     title: "Partage de connaissances",
     description:
-      "La collaboration est au coeur même de Aiop. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clareté, en productivité et en qualité.",
+      "La collaboration est au coeur même de Aiop. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clarté, en productivité et en qualité.",
   },
   {
     title: "Rapidité de debuggage",
