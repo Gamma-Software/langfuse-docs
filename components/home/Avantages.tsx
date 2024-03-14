@@ -6,7 +6,7 @@ export const projects = [
   {
     title: "Infinité de packages",
     description:
-      "Aiop est conçu pour gérer un nombre illimité de packages. Utilisez l’imbriquation de packages pour gérer des packages complexes.",
+      "Aiop est conçu pour gérer un nombre illimité de packages. Utilisez l’imbrication de packages pour gérer des packages complexes.",
   },
   {
     title: "3 heures -> 5 secondes",
@@ -16,7 +16,7 @@ export const projects = [
   {
     title: "Partage de connaissances",
     description:
-      "La collaboration est au coeur même de Aiop. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clareté, en productivité et en qualité.",
+      "La collaboration est au coeur même de Aiop. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clarté, en productivité et en qualité.",
   },
   {
     title: "Rapidité de debuggage",

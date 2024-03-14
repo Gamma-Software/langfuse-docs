@@ -22,7 +22,7 @@ const tiers = [
     price: "Gratuit",
     mainFeatures: [
       "Carte de crédit non requise",
-      "Toutes le fonctionnalités de base",
+      "Toutes les fonctionnalités de base",
       "Linting / Post-Build personnalisation des tâches",
       "Usage personnel uniquement",
       //"Limité à 10 packages générés / mois",
