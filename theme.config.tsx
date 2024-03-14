@@ -148,7 +148,7 @@ const config: DocsThemeConfig = {
           ? "aiop"
           : asPath.startsWith("/blog/")
           ? "%s - Aiop Blog"
-          : asPath.startsWith("/docs/guides/")
+          : asPath.startsWith("/docs/")
           ? "%s - Aiop Guides"
           : "%s - Aiop",
     };
@@ -232,7 +232,7 @@ const config: DocsThemeConfig = {
     key: "beta-banner",
     dismissible: false,
     text: (
-      <Link href="/changelog/2024-03-05-beta-phase">
+      <Link href="/changelog/2024-03-13-beta-phase">
         {/* mobile */}
         <span className="sm:hidden">Aiop est en Bêta →</span>
         {/* desktop */}
