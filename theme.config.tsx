@@ -135,7 +135,7 @@ const config: DocsThemeConfig = {
           </div>
         </div>
         <span className="text-primary/80">
-          {new Date().getFullYear()} © Leaptech SAS
+          {new Date().getFullYear()} © Leaptech
         </span>
       </div>
     ),
