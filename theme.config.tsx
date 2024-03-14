@@ -29,15 +29,19 @@ const footerNav = [
 ];
 
 const footerLegalNav = [
-  { name: "Security", href: "/security" },
-  { name: "Imprint", href: "/imprint" },
+  // { name: "Security", href: "/security" },
+  // { name: "Imprint", href: "/imprint" },
   {
-    name: "Terms",
+    name: "Termes & Conditions",
     href: "/tos",
   },
   {
-    name: "Privacy",
+    name: "Politique de confidentialité",
     href: "/privacy",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
   },
 ];
 
@@ -114,7 +118,6 @@ const config: DocsThemeConfig = {
             ))}
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-end">
-            {/* TODO add legal links
             {footerLegalNav.map((nav) => (
               <Link
                 key={nav.name}
@@ -123,7 +126,7 @@ const config: DocsThemeConfig = {
               >
                 {nav.name}
               </Link>
-            ))} */}
+            ))}
             <a
               href="#"
               onClick={() => (window as any).displayPreferenceModal()}

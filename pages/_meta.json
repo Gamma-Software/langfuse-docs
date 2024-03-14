@@ -82,6 +82,11 @@
     "type": "page",
     "display": "hidden"
   },
+  "contact": {
+    "title": "Contact",
+    "type": "page",
+    "display": "hidden"
+  },
   "careers": {
     "title": "Carrière",
     "type": "page",
