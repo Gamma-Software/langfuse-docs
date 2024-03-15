@@ -14,10 +14,10 @@ import {
   FormLabel,
   FormDescription,
   FormMessage,
-} from "@/components/ui/shadcnshadcn/form";
+} from "@/components/ui/shadcn/form";
 import { Send } from "lucide-react";
-import { Textarea } from "@/components/ui/shadcnshadcn/textarea"
-import { Input } from "@/components/ui/shadcnshadcn/input";
+import { Textarea } from "@/components/ui/shadcn/textarea"
+import { Input } from "@/components/ui/shadcn/input";
 import { useForm } from "react-hook-form";
 
 const formSchema = z.object({
