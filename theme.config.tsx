@@ -48,6 +48,10 @@ const footerLegalNav = [
 const config: DocsThemeConfig = {
   logo: <Logo />,
   main: MainContentWrapper,
+  i18n: [
+    { locale: 'en', text: 'English' },
+    { locale: 'fr', text: 'Français' },
+  ],
   search: {
     placeholder: "Rechercher...",
   },

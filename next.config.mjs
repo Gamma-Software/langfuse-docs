@@ -46,6 +46,10 @@ const nextraConfig = withNextra({
       }
     ],
   },
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'fr',
+  },
   redirects: async () => [
     ...nonPermanentRedirects.map(([source, destination]) => ({
       source,
@@ -119,5 +123,6 @@ const nonPermanentRedirects = [
 ];
 
 const permanentRedirects = []
+
 
 export default withBundleAnalyzer(nextraConfig);
