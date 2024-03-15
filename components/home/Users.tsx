@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import Marquee from "@/components/ui/magicui/marquee";
+import Marquee from "@/components/ui/shadcnmagicui/marquee";
 
 import Image, { type StaticImageData } from "next/image";
 import pigmentLight from "./img/pigment_light.svg";

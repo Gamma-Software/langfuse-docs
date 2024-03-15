@@ -9,7 +9,7 @@ import Link from "next/link";
 import { StarCount } from "@/components/GitHubBadge";
 import { Header } from "@/components/Header";
 
-import ShimmerButton from "@/components/magicui/shimmer-button";
+import ShimmerButton from "@/components/ui/shadcnmagicui/shimmer-button";
 
 <div className="md:container">
 

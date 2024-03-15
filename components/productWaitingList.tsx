@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/shadcnbutton";
 import Link from "next/link";
 import {
   Form,
@@ -14,10 +14,10 @@ import {
   FormLabel,
   FormDescription,
   FormMessage,
-} from "@/components/ui/shadcn/form";
+} from "@/components/ui/shadcnshadcn/form";
 import { Send } from "lucide-react";
-import { Textarea } from "@/components/ui/shadcn/textarea"
-import { Input } from "@/components/ui/shadcn/input";
+import { Textarea } from "@/components/ui/shadcnshadcn/textarea"
+import { Input } from "@/components/ui/shadcnshadcn/input";
 import { useForm } from "react-hook-form";
 
 const formSchema = z.object({

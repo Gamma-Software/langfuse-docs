@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/components/ui/magicui/animated-beam";
+import { AnimatedBeam } from "@/components/ui/shadcnmagicui/animated-beam";
 import { forwardRef, useRef, type ReactNode } from "react";
 import { Code } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
