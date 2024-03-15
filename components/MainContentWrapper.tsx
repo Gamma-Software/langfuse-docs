@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "./ui/shadcn/button";
 import {
   Calendar,
   Mail,
@@ -9,7 +9,7 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import { RxDiscordLogo } from "react-icons/rx";
-import { Textarea } from "./ui/textarea";
+import { Textarea } from "./ui/shadcn/textarea";
 import { Background } from "./Background";
 import cookbookRoutes from "../cookbook/_routes.json";
 import { NotebookBanner } from "./NotebookBanner";

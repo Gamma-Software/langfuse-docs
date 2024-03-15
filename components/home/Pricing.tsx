@@ -1,9 +1,9 @@
 import { Check, Plus, Minus, X } from "lucide-react";
 import { Disclosure } from "@headlessui/react";
-import { BorderBeam } from "../magicui/border-beam";
+import { BorderBeam } from "../ui/magicui/border-beam";
 import Link from "next/link";
 import { Header } from "../Header";
-import { Button } from "../ui/button";
+import { Button } from "../ui/shadcn/button";
 import { HomeSection } from "./components/HomeSection";
 import { cn } from "@/lib/utils";
 

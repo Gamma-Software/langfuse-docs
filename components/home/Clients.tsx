@@ -2,8 +2,8 @@
 import React from "react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
-import { AnimatedTooltip } from "../aceternityui/animated-tooltip"
-import { Team } from "../ui/team"
+import { AnimatedTooltip } from "../ui/aceternityui/animated-tooltip"
+import { Team } from "../ui/shadcn/team"
 
 const people = [
   {

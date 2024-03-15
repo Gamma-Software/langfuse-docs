@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { SparklesCore } from "../aceternityui/sparkles";
+import { SparklesCore } from "../ui/aceternityui/sparkles";
 
 
 export function SparklesPreview() {

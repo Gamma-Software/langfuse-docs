@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { YCLogo } from "./img/ycLogo";
-import { Button } from "../ui/button";
+import { Button } from "../ui/shadcn/button";
 import Image from "next/image";
 import phLight from "./img/ph_product_of_the_day_light.png";
 import phDark from "./img/ph_product_of_the_day_dark.png";
@@ -8,9 +9,27 @@ import { CloudflareVideo } from "../Video";
 import GoldenKittyAwardSVG from "./img/ph_gke_ai_infra.svg";
 import GoldenKittyAwardSVGWhite from "./img/ph_gke_ai_infra_white.svg";
 import { HomeSection } from "./components/HomeSection";
-import {Meteors} from "../magicui/meteors";
+import {Meteors} from "../ui/magicui/meteors";
+import { log } from 'console';
+import { IntlProvider } from "react-intl";
 
-export function Hero() {
+async function getMessages(locale: string) {
+  return import(`../../lang/${locale}.json`);
+}
+
+export function Hero({locale}) {
+  const [messages, setMessages] = useState(null);
+
+  useEffect(() => {
+    async function fetchMessages() {
+      const msgs = await getMessages(locale);
+      setMessages(msgs.default);
+    }
+    fetchMessages();
+  }, [locale]);
+
+  if (!messages) return null;
+
   return (
     <HomeSection>
       {/* HERO */}
@@ -22,7 +41,7 @@ export function Hero() {
           Packager
         </h1>
         <span className="mt-2 text-primary/70 text-2xl sm:text-3xl lg:text-4xl md:text-balance font-semibold tracking-wide">
-          <span className="underline">Valider</span>,{" "}
+          <span className="underline">{messages.home.validate}</span>,{" "}
           <span className="underline">Construire</span>,{" "}
           <span className="underline">Déployer</span> et{" "}
           <span className="underline">Contrôler</span><br/>

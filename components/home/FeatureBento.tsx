@@ -1,4 +1,4 @@
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import { BentoCard, BentoGrid } from "@/components/ui/magicui/bento-grid";
 import {
   Boxes,
   GanttChart,

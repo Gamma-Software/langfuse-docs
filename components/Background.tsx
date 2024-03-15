@@ -1,5 +1,5 @@
-import { DotPattern } from "./magicui/dot-pattern";
-import { LinearGradient } from "./magicui/linear-gradient";
+import { DotPattern } from "./ui/magicui/dot-pattern";
+import { LinearGradient } from "./ui/magicui/linear-gradient";
 
 export const Background = () => (
   <div className="absolute top-0 bottom-0 left-0 right-0 -z-50">

@@ -1,6 +1,6 @@
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
-import { HoverEffect } from "../aceternityui/card-hover"
+import { HoverEffect } from "../ui/aceternityui/card-hover"
 
 export const projects = [
   {
