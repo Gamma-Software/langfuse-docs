@@ -1,0 +1,122 @@
+{
+  "index": {
+    "type": "page",
+    "title": "Aiop",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "experimentation": {
+    "title": "Experimentation",
+    "type": "page",
+    "display": "hidden"
+  },
+  "imprint": {
+    "title": "Imprint",
+    "type": "page",
+    "display": "hidden"
+  },
+  "schedule-demo": {
+    "type": "page",
+    "title": "Schedule demo",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": {
+    "type": "page",
+    "title": "Docs"
+  },
+  "pricing": {
+    "title": "Tarifs",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "changelog": {
+    "type": "page",
+    "title": "Changelog",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    },
+    "display": "hidden"
+  },
+  "whitepaper": {
+    "title": "Livre Blanc",
+    "type": "page",
+    "href": "/docs#pourquoi-utiliser-aiop"
+  },
+  "roadmap": {
+    "title": "Feuille de route",
+    "type": "page",
+    "theme": {
+      "layout": "full"
+    }
+  },
+  "demo": {
+    "title": "Demo",
+    "type": "menu",
+    "items": {
+      "video": {
+        "title": "Video (2 min)",
+        "href": "/docs/demo"
+      },
+      "schedule-demo": {
+        "title": "Participer à une démo",
+        "href": "/schedule-demo"
+      }
+    }
+  },
+  "waiting-list": {
+    "title": "Liste d’attente",
+    "type": "page",
+    "display": "hidden"
+  },
+  "contact": {
+    "title": "Contact",
+    "type": "page",
+    "display": "hidden"
+  },
+  "careers": {
+    "title": "Carrière",
+    "type": "page",
+    "display": "hidden"
+  },
+  "tnc": {
+    "title": "Termes et conditions",
+    "type": "page",
+    "display": "hidden"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "type": "page",
+    "display": "hidden"
+  },
+  "cookie-policy": {
+    "title": "Cookie Policy",
+    "type": "page",
+    "display": "hidden"
+  },
+  "oss-friends": {
+    "title": "OSS Friends",
+    "type": "page",
+    "display": "hidden"
+  },
+  "404": {
+    "type": "page",
+    "theme": {
+      "typesetting": "article",
+      "timestamp": false
+    }
+  }
+}
