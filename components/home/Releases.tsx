@@ -1,4 +1,4 @@
-import Marquee from "@/components/ui/shadcnmagicui/marquee";
+import Marquee from "@/components/ui/magicui/marquee";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
 import { SiPython, SiTypescript } from "react-icons/si";
