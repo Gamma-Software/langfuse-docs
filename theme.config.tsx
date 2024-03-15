@@ -33,7 +33,7 @@ const footerLegalNav = [
   // { name: "Imprint", href: "/imprint" },
   {
     name: "Termes & Conditions",
-    href: "/tos",
+    href: "/tnc",
   },
   {
     name: "Politique de confidentialité",
