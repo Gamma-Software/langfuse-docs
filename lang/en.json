@@ -1,5 +1,12 @@
 {
-  "home":{
-    "validate": "Validate"
+  "home": {
+    "hero": {
+      "validate": "Validate",
+      "build": "Build",
+      "deploy": "Deploy",
+      "control": "Control",
+      "demoButton": "Demonstration",
+      "documentationButton": "Checkout the documentation"
+    }
   }
 }

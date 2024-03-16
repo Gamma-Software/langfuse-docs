@@ -1,5 +1,15 @@
 {
-  "home":{
-    "validate": "Valider"
+  "home": {
+    "hero": {
+      "validate": "Valider",
+      "build": "Construire",
+      "deploy": "Déployer",
+      "control": "Contrôler",
+      "packages": "vos packages pour tous vos",
+      "configuration": "configurations",
+      "and": "et",
+      "demoButton": "Démonstration",
+      "documentationButton": "Voir la documentation"
+    }
   }
 }
