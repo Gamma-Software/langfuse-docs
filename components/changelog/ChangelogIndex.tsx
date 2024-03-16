@@ -1,12 +1,17 @@
 import { getPagesUnderRoute } from "nextra/context";
+import { useRouter } from 'next/router'
 import Link from "next/link";
 import Image from "next/image";
 import { type Page } from "nextra";
 import { Video } from "../Video";
 
-export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
+export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
+  const router = useRouter();
+  const { locale } = router;
+
+  return(
   <div className="mt-12 max-w-6xl mx-auto divide-y divide-primary/10">
-    {(getPagesUnderRoute("/changelog") as Array<Page & { frontMatter: any }>)
+    {(getPagesUnderRoute(`/changelog/${locale}`) as Array<Page & { frontMatter: any }>)
       .slice(0, maxItems)
       .map((page, i) => (
         <div
@@ -72,4 +77,5 @@ export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
         </div>
       ))}
   </div>
-);
+  )
+};

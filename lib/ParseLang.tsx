@@ -7,7 +7,6 @@ export function useLocalizedMessages(): any | null {
 
   const router = useRouter();
   const { locale } = router;
-  console.log(locale);
 
   useEffect(() => {
     async function fetchMessages() {
