@@ -1,0 +1,22 @@
+---
+description: Latest deliveries from the Aiop team.
+---
+
+import { ChangelogIndex } from "@/components/changelog/ChangelogIndex";
+import { Header } from "@/components/Header";
+import { ProductUpdateSignup } from "@/components/productUpdateSignup";
+
+<div className="md:container">
+  <div className="flex flex-col items-center content-center text-center my-10">
+    <Header
+      title="Changelog"
+      description="Latest deliveries from the Aiop team."
+      className="mb-8"
+      h="h1"
+    />
+    <div className="mb-8">
+      <ProductUpdateSignup source="changelog" />
+    </div>
+  </div>
+  <ChangelogIndex />
+</div>

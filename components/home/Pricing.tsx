@@ -261,7 +261,7 @@ export function Pricing({ isPricingPage = false, locale }: { isPricingPage?: boo
                   className="hidden lg:block"
                 >
                   <h2 id="comparison-heading" className="sr-only">
-                    {messages.home.Pricing.compare}
+                    {messages.home.Pricing.compare.title}
                   </h2>
 
                   <div className="grid grid-cols-4 gap-x-8 border-t border-gray-900/10 before:block">

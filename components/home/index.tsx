@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 import { FeatureBento } from "./FeatureBento";
 import { Integrations } from "./Integrations";
 import { FromTheBlog } from "./FromTheBlog";
-import { Avantages } from "./Avantages";
+import { Benefits } from "./Benefits";
 import { Clients } from "./Clients";
 
 export const Home = ({ locale }) => (
@@ -16,7 +16,7 @@ export const Home = ({ locale }) => (
       <Hero locale={locale}/>
       {/* <Users /> */}
       <FeatureBento locale={locale}/>
-      <Avantages locale={locale}/>
+      <Benefits locale={locale}/>
       <Clients locale={locale}/>
       <Integrations locale={locale}/>
       {/* <OpenSource /> */}

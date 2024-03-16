@@ -32,7 +32,7 @@ export function Hero({locale}) {
           <span className="underline">{messages.home.Hero.build}</span>,{" "}
           <span className="underline">{messages.home.Hero.deploy}</span> {messages.common.and} {" "}
           <span className="underline">{messages.home.Hero.control}</span><br/>
-          {messages.home.Hero.packages} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.clients}</span> {messages.home.Hero.and} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.configuration}</span>.
+          {messages.home.Hero.packages} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.clients}</span> {messages.common.and} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.configuration}</span>.
         </span>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">

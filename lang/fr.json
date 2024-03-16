@@ -44,7 +44,7 @@
         }
       }
     },
-    "Avantages": {
+    "Benefits": {
       "title": "Avantages",
       "description": "Aiop vous permet de gagner du temps et de l'argent.",
       "list":
@@ -127,8 +127,7 @@
     "Pricing": {
       "title": "Tarification",
       "description": "Commencez dès maintenant avec la version gratuite ! Pas besoin de carte de crédit.",
-      "compare":
-      {
+      "compare": {
         "title": "Comparaison des fonctionnalités",
         "description": "Pour une comparaison détaillée et des questions fréquentes, consultez notre",
         "link": "page de tarification"
