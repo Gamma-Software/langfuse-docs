@@ -1,17 +1,16 @@
 ---
-description: Les déclarations peuvent entrer en conflit lors du filtrage en fonction du système cible. Aiop fournit des indications utiles.
+description: Declarations can conflict during filtering based on the target system. Aiop provides helpful guidance.
 ---
-import { Callout } from "nextra-theme-docs";
 
-# Conflits de déclarations
+# Declaration Conflicts
 
-Les conflits de déclarations sont des situations où deux déclarations (ou plus) sont en conflit. Pour les personnes débutantes, résoudre ces situations peut s'avérer complexe, mais avec l'expérience, cela devient plus accessible. Pour vous aider pour les résoudre, il est **important** de comprendre le fonctionnement de la sélection des déclarations (consultez [Sélection des déclarations](/docs/declarations/selection)). Tout d'abord, examinons un exemple de conflit, puis nous verrons comment le résoudre.
+Declaration conflicts are situations where two (or more) declarations conflict with each other. For beginners, resolving these situations can be challenging, but with experience, it becomes more manageable. To assist you in resolving them, it is **important** to understand how declaration selection works (refer to [Declaration Selection](/docs/declarations/selection)). First, let's look at an example of conflict, and then we'll see how to resolve it.
 
-## Exemple de conflits
+## Example of Conflicts
 
-Reprenons l'exemple de la société Tesla. Imaginons que nous ayons deux déclarations en conflit pour la société Tesla. Pour rappel, cela se produit, car les deux déclarations sont en concurrence pour la même cible et la même destination.
+Let's revisit the example of Tesla. Imagine we have two conflicting declarations for Tesla. As a reminder, this happens because both declarations are competing for the same target and destination.
 
-Voici la première déclaration :
+Here's the first declaration:
 
 ```yaml
 - source: parameters/dev/param.json
@@ -20,9 +19,9 @@ Voici la première déclaration :
     - truck/cybertruck/phase1:
         functions: [towing]
         envs: [dev, test]
-````
+```
 
-Et voici la deuxième déclaration. La différence est que la source est différente et la cible regroupe toutes les phases de développement du Cybertruck:
+And here's the second declaration. The difference is that the source is different, and the target encompasses all development phases of the Cybertruck:
 
 ```yaml
 - source: parameters/test/towing.json
@@ -31,25 +30,26 @@ Et voici la deuxième déclaration. La différence est que la source est différ
     - truck/cybertruck:
         functions: [towing]
         envs: [dev, test]
-````
+```
 
-Et voici la cible du package: système `truck/cybertruck/phase1` et les fonctions `towing` et l'environnement `dev`.
+And here's the package target: system `truck/cybertruck/phase1` and functions `towing` and environment `dev`.
 
-Vous pouvez voir que les deux déclarations sont en conflit car elles ont la **même destination** et sont compatibles toutes les deux avec la cible. Cela signifie que les deux déclarations sont en concurrence pour la même cible et la même destination.
+You can see that both declarations conflict because they have the **same destination** and both are compatible with the target. This means both declarations are competing for the same target and destination.
 
-> **Méthode pour résoudre le conflit**
+> **Method to Resolve Conflict**
 >
-> 1. Le premier réflexe est d'isoler les deux déclarations et de les comparer.
-> 2. Puis tentez de comprendre le but de chacune des déclarations.
-> 3. Enfin, décidez de la suppression, de la modification ou de la fusion des déclarations.
+> 1. The first step is to isolate the two declarations and compare them.
+> 2. Then try to understand the purpose of each declaration.
+> 3. Finally, decide whether to delete, modify, or merge the declarations.
 
-Pour résoudre ce cas, voici le raisonnement:
+To resolve this case, here's the reasoning:
 
-1. Nous isolons les deux déclarations et constatons les différences. Nous observons que dans la première déclaration la ressource est plus spécifique que dans la deuxième déclaration car elle est liée à la phase 1 du Cybertruck. La deuxième déclaration est plus générale car elle est liée à toutes les phases de développement du Cybertruck.
-2. Les deux déclarations souhaites ajouter au package un fichier de paramètre pour le Cybertruck pour la fonction de remorquage et l'environnement de développement. Nous pouvons remarquer que la deuxième déclaration est certe plus générale  mais la source semble indiquer que le paramètre est compatible avec l'environnement de test uniquement. Cela peut être une erreur de l'auteur de la déclaration. Nous devons donc vérifier la source (et surtout en discuter avec l'auteur de la source) pour confirmer cette hypothèse.
-3. Nous pouvons donc décider de modifier les deux déclarations pour que dans la première l'environnement soit `dev` et le deuxième soit `test`.
+1. We isolate the two declarations and note the differences. We observe that in the first declaration, the resource is more specific than in the second declaration because it is related to phase 1 of the Cybertruck. The second declaration is more general as it is related to all development phases of the Cybertruck.
+2. Both declarations aim to add a parameter file for the Cybertruck to the package for towing function and development environment. We notice that the second declaration is indeed more general, but the source seems to indicate that the parameter is compatible with the test environment only. This could be an error from the declaration author. Therefore, we need to verify the source (and especially discuss it with the source author) to confirm this assumption.
+3. We can then decide to modify both declarations so that in the first one, the environment is `dev` and the second one is `test`.
 
-La première déclaration deviendrait donc:
+So, the first declaration would become:
+
 ```yaml
 - source: parameters/dev/param.json
   destination: param.json
@@ -57,9 +57,9 @@ La première déclaration deviendrait donc:
     - truck/cybertruck/phase1:
         functions: [towing]
         envs: [dev]
-````
+```
 
-Et la deuxième déclaration deviendrait:
+And the second declaration would become:
 
 ```yaml
 - source: parameters/test/towing.json
@@ -70,20 +70,20 @@ Et la deuxième déclaration deviendrait:
         envs: [test]
 ```
 
-Ainsi les deux déclarations ne sont plus en conflit et d'après la cible de génération du package, la première déclaration sera pris en compte.
+Now, both declarations are no longer in conflict, and according to the package generation target, the first declaration will be considered.
 
 <Callout type="info" emoji="ℹ️">
-  A noter qu'ici nous fait certaines hypothèses sur le contenu des sources. Il est important de vérifier les sources et de discuter avec vos collègues (surtout l'auteur de la déclaration) pour confirmer ces hypothèses.
+  Note that here we make assumptions about the content of the sources. It's important to verify the sources and discuss with your colleagues (especially the declaration author) to confirm these assumptions.
 </Callout>
 
-## Raisons des conflits
+## Reasons for Conflicts
 
-**Raisons pour laquelle les conflits se produisent et comment les éviter**
+**Reasons why conflicts occur and how to avoid them**
 
-Il existe plusieurs raisons pour lesquelles les conflits de déclarations se produisent. Voici quelques-unes des raisons les plus courantes:
+There are several reasons why declaration conflicts occur. Here are some of the most common reasons:
 
-1. **Déclarations mal conçues**: Les déclarations peuvent être mal conçues, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal conçues si elles sont incompatibles avec la cible ou si elles ont des destinations incorrectes.
-2. **Déclarations mal documentées**: Les déclarations peuvent être mal documentées, ce qui peut entraîner des conflits. Par exemple, les déclarations peuvent être mal documentées si elles ne sont pas claires sur leur but ou leur contenu.
-3. **Merges incorrects**: Les conflits peuvent également se produire si les merges sont incorrects. Il peut arriver qu'un merge de branche entraîne un conflit. Par exemple, un développeur à ajouté une déclaration pour une nouvelle fonctionnalité mais un merge précédent avait également ajouté cette déclaration. Dans ce cas à la suite de ce nouveau merge, les deux déclarations seront en conflit.
+1. **Poorly Designed Declarations**: Declarations can be poorly designed, leading to conflicts. For example, declarations may be poorly designed if they are incompatible with the target or if they have incorrect destinations.
+2. **Poorly Documented Declarations**: Declarations can be poorly documented, leading to conflicts. For example, declarations may be poorly documented if they are unclear about their purpose or content.
+3. **Incorrect Merges**: Conflicts can also occur if merges are incorrect. It can happen that a branch merge results in a conflict. For example, a developer added a declaration for a new feature, but a previous merge also added this declaration. In this case, after this new merge, both declarations will conflict.
 
-Le maitre mot ici est la **communication**. Il est important de communiquer avec les auteurs des déclarations pour comprendre leur but et leur contenu. Cela vous permettra de comprendre les raisons pour lesquelles les déclarations sont en conflit et de les résoudre.
+The key here is **communication**. It's important to communicate with declaration authors to understand their purpose and content. This will allow you to understand the reasons for the conflicts and resolve them.

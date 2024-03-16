@@ -1,20 +1,20 @@
 ---
-description: Démarrer la génération de packages avec Aiop en quelques minutes avant de continuer dans la customization et l'utilisation de fonctions avancées.
+description: Start package generation with Aiop in minutes before moving on to customization and using advanced features.
 ---
 import { Callout } from "nextra-theme-docs";
 import { Button } from "@/components/ui/shadcn/button";
 import { SiPython } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
 
-# Démarrage
+# Getting Started
 
-Cette introduction rapide vous aide à commencer à utiliser Aiop rapidement. N’hésitez pas à consulter la [vidéo](/docs/demo) démonstration qui reprend les éléments de cette page.
+This quick introduction helps you start using Aiop quickly. Feel free to check out the [demo video](/docs/demo) that covers the elements of this page.
 
-## Prerequis
+## Prerequisites
 
 ### Python
 
-Un environnement Python 3.9+ est nécessaire pour utiliser Aiop. Si vous n'avez pas Python d’installé, vous pouvez télécharger les versions suivantes, selon votre système d'exploitation:
+A Python 3.9+ environment is required to use Aiop. If you don't have Python installed, you can download the following versions, depending on your operating system:
 
 <Tabs items={["Windows","Ubuntu","Mac OS"]}>
 
@@ -23,16 +23,16 @@ Un environnement Python 3.9+ est nécessaire pour utiliser Aiop. Si vous n'avez 
 
 <Cards num={3}>
   <Card icon={<SiPython size="24" />} title="Python (3.9 +)" href="https://www.python.org/downloads/" target="_blank" />
-  <Card icon={<SiPython size="24" />} title="Recommandé (3.11.8)" href="https://www.python.org/downloads/release/python-3118/" target="_blank" arrow/>
+  <Card icon={<SiPython size="24" />} title="Recommended (3.11.8)" href="https://www.python.org/downloads/release/python-3118/" target="_blank" arrow/>
   <Card
     icon={<SiPython size="24" />}
-    title="Stable et récente (3.12.2)"
+    title="Stable and recent (3.12.2)"
     href="https://www.python.org/downloads/release/python-3122/"
     target="_blank"
   />
 </Cards>
 
-Le guide d’installation de python sur Windows peut être trouvé [ici](https://docs.python.org/3/using/windows.html#the-full-installer).
+The Python installation guide on Windows can be found [here](https://docs.python.org/3/using/windows.html#the-full-installer).
 
 </Tab>
 <Tab>
@@ -40,9 +40,9 @@ Le guide d’installation de python sur Windows peut être trouvé [ici](https:/
 
 <Steps>
 
-### Installation de Python
+### Installing Python
 
-Installez la version recommandée de Python 3.11.8 en utilisant votre gestionnaire de paquets. Mettez à jour votre gestionnaire de paquets et installez les dépendances nécessaires. Puis ajoutez le dépôt de deadsnakes pour installer les versions de Python.
+Install the recommended version of Python 3.11.8 using your package manager. Update your package manager and install necessary dependencies. Then add the deadsnakes repository to install Python versions.
 
 ```bash copy
 sudo apt-get update -y
@@ -51,37 +51,37 @@ sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
 sudo add-apt-repository ppa:deadsnakes/ppa
 ```
 
-Ensuite installez la version de python de votre choix. Veuillez installer les versions supérieurs à 3.11. Nous recommandons d’installer la version 3.11.8.
+Then install the Python version of your choice. Please install versions higher than 3.11. We recommend installing version 3.11.8.
 
 ```bash copy
 sudo apt install python3.11
 ```
 
 <Callout type="info" emoji="ℹ️">
-  Vous pouvez toutefois installer la dernière version 3.12. En revanche, nous ne garantissons pas que Aiop fonctione.
+  You can, however, install the latest version 3.12. However, we do not guarantee that Aiop will work.
 </Callout>
 
-Vérifiez la version de python installée avec la commande `python3 --version`.
+Check the installed Python version with the command `python3 --version`.
 
-### Installation des dépendances
+### Installing Dependencies
 
-Additionnellement, installez des outils de développement et des bibliothèques pour Python que Aiop utilisera.
+Additionally, install development tools and libraries for Python that Aiop will use.
 
 ```bash copy
 sudo apt-get install curl iputils-ping -y
 ```
 
-### Installation de Pip
-Si vous n’avez pas pip d’installez, vous pouvez l’installer avec la commande suivante:
+### Installing Pip
+If you don't have pip installed, you can install it with the following command:
 
 ```bash copy
 sudo apt-get install python3-pip -y
 ```
 </Steps>
 
-### Alias
+### Aliases
 
-Pour simplifier l’utilisation de python, il est recommandé de créer des raccourcis des commandes `python` et `pip` à `python3` et `pip3` respectivement:
+To simplify the use of Python, it is recommended to create shortcuts for the `python` and `pip` commands to `python3` and `pip3` respectively:
 
 ```bash copy
 ln -s /usr/bin/python3 /usr/bin/python
@@ -95,25 +95,25 @@ ln -s /usr/bin/pip3 /usr/bin/pip
 
 <Cards num={3}>
   <Card icon={<SiPython size="24" />} title="Python (3.9 +)" href="https://www.python.org/downloads/macos/" target="_blank" />
-  <Card icon={<SiPython size="24" />}title="Recommandé (3.11.8)" href="https://www.python.org/ftp/python/3.11.8/python-3.11.8-macos11.pkg" target="_blank" arrow/>
+  <Card icon={<SiPython size="24" />}title="Recommended (3.11.8)" href="https://www.python.org/ftp/python/3.11.8/python-3.11.8-macos11.pkg" target="_blank" arrow/>
   <Card
     icon={<SiPython size="24" />}
-    title="Stable et récente (3.12.2)"
+    title="Stable and recent (3.12.2)"
     href="https://www.python.org/ftp/python/3.12.2/python-3.12.2-macos11.pkg"
     target="_blank"
   />
 </Cards>
 
-Le guide d’installation de python sur MacOS peut être trouvé [ici](https://docs.python.org/3/using/mac.html#the-full-installer).
+The Python installation guide on MacOS can be found [here](https://docs.python.org/3/using/mac.html#the-full-installer).
 
 </Tab>
 </Tabs>
 
-### Éditeur de code
+### Code Editor
 
-Un éditeur de code est également nécessaire pour travailler avec Aiop. Vous pouvez utiliser n’importe quel éditeur de code que vous préférez. Cependant, nous recommandons d’utiliser Visual Studio Code. Nous avons spécialement conçu des raccourcis pour VSCode. À l’avenir, nous développerons des [extensions](/docs/roadmap) pour VSCode.
+A code editor is also required to work with Aiop. You can use any code editor you prefer. However, we recommend using Visual Studio Code. We have specially designed shortcuts for VSCode. In the future, we will develop [extensions](/docs/roadmap) for VSCode.
 
-Vous pouvez télécharger Visual Studio Code en cliquant sur le bouton ci-dessous.
+You can download Visual Studio Code by clicking the button below.
 
 <Cards>
 <Card
@@ -129,35 +129,35 @@ Vous pouvez télécharger Visual Studio Code en cliquant sur le bouton ci-dessou
 
 <Steps>
 
-### Créer un compte aiop (Optionnel)
+### Create an Aiop Account (Optional)
 
-Commencez par créer un compte aiop. Si vous n’avez pas de compte, appuyiez sur le bouton ci-dessous pour en créer un.
+Start by creating an Aiop account. If you don't have an account, click the button below to create one.
 
 
 
-### Installer aiop
-Installer aiop est simple. Ouvrez un terminal et exécutez la commande suivante:
+### Install Aiop
+Installing Aiop is simple. Open a terminal and run the following command:
 
 ```bash copy
 pip install aiop --index-url https://gitlab.com/api/v4/projects/52727704/packages/pypi/simple
 ```
 
-Cela installera aiop et toutes ses dépendances.
+This will install Aiop and all its dependencies.
 
 
-### Télécharger un modèle de playbook
+### Download a Playbook Template
 
-Pour utiliser aiop, vous avez besoin d’un [playbook](/docs/vocabulary#playbook). Vous pouvez installer un modèle démonstratif de playbook en exécutant la commande suivante:
+To use Aiop, you need a [playbook](/docs/vocabulary#playbook). You can install a demo playbook template by running the following command:
 
 ```bash copy
 aiop demo ./my-demo-playbook
 ```
 
-Cela téléchargera le modèle de playbook dans le dossier `my-playbook`.
+This will download the playbook template into the `my-playbook` folder.
 
-### Générer son premier package
+### Generate Your First Package
 
-Vous y êtes enfin ! Vous pouvez maintenant générer votre premier package en exécutant la commande suivante:
+You're finally there! You can now generate your first package by running the following command:
 
 ```bash copy
 cd my-playbook
@@ -165,25 +165,27 @@ aiop build archi1/model_range1/model1 --apps app1 --envs dev --contexts context1
 ```
 
 <Callout type="info" emoji="✅">
-  Terminé, vous venez de générer votre premier package !
+  Done, you've just generated your first package
+
+!
 </Callout>
 
-Vous pouvez maintenant voir le package généré dans le dossier `.build` à la racine du playbook.
+You can now see the generated package in the `.build` folder at the root of the playbook.
 
 </Steps>
 
 
 
-## Que faire ensuite ?
+## What's Next?
 
-Il est maintenant temps de modifier le playbook ainsi que vous l’appropriez. Passez à la partie [configuration](/docs/configuration/overview) pour apprendre à configurer votre playbook. Sinon vous pouvez suivre une vidéo d’introduction à aiop [ici](/demo).
+Now it's time to modify the playbook and make it your own. Move on to the [configuration](/docs/configuration/overview) section to learn how to configure your playbook. Alternatively, you can watch an introductory video on Aiop [here](/demo).
 
 
 <Cards num={2}>
   <Card href="/docs/configuration/overview" title="Configuration" image arrow>
     ![Quickstart icon (rocket)](/images/cards/rocket.svg)
   </Card>
-  <Card href="/demo" title="Démo" image arrow>
+  <Card href="/demo" title="Demo" image arrow>
     ![Quickstart icon (rocket)](/images/cards/code.svg)
   </Card>
 </Cards>

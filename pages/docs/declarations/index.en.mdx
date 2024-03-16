@@ -1,79 +1,78 @@
 ---
-description: AML file declaration are the fundation of Aiop.
+description: AML file declarations are the foundation of Aiop.
 ---
 
-# Aperçu
+# Overview
 
-**Les déclarations sont les éléments de base de Aiop**. Elles sont utilisées pour déclarer une ressource quelconque. Après avoir [configuré le playbook](/docs/configurations/playbook) et l’[inventaire](/docs/configurations/inventory) vous pouvez commencer à écrire des déclarations pour déclarer des ressources. Voyons comment cela fonctionne en détail.
+**Declarations are the basic elements of Aiop**. They are used to declare any resource. After [configuring the playbook](/docs/configurations/playbook) and the [inventory](/docs/configurations/inventory), you can start writing declarations to declare resources. Let's see how this works in detail.
 
-## Déclarations
+## Declarations
 
-Une déclaration est un fichier `.aml` qui contient une ou plusieurs déclarations. Vous pouvez déclarer un grand nombre de ressources différentes (voir [liste des ressources](/docs/core-index#composition)) et les organiser dans l’ordre que vous souhaitez et séparé dans autant de fichiers que vous le souhaitez. En effet, Aiop n’est pas censé respecter un ordre particulier pour prendre en compte les déclarations. Cependant, il est recommandé de les organiser de manière logique pour faciliter la lecture et la maintenance.
+A declaration is a `.aml` file that contains one or more declarations. You can declare a large number of different resources (see [list of resources](/docs/core-index#composition)) and organize them in any order you want and separated into as many files as you want. Indeed, Aiop is not supposed to follow a particular order to consider the declarations. However, it is recommended to organize them logically for readability and maintenance.
 
-## Base d'une déclaration
+## Base of a Declaration
 
-Avant de rentrer dans les détails dans les prochains chapitres, voici la base d’une déclaration (les champs obligatoires) que nous détaillons ensuite.
+Before diving into details in the upcoming chapters, here's the base of a declaration (the mandatory fields) that we will then detail.
 
 ```yaml
-- source: {ressource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
   compatibility:
     - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
+        envs: {compatible deployment environments}
         ...
 ```
 
 ### `source`
 
 ```yaml {1}
-- source: {ressource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
   compatibility:
     - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
+        envs: {compatible deployment environments}
         ...
 ```
 
-Le champ `source` est l’emplacement de la ressource à récupérer. Elle peut être de différentes formes. Cela peut être une ressource local et relative au fichier de déclaration ou une ressource distante. Dans le cas d’une ressource distante, elle peut être un URL ou un chemin vers un fichier distant d'un dépôt. Aiop permet également de combiner des ressources ([En savoir plus](/docs/declarations/cookbook/combine)).
-
+The `source` field is the location of the resource to be retrieved. It can take various forms. It can be a local resource relative to the declaration file or a remote resource. In the case of a remote resource, it can be a URL or a path to a file from a repository. Aiop also allows combining resources ([Learn more](/docs/declarations/cookbook/combine)).
 
 ### `destination`
 
 ```yaml {2}
-- source: {ressource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
   compatibility:
     - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
+        envs: {compatible deployment environments}
         ...
 ```
 
-Le champ `destination` est l’emplacement de l’artefact venant de la `source` dans le package. C’est le chemin relatif à la racine du package. Vous pouvez nommer la destination comme vous le souhaitez. Il existe cependant des règles de nommage qui vont générer des pdf (voir [Conversion PDF](/docs/declarations/cookbook/parse-to-pdf)) dans certains cas ou générer un dossier avec des artefacts dézippé (voir [Archive](/docs/declarations/cookbook/zip)). Attention, il est important de ne pas utiliser de caractères spéciaux ou des espaces dans le nom de la destination.
+The `destination` field is the location of the artifact coming from the `source` in the package. It is the path relative to the package root. You can name the destination as you like. However, there are naming rules that will generate PDFs (see [PDF Conversion](/docs/declarations/cookbook/parse-to-pdf)) in some cases or generate a folder with unzipped artifacts (see [Archive](/docs/declarations/cookbook/zip)). Note that it is important not to use special characters or spaces in the destination name.
 
 ### `compatibility`
 
-Le champ `compatibility` permet de déterminer si une déclaration est compatible avec la système (cible + paramètres) choisi pour la génération du package. En effet, commençons par déclarer le(s) système(s) cible(s) pour lequel(lesquels) la déclaration est compatible. Vous pouvez indiquer ici un modèle spécifique ou une gamme de modèle ou une architecture.
+The `compatibility` field determines if a declaration is compatible with the selected system (target + parameters) for package generation. First, let's declare the target system(s) for which the declaration is compatible. Here you can specify a specific model or model range or architecture.
 
 ```yaml {4}
-- source: {ressource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
   compatibility:
     - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
+        envs: {compatible deployment environments}
         ...
 ```
 
-Ensuite, indiquez les paramètres pour lesquels la déclaration est compatible. Le nom des paramètres et les valeurs autorisées sont à définir dans l'inventaire ([En savoir plus](/docs/configurations/inventory#compatibility)).
+Then, specify the parameters for which the declaration is compatible. The parameter names and allowed values are defined in the inventory ([Learn more](/docs/configurations/inventory#compatibility)).
 
 ```yaml {5-6}
-- source: {ressource à récupérer localement ou à distance}
-  destination: {destination d'artefact dans le package}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
   compatibility:
     - archi1/model_range1/model1:
-        envs: {environnements de déploiement compatibles}
+        envs: {compatible deployment environments}
         ...
 ```
 
-## Gestion des conflits
+## Conflict Management
 
-Un conflit entre deux déclarations est une situation où deux déclarations sont en contradiction. La contradiction se manifeste uniquement dans le cas où deux déclarations auraient la même `destination` dans le package et qu’elle sont toutes les deux compatibles avec la cible choisie pour la génération du package. En effet, cette situation n’est possible que si Aiop sait de quelle cible il s’agit. Dans le cas où deux déclarations viendraient se contredire, Aiop ne gère pas les conflits, mais remontera une erreur assez explicite (avec une astuce) pour vous permettre de corriger le problème.
+A conflict between two declarations is a situation where two declarations are contradictory. The contradiction only arises if two declarations have the same `destination` in the package and both are compatible with the target chosen for package generation. Indeed, this situation is only possible if Aiop knows which target it is. In the case where two declarations would contradict each other, Aiop does not handle conflicts but will raise a fairly explicit error (with a hint) to allow you to correct the issue.

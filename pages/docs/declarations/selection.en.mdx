@@ -1,39 +1,38 @@
 ---
-description: Declaration are static and are dynamically filtered by the user's system target in runtime.
+description: Declarations are static and are dynamically filtered by the user's system target at runtime.
 ---
-import { Callout } from "nextra-theme-docs";
 
-# Sélection des déclarations
+# Declaration Selection
 
-La sélection des déclaration est un mécanisme qui permet de filtrer les déclarations en fonction du système cible et de ses paramètres. Cela permet de définir des déclarations spécifiques à un système cible, et de les rendre disponibles uniquement pour ce système cible.
+Declaration selection is a mechanism that allows filtering declarations based on the target system and its parameters. This enables defining system-specific declarations and making them available only for that target system.
 
-## Système cible
+## Target System
 
-Les systèmes cible compatibles avec le playbook sont définis par le fichier `.aiop/inventory.yml`. L’utilisateur final indique ensuite le système cible pour lequel il souhaite générer le playbook. Le système cible sera pris en compte pour filtrer les déclarations.
+The target systems compatible with the playbook are defined in the `.aiop/inventory.yml` file. The end-user then specifies the target system for which they want to generate the playbook. The target system will be considered for filtering declarations.
 
-### Exemple
+### Example
 
-Si nous reprenons l’[exemple de la société Tesla ](/docs/configurations/inventory#exemple) le système cible pourrais être:
+If we take the [example from Tesla](/docs/configurations/inventory#exemple), the target system could be:
 - `suv/modelX/phase2`
 - `sedan/model3/phase2`
 - `truck/cybertruck/phase1`
 
-Ou encore:
+Or:
 - `suv/modelX/phase1`
 - `sedan/modelS/phase1`
 
 <Callout type="warning" emoji="⚠️">
- Vous devez séparer les éléments de votre système cible par des slash `/` et respecter l’ordre défini dans le [fichier de configuration de l’inventaire](/docs/configurations/inventory#exemple-de-configuration).
+You must separate the elements of your target system with slashes `/` and follow the order defined in the [inventory configuration file](/docs/configurations/inventory#exemple-de-configuration).
 </Callout>
 
-## Compatibilité
+## Compatibility
 
-Les déclarations sont également filtrées en fonction de la compatibilité avec le système cible. La compatibilité d'une déclaration est définie dans le champ `compatibility` de la déclaration.
-Reprenons l’exemple de la société Tesla avec le système cible `truck/cybertruck/phase1`.
+Declarations are also filtered based on compatibility with the target system. A declaration's compatibility is defined in the `compatibility` field of the declaration.
+Let's revisit Tesla's example with the target system `truck/cybertruck/phase1`.
 
-### Système compatible
+### Compatible System
 
-Vous pouvez déclarer que la déclaration est compatible avec un système spécifique. Mais aussi avec une gamme de modèles ou avec tous les modèles d'une architecture. Dans ce cas, tous les modèles de la gamme `model_range1` de l’architecture `archi1` sont compatibles avec la déclaration. Ici nous déclarons le binaire d'un logiciel de monitoring de couple de remorquage compatible avec le système `truck/cybertruck/phase1`:
+You can declare that the declaration is compatible with a specific system. But also with a range of models or with all models of an architecture. In this case, all models of the `model_range1` range of the `archi1` architecture are compatible with the declaration. Here we declare the binary of a towing torque monitoring software compatible with the `truck/cybertruck/phase1` system:
 
 ```yaml {4}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -44,7 +43,7 @@ Vous pouvez déclarer que la déclaration est compatible avec un système spéci
         envs: [dev, test]
 ```
 
-Similairement vous pouvez indiquer que la déclaration est compatible avec toutes les gammes de modèles Cybertruck (si une gamme de Cybertruck existait) ou de l'architecture `truck`:
+Similarly, you can indicate that the declaration is compatible with all Cybertruck model ranges (if a Cybertruck range existed) or with the `truck` architecture:
 
 ```yaml {4}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -55,7 +54,7 @@ Similairement vous pouvez indiquer que la déclaration est compatible avec toute
         envs: [dev, test]
 ```
 
-Enfin vous pouvez indiquer que la déclaration est compatible avec tous les systèmes avec la valeur `all`:
+Finally, you can indicate that the declaration is compatible with all systems with the value `all`:
 
 ```yaml {4}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -66,7 +65,7 @@ Enfin vous pouvez indiquer que la déclaration est compatible avec tous les syst
         envs: [dev, test]
 ```
 
-Vous constaterez que les champ `compatibility` attend une liste de combinaisons système/paramètres compatibles. Il est donc possible de déclarer pour une ressource plusieurs combinaisons. Dans ce cas vous pouvez déclarer que la ressource est compatible avec 2 phases de développement spécifiquement (`phase1`et `phase2`):
+You'll notice that the `compatibility` field expects a list of compatible system/parameter combinations. It is thus possible to declare multiple combinations for a resource. In this case, you can declare that the resource is compatible with 2 specific development phases (`phase1` and `phase2`):
 
 ```yaml {4-12}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -80,9 +79,9 @@ Vous constaterez que les champ `compatibility` attend une liste de combinaisons 
         envs: [dev, test]
 ```
 
-### Paramètres de compatibilité
+### Compatibility Parameters
 
-Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiquer les fonctionnalités et les environnements compatibles avec la déclaration. Concentrons-nous sur le paramètre `envs` pour l'instant.
+In our case, `functions` and `envs` are the parameters to fill in to indicate compatible functionalities and environments with the declaration. Let's focus on the `envs` parameter for now.
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -93,7 +92,7 @@ Dans notre cas `functions` et `envs` sont les paramètres à remplir pour indiqu
         envs: [dev, test]
 ```
 
-Pour rappel les valeurs autorisées de `envs` pour le système `truck/cybertruck/phase1` sont `test`, `bench`, `prod` et `dev` et que la règle de sélection est `one_of` ([revoir l'inventaire](/docs/configurations/inventory#modèle-de-configuration)). Dans ce cas nous avons la possibilité de déclarer que la ressource est uniquement compatible avec l’environnement `test`:
+As a reminder, the allowed values for `envs` for the `truck/cybertruck/phase1` system are `test`, `bench`, `prod`, and `dev`, and the selection rule is `one_of` ([review the inventory](/docs/configurations/inventory#modèle-de-configuration)). In this case, we can declare that the resource is only compatible with the `test` environment:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -104,7 +103,7 @@ Pour rappel les valeurs autorisées de `envs` pour le système `truck/cybertruck
         envs: [test]
 ```
 
-Ou bien avec les environnements `test` et `bench`:
+Or with the `test` and `bench` environments:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -115,7 +114,7 @@ Ou bien avec les environnements `test` et `bench`:
         envs: [test, bench]
 ```
 
-Ou bien avec tous les environnements:
+Or with all environments:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -126,7 +125,7 @@ Ou bien avec tous les environnements:
         envs: [test, bench, prod, dev]
 ```
 
-Ou encore avec la valeur `all` pour indiquer que la ressource est compatible avec tous les valeurs possibles d'`envs`:
+Or with the value `all` to indicate that the resource is compatible with all possible `envs` values:
 
 ```yaml {6}
 - source: software/towing-torque-monitor/1.24.100/bin
@@ -137,4 +136,4 @@ Ou encore avec la valeur `all` pour indiquer que la ressource est compatible ave
         envs: [all]
 ```
 
-Il n'y a pas d'ordre dans la liste de valeurs d'`envs`. Cependant, il est recommandé de les organiser de manière logique par rapport à l'autre déclaration pour faciliter la lecture et la maintenance.
+There is no order in the list of `envs` values. However, it is recommended to organize them logically relative to the other declaration for readability and maintenance.

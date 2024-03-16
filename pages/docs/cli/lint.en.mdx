@@ -1,22 +1,22 @@
 ---
 description: >-
-  Le linter est un outil qui vérifie votre code pour détecter les erreurs et les avertissements. C'est un outil d'analyse statique utilisé pour identifier les motifs problématiques présents dans le code python.
+  The linter is a tool that checks your code for errors and warnings. It is a static analysis tool used to identify problematic patterns present in Python code.
 ---
 
-# Commande de Linting
+# Linting Command
 
-La commande de linting permet de lancer des scripts de vérification du playbook, de ses paramètres, de ses déclarations et de ses ressources. Éventuellement, il est possible de vérifier le système cible et les ressources compatibles. De plus il est possible d'executer des scripts de vérifications personnalisées inclues dans le playbook.
+The linting command allows you to run verification scripts on the playbook, its parameters, its declarations, and its resources. Optionally, it is possible to check the target system and compatible resources. Additionally, custom verification scripts included in the playbook can be executed.
 
-## Commande `lint`
+## `lint` Command
 
-Pour lancer la commande de `lint`, il faut que l'utilisateur se place dans le répertoire du playbook.
-Cette commande permet de vérifier le playbook, ses paramètres, et la syntaxe de ses déclarations et l'existence de ses ressources.
+To run the `lint` command, the user must navigate to the playbook directory.
+This command checks the playbook, its parameters, and the syntax of its declarations, as well as the existence of its resources.
 
 ```bash
 aiop lint
 ```
 
-En lançant la commande d'aide voici les options disponibles:
+Running the help command displays the available options:
 
 ```ansi
 usage: aiop lint [-h]
@@ -25,19 +25,19 @@ options:
   -h, --help  show this help message and exit
 ```
 
-## Commande `lint_target`
+## `lint_target` Command
 
-Pour lancer la commande de `lint_target`, il faut que l'utilisateur se place dans le répertoire du playbook.
-La commande `lint_target`permet de vérifier le playbook, ses paramètres, et la syntaxe de ses déclarations et l'existence de ses ressources et de leur compatibilités avec le système cible.
+To run the `lint_target` command, the user must navigate to the playbook directory.
+The `lint_target` command verifies the playbook, its parameters, the syntax of its declarations, and the existence of its resources, as well as their compatibility with the target system.
 
 ```bash
 aiop lint_target {system_target} {params}
 ```
-> `system_target` : Le système cible pour laquelle valider le playbook
+> `system_target`: The target system for which to validate the playbook
 
-> `params` : Les paramètres de compatibilité de la cible système. Ce paramètre obligatoire sera différent selon le playbook et ses configurations car il est défini par le fichier de configuration `.aiop/inventory_config.yml` dans le champ `compatibility` ([En savoir plus](/docs/configurations/inventory)).
+> `params`: The compatibility parameters for the target system. This mandatory parameter will vary depending on the playbook and its configurations as it is defined by the `.aiop/inventory_config.yml` configuration file in the `compatibility` field ([Learn more](/docs/configurations/inventory)).
 
-En lançant la commande d'aide voici les options disponibles:
+Running the help command displays the available options:
 
 ```ansi
 usage: aiop lint_target [-h] [--mode MODE] system_target [apps ...] context
@@ -50,6 +50,3 @@ options:
   -h, --help     show this help message and exit
   --mode MODE    Mode of the created output (default: dev)
 ```
-
-
-

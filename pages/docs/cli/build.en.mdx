@@ -1,19 +1,19 @@
 ---
-description: La commande de construction est utilisée pour construire un package en fonction de la cible système et des propriétés de l'utilisateur.
+description: The build command is used to construct a package based on the user's system target and properties.
 ---
 
-# Commande `build`
+# `build` Command
 
-La commande de `build` permet de construire un package basé sur la cible système de l'utilisateur et ses propriétés. Il y a également des options que nous allons détailler.
+The `build` command is used to construct a package based on the user's system target and properties. There are also options that we will detail.
 
 ```bash
 aiop build {system_target} {params}
 ```
-> `system_target` : Le système cible pour laquelle générer le package
+> `system_target`: The system target for which to generate the package.
 
-> `params` : Les paramètres de compatibilité de la cible système. Ces paramètres obligatoires seront différents selon le playbook et ses configurations car il est défini par le fichier de configuration `.aiop/inventory_config.yml` dans le champ `compatibility` ([En savoir plus](/docs/configurations/inventory)).
+> `params`: The compatibility parameters of the system target. These mandatory parameters will vary depending on the playbook and its configurations as defined by the `.aiop/inventory_config.yml` configuration file in the `compatibility` field ([Learn more](/docs/configurations/inventory)).
 
-En lançant la commande d'aide voici les options disponibles:
+When running the help command, here are the available options:
 
 ```ansi
 usage: aiop build [-h] [--destination_path DESTINATION_PATH] [--force] [--no_caching] [--no_verify]
@@ -48,13 +48,13 @@ options:
 
 ## Options
 
-| Option | Description | Défaut |
+| Option | Description | Default |
 | --- | --- | --- |
-| `destination_path` | Chemin de destination du package | a la racine du chemin du playbook dans le dossier `.build` |
-| `force` | Supprimer le dossier du chemin `destination_path` peut importe ce qu'il contient | `False`: Ne forcera pas la création |
-| `no_caching` | Ne pas utiliser le cache pour récupérer les ressources distantes déjà téléchargées | `False`: Les ressources distantes sont copiés depuis le cache, si elles existent |
-| `no_verify` | Ne pas vérifier l'intégrité de la ressource distante| `False`: Vérifie l'intégrité de l'artifact |
-| `retries` | Nombre de tentatives de téléchargement d'un artifact. Surcharge la configuration utilisateur | 3 |
-| `zip_pack` | Zip le package généré | `False`: Ne le zip pas |
-| `goto_pack` | Ouvre l'explorateur de fichier sur le package généré | `False`: Ne l'ouvre pas |
-| `upload` | Dépose le package dans un dépôt distante | `None`: Ne l'envoie pas dans le dépôt distant |
+| `destination_path` | Path to the package destination | Root of the playbook path in the `.build` folder |
+| `force` | Delete the folder at `destination_path` regardless of its contents | `False`: Does not force creation |
+| `no_caching` | Do not use cache to retrieve previously downloaded remote resources | `False`: Remote resources are copied from cache if available |
+| `no_verify` | Do not verify the integrity of the remote resource | `False`: Verifies the artifact integrity |
+| `retries` | Number of download retries for an artifact. Overrides the user configuration | 3 |
+| `zip_pack` | Zip the generated package | `False`: Does not zip it |
+| `goto_pack` | Open file explorer on the generated package | `False`: Does not open it |
+| `upload` | Upload the package to a remote repository | `None`: Does not upload to remote repository |

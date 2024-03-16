@@ -1,20 +1,20 @@
 ---
-description: Commencez chaque nouveau projet Aiop en exécutant la commande "init" pour créer une structure de projet de base qui fonctionne dès le départ.
+description: Start every new Aiop project by executing the "init" command to create a basic project structure that works right from the start.
 ---
 
-# Commande `init`
+# `init` Command
 
-La commande d'`init` est utilisée pour créer un nouveau projet playbook pour stocker les ressources et déclarations et générer des packages. Le nouveau projet sera créé à partir d'un [squelette de projet](https://gitlab.com/leap_tech/playbooks/skeleton) par défaut. Le projet créé contiendra une structure de répertoires de base, des fichiers de configuration et des exemples de ressources.
+The `init` command is used to create a new playbook project to store resources and declarations and generate packages. The new project will be created from a default [project template](https://gitlab.com/leap_tech/playbooks/skeleton). The created project will contain a basic directory structure, configuration files, and examples of resources.
 
-Pour créer un nouveau projet, exécutez la commande suivante :
+To create a new project, execute the following command:
 
 ```bash
 aiop init {playbook_path}
 ```
 
-> `playbook_path` est le chemin du répertoire où vous souhaitez créer le projet.
+> `playbook_path` is the path to the directory where you want to create the project.
 
-En executant la commande d'aide, vous pouvez voir les options disponibles pour la commande d'`init` :
+By running the help command, you can see the available options for the `init` command:
 
 ```ansi
 usage: aiop init [-h] [--url URL] playbook_path
@@ -27,4 +27,4 @@ options:
   --url URL      Url of the remote repository to push the playbook
 ```
 
-L'option `--url` est utilisée pour spécifier l'URL du dépôt distant où vous souhaitez pousser le projet. Si vous spécifiez cette option, le projet sera initialisé avec un dépôt git et poussé vers le dépôt distant. Cela peut être [Github](https://github.com), [Gitlab](https://gitlab.com), [Bitbucket](https://bitbucket.org/) ou tout autre dépôt git.
+The `--url` option is used to specify the URL of the remote repository where you want to push the project. If you specify this option, the project will be initialized with a git repository and pushed to the remote repository. This can be [Github](https://github.com), [Gitlab](https://gitlab.com), [Bitbucket](https://bitbucket.org/), or any other git repository.

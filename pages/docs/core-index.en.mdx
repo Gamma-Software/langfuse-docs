@@ -1,181 +1,184 @@
 ---
-description: Get an overview of the core of Aiops functionnality, way of working and how to use it.
+description: Get an overview of the core functionality, workflow, and usage of Aiop.
 ---
+
 import { Callout } from "nextra-theme-docs";
 import { IntegrationBeam } from "../../components/docs/aiop-core/IntegrationBeam.tsx";
 
 
 # Aiop Core
 
-[Aiop Core](/docs/vocabulary#aiop-core) est le noyau de la solution Aiop. Il est composé de plusieurs modules qui permettent de gérer les différentes phases de construction d'un package. Voyons les concepts de base et le fonctionnement de Aiop Core.
+[The Aiop Core](/docs/vocabulary#aiop-core) is the heart of the Aiop solution. It consists of several modules that handle the different phases of building a package. Let's explore the basic concepts and workings of Aiop Core.
 
-## Concepts de base
+## Basic Concepts
 
-Aiop Core est basé sur plusieurs concepts de base. Ces concepts sont les fondations de la solution Aiop.
+Aiop Core is built upon several basic concepts. These concepts form the foundation of the Aiop solution.
 
 ### Package
 
-Un package est un ensemble d’[artefacts](/docs/vocabulary#artefact) qui compose une application. Un package peut être une application web, une application mobile, une application de bureau, une ou un ensemble d’application embarquée, un service, une librairie, etc...
+A package is a collection of [artifacts](/docs/vocabulary#artefact) that make up an application. A package can be a web application, a mobile application, a desktop application, an embedded application or set of applications, a service, a library, etc.
 
 <Callout type="info" emoji="ℹ️">
-  À l'[origine](/docs#origine), l'objectif d'AIOP était de concevoir des packages pour des applications embarquées. Cependant, la solution a été conçue pour être utilisée dans n'importe quel autres types de projet. Si toutefois, vous avez des besoins spécifiques, n'hésitez pas à nous [contacter](/meeting).
+  Originally, the goal of AIOP was to design packages for embedded applications. However, the solution was designed to be used in any other types of projects. If you have specific needs, do not hesitate to [contact us](/meeting).
 </Callout>
 
 #### Composition
 
 {/* Create package beam to explain the composition of a package <PackageBeam/> */}
 
-Un package est composé de plusieurs artefacts. Ces artefacts sont des fichiers ou des dossiers.
+A package is composed of several artifacts. These artifacts can be files or directories.
 
 <details>
-  <summary>Les artefacts peuvent être des fichiers textuels</summary>
+  <summary>Artifacts can be textual files</summary>
   <ol>
-    <li><p>Rapports</p></li>
-    <li><p>Paramétrage</p></li>
-    <li><p>Certificats</p></li>
-    <li><p>Code source</p></li>
-    <li><p>Des données</p></li>
+    <li><p>Reports</p></li>
+    <li><p>Configuration</p></li>
+    <li><p>Certificates</p></li>
+    <li><p>Source code</p></li>
+    <li><p>Data</p></li>
     <li><p>Documentation</p></li>
-    <li><p>Fichiers de logs</p></li>
-    <li><p>...tout ce qui est lisible par un humain</p></li>
+    <li><p>Log files</p></li>
+    <li><p>...anything readable by a human</p></li>
   </ol>
 </details>
 
 <details>
-  <summary>Les artefacts peuvent être des fichiers binaires</summary>
+  <summary>Artifacts can be binary files</summary>
   <ol>
-    <li><p>des sons</p></li>
-    <li><p>des images</p></li>
-    <li><p>des vidéos</p></li>
-    <li><p>des librairies</p></li>
-    <li><p>des exécutables</p></li>
-    <li><p>des archives (zip)</p></li>
-    <li><p>des bases de données</p></li>
-    <li><p>des documents cryptés</p></li>
-    <li><p>...tout ce qui est compilé, crypté, dont la donnée est non lisible par l'humain</p></li>
+    <li><p>Sounds</p></li>
+    <li><p>Images</p></li>
+    <li><p>Videos</p></li>
+    <li><p>Libraries</p></li>
+    <li><p>Executables</p></li>
+    <li><p>Archives (zip)</p></li>
+    <li><p>Databases</p></li>
+    <li><p>Encrypted documents</p></li>
+    <li><p>...anything compiled, encrypted, or unreadable by a human</p></li>
   </ol>
 </details>
 
 
-#### Sources des artefacts
+#### Sources of Artifacts
 
-Les artefacts peuvent être issus de plusieurs sources:
+Artifacts can come from several sources:
 
 import { Cards, Card } from 'nextra/components'
 import { DownloadCloud, Laptop } from "lucide-react";
 
 <Cards>
-  <Card icon={<Laptop />} title="des fichiers locaux" arrow href="/docs/declarations/cookbook/local" />
-  <Card icon={<DownloadCloud />} title="des fichiers distants" arrow href="/docs/declarations/cookbook/remote" />
+  <Card icon={<Laptop />} title="Local files" arrow href="/docs/declarations/cookbook/local" />
+  <Card icon={<DownloadCloud />} title="Remote files" arrow href="/docs/declarations/cookbook/remote" />
 </Cards>
 
-#### Organisation des artefacts
+#### Organization of Artifacts
 
-Vous êtes libre d'organiser les artefacts comme vous le souhaitez. Aiop ne vous impose pas de structure. Cependant, il est recommandé d'adopter une structure standard pour l'ensemble de vos packages.
+You are free to organize the artifacts as you wish. Aiop does not impose a structure on you. However, it is recommended to adopt a standard structure for all your packages.
 
 <Callout emoji="💡">
-  L'avantage d'AIOP réside dans sa capacité à établir une structure d'artefacts standard pour l'ensemble de vos packages définit par vous et votre équipe. Cette approche facilite la maintenance et le débogage des packages, car toutes les personnes impliquées connaîtront cette structure et seront habituées à naviguer à l'intérieur.
+  The advantage of AIOP lies in its ability to establish a standard artifact structure for all your packages defined by you and your team. This approach facilitates maintenance and debugging of packages, as everyone involved will know this structure and will be accustomed to navigating inside it.
 </Callout>
 
-### Validation et erreurs remontés
+### Validation and Error Handling
 
-Aiop Core est pensé pour afficher le plus d'information possible sur les erreurs rencontrées avant et pendant la construction d'un package. Les erreurs sont remontées à l'utilisateur sous forme de rapports dans la console.
+Aiop Core is designed to display as much information as possible about errors encountered before and during the construction of a package. Errors are reported to the user in the form of reports in the console.
 
-Aiop remonte les erreurs **le plus tôt possible** pour que l'utilisateur puisse les corriger rapidement.
+Aiop reports errors **as early as possible** so that the user can correct them quickly.
 
 <Callout emoji="🚨">
-  Il est important de noter que Aiop ne corrige pas les erreurs pour vous ([cela ne tarderait pas à se produire.](/docs/roadmap)). Il vous informe des erreurs et vous donne des indications pour les corriger. C'est à vous de les corriger.
+  It is important to note that Aiop does not correct errors for you ([this would happen sooner or later](/docs/roadmap)). It informs you of the errors and gives you indications on how to correct them. It is up to you to correct them.
 </Callout>
 
 
 ### Configurations
 
-Le comportement de Aiop Core peut être modifié par des configurations. Il existe plusieurs types de configurations: la configuration utilisateur, la configuration du projet, la configuration des systèmes.
-[En savoir plus](/docs/configurations).
+The behavior of Aiop Core can be modified by configurations. There are several types of configurations: user configuration, project configuration, system configuration.
+[Learn more](/docs/configurations).
 
-### Déclarations
+### Declarations
 
-Aiop fonctionne sur le principe déclaratif de ressources. Les déclarations sont des fichiers qui décrivent les artefacts d'un package ainsi que leurs compatibilités avec des systèmes. [En savoir plus](/docs/declarations).
+Aiop operates on the declarative principle of resources. Declarations are files that describe the artifacts of a package as well as their compatibilities with systems. [Learn more](/docs/declarations).
 
-### Intégrations
+### Integrations
 
-Aiop Core inclut divers outils et services tiers pour exécuter différentes tâches. Parmi eux, on compte des gestionnaires de référentiels d'artefacts universels tels que [Nexus](https://www.sonatype.com/nexus-repository-oss) ou [Artifactory](https://jfrog.com/artifactory/). De plus, il intègre un outil de construction de PDF.
+Aiop Core includes various third-party tools and services to perform different tasks. Among them are universal artifact repository managers such as [Nexus](https://www.sonatype.com/nexus-repository-oss) or [Artifactory](https://jfrog.com/artifactory/). Additionally, it integrates a PDF building tool.
 
 <IntegrationBeam />
 
-Une multitude d'autres fonctionnalités et services arrivera dans les prochaines versions (voir la [feuille de route](/docs/roadmap)). [En savoir plus](/docs/integrations).
+A multitude of other features and services will arrive in future versions (see the [roadmap](/docs/roadmap)). [Learn more](/docs/integrations).
 
 ### Caching
 
-Aiop Core exploite un mécanisme de mise en cache pour stocker les ressources distantes. Cette fonctionnalité vise à diminuer le temps nécessaire à la construction des packages, surtout dans le cas où la connexion avec les serveurs distants est interrompue ou lorsque la connexion internet est limitée.
+Aiop Core utilizes a caching mechanism to store remote resources. This feature aims to reduce the time required to build packages, especially in cases where the connection with remote servers is interrupted or when internet connection is limited.
 
-## Fonctionnement
+## Operation
 
-Voyons maintenant comment fonctionne Aiop.
+Now let's see how Aiop works.
 
-### Languages utilisés
+### Used Languages
 
-Le language de programmation utilisé est le Python. Les déclarations et les configurations sont écrites en [YAML](https://yaml.org/).
+The programming language used is Python. Declarations and configurations are written in [YAML](https://yaml.org/).
 
-### Sélections de déclarations
+### Declaration Selections
 
-La sélection est une opération qui consiste à choisir les déclarations à utiliser pour la construction d'un package. La sélection se fait en fonction du système ciblé et de la configuration choisie. Le système cible est défini par l'utilisateur dans le fichier de [configuration des systèmes](/docs/inventory). [En savoir plus](/docs/declarations).
+Selection is an operation that consists of choosing the declarations to use for building a package. Selection is based on the targeted system and the chosen configuration. The targeted system is defined by the user in the [system configuration file](/docs/inventory). [Learn more](/docs/declarations).
 
-### Logs et rapports
+### Logs and Reports
 
-Aiop Core produit des journaux pour chaque étape de construction, affichant des informations variées telles que les erreurs, les avertissements, les détails sur les artefacts, et autres, directement dans la console.
+Aiop Core produces logs for each construction step, displaying various information such as errors, warnings, artifact details, and more, directly in the console.
 
-En outre, Aiop Core génère des rapports textuels stockés dans le répertoire de construction. Ces rapports incluent :
+Additionally, Aiop Core generates textual reports stored in the build directory. These reports include:
 
-- Un rapport détaillé de la construction, répertoriant toutes les opérations réalisées par Aiop.
-- Un résumé du package construit, fournissant des informations essentielles sur celui-ci.
-- Un rapport spécifique décrivant les modifications apportées au package lors de l'étape `post-build`.
+- A detailed build report, listing all operations performed by Aiop.
+- A summary of the built package, providing essential information about it.
+- A specific report describing changes made to the package during the `post-build` step.
 
-## Phases de constructions
+## Construction Phases
 
-Aiop Core est composé de plusieurs phases de construction du package. Chaque phase est responsable de plusieurs tâches spécifiques. Les phases sont exécutées dans un ordre précis.
-Voici les phases de construction:
+Aiop Core consists of several package construction phases. Each phase is responsible for several specific tasks. Phases are executed in a specific order.
+Here are the construction phases:
 
 ### Lint
 
-La phase de `lint` assure la validation des déclarations et des configurations en vérifiant la syntaxe des fichiers correspondants ainsi que la cohérence entre eux.
+The `lint` phase ensures the validation of declarations and configurations by checking the syntax of the corresponding files as well as the consistency between them.
 
-Étant une analyse statique, elle n'exige pas de spécifier le système cible. Toutefois, une option est disponible pour définir le système cible et réaliser des vérifications supplémentaires, notamment sur les éventuels conflits au niveau des ressources.[En savoir plus](/docs/lint).
+As a static analysis, it does not require specifying the target system. However, an option is available to define the target system and perform additional checks, notably on potential conflicts at the resource level. [Learn more](/docs/lint).
 
 <Callout type="info" emoji="ℹ️">
-  À noter qu’il est possible de rajouter des tâches de lint personnalisées pour valider des règles spécifiques à votre projet.
+  Note that it is possible to add custom lint tasks to validate rules specific to your project.
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
-  Le plan `gratuit` ne permet pas de rajouter des tâches de `lint` personnalisées.
+  The `free` plan does not allow
+
+ adding custom `lint` tasks.
 </Callout>
 
 ### Pre-build
 
-La phase de `pre-build` est responsable de la préparation de l'environnement de construction. Elle assure la récupération des artefacts distants, la création des répertoires de construction, etc. [En savoir plus](/docs/pre-build).
+The `pre-build` phase is responsible for preparing the build environment. It ensures the retrieval of remote artifacts, the creation of build directories, etc. [Learn more](/docs/pre-build).
 
 ### Build
 
-La phase de `build` est responsable de la construction du package. Elle assure l'assemblage des ressources dans le package. [En savoir plus](/docs/build).
+The `build` phase is responsible for building the package. It ensures the assembly of resources into the package. [Learn more](/docs/build).
 
 ### Post-build
 
-La phase de `post-build` est utilisée pour réaliser de tâches qui n’ont pas de sens à être inclue dans le phase de `build`. Par exemple, vous pourriez être amené à vouloir générer un fond d’écran pour un client qui affiche en texte des métadonnées relatives au système cible. Toutes manipulation du packages temporaire après `build` doit être fait dans cette phase. [En savoir plus](/docs/post-build).
+The `post-build` phase is used to perform tasks that do not make sense to be included in the `build` phase. For example, you might want to generate a wallpaper for a client that displays metadata about the target system in text format. Any manipulation of the temporary packages after `build` must be done in this phase. [Learn more](/docs/post-build).
 
 <Callout type="info" emoji="ℹ️">
-  Pour rappel, un rapport est généré à la fin de la phase de `post-build` en comparant le package avant et après cette phase. Ce rapport est stocké dans le répertoire de construction.
+  As a reminder, a report is generated at the end of the `post-build` phase by comparing the package before and after this phase. This report is stored in the build directory.
 
-  De plus, il est possible de rajouter des tâches de post-build personnalisées pour réaliser des actions spécifiques à votre projet.
+  Additionally, it is possible to add custom post-build tasks to perform actions specific to your project.
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
-  Le plan `gratuit` ne permet pas de rajouter des tâches de `post-build` personnalisées.
+  The `free` plan does not allow adding custom `post-build` tasks.
 </Callout>
 
 ### Seal
 
-La phase `seal` est une étape où les plusieurs tâches sont effectuées pour finaliser et rendre le package prêt à être distribué dans la phase suivante. [En savoir plus](/docs/seal).
+The `seal` phase is a step where several tasks are performed to finalize and prepare the package for distribution in the next phase. [Learn more](/docs/seal).
 
 ### Deploy
 
-La phase `deploy` est responsable de la distribution du package. Elle assure l'envoi du package dans des gestionnaires de référentiels d'artefacts universels et/ou le déploiement des systèmes cible directement. [En savoir plus](/docs/deploy).
+The `deploy` phase is responsible for distributing the package. It ensures the sending of the package to universal artifact repository managers and/or the deployment of the targeted systems directly. [Learn more](/docs/deploy).

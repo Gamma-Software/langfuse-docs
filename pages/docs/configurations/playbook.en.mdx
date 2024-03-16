@@ -1,108 +1,105 @@
 ---
-description: Aiop fournit un fichier de configuration étendu pour personnaliser le comportement de l'application pour le playbook.
+description: Aiop provides an extended configuration file to customize the application's behavior for the playbook.
 ---
-import { Callout } from "nextra-theme-docs";
 
-# Configuration du playbook
+# Playbook Configuration
 
-Le playbook doit être configuré pour répondre à votre besoin. Le fichier de configuration est situé dans le répertoire relatif au playbook:
-- Unix: `<racine_playbook>/.aiop/playbook.yaml`
-- Windows: `<racine_playbook>\.aiop\playbook.yaml`
+The playbook needs to be configured to meet your requirements. The configuration file is located in the playbook's relative directory:
+- Unix: `<playbook_root>/.aiop/playbook.yaml`
+- Windows: `<playbook_root>\.aiop\playbook.yaml`
 
-Le playbook doit également contenir un fichier de configuration de l’inventaire qui répertorie les systèmes cible et ces caractéristiques. Le fichier de configuration d'inventaire est situé dans le répertoire relatif au playbook:
-- Unix: `<racine_playbook>/.aiop/inventory.yaml`
-- Windows: `<racine_playbook>\.aiop\inventory.yaml` et `<racine_playbook>\.aiop\inventory_config.yml`
+The playbook must also contain an inventory configuration file that lists the target systems and their characteristics. The inventory configuration file is located in the playbook's relative directory:
+- Unix: `<playbook_root>/.aiop/inventory.yaml`
+- Windows: `<playbook_root>\.aiop\inventory.yaml` and `<playbook_root>\.aiop\inventory_config.yml`
 
-> `<racine_playbook>` est le répertoire racine du playbook.
+> `<playbook_root>` is the root directory of the playbook.
 
 <Callout type="info" emoji="ℹ️">
-  À l’installation de Aiop, un fichier de configuration par défaut est créé. Il est possible de le [modifier](#personalisation) pour personnaliser le comportement de l’application.
+  Upon Aiop installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
-  Les plugins peuvent également apporter des options de configuration supplémentaires. Veuillez consulter la documentation du plugin pour plus d'informations. [Contactez](mailto:valentin.rudloff.perso@gmail.com) le support technique pour toute question.
+  Plugins may also provide additional configuration options. Please refer to the plugin documentation for more information. [Contact](mailto:valentin.rudloff.perso@gmail.com) technical support for any inquiries.
 </Callout>
 
-Le fichier de configuration est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser le playbook.
+The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop to customize the playbook.
 
-## Structure du fichier de configuration
+## Configuration File Structure
 
-Ce fichier de configuration est spécifique à votre playbook. Il contient des informations sur les plugins, les dépôts distants, les règles de validation et post-build personalisées et d’autres options de personnalisation qui pourrait venir de plugins.
+This configuration file is specific to your playbook. It contains information about plugins, remote repositories, custom validation, and post-build scripts, and other customization options that may come from plugins.
 
 ```yaml filename=".aiop/playbook.yml"
 plugins:
-  - name: {nom du plugin}
-    version: {version du plugin}
+  - name: {plugin_name}
+    version: {plugin_version}
 repositories:
-  - name: {nom du dépôt}
-    instance: {nom de l'instance}
-    type: {type du dépôt}
-    base_url: {base de l’url du dépôt}
-    repository_regex: {regex pour filtrer les dépôts}
+  - name: {repository_name}
+    instance: {instance_name}
+    type: {repository_type}
+    base_url: {repository_base_url}
+    repository_regex: {repository_regex}
 lint_rules:
-  - classname: {nom de la classe de la règle à exécuter à la validation}
-    path: {chemin relatif vers le script}
+  - classname: {rule_classname}
+    path: {relative_script_path}
 post_scripts:
-  - classname: {nom de la classe de la règle à exécuter après le build}
-    path: {chemin relatif vers le script}
+  - classname: {rule_classname}
+    path: {relative_script_path}
 ```
 
-## Personalisation
+## Personalization
 
+To customize, simply open and modify the configuration file.
 
-Pour personnaliser, il suffit d’ouvrir et de modifier le fichier de configuration.
-
-| **Nom** | **Type** | **Description** | **Valeurs possibles** |
+| **Name** | **Type** | **Description** | **Possible Values** |
 | :--- | :--- | :--- | :--- |
-| [`plugins`](#plugins) | `list` | Liste des plugins à utiliser pour le playbook. | `name` : Nom du plugin. <br/>`version` : Version du plugin. |
-| [`plugins.name`](#plugins) | `str` | Nom du plugin |  |
-| [`plugins.version`](#plugins) | `str` | Version du plugin |
-| [`repositories`](#repositories) | `list` | Liste des dépôts distants à utiliser pour le playbook. | `name` : Nom du dépôt. <br/>`instance` : Nom de l'instance. <br/>`type` : Type du dépôt. <br/>`base_url` : Base de l’url du dépôt. <br/>`repository_regex` : Regex pour filtrer les dépôts. |
-| [`repositories.name`](#repositories)  | `str` | Nom du dépôt |
-| [`repositories.instance`](#repositories)  | `str` | Nom de l'instance |
-| [`repositories.type`](#repositories)  | `str` | Type du dépôt |
-| [`repositories.base_url`](#repositories)  | `str` | Base de l’url du dépôt |
-| [`repositories.repository_regex`](#repositories)  | `str` | Regex pour filtrer les dépôts |
-| [`lint_rules`](#lint_rules-et-post_scripts) | `list` | Liste des règles de validation à exécuter. | `classname` : Nom de la classe de la règle à exécuter à la validation. <br/>`path` : Chemin relatif vers le script. |
-| [`lint_rules.classname`](#lint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter à la validation. | |
-| [`lint_rules.path`](#lint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
-| [`post_scripts`](#lint_rules-et-post_scripts) | `list` | Liste des scripts à exécuter après le build. | `classname` : Nom de la classe de la règle à exécuter après le build. <br/>`path` : Chemin relatif vers le script. |
-| [`post_scripts.classname`](#lint_rules-et-post_scripts) | `str` | Nom de la classe de la règle à exécuter après le build. | |
-| [`post_scripts.path`](#lint_rules-et-post_scripts) | `str` | Chemin relatif vers le script. | |
+| [`plugins`](#plugins) | `list` | List of plugins to use for the playbook. | `name`: Plugin name. <br/>`version`: Plugin version. |
+| [`plugins.name`](#plugins) | `str` | Plugin name |  |
+| [`plugins.version`](#plugins) | `str` | Plugin version |
+| [`repositories`](#repositories) | `list` | List of remote repositories to use for the playbook. | `name`: Repository name. <br/>`instance`: Instance name. <br/>`type`: Repository type. <br/>`base_url`: Repository base URL. <br/>`repository_regex`: Regex to filter repositories. |
+| [`repositories.name`](#repositories)  | `str` | Repository name |
+| [`repositories.instance`](#repositories)  | `str` | Instance name |
+| [`repositories.type`](#repositories)  | `str` | Repository type |
+| [`repositories.base_url`](#repositories)  | `str` | Repository base URL |
+| [`repositories.repository_regex`](#repositories)  | `str` | Regex to filter repositories |
+| [`lint_rules`](#lint_rules-and-post_scripts) | `list` | List of validation rules to execute. | `classname`: Class name of the rule to execute at validation. <br/>`path`: Relative path to the script. |
+| [`lint_rules.classname`](#lint_rules-and-post_scripts) | `str` | Class name of the rule to execute at validation. | |
+| [`lint_rules.path`](#lint_rules-and-post_scripts) | `str` | Relative path to the script. | |
+| [`post_scripts`](#lint_rules-and-post_scripts) | `list` | List of scripts to execute after the build. | `classname`: Class name of the rule to execute after the build. <br/>`path`: Relative path to the script. |
+| [`post_scripts.classname`](#lint_rules-and-post_scripts) | `str` | Class name of the rule to execute after the build. | |
+| [`post_scripts.path`](#lint_rules-and-post_scripts) | `str` | Relative path to the script. | |
 
-Tous ces champs sont optionnels.
+All of these fields are optional.
 
 <Callout type="info" emoji="ℹ️">
-  Dans le cas où vous n’auriez ni de plugins, ni de dépôts distants, ni de règles de validation, ni de scripts post-build, vous pouvez supprimer les sections correspondantes **mais vous devez tout de même mettre un fichier vide**.
+  In case you don't have any plugins, remote repositories, validation rules, or post-build scripts, you can remove the corresponding sections **but you still must have an empty file**.
 </Callout>
 
 ### `plugins`
 
-La section `plugins` est une liste de plugins à utiliser pour le playbook. Chaque plugin doit avoir un nom et une version. Vous êtes illimité en nombre de plugins.
+The `plugins` section is a list of plugins to use for the playbook. Each plugin must have a name and a version. You are unlimited in the number of plugins.
 
 ### `repositories`
 
+The `repositories` section is a list of remote repositories to use for the playbook. You are not limited in the number of repositories. Each repository must have a name, an instance, a type, a base URL, and a regex. Here's an explanation of each field:
 
-La section `repositories` est une liste de dépôts distants à utiliser pour le playbook. Vous n’êtes pas limité en nombre de dépôts. Chaque dépôt doit avoir un nom, une instance, un type, une base de l’url et une regex. Voici une explication de chaque champ:
+- **`name`:** The repository name. This name is used to identify the repository in declarations.
 
-- **`name`:** Le nom du dépôt. Ce nom est utilisé pour identifier le dépôt dans les déclarations.
+- **`instance`:** The instance name corresponds to the parameter in the [user configuration file](/docs/configurations/user). It's the instance of a remote repository that the playbook will use.
 
-- **`instance`:** Le nom de l’instance correspond au paramètre dans le fichier de [configuration utilisateur](/docs/configurations/user). C’est l’instance d’un dépôt distant que le playbook va utiliser.
+- **`type`:** The type can currently be `artifactory` or `nexus`.
 
-- **`type`:** Le type peut aujourd’hui être `artifactory` ou `nexus`.
+- **`base_url`** the base URL of the repository. For example, for an Artifactory repository, the base URL is `https://artifactory.my-company.com/artifactory/`.
 
-- **`base_url`** l’url de base du dépôt. Par exemple, pour un dépôt artifactory, l’url de base est `https://artifactory.mon-entreprise.com/artifactory/`.
+- **`repository_regex`** is a regular expression to both validate that the path to the remote resource is correct and get additional data to process during generation. For example, you might need to retrieve the resource's version and name and verify that it's a Java application `.jar`. In this case, you can use a regex to extract this information: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. You can then during package generation retrieve the `version` and `name` values to use in your [`post_scripts`](#lint_rules-and-post_scripts) rule.
 
-- **`repository_regex`** est une expression régulière pour à la fois valider que le chemin vers la ressource distante est correct et obtenir des données supplémentaires pour les traiter dans la génération. Par exemple, vous pourriez avoir besoin de récupérer la version de la ressource et sont nom et vérifier que c’est une application Java `.jar`. Dans ce cas, vous pouvez utiliser une regex pour extraire ces informations: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. Vous pourrez ensuite pendant la génération du package récupérer les valeurs `version` et `name` pour les utiliser dans votre règle [`post_scripts`](#lint_rules-et-post_scripts).
+### `lint_rules` and `post_scripts`
 
-### `lint_rules` et `post_scripts`
-
-La section `lint_rules` et `post_scripts` sont des listes de règles à exécuter au moment de la génération du package. Chaque règle doit indiquer le nom de classe et le chemin relatif à la racine du projet vers le fichier de script en question.
+The `lint_rules` and `post_scripts` sections are lists of rules to execute during package generation. Each rule must specify the class name and the relative path from the project root to the script file.
 
 
-## Exemple de configuration
+## Example Configuration
 
-Ce fichier de paramètre peut être difficile à mettre en place c’est pourquoi nous avons créé un modèle d’inventaire pour vous aider à démarrer. Par défaut, Aiop vous le créer lors de l’initialisation du projet.
+This parameter file can be tricky to set up, which is why we created an inventory template to help you get started. By default, Aiop creates it for you when initializing the project.
 
 ```yaml filename=".aiop/playbook.yml"
 plugins:
@@ -112,7 +109,9 @@ repositories:
   - name: release
     instance: artifactory-tesla-repo
     type: artifactory
-    base_url: https://artifactory.tesla.com/artifactory/release/
+    base_url: https://artifactory.tesla
+
+.com/artifactory/release/
     repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
   - name: qa
     instance: artifactory-tesla-repo
@@ -127,7 +126,7 @@ post_scripts:
     path: .aiop/rules/apply_patch.py
 ```
 
-Voyons cela en détail:
+Let's break it down:
 
 <Steps>
 
@@ -137,10 +136,10 @@ plugins:
     version: "0.2"
 ```
 
-Le playbook à besoin du plugin nommé `tesla-plugin` avec la version `0.2`. Rappelons que vous pouvez avoir autant de plugins que vous le souhaitez.
+The playbook needs the `tesla-plugin` plugin with version `0.2`. Remember that you can have as many plugins as you like.
 
 <Callout type="warning" emoji="⚠️">
-  Vous devez avoir les droits pour accéder à ce plugin. Si vous ne l’avez pas, vous pouvez [contacter](mailto:valentin.rudloff.perso@gmail.com) le support technique pour obtenir de l’aide.
+  You need the rights to access this plugin. If you don't have it, you can [contact](mailto:valentin.rudloff.perso@gmail.com) technical support for assistance.
 </Callout>
 
 ```yaml
@@ -157,7 +156,7 @@ repositories:
     repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
 ```
 
-Il y a deux dépôts distants dans ce modèle. Le premier est le `release` et le second est le `dev`. Dans notre cas `release` stocke les ressources de production et `dev` celle de développement. Il s’agit du même dépôt distant c’est pourquoi l’instance est la même. Le type est `artifactory` car il s’agit d’un dépôt utilisant la solution Artifactory. L’url de base est `https://artifactory.tesla.com/artifactory/release/` pour le premier et `https://artifactory.tesla.com/artifactory/dev/` pour le second. La regex permet d’extraire l’information sur l’équipe responsable de la ressource, sa version et son nom.
+There are two remote repositories in this template. The first one is `release`, and the second one is `dev`. In our case, `release` stores production resources, and `dev` stores development resources. It's the same remote repository, which is why the instance is the same. The type is `artifactory` because it's a repository using the Artifactory solution. The base URL is `https://artifactory.tesla.com/artifactory/release/` for the first one and `https://artifactory.tesla.com/artifactory/dev/` for the second one. The regex extracts information about the team responsible for the resource, its version, and its name.
 
 ```yaml
 lint_rules:
@@ -165,7 +164,7 @@ lint_rules:
     path: .aiop/rules/snake_case_rule.py
 ```
 
-La règle `SnakeCaseRule` est définie dans le fichier `.aiop/rules/snake_case_rule.py`. Pour cet exemple, cette règle vérifie que les noms de fichiers sont en snake_case.
+The `SnakeCaseRule` rule is defined in the `.aiop/rules/snake_case_rule.py` file. For this example, this rule checks that file names are in snake_case.
 
 ```yaml
 post_scripts:
@@ -173,19 +172,19 @@ post_scripts:
     path: .aiop/rules/apply_patch.py
 ```
 
-Le script `ApplyPatch` est défini dans le fichier `.aiop/rules/apply_patch.py`. Pour cet exemple, ce script applique un patch sur le package généré.
+The `ApplyPatch` script is defined in the `.aiop/rules/apply_patch.py` file. For this example, this script applies a patch on the generated package.
 
 </Steps>
 
-## Ignorer des fichiers
+## Ignoring Files
 
-Il est possible d’ignorer des fichiers dans le playbook. Pour cela, il suffit de créer un fichier `.amlignore` à la racine du playbook. Ce fichier suit la même syntaxe que le fichier `.gitignore`. Par exemple, pour ignorer tous les fichiers avec l’extension `.jar`:
+It's possible to ignore files in the playbook. To do this, simply create a `.amlignore` file at the root of the playbook. This file follows the same syntax as the `.gitignore` file. For example, to ignore all files with the `.jar` extension:
 
 ```plaintext filename=".amlignore"
 *.jar
 ```
 
-Ou tous les fichiers dans le répertoire `target`:
+Or all files in the `target` directory:
 ```plaintext filename=".amlignore"
 target/
 ```

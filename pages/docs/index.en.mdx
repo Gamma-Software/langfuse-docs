@@ -1,89 +1,91 @@
 ---
 description: >-
-  Aiop (All-In-One Packager) est un outil de packaging multi-plateforme qui permet de générer des packages uniformes pour différentes configurations en utilisant une simple déclaration de ressource. "Packages as Code"
+  Aiop (All-In-One Packager) is a multi-platform packaging tool that generates uniform packages for different configurations using a simple resource declaration. "Packages as Code"
 ---
 
 import { ProductUpdateSignup } from "@/components/productUpdateSignup";
 
-# Aperçu
-Aiop _(All-In-One Packager)_ est un **outil de packaging multi-plateforme/multi-configuration** qui permet de générer des packages uniformes pour différentes configurations en utilisant une simple déclaration de ressource.
+# Overview
+Aiop _(All-In-One Packager)_ is a **multi-platform/multi-configuration packaging tool** that generates uniform packages for different configurations using a simple resource declaration.
 
-Nous appelons cela **Packages as Code** car vous pouvez déclarer vos ressources de packaging dans un fichier de configuration et les générer en utilisant Aiop.
+We call this **Packages as Code** because you can declare your packaging resources in a configuration file and generate them using Aiop.
 
-## Origine
+## Origin
 
-Aiop a été créé pour répondre à un besoin croissant de **simplification du processus de packaging**. Les développeurs et les équipes de développement sont confrontés à des défis de plus en plus complexes lorsqu'il s'agit de créer des packages pour des systèmes embarqués, des applications, des logiciels, etc. Ces défis sont liés à la diversité des plateformes, des configurations, des environnements de déploiement et des [registres d'artefacts](/docs/vocabulary#registres-dartefacts). Aiop a été conçu pour relever ces défis et offrir une solution complète et puissante pour simplifier le processus de packaging.
+Aiop was created to address a growing need for **simplifying the packaging process**. Developers and development teams face increasingly complex challenges when it comes to creating packages for embedded systems, applications, software, etc. These challenges are related to the diversity of platforms, configurations, deployment environments, and [artifact registries](/docs/vocabulary#artifact-registries). Aiop was designed to tackle these challenges and provide a comprehensive and powerful solution to simplify the packaging process.
 
-Nous avions constaté dans nos différentes expériences professionnelles que les outils et méthodes existantes pour packager des logiciels de systèmes embarqués étaient souvent complexes, laborieux et sujets à des erreurs humaines. Nous avons donc décidé de créer Aiop pour offrir une alternative simple, efficace et fiable pour la génération de packages.
+Through our various professional experiences, we observed that existing tools and methods for packaging embedded system software were often complex, laborious, and prone to human errors. Therefore, we decided to create Aiop to offer a simple, efficient, and reliable alternative for package generation.
 
-## Comment démarrer
+## Getting Started
 
 <Cards num={3}>
-  <Card href="/docs/tracing/overview" title="Comment cela fonctionne ?" image arrow>
+  <Card href="/docs/tracing/overview" title="How does it work?" image arrow>
     ![Quickstart icon (rocket)](/images/cards/code.svg)
   </Card>
-  <Card href="/docs/get-started" title="Démarrer" image arrow>
+  <Card href="/docs/get-started" title="Get Started" image arrow>
     ![Quickstart icon (rocket)](/images/cards/rocket.svg)
   </Card>
-  <Card href="/docs/demo" title="Démonstration" image arrow>
+  <Card href="/docs/demo" title="Demo" image arrow>
     ![Interactive demo](/images/cards/robot.svg)
   </Card>
 </Cards>
 
-## Fonctionnalitées principales
+## Key Features
 
-### Interface simple
+### Simple Interface
 
-- **CLI:** Aiop est un outil en ligne de commande qui peut être utilisé pour générer des packages pour différents environnements.
-- **Langages déclaratifs:** La définition des ressources à intégrer dans les packages se base sur le [YAML](https://www.redhat.com/fr/topics/automation/what-is-yaml). La configuration de Aiop adopte également le YAML. Cette approche déclarative favorise la clarté et la concision, tout en offrant une flexibilité suffisante pour répondre aux besoins variés des projets.
-- **Prêt à l'emploi:** L'outil est prêt à l'emploi, il suffit de l'installer et de l'utiliser. Il viens avec des modèles prêt à l'emploi pour les projets les plus courants.
+- **CLI:** Aiop is a command-line tool that can be used to generate packages for different environments.
+- **Declarative Languages:** Defining resources to be included in packages is based on [YAML](https://yaml.org/). Aiop's configuration also adopts YAML. This declarative approach promotes clarity and conciseness while offering sufficient flexibility to meet the varied needs of projects.
+- **Ready-to-Use:** The tool is ready to use; just install and utilize it. It comes with ready-to-use templates for the most common projects.
 
-### Emballage multi-plateforme/multi-configuration
+### Multi-Platform/Multi-Configuration Packaging
 
-- **Prédictibilité:** Garantir la génération d'un package pour une cible donnée donnera toujours le même résultat quelque soit l'environnement de génération. Cela veut dire que vous pouvez travailler avec votre équipe à différent endroits du monde avec différents ordinateurs (PC, Mac, Linux) et le package généré par l'un sera le même généré par un autre. ([Prédictibilité](/docs/predictability))
-- **Observabilité:** Comprendre le comportement de Aiop pendant la génération du package. Cela pourrait inclure des outils de journalisation avancés, et d'utilisation. Ces fonctionnalités permettent aux développeurs de détecter rapidement les problèmes et de diagnostiquer les performances de leurs packages dans divers environnements de déploiement.
-- **Traçabilité:** Chaque package est tracé et permet de savoir exactement quand, comment{/* , qui l'a généré*/} et dans quelles conditions. ([Traçabilité](/docs/traceability))
+- **Predictability:** Ensuring the generation of a package for a given target will always yield the same result regardless of the build environment. This means that you can work with your team in different parts of the world with different computers (PC, Mac, Linux), and the package generated by one will be the same as generated by another. ([Predictability](/docs/predictability))
+- **Observability:** Understanding Aiop's behavior during package generation. This could include advanced logging and usage tracking tools. These features allow developers to quickly detect issues and diagnose the performance of their packages in various deployment environments.
+- **Traceability:** Each package is traced, providing exact details of when, how{/* , who generated it*/}, and under what conditions. ([Traceability](/docs/traceability))
 
-### Flexibilité
-- **Configuration:** onçus pour offrir une configuration maximale, les packages générés par Aiop peuvent être adaptés à une multitude de cas d'utilisation. ([Flexibilité](/docs/flexibility))
-- **Personnalisation:** Aiop permet aux développeurs de personnaliser les packages en fonction de leurs besoins spécifiques, en ajoutant ou en supprimant des ressources, en modifiant les paramètres de configuration, etc. ([Personnalisation](/docs/customization))
-- **Extensibilité:** Aiop est conçu pour être extensible, ce qui signifie que les développeurs peuvent ajouter des fonctionnalités supplémentaires à l'outil pour répondre à des besoins spécifiques. ([Extensibilité](/docs/extensibility))
+### Flexibility
 
-### Automatisation du processus d'emballage
+- **Configuration:** Designed to offer maximum configuration, packages generated by Aiop can be tailored to a multitude of use cases. ([Flexibility](/docs/flexibility))
+- **Customization:** Aiop allows developers to customize packages according to their specific needs, adding or removing resources, modifying configuration settings, etc. ([Customization](/docs/customization))
+- **Extensibility:** Aiop is designed to be extensible, meaning developers can add additional features to the tool to meet specific requirements. ([Extensibility](/docs/extensibility))
 
-- **Continuité:** Aiop automatise le processus d'emballage, assurant ainsi une continuité dans le déploiement des packages.
-  - En éliminant les tâches manuelles répétitives, Aiop permet aux équipes de développement de **maintenir un flux de travail fluide et efficace**, réduisant les risques d'erreurs et accélérant le déploiement des applications et des logiciels.
-  - La continuité assurée par Aiop favorise une livraison régulière et fiable des packages, ce qui contribue à la stabilité et à la qualité des produits logiciels. Aiop est l'outil idéal pour les équipes de développement qui cherchent à adopter des pratiques de développement modernes et à accélérer leur rythme de livraison via le principe de la [CI/CD (Intégration continue, Déploiement continue)](https://www.redhat.com/fr/topics/devops/what-is-ci-cd).
-- **Intégration:** La force de Aiop est de pouvoir récupérer des artefacts de différents registres d'artefacts ([Artifactory](https://jfrog.com/fr/artifactory/), [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) pour le moment) et de les intégrer dans le package final. ([Intégration](/docs/integration))
-- **Versionning:** Les playbook sont versionnable via des outils de versionning de code source ([Git](https://git-scm.com/), [SVN](https://subversion.apache.org/), [Mercurial](https://www.mercurial-scm.org/), etc).
+### Automation of Packaging Process
 
+- **Continuity:** Aiop automates the packaging process, ensuring continuity in package deployment.
+  - By eliminating repetitive manual tasks, Aiop enables development teams to **maintain a smooth and efficient workflow**, reducing the risk of errors and speeding up the deployment of applications and software.
+  - The continuity ensured by Aiop promotes regular and reliable delivery of packages, contributing to the stability and quality of software products. Aiop is the ideal tool for development teams looking to adopt modern development practices and accelerate their delivery pace through the principle of [CI/CD (Continuous Integration, Continuous Deployment)](https://www.redhat.com/topics/devops/what-is-ci-cd).
+- **Integration:** Aiop's strength lies in its ability to retrieve artifacts from different artifact registries ([Artifactory](https://jfrog.com/artifactory/), [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) currently) and integrate them into the final package. ([Integration](/docs/integration))
+- **Versioning:** Playbooks are versioned using source code versioning tools ([Git](https://git-scm.com/), [SVN](https://subversion.apache.org/), [Mercurial](https://www.mercurial-scm.org/), etc).
 
-## Pourquoi utiliser AIOP?
+## Why Use AIOP?
 
-- Prédictibilité
-- Plateforme, Environnement, Configuration, etc agnostique
-- Rapidité de génération
-- Modernisation des méthodes de packaging
-- Adoptable progressivement - commencez par un modèle et étendez l'utilisation des fonctionnalités
-- Configurable et Extensible à souhaits
+- Predictability
+- Platform, Environment, Configuration, etc., agnostic
+- Fast generation
+- Modernization of packaging methods
+- Gradually adoptable - start with a template and expand the use of features
+- Configurable and Extensible to desires
 
 <div className="rounded px-5 py-5 my-10 bg-primary/5 ring-1 ring-primary/20">
 
 <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
-  Challenges de créer des packages uniformes et comment Aiop aide à les résoudre
+  Challenges of creating uniform packages and how Aiop helps solve them
 </h3>
 
-Créer des packages uniformes pour des systèmes embarqués représente l'un des défis majeurs pour les développeurs et les équipes de développement de nos jours. Lorsqu'on aborde ce sujet, on entre dans un monde où la diversité des plateformes, des configurations, et des environnements de déploiement rend la tâche complexe et parfois laborieuse. C'est dans ce contexte que Aiop émerge comme un allié inestimable, offrant des solutions innovantes pour relever ces défis et **simplifier le processus de packaging**.
+Creating uniform packages for embedded systems is one of the major challenges for developers and development teams today. When addressing this topic, we enter a world where
 
-L'un des principaux obstacles auxquels sont confrontés les développeurs est la **fragmentation des environnements**. Les logiciels doivent souvent être compatibles avec une multitude de systèmes d'exploitation, de versions, et de configurations matérielles. Cette fragmentation peut entraîner des erreurs de déploiement, des incompatibilités et des retards dans la mise sur le marché des produits. Aiop aborde cette problématique en offrant une approche multi-plateforme et multi-configuration, permettant ainsi la génération de packages **qui fonctionnent** de manière uniforme, indépendamment du système cible.
+ the diversity of platforms, configurations, and deployment environments makes the task complex and sometimes laborious. It is in this context that Aiop emerges as an invaluable ally, offering innovative solutions to address these challenges and **simplify the packaging process**.
 
-Une autre dimension importante dans la création de packages uniformes est l'**intégration transparente des registres d'artefacts**. Ces registres jouent un rôle crucial dans le stockage et la gestion des artefacts logiciels, tels que les bibliothèques, les dépendances, et les packages eux-mêmes. Cependant, l'intégration de ces registres dans le processus de packaging peut souvent être laborieuse et sujette à des erreurs humaines. Aiop brise ces barrières en offrant une **solution simplifiée** pour intégrer les registres d'artefacts dans le flux de travail de packaging. Grâce à des fonctionnalités avancées, Aiop peut **récupérer automatiquement** les artefacts nécessaires à partir de différents registres, tels que Artifactory ou Nexus, et les incorporer de manière transparente dans le package final.
+One of the main obstacles developers face is **environment fragmentation**. Software often needs to be compatible with a multitude of operating systems, versions, and hardware configurations. This fragmentation can lead to deployment errors, incompatibilities, and delays in product launches. Aiop addresses this issue by offering a multi-platform and multi-configuration approach, thus enabling the generation of packages that **consistently work** across different target systems.
 
-La **prédictibilité** est également un aspect crucial dans la création de packages uniformes. Les membres d'une équipe doivent avoir la certitude que **le package généré par l'un soit le même que généré par l'autre**, quel que soit l'environnement de développement ou environnement de travail. Aiop garantit cette prédictibilité en fournissant un processus de génération de packages robuste et reproductible. Ainsi, les équipes de développement peuvent travailler en toute confiance, sachant que leurs packages seront cohérents et fiables dans toutes les conditions et ainsi éviter les longues discussions sur des problèmes de packages.
+Another important aspect in creating uniform packages is the **seamless integration of artifact registries**. These registries play a crucial role in storing and managing software artifacts, such as libraries, dependencies, and packages themselves. However, integrating these registries into the packaging process can often be laborious and prone to human errors. Aiop breaks down these barriers by offering a **simplified solution** for integrating artifact registries into the packaging workflow. With advanced features, Aiop can **automatically retrieve** the necessary artifacts from different registries, such as Artifactory or Nexus, and seamlessly incorporate them into the final package.
 
-Enfin, la **traçabilité** et la transparence sont des éléments essentiels pour assurer la qualité et la conformité des packages générés. Aiop offre des fonctionnalités avancées de traçabilité, permettant de suivre chaque étape du processus de génération, de connaître l'origine des modifications.
+**Predictability** is also a crucial aspect in creating uniform packages. Team members need to be certain that **the package generated by one will be the same as generated by another**, regardless of the development environment or workspace. Aiop ensures this predictability by providing a robust and reproducible package generation process. Thus, development teams can work with confidence, knowing that their packages will be consistent and reliable in all conditions, thereby avoiding lengthy discussions about package issues.
 
-En conclusion, les challenges liés à la création de packages uniformes sont nombreux et complexes, mais grâce à des outils innovants comme Aiop, ces défis deviennent des opportunités d'amélioration et de progression. Aiop offre une solution complète et puissante pour simplifier le processus de packaging, permettant aux développeurs de se concentrer sur l'innovation et la création de produits exceptionnels, sans être entravés par des contraintes techniques.
+Lastly, **traceability** and transparency are essential elements to ensure the quality and compliance of generated packages. Aiop offers advanced traceability features, allowing every step of the generation process to be tracked, and the origin of modifications to be known.
+
+In conclusion, the challenges related to creating uniform packages are numerous and complex, but thanks to innovative tools like Aiop, these challenges become opportunities for improvement and progression. Aiop offers a comprehensive and powerful solution to simplify the packaging process, allowing developers to focus on innovation and creating exceptional products, without being hindered by technical constraints.
 
 {/* <Frame
   transparent
@@ -103,26 +105,26 @@ En conclusion, les challenges liés à la création de packages uniformes sont n
 </Frame>
 <span>_Langfuse features along the development lifecycle_</span> */}
 
-> "La simplicité est la sophistication ultime dans la résolution des défis complexes." - Leonardo da Vinci
+> "Simplicity is the ultimate sophistication in solving complex challenges." - Leonardo da Vinci
 
 </div>
 
-## Mise à jour
+## Updates
 
-Aiop évolue rapidement, consultez le [changelog](/changelog) pour les dernières mises à jour.
+Aiop is evolving rapidly; check the [changelog](/changelog) for the latest updates.
 
-Inscrivez-vous à la **liste de diffusion** pour être informé des nouvelles fonctionnalités majeures :
+Sign up for the **mailing list** to be informed about major new features:
 
 <ProductUpdateSignup source="aiop.fr/docs" className="mt-2" />
 
-## Garder en contact
+## Stay in Touch
 
-Rejoignez notre communauté pour rester informé des dernières mises à jour, des nouvelles fonctionnalités et des meilleures pratiques.
+Join our community to stay informed about the latest updates, new features, and best practices.
 
-- **Discord:** Rejoignez notre [serveur Discord](/discord) pour discuter avec d'autres utilisateurs, poser des questions et partager vos expériences.
-- **Gitlab:** Suivez notre [projet Gitlab](https://gitlab.com/aiop-group/aiop) pour être informé des dernières mises à jour et des nouvelles fonctionnalités. Ou remonter des bugs, demander des fonctionnalités, etc ([issues]()).
-- **Twitter:** Suivez-nous sur [Twitter](https://twitter.com/aiop_group) pour les dernières nouvelles et annonces.
-- **Slack:** Rejoignez notre [communauté Slack](https://join.slack.com/t/aiop-group/shared_invite/zt-1z3z3z3z) pour discuter avec d'autres utilisateurs, poser des questions et partager vos expériences.
-- **Mail:** Contactez-nous par [mail](mailto:valentin.rudloff.perso@gmail.com) pour toute question, feedback ou demande d'assistance.
+- **Discord:** Join our [Discord server](/discord) to chat with other users, ask questions, and share your experiences.
+- **Gitlab:** Follow our [Gitlab project](https://gitlab.com/aiop-group/aiop) to stay informed about the latest updates and new features. Or report bugs, request features, etc ([issues]()).
+- **Twitter:** Follow us on [Twitter](https://twitter.com/aiop_group) for the latest news and announcements.
+- **Slack:** Join our [Slack community](https://join.slack.com/t/aiop-group/shared_invite/zt-1z3z3z3z) to chat with other users, ask questions, and share your experiences.
+- **Mail:** Contact us via [email](mailto:valentin.rudloff.perso@gmail.com) for any questions, feedback, or assistance inquiries.
 
-Si vous souhaitez discuter d'un cas d'usage ensemble, contactez nous par [email](mailto:valentin.rudloff.perso@gmail.com) ou [prenez rendez-vous](/schedule-demo).
+If you would like to discuss a use case together, contact us via [email](mailto:valentin.rudloff.perso@gmail.com) or [schedule a demo](/schedule-demo).

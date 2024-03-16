@@ -1,46 +1,48 @@
 ---
 description: >-
-  Aiop possède un système de cache pour éviter de recharger à nouveau les ressources distantes pour accélérer le temps de construction.
+  Aiop has a caching system to avoid reloading remote resources again to speed
+  up the build time.
 ---
-# Système de mise en cache : Accélérez la construction du package
 
-Dans le processus de génération du package, le temps est précieux. Chaque seconde économisée peut contribuer à une livraison plus rapide et plus efficace du produit final. C'est pourquoi Aiop a mis en place un système de cache intelligent pour éviter de recharger les ressources distantes, accélérant ainsi le temps de construction.
+# Cache System: Speed Up Package Building
 
-## Principe du Système de Cache
+In the package generation process, time is precious. Every saved second can contribute to faster and more efficient delivery of the final product. That's why Aiop has implemented an intelligent caching system to avoid reloading remote resources, thus speeding up the build time.
 
-Le principe fondamental du système de cache d'Aiop est simple mais puissant : plutôt que de recharger les ressources à chaque fois qu'elles sont nécessaires, le système les stocke localement après la première récupération. Lorsque ces ressources sont requises ultérieurement, Aiop vérifie d'abord si elles sont présentes dans le cache local. Si tel est le cas, il les utilise directement à partir du cache, évitant ainsi le coût de téléchargement et d'attente associé à l'accès à distance.
+## Cache System Principle
 
-Pour s’assurer que la ressource du cache est à jour Aiop vérifie si la ressource distante a été modifiée via le hachage ([En savoir plus sur le hachage](https://www.cnil.fr/fr/securite-chiffrer-garantir-lintegrite-ou-signer)). Si c'est le cas, Aiop télécharge la nouvelle version et met à jour le cache.
+The fundamental principle of Aiop's caching system is simple yet powerful: rather than reloading resources every time they are needed, the system stores them locally after the initial retrieval. When these resources are required later, Aiop first checks if they are present in the local cache. If so, it uses them directly from the cache, avoiding the cost of download and waiting associated with remote access.
 
-À chaque fois qu’une ressource est récupérée du serveur distant, il compare le hachage de la ressource distante avec le hachage de la ressource en cache pour garantir l’intégrité de la ressource. Sinon il la télécharge de nouveau ou remonte au erreur après plusieurs tentatives. Le nombre de tentatives est configurable ([En savoir plus sur la configuration](/docs/configurations/user#structure-du-fichier-de-configuration)).
+To ensure that the cached resource is up to date, Aiop checks if the remote resource has been modified via hashing ([Learn more about hashing](https://www.cnil.fr/fr/securite-chiffrer-garantir-lintegrite-ou-signer)). If so, Aiop downloads the new version and updates the cache.
 
-Ce système est particulièrement utile pour les ressources sont fréquemment utilisées ou qui ont peu de chances de changer fréquemment. En stockant ces ressources localement, Aiop peut accélérer considérablement le processus de construction, en évitant les temps d'attente inutiles et en optimisant l'utilisation des ressources disponibles.
+Whenever a resource is retrieved from the remote server, it compares the hash of the remote resource with the hash of the cached resource to ensure the integrity of the resource. Otherwise, it downloads it again or reports an error after several attempts. The number of attempts is configurable ([Learn more about configuration](/docs/configurations/user#structure-du-fichier-de-configuration)).
 
-## Supprimer le Cache
+This system is particularly useful for resources that are frequently used or are unlikely to change frequently. By storing these resources locally, Aiop can significantly speed up the build process, avoiding unnecessary wait times, and optimizing the use of available resources.
 
-Bien que le système de cache offre de nombreux avantages en termes de rapidité et d'efficacité, il peut parfois être nécessaire de le nettoyer pour diverses raisons, telles que la libération d'espace disque ou la mise à jour des ressources.
+## Clearing the Cache
 
-Pour le moment Aiop ne propose pas de commande pour supprimer le cache. Pour le faire il faut supprimer le dossier `cache` dans le dossier `.aiop` de vos dossiers personnels.
+While the cache system offers many advantages in terms of speed and efficiency, it may sometimes be necessary to clear it for various reasons, such as freeing up disk space or updating resources.
+
+For now, Aiop does not provide a command to clear the cache. To do this, you need to delete the `cache` folder in the `.aiop` folder in your personal directories.
 
 <Tabs items={["Windows","Ubuntu","Mac OS"]}>
 <Tab>
-Ouvrir une invite de commande en écrivant `cmd` dans la barre de recherche de Windows ou appuyant sur `Win + R` et tapper `cmd` puis appuyer sur `Entrée`. Ensuite, exécutez la commande suivante pour supprimer le cache :
+Open a command prompt by typing `cmd` in the Windows search bar or pressing `Win + R` and typing `cmd` then pressing `Enter`. Then, execute the following command to clear the cache:
 ```bash
 rmdir /s /q %userprofile%\.aiop\cache
 ```
 </Tab>
 <Tab>
-Ouvrir un terminal en appuyant sur `Ctrl + Alt + T` et exécutez la commande suivante pour supprimer le cache :
+Open a terminal by pressing `Ctrl + Alt + T` and execute the following command to clear the cache:
 ```bash
 rm -rf ~/.aiop/cache
 ```
 </Tab>
 <Tab>
-Ouvrir un terminal en appuyant sur `Cmd + Espace` et en tapant `Terminal` puis appuyer sur `Entrée`. Ensuite, exécutez la commande suivante pour supprimer le cache :
+Open a terminal by pressing `Cmd + Space` and typing `Terminal` then pressing `Enter`. Then, execute the following command to clear the cache:
 ```bash
 rm -rf ~/.aiop/cache
 ```
 </Tab>
 </Tabs>
 
-Il est cependant important de noter que la suppression du cache implique que toutes les ressources stockées localement seront perdues. Par conséquent, il est recommandé de procéder à cette opération avec prudence et seulement lorsque cela est absolument nécessaire.
+However, it is important to note that clearing the cache means that all locally stored resources will be lost. Therefore, it is recommended to proceed with this operation carefully and only when absolutely necessary.
