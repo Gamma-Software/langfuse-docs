@@ -1,3 +1,5 @@
 {
-  "home": "Hello world! "
+  "home":{
+    "validate": "Validate"
+  }
 }
