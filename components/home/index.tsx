@@ -18,9 +18,9 @@ export const Home = ({ locale }) => (
       <FeatureBento locale={locale}/>
       <Avantages locale={locale}/>
       <Clients locale={locale}/>
-      <Integrations />
+      <Integrations locale={locale}/>
       {/* <OpenSource /> */}
-      <Pricing />
+      <Pricing locale={locale}/>
       {/* <FromTheBlog locale={lang} /> */}
       {/* <CTA /> */}
       <Footer />

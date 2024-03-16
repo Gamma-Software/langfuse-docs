@@ -84,41 +84,236 @@
     "Clients": {
       "title": "Développé par des ingénieurs pour des ingénieurs",
       "description": "Initialement l’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués mais ne doit pas se limiter à cela. Aiop est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery managers.",
-      "list":
-        [
+      "list":[
+        {
+          "id": 1,
+          "name": "John Doe",
+          "designation": "Ingénieur logiciel",
+          "description": "John utilise Aiop pour générer des packages pour son environnement de simulation et de tests. Il sera également amené à modifier le projet pour ajouter ses fonctionnalités en cours de développement.",
+          "image":
+            "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
+        },
+        {
+          "id": 2,
+          "name": "Robert Johnson",
+          "designation": "Testeur",
+          "description": "Robert se sert d'Aiop pour générer et modifier des packages pour son environnement de simulation et de tests.",
+          "image":
+            "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+        },
+        {
+          "id": 3,
+          "name": "Jane Smith",
+          "designation": "Delivery Manager",
+          "description": "Jane est à l’initiative de ce projet et se sert des modifications apportée pars les développeurs et les testeurs pour générer des packages  .",
+          "image":
+            "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+        },
+        {
+          "id": 4,
+          "name": "Jarvis",
+          "designation": "Notre CI-CD",
+          "description": "La CI-CD pourra lancer la génération de packages et faire de l’intégration continue et du déploiement continue.",
+          "image":
+            "https://images.unsplash.com/photo-1593349480506-8433634cdcbe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+      ]
+    },
+    "Integrations":
+    {
+      "title": "Intégration",
+      "description": "Intégration native des registres d'artefacts et librairies."
+    },
+    "Pricing": {
+      "title": "Tarification",
+      "description": "Commencez dès maintenant avec la version gratuite ! Pas besoin de carte de crédit.",
+      "compare":
+      {
+        "title": "Comparaison des fonctionnalités",
+        "description": "Pour une comparaison détaillée et des questions fréquentes, consultez notre",
+        "link": "page de tarification"
+      },
+      "tiers": [
+        {
+          "name": "Community",
+          "id": "tier-free",
+          "href": "/docs/get-started",
+          "featured": false,
+          "description": "Démarrez dès maintenant ! carte de crédit non requise. Parfait pour essayer l’outil.",
+          "price": "Gratuit",
+          "mainFeatures": [
+            "Carte de crédit non requise",
+            "Toutes les fonctionnalités de base",
+            "Linting / Post-Build personnalisation des tâches",
+            "Usage personnel uniquement",
+            "Support de la communauté (Discord & Gitlab & Slack)"
+          ],
+          "cta": "Commencer gratuitement"
+        },
+        {
+          "name": "Pro",
+          "id": "tier-pro",
+          "href": "/waiting-list",
+          "featured": true,
+          "description":
+            "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
+          "price": "--€",
+          "mainFeatures": [
+            "Toutes les fonctionnalités de la version gratuite",
+            "Accès à des cookbook de tâches personnalisées",
+            "Accès à des cookbook de playbook",
+            "Outil de comparaison de playbooks et packages",
+            "Système de cache avancé",
+            "Génération de packages illimitée",
+            "Playbooks illimités",
+            "Usage professionnel",
+            "Support dédié en plus de la communauté"
+          ],
+          "cta": "S'inscrire à la liste d’attente"
+        },
+        {
+          "name": "Team",
+          "id": "tier-team",
+          "href": "/schedule-demo",
+          "featured": false,
+          "price": "Démarre à ---€",
+          "description":
+            "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
+          "mainFeatures": [
+            "Toutes les fonctionnalités de la version Pro",
+            "Accès à des workshops et formations",
+            "Playbooks illimités, pas de limites de personnes",
+            "Collaboration active sur les playbooks",
+            "Développement de fonctionnalités sur mesure (plugins)",
+            "Support personnalisé, hotfixes"
+          ],
+          "cta": "En discuter"
+        }
+      ],
+      "sections":[
+        {
+          "name": "Règles",
+          "features": [
+            {
+              "name": "Playbooks",
+              "tiers": {
+                "Free": "1 playbook",
+                "Pro": "1 playbook",
+                "Team": "Illimité"
+              }
+            },
+            {
+              "name": "Inventaire",
+              "tiers": {
+                "Free": "2 systèmes cibles",
+                "Pro": "Illimité",
+                "Team": "Illimité"
+              }
+            },
+            {
+              "name": "Packages",
+              "tiers": {
+                "Free": "10 générations de packages / mois",
+                "Pro": "300 générations de packages / mois",
+                "Team": "Illiimité"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Outils annexes",
+          "features": [
+            {
+              "name": "CI/CD",
+              "tiers": { "Free": false, "Pro": true, "Team": true}
+            },
+            {
+              "name": "Comparaisons de playbooks et packages",
+              "tiers": { "Free": false, "Pro": true, "Team": true }
+            }
+          ]
+        },
+        {
+          "name": "Personnalisations",
+          "features": [
+            {
+              "name": "Utilisateur",
+              "tiers": { "Free": true, "Pro": true, "Team": true}
+            },
+            {
+              "name": "Playbook",
+              "tiers": { "Free": true, "Pro": true, "Team": true}
+            },
+            {
+              "name": "Tâches personnalisée",
+              "tiers": { "Free": true, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Plugins",
+              "tiers": { "Free": false, "Pro": false, "Team": true }
+            }
+          ]
+        },
+        {
+          "name": "Formations & Consulting",
+          "features": [
+            {
+              "name": "Cookbooks",
+              "tiers": { "Free": false, "Pro": "Tâches personnalisées & playbook", "Team": "Tâches personnalisées & playbook" }
+            },
+            {
+              "name": "Formations",
+              "tiers": { "Free": false, "Pro": "Sur demande - surcoût", "Team": "Sur demande (prioritaire) - surcoût" }
+            },
+            {
+              "name": "Conseil",
+              "tiers": { "Free": false, "Pro": false, "Team": "Développements de plugins - surcoût" }
+            }
+          ]
+        },
+        {
+          "name": "Support",
+          "features": [
+            {
+              "name": "Communautée (Discord, GitLab, Slack)",
+              "tiers": { "Free": true, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Canal personnel (Slack, Discord, Email)",
+              "tiers": { "Free": false, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Téléphone",
+              "tiers": { "Free": false, "Pro": false, "Team": true }
+            }
+          ]
+        }
+      ],
+      "faq":{
+        "title": "Question fréquentes",
+        "list":[
           {
-            "id": 1,
-            "name": "John Doe",
-            "designation": "Ingénieur logiciel",
-            "description": "John utilise Aiop pour générer des packages pour son environnement de simulation et de tests. Il sera également amené à modifier le projet pour ajouter ses fonctionnalités en cours de développement.",
-            "image":
-              "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
+            "question": "Pourquoi payer un abonnement?",
+            "answer":
+              "Aiop vous est proposé gratuitement pour les projets personnels et les projets open-source. Pour les projets professionnels, nous facturons un abonnement pour couvrir les coûts d'infrastructure et de support. Nous offrons également des <a class='underline' href='/docs/plugins'>fonctionnalités</a> avancées pour les équipes et les entreprises."
           },
           {
-            "id": 2,
-            "name": "Robert Johnson",
-            "designation": "Testeur",
-            "description": "Robert se sert d'Aiop pour générer et modifier des packages pour son environnement de simulation et de tests.",
-            "image":
-              "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            "question": "Pourquoi dois-je créer un compte pour utiliser Aiop?",
+            "answer":
+              "Pour les project personnels et open-source, vous n'avez pas besoin de créer un compte. Pour les projets professionnels, nous avons besoin de votre coordonnées personnelles pour créer un compte Aiop cloud et bénéficier de plugins. Nous ne vendons pas vos données à des tiers. Votre adresse email est utilisée uniquement pour vous contacter à propos de votre compte Aiop."
           },
           {
-            "id": 3,
-            "name": "Jane Smith",
-            "designation": "Delivery Manager",
-            "description": "Jane est à l’initiative de ce projet et se sert des modifications apportée pars les développeurs et les testeurs pour générer des packages  .",
-            "image":
-              "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            "question": "Où est stocké mes coordonnées personnelles?",
+            "answer":
+              "Aiop Cloud est hébergé sur AWS et les données sont stockées dans l'UE en fonction de votre choix. Consultez notre <a class='underline' href='/docs/data-security-privacy'>documentation sur la sécurité et la confidentialité</a> pour plus de détails."
           },
           {
-            "id": 4,
-            "name": "Jarvis",
-            "designation": "Notre CI-CD",
-            "description": "La CI-CD pourra lancer la génération de packages et faire de l’intégration continue et du déploiement continue.",
-            "image":
-              "https://images.unsplash.com/photo-1593349480506-8433634cdcbe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            "question": "Est-ce que vous faites de promotions?",
+            "answer":
+              "Oui, nous offrons des réductions pour les étudiants et les universitaires. Si vous pensez que votre situation justifie une réduction, veuillez nous contacter à <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>cette adresse mail</a>."
           }
         ]
+      }
     }
   },
   "common": {

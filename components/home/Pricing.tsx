@@ -6,191 +6,26 @@ import { Header } from "../Header";
 import { Button } from "../ui/shadcn/button";
 import { HomeSection } from "./components/HomeSection";
 import { cn } from "@/lib/utils";
+import { useLocalizedMessages } from '@/lib/ParseLang';
+import local from "next/font/local";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const tiers = [
-  {
-    name: "Free",
-    id: "tier-free",
-    href: "/docs/get-started",
-    featured: false,
-    description:
-      "Démarrez dès maintenant ! carte de crédit non requise. Parfait pour essayer l’outil.",
-    price: "Gratuit",
-    mainFeatures: [
-      "Carte de crédit non requise",
-      "Toutes les fonctionnalités de base",
-      "Linting / Post-Build personnalisation des tâches",
-      "Usage personnel uniquement",
-      //"Limité à 10 packages générés / mois",
-      //"Limité à 2 systèmes cibles",
-      //"Limité à 1 playbook par compte et par personne",^
-      "Support de la communauté (Discord & Gitlab & Slack)",
-    ],
-    cta: "Commencer gratuitement",
-  },
-  {
-    name: "Pro",
-    id: "tier-pro",
-    //href: "https://cloud.aiop.fr",
-    href: "/waiting-list",
-    featured: true,
-    description:
-      "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
-    price: "--€",
-    mainFeatures: [
-      "Toutes les fonctionnalités de la version gratuite",
-      "Accès à des cookbook de tâches personnalisées",
-      //"Accès à des cookbook CI/CD",
-      "Accès à des cookbook de playbook",
-      "Outil de comparaison de playbooks et packages",
-      "Système de cache avancé",
-      "Génération de packages illimitée",
-      "Playbooks illimités",
-      "Usage professionnel",
-      "Support dédié en plus de la communauté"
-    ],
-    //cta: "S’abonner",
-    cta: "S'inscrire à la liste d’attente"
-  },
-  {
-    name: "Team",
-    id: "tier-team",
-    href: "/schedule-demo",
-    featured: false,
-    price: "Démarre à ---€",
-    description:
-      "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
-    mainFeatures: [
-      "Toutes les fonctionnalités de la version Pro",
-      //"Statistiques",
-      "Accès à des workshops et formations",
-      "Playbooks illimités, pas de limites de personnes",
-      "Collaboration active sur les playbooks",
-      //"Accès à des fonctionnalités avancées de la CI/CD",
-      "Développement de fonctionnalités sur mesure (plugins)",
-      "Support personnalisé, hotfixes",
-    ],
-    cta: "En discuter",
-  },
-] as const;
+export function Pricing({ isPricingPage = false, locale }: { isPricingPage?: boolean, locale: string }) {
 
-const sections = [
-  {
-    name: "Règles",
-    features: [
-      {
-        name: "Playbooks",
-        tiers: {
-          Free: "1 playbook",
-          Pro: "1 playbook",
-          Team: "Illimité",
-        },
-      },
-      {
-        name: "Inventaire",
-        tiers: {
-          Free: "2 systèmes cibles",
-          Pro: "Illimité",
-          Team: "Illimité",
-        },
-      },
-      {
-        name: "Packages",
-        tiers: {
-          Free: "10 générations de packages / mois",
-          Pro: "300 générations de packages / mois",
-          Team: "Illiimité",
-        },
-      },
-    ],
-  },
-  {
-    name: "Outils annexes",
-    features: [
-      {
-        name: "CI/CD",
-        tiers: { Free: false, Pro: true, Team: true},
-      },
-      {
-        name: "Comparaisons de playbooks et packages",
-        tiers: { Free: false, Pro: true, Team: true },
-      },
-    ],
-  },
-  {
-    name: "Personnalisations",
-    features: [
-      {
-        name: "Utilisateur",
-        tiers: { Free: true, Pro: true, Team: true},
-      },
-      {
-        name: "Playbook",
-        tiers: { Free: true, Pro: true, Team: true},
-      },
-      {
-        name: "Tâches personnalisée",
-        tiers: { Free: true, Pro: true, Team: true },
-      },
-      {
-        name: "Plugins",
-        tiers: { Free: false, Pro: false, Team: true },
-      },
-    ],
-  },
-  {
-    name: "Formations & Consulting",
-    features: [
-      {
-        name: "Cookbooks",
-        tiers: { Free: false, Pro: "Tâches personnalisées & playbook", Team: "Tâches personnalisées & playbook" },
-      },
-      {
-        name: "Formations",
-        tiers: { Free: false, Pro: "Sur demande - surcoût", Team: "Sur demande (prioritaire) - surcoût" },
-      },
-      {
-        name: "Conseil",
-        tiers: { Free: false, Pro: false, Team: "Développements de plugins - surcoût" },
-      },
-    ],
-  },
-  {
-    name: "Support",
-    features: [
-      {
-        name: "Communautée (Discord, GitLab, Slack)",
-        tiers: { Free: true, Pro: true, Team: true },
-      },
-      {
-        name: "Canal personnel (Slack, Discord, Email)",
-        tiers: { Free: false, Pro: true, Team: true },
-      },
-      {
-        name: "Téléphone",
-        tiers: { Free: false, Pro: false, Team: true },
-      },
-    ],
-  }
-];
+  const messages = useLocalizedMessages(locale);
+  if (!messages) return null;
 
-export function Pricing({
-  isPricingPage = false,
-}: {
-  isPricingPage?: boolean;
-}) {
   return (
     <HomeSection id="pricing" className={cn(isPricingPage && "px-0 sm:px-0")}>
       <div className="isolate overflow-hidden">
         <div className="flow-root pb-16 lg:pb-0">
           <div className="mx-auto max-w-7xl">
             <Header
-              title="Tarification"
-              description="Commencez dès maintenant avec la version gratuite ! Pas besoin de carte de crédit."
+              title={messages.home.Pricing.title}
+              description={messages.home.Pricing.description}
             />
 
             <div className="relative mx-auto mt-10 grid max-w-md grid-cols-1 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -198,7 +33,7 @@ export function Pricing({
                 className="hidden lg:absolute lg:inset-x-px lg:bottom-4 lg:top-4 lg:block lg:rounded lg:bg-gray-800/80 lg:ring-1 lg:ring-white/10"
                 aria-hidden="true"
               />
-              {tiers.map((tier) => (
+              {messages.home.Pricing.tiers.map((tier) => (
                 <div
                   key={tier.id}
                   className={classNames(
@@ -302,7 +137,7 @@ export function Pricing({
                   </h2>
 
                   <div className="mx-auto max-w-2xl space-y-16">
-                    {tiers.map((tier) => (
+                    {messages.home.Pricing.tiers.map((tier) => (
                       <div
                         key={tier.id}
                         className="border-t border-gray-900/10"
@@ -331,7 +166,7 @@ export function Pricing({
                         </div>
 
                         <div className="mt-10 space-y-10">
-                          {sections.map((section) => (
+                          {messages.home.Pricing.sections.map((section) => (
                             <div key={section.name}>
                               <h4 className="text-sm font-semibold leading-6 text-primary">
                                 {section.name}
@@ -426,11 +261,11 @@ export function Pricing({
                   className="hidden lg:block"
                 >
                   <h2 id="comparison-heading" className="sr-only">
-                    Feature comparison
+                    {messages.home.Pricing.compare}
                   </h2>
 
                   <div className="grid grid-cols-4 gap-x-8 border-t border-gray-900/10 before:block">
-                    {tiers.map((tier) => (
+                    {messages.home.Pricing.tiers.map((tier) => (
                       <div key={tier.id} aria-hidden="true" className="-mt-px">
                         <div
                           className={classNames(
@@ -459,7 +294,7 @@ export function Pricing({
                   </div>
 
                   <div className="-mt-6 space-y-16">
-                    {sections.map((section) => (
+                    {messages.home.Pricing.sections.map((section) => (
                       <div key={section.name}>
                         <h3 className="text-sm font-semibold leading-6 text-primary">
                           {section.name}
@@ -481,7 +316,7 @@ export function Pricing({
                                 <th scope="col">
                                   <span className="sr-only">Feature</span>
                                 </th>
-                                {tiers.map((tier) => (
+                                {messages.home.Pricing.tiers.map((tier) => (
                                   <th key={tier.id} scope="col">
                                     <span className="sr-only">
                                       {tier.name} tier
@@ -503,7 +338,7 @@ export function Pricing({
                                       <div className="absolute inset-x-8 mt-3 h-px bg-gray-200" />
                                     ) : null}
                                   </th>
-                                  {tiers.map((tier) => (
+                                  {messages.home.Pricing.tiers.map((tier) => (
                                     <td
                                       key={tier.id}
                                       className="relative w-1/4 px-4 py-0 text-center"
@@ -556,7 +391,7 @@ export function Pricing({
                             className="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block"
                             aria-hidden="true"
                           >
-                            {tiers.map((tier) => (
+                            {messages.home.Pricing.tiers.map((tier) => (
                               <div
                                 key={tier.id}
                                 className={classNames(
@@ -575,13 +410,13 @@ export function Pricing({
                 </section>
               </div>
             </div>
-            <PricingFAQ />
+            <PricingFAQ messages={messages}/>
           </>
         ) : (
           <div className="text-center mt-10">
-            Pour une comparaison détaillée et des questions fréquentes, consultez notre{" "}
+            {messages.home.Pricing.compare.description}{" "}
             <Link href="/pricing" className="underline">
-              page de tarification
+            {messages.home.Pricing.compare.link}
             </Link>
             .
           </div>
@@ -591,39 +426,16 @@ export function Pricing({
   );
 }
 
-const faqs = [
-  {
-    question: "Pourquoi payer un abonnement?",
-    answer:
-      "Aiop vous est proposé gratuitement pour les projets personnels et les projets open-source. Pour les projets professionnels, nous facturons un abonnement pour couvrir les coûts d'infrastructure et de support. Nous offrons également des <a class='underline' href='/docs/plugins'>fonctionnalités</a> avancées pour les équipes et les entreprises.",
-  },
-  {
-    question: "Pourquoi dois-je créer un compte pour utiliser Aiop?",
-    answer:
-      "Pour les project personnels et open-source, vous n'avez pas besoin de créer un compte. Pour les projets professionnels, nous avons besoin de votre coordonnées personnelles pour créer un compte Aiop cloud et bénéficier de plugins. Nous ne vendons pas vos données à des tiers. Votre adresse email est utilisée uniquement pour vous contacter à propos de votre compte Aiop.",
-  },
-  {
-    question: "Où est stocké mes coordonnées personnelles?",
-    answer:
-      "Aiop Cloud est hébergé sur AWS et les données sont stockées dans l'UE en fonction de votre choix. Consultez notre <a class='underline' href='/docs/data-security-privacy'>documentation sur la sécurité et la confidentialité</a> pour plus de détails.",
-  },
-  {
-    question: "Est-ce que vous faites de promotions?",
-    answer:
-      "Oui, nous offrons des réductions pour les étudiants et les universitaires. Si vous pensez que votre situation justifie une réduction, veuillez nous contacter à <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>cette adresse mail</a>.",
-  },
-];
-
-export function PricingFAQ() {
+export function PricingFAQ({ messages }) {
   return (
     <div id="faq">
       <div className="mx-auto max-w-7xl px-6 pb-24 lg:pt-16 lg:px-8">
         <div className="mx-auto max-w-4xl divide-y divide-primary/10">
           <h2 className="text-2xl font-bold leading-10 tracking-tight text-primary">
-            Question fréquentes
+            {messages.home.Pricing.faq.title}
           </h2>
           <dl className="mt-10 space-y-6 divide-y divide-primary/10">
-            {faqs.map((faq) => (
+            {messages.home.Pricing.faq.list.map((faq) => (
               <Disclosure as="div" key={faq.question} className="pt-6">
                 {({ open }) => (
                   <>
