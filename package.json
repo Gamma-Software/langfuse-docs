@@ -38,6 +38,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "engine@latest": "link:tsparticles/engine@latest",
+    "formatjs": "^0.1.1",
     "framer-motion": "^11.0.5",
     "geist": "^1.2.2",
     "gpt3-tokenizer": "^1.1.5",

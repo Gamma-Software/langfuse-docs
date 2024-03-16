@@ -86,6 +86,9 @@ dependencies:
   engine@latest:
     specifier: link:tsparticles/engine@latest
     version: link:tsparticles/engine@latest
+  formatjs:
+    specifier: ^0.1.1
+    version: 0.1.1
   framer-motion:
     specifier: ^11.0.5
     version: 11.0.5(react-dom@18.2.0)(react@18.2.0)
@@ -3150,6 +3153,10 @@ packages:
   /format@0.2.2:
     resolution: {integrity: sha512-wzsgA6WOq+09wrU1tsJ09udeR/YZRaeArL9e1wPbFg3GG2yDnC2ldKpxs4xunpFF9DgqCqOIra3bc1HWrJ37Ww==}
     engines: {node: '>=0.4.x'}
+    dev: false
+
+  /formatjs@0.1.1:
+    resolution: {integrity: sha512-zznmRzMdFT5/+/A70BNcDnnc7fxFyk9a1LiJgl0ka8G6VWK2itlZsiAEolz+dLYcW8niJB1QyjKzlXnQpFHqmg==}
     dev: false
 
   /fraction.js@4.3.7:
