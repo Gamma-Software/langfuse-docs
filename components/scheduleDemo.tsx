@@ -2,13 +2,16 @@ import { Background } from "./Background";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import { Header } from "./Header";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export function ScheduleDemoPage() {
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
   return (
     <section className="flex flex-col gap-10 w-full min-h-screen items-center py-20">
       <Header
-        title="Discutez avec nous"
-        description=" Nous pourrons vous faire un démonstration de la solution Aiop et comment elle peut vous aider dans votre entreprise."
+        title={messages.schedule_demo.title}
+        description={messages.schedule_demo.description}
         h="h1"
       />
 

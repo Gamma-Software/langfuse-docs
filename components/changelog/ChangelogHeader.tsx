@@ -5,6 +5,7 @@ import { getPagesUnderRoute } from "nextra/context";
 import Link from "next/link";
 import { Author } from "../Authors";
 import { Video } from "../Video";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export const ChangelogHeader = () => {
   const router = useRouter();
@@ -16,6 +17,9 @@ export const ChangelogHeader = () => {
   const { title, description, ogImage, ogVideo, gif, date, author } =
     page.frontMatter;
 
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
+
   return (
     <div className="md:mt-10 flex flex-col gap-10">
       <Link
@@ -24,7 +28,7 @@ export const ChangelogHeader = () => {
         }`}
         className="md:mb-10"
       >
-        ← Back to changelog
+        {messages.changelog.back}
       </Link>
 
       <div>
