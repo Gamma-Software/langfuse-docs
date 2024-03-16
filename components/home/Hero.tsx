@@ -11,23 +11,10 @@ import GoldenKittyAwardSVGWhite from "./img/ph_gke_ai_infra_white.svg";
 import { HomeSection } from "./components/HomeSection";
 import {Meteors} from "../ui/magicui/meteors";
 import { log } from 'console';
-import { IntlProvider } from "react-intl";
-
-async function getMessages(locale: string) {
-  return import(`../../lang/${locale}.json`);
-}
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export function Hero({locale}) {
-  const [messages, setMessages] = useState(null);
-
-  useEffect(() => {
-    async function fetchMessages() {
-      const msgs = await getMessages(locale);
-      setMessages(msgs.default);
-    }
-    fetchMessages();
-  }, [locale]);
-
+  const messages = useLocalizedMessages(locale);
   if (!messages) return null;
 
   return (

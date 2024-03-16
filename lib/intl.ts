@@ -1,11 +1,9 @@
-import "server-only";
-
-import { createIntl } from "@formatjs/intl";
-import type { Locale } from "../i18n-config";
-
-export async function getIntl(locale: Locale) {
-    return createIntl({
-        locale: locale,
-        messages: (await import(`../lang/${locale}.json`)).default,
-    });
-}
+export async function getMessages(locale: string): Promise<any> {
+    try {
+      const messages = await import(`@/lang/${locale}.json`);
+      return messages.default;
+    } catch (error) {
+      console.error(`Error loading messages for locale ${locale}:`, error);
+      return {};
+    }
+  }
