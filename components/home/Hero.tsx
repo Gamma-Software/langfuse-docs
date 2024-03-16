@@ -28,19 +28,19 @@ export function Hero({locale}) {
           Packager
         </h1>
         <span className="mt-2 text-primary/70 text-2xl sm:text-3xl lg:text-4xl md:text-balance font-semibold tracking-wide">
-          <span className="underline">{messages.home.hero.validate}</span>,{" "}
-          <span className="underline">{messages.home.hero.build}</span>,{" "}
-          <span className="underline">{messages.home.hero.deploy}</span> {messages.home.hero.and} {" "}
-          <span className="underline">{messages.home.hero.control}</span><br/>
-          {messages.home.hero.packages} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">clients</span> {messages.home.hero.and} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.hero.configuration}</span>.
+          <span className="underline">{messages.home.Hero.validate}</span>,{" "}
+          <span className="underline">{messages.home.Hero.build}</span>,{" "}
+          <span className="underline">{messages.home.Hero.deploy}</span> {messages.common.and} {" "}
+          <span className="underline">{messages.home.Hero.control}</span><br/>
+          {messages.home.Hero.packages} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.clients}</span> {messages.home.Hero.and} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.configuration}</span>.
         </span>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">
           <Button size="lg" variant="cta" asChild>
-            <Link href="/docs/demo">{messages.home.hero.demoButton}</Link>
+            <Link href="/docs/demo">{messages.home.Hero.demoButton}</Link>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <Link href="/docs">{messages.home.hero.documentationButton}</Link>
+            <Link href="/docs">{messages.home.Hero.documentationButton}</Link>
           </Button>
         </div>
       </div>

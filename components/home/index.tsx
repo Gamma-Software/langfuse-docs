@@ -10,18 +10,18 @@ import { FromTheBlog } from "./FromTheBlog";
 import { Avantages } from "./Avantages";
 import { Clients } from "./Clients";
 
-export const Home = ({ lang }) => (
+export const Home = ({ locale }) => (
   <>
     <main className="relative overflow-hidden w-full">
-      <Hero locale={lang}/>
+      <Hero locale={locale}/>
       {/* <Users /> */}
-      <FeatureBento />
-      <Avantages />
-      <Clients />
+      <FeatureBento locale={locale}/>
+      <Avantages locale={locale}/>
+      <Clients locale={locale}/>
       <Integrations />
       {/* <OpenSource /> */}
       <Pricing />
-      {/* <FromTheBlog /> */}
+      {/* <FromTheBlog locale={lang} /> */}
       {/* <CTA /> */}
       <Footer />
     </main>

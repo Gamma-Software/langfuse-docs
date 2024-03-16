@@ -1,15 +1,91 @@
 {
   "home": {
-    "hero": {
+    "Hero": {
       "validate": "Valider",
       "build": "Construire",
       "deploy": "Déployer",
       "control": "Contrôler",
       "packages": "vos packages pour tous vos",
       "configuration": "configurations",
-      "and": "et",
+      "clients": "clients",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
+    },
+    "FromTheBlog": {
+      "title": "Blog",
+      "description": "Voici les derniers articles du blog. Découvrez les dernières nouveautés, les astuces et les conseils de notre équipe."
+    },
+    "FeatureBento": {
+      "title": "Vos exigences",
+      "description": "notre priorité",
+      "feature": {
+        "extensible": {
+          "title": "Extensible",
+          "description": "Etendez les fonctionnalités de l&apos;application pour correspondre à vos besoins. Notre équipe est là pour vous accompagner.",
+          "alt": "Language"
+        },
+        "packages": {
+          "title": "Gestion des packages",
+          "description": "Gérez et versionnez tous vos packages d&apos;un seul endroit. Suivez les évolutions et debuggez plus facilement.",
+          "alt": "Versionning des packages"
+        },
+        "tools": {
+          "title": "Outils",
+          "description": "Aiop propose une suite d&apos;outils (En expension) pour vous aider à la maintenance, conception et la production des packages."
+        },
+        "customization": {
+          "title": "Personnalisation",
+          "description": "Personnalisez le comportement de Aiop et de vos projets pour correspondre à vos problématiques."
+        },
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "Travaillez à plusieurs sur un même projet; à distance. Partagez vos packages, ressources et vos connaissances entre équipes. Gagnez en productivité et en qualité.",
+          "alt": "Collaboration"
+        }
+      }
+    },
+    "Avantages": {
+      "title": "Avantages",
+      "description": "Aiop vous permet de gagner du temps et de l&apos;argent.",
+      "list":
+      [
+        {
+          "title": "Infinité de packages",
+          "description":
+            "Aiop est conçu pour gérer un nombre illimité de packages. Utilisez l&apos;imbrication de packages pour gérer des packages complexes."
+        },
+        {
+          "title": "3 heures -> 5 secondes",
+          "description":
+            "En moyenne, nos utilisateurs réduisent le temps de génération d&apos;un package de 3 heures à seulement 7 secondes avec Aiop."
+        },
+        {
+          "title": "Partage de connaissances",
+          "description":
+            "La collaboration est au coeur même de Aiop. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clarté, en productivité et en qualité."
+        },
+        {
+          "title": "Rapidité de debuggage",
+          "description":
+            "Faites confiance à la génération automatique des packages. Réduisez les chances que des erreurs se glissent dans vos packages."
+        },
+        {
+          "title": "Contrôle qualité",
+          "description":
+            "Faites en sorte de ne plus avoir de surprises lors de la génération de vos packages. Aiop vous permet de valider vos ressources avant de les générer."
+        },
+        {
+          "title": "Versionning",
+          "description":
+            "Gérez et versionnez tous vos packages d&apos;un seul endroit. Suivez les évolutions et traçez les. Aiop vous permet également de regénérer des versions antérieures de vos packages."
+        }
+      ]
     }
+  },
+  "common": {
+    "and": "et",
+    "documentation": "Documentation",
+    "learn_more": "En savoir plus"
   }
+
 }
