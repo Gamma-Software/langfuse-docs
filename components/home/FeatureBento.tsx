@@ -55,8 +55,8 @@ const BentoBgImage = ({
 );
 
 
-export function FeatureBento({ locale }: { locale: string }) {
-  const messages = useLocalizedMessages(locale);
+export function FeatureBento() {
+  const messages = useLocalizedMessages();
   if (!messages) return null;
 
   const features = [

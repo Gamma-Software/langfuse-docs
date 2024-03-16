@@ -38,7 +38,7 @@ const Circle = forwardRef<
   );
 });
 
-export function Integrations ({locale}) {
+export function Integrations () {
   const containerRef = useRef<HTMLDivElement>(null);
   const inPythonRef = useRef<HTMLDivElement>(null);
   const inTypescriptRef = useRef<HTMLDivElement>(null);
@@ -50,7 +50,7 @@ export function Integrations ({locale}) {
   const out2ref = useRef<HTMLDivElement>(null);
   const out3ref = useRef<HTMLDivElement>(null);
 
-  const messages = useLocalizedMessages(locale);
+  const messages = useLocalizedMessages();
   if (!messages) return null;
 
   return (

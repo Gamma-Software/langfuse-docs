@@ -315,6 +315,84 @@
       }
     }
   },
+  "product_waiting_list": {
+    "title": "Liste d’attente",
+    "description": "Pour le moment Aiop est en version Bêta. Pour souscrire à la version Pro veuillez vous inscrire à la liste d’attente en indiquant votre email.",
+    "description2": "Vous pouvez tout de même commencer à utiliser Aiop gratuitement en cliquant sur le bouton ci-dessous.",
+    "modal":
+    {
+      "error": "Uh oh! Quelque chose s’est mal passé. Reessayez ou contacter nous directement par email: valentin.rudloff.perso@gmail.com",
+      "success": "Message envoyé! Merci pour votre inscription, nous vous préviendrons dès que la version Pro sera disponible."
+    },
+    "form":
+    {
+      "email":
+      {
+        "title" : "Email",
+        "placeholder": "votre email",
+        "onerror": "Entrez une adresse email valide, s’il vous plait.",
+        "description": "Entrez votre email pour être notifié lors de la sortie de la version Pro."
+      },
+      "job":
+      {
+        "title" : "Fonction",
+        "placeholder": "votre profession",
+        "onerror": "Veuillez entrer votre profession.",
+        "description": "Entrez votre profession pour nous aider à mieux comprendre nos utilisateurs."
+      },
+      "extra":
+      {
+        "title": "Message",
+        "placeholder": "message à faire passer",
+        "description": "Si vous avez des questions ou des suggestions, n’hésitez pas à nous les partager."
+      },
+      "submit": "Faire partie de la liste"
+    }
+  },
+  "product_update_signup":
+  {
+    "title": "Création de compte",
+    "description": "Pour être notifié des mises à jour, inscrivez-vous à notre newsletter.",
+    "modal":{
+      "error": "Quelque chose s’est mal passé. Réessayez plus tard s’il vous plait.",
+      "success": "Merci !"
+    },
+    "form":
+    {
+      "email":
+      {
+        "placeholder": "votre email"
+      },
+      "submit": "Soumettre"
+    }
+  },
+  "main_content_wrapper":{
+    "feedback":{
+      "question": "Est-ce que cette page était utile?",
+      "positive": "Qu'est qui était le plus utile?",
+      "negative": "Qu'est qui pourrait être amélioré?",
+      "thanks": "Merci pour votre retour!",
+      "submit": "Cela pourrait être mieux",
+      "placeholder":{
+        "positive": "Dites nous ce que vous avez trouvé utile",
+        "negative": "Dites nous ce que nous pouvons améliorer"
+      },
+      "submitting":{
+        "loading": "Retour à envoyer...",
+        "success": "Retour envoyé !"
+      },
+      "again": "Faire un autre retour"
+    },
+    "doc_support":
+    {
+      "question": "Question? Nous sommes là pour aider!",
+      "talk_to_us": "Parlez-nous de votre projet"
+    },
+    "doc_sub":
+    {
+      "title": "S'inscrire pour avoir des nouvelles"
+    }
+  },
   "common": {
     "and": "et",
     "documentation": "Documentation",

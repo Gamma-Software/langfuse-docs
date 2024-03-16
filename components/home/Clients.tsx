@@ -7,9 +7,10 @@ import { Team } from "../ui/shadcn/team"
 import { useLocalizedMessages } from '@/lib/ParseLang';
 
 
-export const Clients = ({locale}) => {
-  const messages = useLocalizedMessages(locale);
+export const Clients = () => {
+  const messages = useLocalizedMessages();
   if (!messages) return null;
+
   return (
     <HomeSection className="flex flex-col items-center">
       <Header

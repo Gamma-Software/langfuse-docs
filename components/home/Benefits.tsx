@@ -4,8 +4,8 @@ import { HoverEffect } from "../ui/aceternityui/card-hover"
 import { useLocalizedMessages } from '@/lib/ParseLang';
 
 
-export function Benefits({locale}) {
-  const messages = useLocalizedMessages(locale);
+export function Benefits() {
+  const messages = useLocalizedMessages();
   if (!messages) return null;
 
   return (

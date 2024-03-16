@@ -7,15 +7,14 @@ import { Button } from "../ui/shadcn/button";
 import { HomeSection } from "./components/HomeSection";
 import { cn } from "@/lib/utils";
 import { useLocalizedMessages } from '@/lib/ParseLang';
-import local from "next/font/local";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function Pricing({ isPricingPage = false, locale }: { isPricingPage?: boolean, locale: string }) {
+export function Pricing({ isPricingPage = false }: { isPricingPage?: boolean }) {
 
-  const messages = useLocalizedMessages(locale);
+  const messages = useLocalizedMessages();
   if (!messages) return null;
 
   return (
