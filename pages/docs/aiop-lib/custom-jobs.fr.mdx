@@ -1,0 +1,274 @@
+---
+description: Des tâches personnalisées sont disponibles pour chaque plan d'abonnement. Elles offrent davantage de flexibilité et de personnalisation pour un playbook. Cela permet d'exécuter des scripts Python personnalisés lors des étapes de linting et de post-construction.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Tâches personnalisées
+
+Les tâches personnalisées permettent plus de flexibilité et de personnalisation pour un playbook. Elles donnent la possibilité d'exécuter des scripts Python personnalisés dans les étapes de `lint` et de `post-build`. Vous pourriez par exemple utiliser des tâches personnalisées pour :
+
+- `lint`
+    - Ajouter des règles spécifique de nommage comme forcer les noms des dossiers à respecter le format `snake_case`.
+    - Ajouter des règles spécifiques de formatage de code comme forcer l'utilisation de `double quotes` pour les chaînes de caractères.
+    - Ajouter des vérifications sur des fichiers de paramétrages comme vérifier qu'il n'y a pas d'espace dans les noms de clés.
+
+- `post-build`
+    - Ajouter des vérifications sur les fichiers générés comme vérifier que les fichiers de traduction sont bien formattés.
+    - Générer une image (fond d'écran) à partir des données du package.
+
+## Configuration
+
+Pour ajouter une tâche personnalisée, vous devez ajouter une section `custom_jobs` dans votre [fichier de configuration](/docs/configurations/playbook#lint_rules-et-post_scripts). Cette section peut contenir deux sous-sections `lint` et `post_build` qui contiennent les tâches personnalisées pour les étapes de `lint` et de `post-build` respectivement.
+
+```yaml
+custom_jobs:
+  lint:
+    - name: "CustomLintingTask"
+      script: "path/to/your/linting/script.py"
+  post_build:
+    - name: "CustomPostBuildTask"
+      script: "path/to/your/post_build/script.py"
+```
+
+### `name`
+
+La classe de la tâche personnalisée. Ce nom sera utilisé dans les logs pour identifier la tâche qui est en cours d'exécution.
+
+### `script`
+
+Le chemin relative à la racine du playbook vers le script Python qui sera exécuté. Ce script doit être un fichier Python valide et doit être accessible depuis le répertoire de travail du playbook.
+
+## Base d'un script personnalisé
+
+Le script personnalisé doit être un fichier Python valide. Il est contraint de contenir une classe qui hérite de la classe `Job` du module `aiop.libs.job.base`. Cela est valide à la fois pour les tâches de `lint` et de `post-build`. La classe doit implémenter la méthode `prerequisites` et `run` qui sera appelée lors de l'exécution de la tâche.
+
+Voici la structure de base d'un script personnalisé :
+
+```python showLineNumbers
+import os
+from pathlib import Path
+from aiop.libs.utils.commons import load_playbook_ignore
+from aiop.libs.job.base import Job
+from aiop.libs.job.metadata import JobResult, JobResultEnum, JobData
+from aiop.libs.package import Package
+from aiop.core.stages.base import PrerequisiteResults
+
+class CustomTask(Job):
+    def __init__(self, stage_name: str):
+        self.stage_name = stage_name
+        self.name = "CustomTask"
+
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+
+    def run(self, package: Package, data: JobData) -> JobResult:
+        # Votre logique personnalisée ici
+        ...
+        # Retourne le résultat de la tâche
+        return JobResult(self.name, JobResultEnum.OK, "CustomTask OK")
+```
+
+Le nom de la classe correspond à la valeur de `name` dans la configuration. La classe doit hériter de la classe `Job` du module `aiop.libs.job.base`.
+
+## Méthodes
+
+### `__init__`
+
+
+```python {3-5}
+...
+class CustomTask(Job):
+    def __init__(self, stage_name: str):
+        self.stage_name = stage_name
+        self.name = "CustomTask"
+...
+```
+
+Le constructeur de la classe. Il prend un paramètre `stage_name` qui est le nom de l'étape dans laquelle la tâche est exécutée. Ce paramètre est utilisé pour identifier l'étape dans les logs. Vous devez également nommer la tâche en instanciant la variable `self.name`.
+
+### `prerequisites`
+
+```python {4-5}
+...
+class CustomTask(Job):
+    ...
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+...
+```
+
+La méthode `prerequisites` est invoquée avant l'exécution de la tâche. Les tâches sont exécutées dans l'ordre dans lequel elles ont été déclarées dans le fichier de configuration. Toutefois, si les prérequis ne sont pas remplis, la tâche ne sera pas exécutée au moment prévu, mais elle peut l'être ultérieurement. Si ses prérequis ne sont jamais satisfaits, une erreur sera signalée et la génération du package sera interrompue. Cette méthode prend deux paramètres ([En savoir plus](#paramètres)). `
+
+Elle doit retourner une liste de tuples. Chaque tuple doit contenir un booléen et un message. Si le booléen est `True`, la tâche sera exécutée. Si un des booléens est `False`, la tâche ne sera pas exécutée et le message sera affiché dans les logs si le prérequis ne sera jamais satisfaits.
+
+### `run`
+
+La méthode `run` est appelée pour exécuter la tâche. Elle doit retourner un objet de type `JobResult` qui contient le résultat de la tâche ([En savoir plus sur le retour](#résultat-de-la-tâche)). Cette méthode contient la logique de la tâche personnalisée. Vous pouvez faire des appels à des API, lire et écrire des fichiers, etc. Il est tout de même recommandé de ne pas faire des appels bloquants dans cette méthode.
+
+<Callout type="warning" emoji="⚠️">
+Vous pouvez altérer le package dans cette méthode afin de générer des fichiers ou de modifier des fichiers existants. Vous risquez toutefois de corrompre le package si vous ne faites pas attention. Soyez prudent lorsque vous modifiez le package.
+</Callout>
+
+## Paramètres
+
+### `package`
+
+Le paramètre `package` est utilisable dans la méthode [`prerequisites`](#prerequisites) et [`run`](#run). Ce paramètre contient les informations sur le package en cours de génération. C'est une variable qui est dynamique et par conséquent change au cours du processus de création du package, les informations qu'elle contient sont donc susceptibles de changer:
+
+| élements | type | description |
+| --- | --- | --- |
+| `package.cible` | SystemTarget | Système cible pour construire le package |
+| `package.setup_version` | SetupVersion | Version du playbook (`tag`, `version`) |
+| `package.temporary_package` | Path | Chemin vers le package en cours de construction |
+| `package.raw_declarations` | list | Déclarations fraîchement chargées, validées mais pas encore manipulées et filtrées |
+| `package.declarations` | list | Instances de la classe `Declaration` validée mais non filtrés en fonction de la compatibilité |
+| `package.matching_declarations` | list | Instances de la classe `Declaration` compatibles avec la cible |
+| `package.computed_declarations` | list | Instances de la classe `Declaration` traitées par Aiop |
+| `package.results` | dict | Résultas des tâches, Dictionnaire regroupant les étapes de construction ensuite les tâches avec pour valeur le résultat de la tâche `JobResult` |
+| `package.session_data` | dict | Données de session où vous pouvez ajouter ce que vous souhaitez transmettre d'une tâche à un autre |
+
+### `data`
+
+Le paramètre `data` est utilisable dans la méthode [`prerequisites`](#prerequisites) et [`run`](#run). Ce paramètre contient les informations des paramétrages de l’utilisateur, du playbook et des commandes de l’utilisateur. C'est une variable qui est statique et par conséquent n’a pas vocation à changer pendant l’execution de Aiop:
+
+| élements | type | description |
+| --- | --- | --- |
+| `data.user_commands` | UserCommands | Les commandes de l’utilisateur |
+| `data.user_config` | UserConfiguration | Les configurations de l’utilisateur |
+| `data.playbook_config` | PlaybookConfiguration | Les configurations du playbook |
+
+## Résultat de la tâche
+
+La méthode `run` doit retourner un objet de type `JobResult` qui contient le résultat de la tâche. Cet objet prend trois paramètres :
+
+| paramètre | type | description |
+| --- | --- | --- |
+| `name` | str | Le nom de la tâche. Généralement, il s'agit du nom de la classe de la tâche (ou du nom de la tâche). |
+| `status` | JobResultEnum | Le statut de la tâche. Il doit être une valeur de l'énumération `JobResultEnum` qui peut être `OK`, `FAIL_NOW`, `FAIL_LATER`, `WARN` ou `SKIP`.|
+| `message` | str | Un message qui sera affiché dans les logs pour décrire le résultat de la tâche. |
+
+Les valeurs de l'énumération `JobResultEnum` sont :
+| Enum | description |
+| --- | --- |
+| `OK` | La tâche a été exécutée avec succès. |
+| `FAIL_NOW` | La tâche a échoué et demande à Aiop d’arrêter la génération du package **tout de suite**.|
+| `FAIL_LATER` | La tâche a échoué et demande à Aiop d’arrêter la génération du package **après** l’exécution de toutes les tâches de l’étape en cours. Cela permet dans certains cas de remonter le plus d’erreurs possible avant d’arrêter la génération.|
+| `WARN` | La tâche a échoué mais ne demande pas à Aiop d’arrêter la génération du package.|
+| `SKIP` | La tâche n’a pas été exécutée.|
+
+## Exemple
+
+Voici un exemple de tâche personnalisée qui vérifie que les noms des dossiers respectent le format `snake_case` :
+
+```python showLineNumbers
+import os
+
+from pathlib import Path
+
+from aiop.libs.utils.commons import load_playbook_ignore
+from aiop.libs.job.base import Job
+from aiop.libs.job.metadata import JobResult, JobResultEnum, JobData
+from aiop.libs.package import Package
+from aiop.core.stages.base import PrerequisiteResults
+
+
+class NamingConvention(Job):
+    def __init__(self, stage_name: str):
+        self.stage_name = stage_name
+        self.name = "🕵️  Naming Convention"
+
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+
+    def is_snake_case(self, name):
+        return all(x.islower() or x.isdigit() for x in name.split("_"))
+
+    def run(self, package: Package, data: JobData) -> JobResult:
+        # Ignorer les dossiers spécifiés dans le fichier .aiopignore
+        self.ignore_files = load_playbook_ignore(
+            data.user_commands.playbook_path, set()
+        )
+
+        # Récupérer la liste des dossiers
+        self.folders = []
+        for root, dirs, _ in os.walk(data.user_commands.playbook_path):
+            dirs[:] = [d for d in dirs if not self.ignore_files(Path(root) / d)]
+            self.folders.extend([str(Path(root) / Path(dir)) for dir in dirs])
+
+        # Vérifier que les noms des dossiers respectent le format snake_case
+        not_snake_case_folders = []
+        for folder in self.folders:
+            if not self.is_snake_case(os.path.basename(folder)):
+                not_snake_case_folders.append(folder)
+
+        # Si un ou plusieurs dossiers ne respectent pas le format, retourner un objet JobResult avec le statut FAIL_NOW
+        if len(not_snake_case_folders) == 1:
+            return JobResult(
+                self.name,
+                JobResultEnum.FAIL_NOW,
+                f"Folder {not_snake_case_folders} is not in snake case",
+            )
+        elif len(not_snake_case_folders) > 1:
+            return JobResult(
+                self.name,
+                JobResultEnum.FAIL_NOW,
+                f"Folders {not_snake_case_folders} are not in snake case",
+            )
+        return JobResult(self.name, JobResultEnum.OK, "Snake Case rules are respected")
+```
+
+Constatez que les prerequis ne sont pas utilisés dans cet exemple. Cela est dû au fait que la tâche ne nécessite pas de prérequis pour être exécutée.
+
+```python {2-3}
+...
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+...
+```
+
+La méthode `is_snake_case` est une méthode utilitaire qui vérifie si une chaîne de caractères respecte le format `snake_case`.
+
+```python {2-3}
+...
+    def is_snake_case(self, name):
+        return all(x.islower() or x.isdigit() for x in name.split("_"))
+...
+```
+
+La méthode surchargée `run` contient la logique de la tâche. Elle vérifie que les noms des dossiers respectent le format `snake_case` et retourne un objet `JobResult` en conséquence. Dans le cas où un ou plusieurs dossiers ne respectent pas le format, la tâche retourne un objet `JobResult` avec le statut `FAIL_NOW` et un message d'erreur pour arrêter la génération du package **tout de suite**. Dans le cas contraire, la tâche retourne un objet `JobResult` avec le statut `OK`.
+
+```python
+...
+    def run(self, package: Package, data: JobData) -> JobResult:
+        # Ignorer les dossiers spécifiés dans le fichier .aiopignore
+        self.ignore_files = load_playbook_ignore(
+            data.user_commands.playbook_path, set()
+        )
+
+        # Récupérer la liste des dossiers
+        self.folders = []
+        for root, dirs, _ in os.walk(data.user_commands.playbook_path):
+            dirs[:] = [d for d in dirs if not self.ignore_files(Path(root) / d)]
+            self.folders.extend([str(Path(root) / Path(dir)) for dir in dirs])
+
+        # Vérifier que les noms des dossiers respectent le format snake_case
+        not_snake_case_folders = []
+        for folder in self.folders:
+            if not self.is_snake_case(os.path.basename(folder)):
+                not_snake_case_folders.append(folder)
+
+        # Si un ou plusieurs dossiers ne respectent pas le format, retourner un objet JobResult avec le statut FAIL_NOW
+        if len(not_snake_case_folders) == 1:
+            return JobResult(
+                self.name,
+                JobResultEnum.FAIL_NOW,
+                f"Folder {not_snake_case_folders} is not in snake case",
+            )
+        elif len(not_snake_case_folders) > 1:
+            return JobResult(
+                self.name,
+                JobResultEnum.FAIL_NOW,
+                f"Folders {not_snake_case_folders} are not in snake case",
+            )
+        return JobResult(self.name, JobResultEnum.OK, "Snake Case rules are respected")
+```

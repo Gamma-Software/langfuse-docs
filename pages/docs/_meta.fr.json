@@ -1,0 +1,43 @@
+{
+  "-- Introduction": {
+    "type": "separator",
+    "title": "Introduction"
+  },
+  "index": "Aperçu",
+  "get-started": "Comment démarrer",
+  "demo": "Demo",
+  "vocabulary": "Vocabulaire",
+
+  "-- Core": {
+    "type": "separator",
+    "title": "Core"
+  },
+  "core-index": "Aperçu",
+  "playbook_structure": "Structure d’un playbook",
+  "configurations": "Configurations",
+  "declarations": "Declarations",
+  "stages": "Etapes de construction",
+  "caching": "Caching",
+
+  "-- CLI": {
+    "type": "separator",
+    "title": "CLI"
+  },
+  "cli-index": "Aperçu",
+  "cli": "Commandes",
+
+  "-- Lib": {
+    "type": "separator",
+    "title": "Librairie"
+  },
+  "lib-index": "Aperçu",
+  "aiop-lib": "Developpement",
+
+  "-- More": {
+    "type": "separator",
+    "title": "Pour aller plus loin"
+  },
+  "third-party": "Librairies tierces",
+  "qna": "FAQ",
+  "even-more": "Encore plus loin"
+}

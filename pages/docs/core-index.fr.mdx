@@ -1,0 +1,181 @@
+---
+description: Get an overview of the core of Aiops functionnality, way of working and how to use it.
+---
+import { Callout } from "nextra-theme-docs";
+import { IntegrationBeam } from "../../components/docs/aiop-core/IntegrationBeam.tsx";
+
+
+# Aiop Core
+
+[Aiop Core](/docs/vocabulary#aiop-core) est le noyau de la solution Aiop. Il est composé de plusieurs modules qui permettent de gérer les différentes phases de construction d'un package. Voyons les concepts de base et le fonctionnement de Aiop Core.
+
+## Concepts de base
+
+Aiop Core est basé sur plusieurs concepts de base. Ces concepts sont les fondations de la solution Aiop.
+
+### Package
+
+Un package est un ensemble d’[artefacts](/docs/vocabulary#artefact) qui compose une application. Un package peut être une application web, une application mobile, une application de bureau, une ou un ensemble d’application embarquée, un service, une librairie, etc...
+
+<Callout type="info" emoji="ℹ️">
+  À l'[origine](/docs#origine), l'objectif d'AIOP était de concevoir des packages pour des applications embarquées. Cependant, la solution a été conçue pour être utilisée dans n'importe quel autres types de projet. Si toutefois, vous avez des besoins spécifiques, n'hésitez pas à nous [contacter](/meeting).
+</Callout>
+
+#### Composition
+
+{/* Create package beam to explain the composition of a package <PackageBeam/> */}
+
+Un package est composé de plusieurs artefacts. Ces artefacts sont des fichiers ou des dossiers.
+
+<details>
+  <summary>Les artefacts peuvent être des fichiers textuels</summary>
+  <ol>
+    <li><p>Rapports</p></li>
+    <li><p>Paramétrage</p></li>
+    <li><p>Certificats</p></li>
+    <li><p>Code source</p></li>
+    <li><p>Des données</p></li>
+    <li><p>Documentation</p></li>
+    <li><p>Fichiers de logs</p></li>
+    <li><p>...tout ce qui est lisible par un humain</p></li>
+  </ol>
+</details>
+
+<details>
+  <summary>Les artefacts peuvent être des fichiers binaires</summary>
+  <ol>
+    <li><p>des sons</p></li>
+    <li><p>des images</p></li>
+    <li><p>des vidéos</p></li>
+    <li><p>des librairies</p></li>
+    <li><p>des exécutables</p></li>
+    <li><p>des archives (zip)</p></li>
+    <li><p>des bases de données</p></li>
+    <li><p>des documents cryptés</p></li>
+    <li><p>...tout ce qui est compilé, crypté, dont la donnée est non lisible par l'humain</p></li>
+  </ol>
+</details>
+
+
+#### Sources des artefacts
+
+Les artefacts peuvent être issus de plusieurs sources:
+
+import { Cards, Card } from 'nextra/components'
+import { DownloadCloud, Laptop } from "lucide-react";
+
+<Cards>
+  <Card icon={<Laptop />} title="des fichiers locaux" arrow href="/docs/declarations/cookbook/local" />
+  <Card icon={<DownloadCloud />} title="des fichiers distants" arrow href="/docs/declarations/cookbook/remote" />
+</Cards>
+
+#### Organisation des artefacts
+
+Vous êtes libre d'organiser les artefacts comme vous le souhaitez. Aiop ne vous impose pas de structure. Cependant, il est recommandé d'adopter une structure standard pour l'ensemble de vos packages.
+
+<Callout emoji="💡">
+  L'avantage d'AIOP réside dans sa capacité à établir une structure d'artefacts standard pour l'ensemble de vos packages définit par vous et votre équipe. Cette approche facilite la maintenance et le débogage des packages, car toutes les personnes impliquées connaîtront cette structure et seront habituées à naviguer à l'intérieur.
+</Callout>
+
+### Validation et erreurs remontés
+
+Aiop Core est pensé pour afficher le plus d'information possible sur les erreurs rencontrées avant et pendant la construction d'un package. Les erreurs sont remontées à l'utilisateur sous forme de rapports dans la console.
+
+Aiop remonte les erreurs **le plus tôt possible** pour que l'utilisateur puisse les corriger rapidement.
+
+<Callout emoji="🚨">
+  Il est important de noter que Aiop ne corrige pas les erreurs pour vous ([cela ne tarderait pas à se produire.](/docs/roadmap)). Il vous informe des erreurs et vous donne des indications pour les corriger. C'est à vous de les corriger.
+</Callout>
+
+
+### Configurations
+
+Le comportement de Aiop Core peut être modifié par des configurations. Il existe plusieurs types de configurations: la configuration utilisateur, la configuration du projet, la configuration des systèmes.
+[En savoir plus](/docs/configurations).
+
+### Déclarations
+
+Aiop fonctionne sur le principe déclaratif de ressources. Les déclarations sont des fichiers qui décrivent les artefacts d'un package ainsi que leurs compatibilités avec des systèmes. [En savoir plus](/docs/declarations).
+
+### Intégrations
+
+Aiop Core inclut divers outils et services tiers pour exécuter différentes tâches. Parmi eux, on compte des gestionnaires de référentiels d'artefacts universels tels que [Nexus](https://www.sonatype.com/nexus-repository-oss) ou [Artifactory](https://jfrog.com/artifactory/). De plus, il intègre un outil de construction de PDF.
+
+<IntegrationBeam />
+
+Une multitude d'autres fonctionnalités et services arrivera dans les prochaines versions (voir la [feuille de route](/docs/roadmap)). [En savoir plus](/docs/integrations).
+
+### Caching
+
+Aiop Core exploite un mécanisme de mise en cache pour stocker les ressources distantes. Cette fonctionnalité vise à diminuer le temps nécessaire à la construction des packages, surtout dans le cas où la connexion avec les serveurs distants est interrompue ou lorsque la connexion internet est limitée.
+
+## Fonctionnement
+
+Voyons maintenant comment fonctionne Aiop.
+
+### Languages utilisés
+
+Le language de programmation utilisé est le Python. Les déclarations et les configurations sont écrites en [YAML](https://yaml.org/).
+
+### Sélections de déclarations
+
+La sélection est une opération qui consiste à choisir les déclarations à utiliser pour la construction d'un package. La sélection se fait en fonction du système ciblé et de la configuration choisie. Le système cible est défini par l'utilisateur dans le fichier de [configuration des systèmes](/docs/inventory). [En savoir plus](/docs/declarations).
+
+### Logs et rapports
+
+Aiop Core produit des journaux pour chaque étape de construction, affichant des informations variées telles que les erreurs, les avertissements, les détails sur les artefacts, et autres, directement dans la console.
+
+En outre, Aiop Core génère des rapports textuels stockés dans le répertoire de construction. Ces rapports incluent :
+
+- Un rapport détaillé de la construction, répertoriant toutes les opérations réalisées par Aiop.
+- Un résumé du package construit, fournissant des informations essentielles sur celui-ci.
+- Un rapport spécifique décrivant les modifications apportées au package lors de l'étape `post-build`.
+
+## Phases de constructions
+
+Aiop Core est composé de plusieurs phases de construction du package. Chaque phase est responsable de plusieurs tâches spécifiques. Les phases sont exécutées dans un ordre précis.
+Voici les phases de construction:
+
+### Lint
+
+La phase de `lint` assure la validation des déclarations et des configurations en vérifiant la syntaxe des fichiers correspondants ainsi que la cohérence entre eux.
+
+Étant une analyse statique, elle n'exige pas de spécifier le système cible. Toutefois, une option est disponible pour définir le système cible et réaliser des vérifications supplémentaires, notamment sur les éventuels conflits au niveau des ressources.[En savoir plus](/docs/lint).
+
+<Callout type="info" emoji="ℹ️">
+  À noter qu’il est possible de rajouter des tâches de lint personnalisées pour valider des règles spécifiques à votre projet.
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+  Le plan `gratuit` ne permet pas de rajouter des tâches de `lint` personnalisées.
+</Callout>
+
+### Pre-build
+
+La phase de `pre-build` est responsable de la préparation de l'environnement de construction. Elle assure la récupération des artefacts distants, la création des répertoires de construction, etc. [En savoir plus](/docs/pre-build).
+
+### Build
+
+La phase de `build` est responsable de la construction du package. Elle assure l'assemblage des ressources dans le package. [En savoir plus](/docs/build).
+
+### Post-build
+
+La phase de `post-build` est utilisée pour réaliser de tâches qui n’ont pas de sens à être inclue dans le phase de `build`. Par exemple, vous pourriez être amené à vouloir générer un fond d’écran pour un client qui affiche en texte des métadonnées relatives au système cible. Toutes manipulation du packages temporaire après `build` doit être fait dans cette phase. [En savoir plus](/docs/post-build).
+
+<Callout type="info" emoji="ℹ️">
+  Pour rappel, un rapport est généré à la fin de la phase de `post-build` en comparant le package avant et après cette phase. Ce rapport est stocké dans le répertoire de construction.
+
+  De plus, il est possible de rajouter des tâches de post-build personnalisées pour réaliser des actions spécifiques à votre projet.
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+  Le plan `gratuit` ne permet pas de rajouter des tâches de `post-build` personnalisées.
+</Callout>
+
+### Seal
+
+La phase `seal` est une étape où les plusieurs tâches sont effectuées pour finaliser et rendre le package prêt à être distribué dans la phase suivante. [En savoir plus](/docs/seal).
+
+### Deploy
+
+La phase `deploy` est responsable de la distribution du package. Elle assure l'envoi du package dans des gestionnaires de référentiels d'artefacts universels et/ou le déploiement des systèmes cible directement. [En savoir plus](/docs/deploy).

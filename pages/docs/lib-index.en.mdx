@@ -1,0 +1,19 @@
+---
+description: Get an overview of the Aiop library, how to develop custom scripts, and plugins.
+---
+import { FileCode2, Blocks } from "lucide-react";
+
+# Concepts
+
+Aiop provides a library for extending playbook-specific functionalities. This library enables you to develop scripts to meet your specific needs.
+
+## Tasks and Plugins
+
+Custom tasks are executable Python classes that adhere to a specific structure. Tasks are used to perform specific actions in a playbook and intervene in the process of creating the package. Currently, they can only be executed in the `lint` and `post-build` stages.
+
+Plugins are Aiop feature extensions. They are intended for companies with constraints and requests specific to their business. Plugins are developed by the Aiop engineering team. Leaptech owns the usage rights. Please contact [support](mailto:valentin.rudloff.perso@gmail.com) for any requests for task or plugin development.
+
+<Cards num={2}>
+  <Card icon={<FileCode2 size="24" />} title="Task Development" href="/docs/aiop-lib/plugins" target="_blank" arrow/>
+  <Card icon={<Blocks size="24" />} title="Plugin Development" href="/docs/aiop-lib/custom-jobs" target="_blank" arrow/>
+</Cards>

@@ -1,0 +1,12 @@
+{
+    "uninstall": "Desinstaller Aiop",
+    "roadmap": {
+      "title": "Feuille de route ↗",
+      "href": "/roadmap"
+    },
+    "changelog": {
+      "title": "Changelog ↗",
+      "href": "/changelog",
+      "newWindow": false
+    }
+}

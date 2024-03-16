@@ -1,0 +1,30 @@
+---
+description: Commencez chaque nouveau projet Aiop en exécutant la commande "init" pour créer une structure de projet de base qui fonctionne dès le départ.
+---
+
+# Commande `init`
+
+La commande d'`init` est utilisée pour créer un nouveau projet playbook pour stocker les ressources et déclarations et générer des packages. Le nouveau projet sera créé à partir d'un [squelette de projet](https://gitlab.com/leap_tech/playbooks/skeleton) par défaut. Le projet créé contiendra une structure de répertoires de base, des fichiers de configuration et des exemples de ressources.
+
+Pour créer un nouveau projet, exécutez la commande suivante :
+
+```bash
+aiop init {playbook_path}
+```
+
+> `playbook_path` est le chemin du répertoire où vous souhaitez créer le projet.
+
+En executant la commande d'aide, vous pouvez voir les options disponibles pour la commande d'`init` :
+
+```ansi
+usage: aiop init [-h] [--url URL] playbook_path
+
+positional arguments:
+  playbook_path  Path to create the playbook and git init it.
+
+options:
+  -h, --help     show this help message and exit
+  --url URL      Url of the remote repository to push the playbook
+```
+
+L'option `--url` est utilisée pour spécifier l'URL du dépôt distant où vous souhaitez pousser le projet. Si vous spécifiez cette option, le projet sera initialisé avec un dépôt git et poussé vers le dépôt distant. Cela peut être [Github](https://github.com), [Gitlab](https://gitlab.com), [Bitbucket](https://bitbucket.org/) ou tout autre dépôt git.
