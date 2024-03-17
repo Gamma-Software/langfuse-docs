@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/shadcn/button";
 import { useState, useEffect } from "react";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export const ToAppButton = () => {
   const [signedIn, setSignedIn] = useState<"EU" | "US" | false>(false);
@@ -26,6 +27,8 @@ export const ToAppButton = () => {
         .catch(() => setSignedIn(false));
     }
   }, []);
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
   return (
     <Button size="xs" asChild className="whitespace-nowrap w-[70px]">
       <Link
@@ -38,7 +41,7 @@ export const ToAppButton = () => {
           "/waiting-list"
         }
       >
-        {signedIn ? "Compte" : "S’incrire"}
+        {signedIn ? messages.app_button.account : messages.app_button.signup}
       </Link>
     </Button>
   );

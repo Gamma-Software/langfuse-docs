@@ -290,7 +290,7 @@
           },
           {
             "question": "Do you offer promotions?",
-            "answer": "Yes, we offer discounts for students and academics. If you believe your situation justifies a discount, please contact us at <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>this email address</a>."
+            "answer": "Yes, we offer discounts for students and academics. If you believe your situation justifies a discount, please contact us at <a class='underline' href='mailto:support@aiop.io'>this email address</a>."
           }
         ]
       }
@@ -301,7 +301,7 @@
     "description": "For now, Aiop is in Beta version. To subscribe to the Pro version, please sign up for the waiting list by providing your email.",
     "description2": "You can still start using Aiop for free by clicking the button below.",
     "modal": {
-      "error": "Uh oh! Something went wrong. Please try again or contact us directly by email: valentin.rudloff.perso@gmail.com",
+      "error": "Uh oh! Something went wrong. Please try again or contact us directly by email: support@aiop.io",
       "success": "Message sent! Thank you for your registration, we will notify you as soon as the Pro version is available."
     },
     "form": {
@@ -439,6 +439,10 @@
   "blog":{
     "read_more": "Know more →",
     "by": "By"
+  },
+  "app_button":{
+    "signup": "Sign up",
+    "account": "Account"
   },
   "common": {
     "and": "and",

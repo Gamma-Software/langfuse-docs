@@ -81,7 +81,7 @@ export const DocsSupport = () => {
           </a>
         </Button>
         <Button variant="outline" size="sm" asChild>
-          <a href="mailto:valentin.rudloff.perso@gmail.com" target="_blank">
+          <a href="mailto:support@aiop.io" target="_blank">
             <span>Email</span>
             <Mail className="h-4 w-4 ml-3" />
           </a>

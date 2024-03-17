@@ -307,7 +307,7 @@
           {
             "question": "Est-ce que vous faites de promotions?",
             "answer":
-              "Oui, nous offrons des réductions pour les étudiants et les universitaires. Si vous pensez que votre situation justifie une réduction, veuillez nous contacter à <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>cette adresse mail</a>."
+              "Oui, nous offrons des réductions pour les étudiants et les universitaires. Si vous pensez que votre situation justifie une réduction, veuillez nous contacter à <a class='underline' href='mailto:support@aiop.io'>cette adresse mail</a>."
           }
         ]
       }
@@ -319,7 +319,7 @@
     "description2": "Vous pouvez tout de même commencer à utiliser Aiop gratuitement en cliquant sur le bouton ci-dessous.",
     "modal":
     {
-      "error": "Uh oh! Quelque chose s’est mal passé. Reessayez ou contacter nous directement par email: valentin.rudloff.perso@gmail.com",
+      "error": "Uh oh! Quelque chose s’est mal passé. Reessayez ou contacter nous directement par email: support@aiop.io",
       "success": "Message envoyé! Merci pour votre inscription, nous vous préviendrons dès que la version Pro sera disponible."
     },
     "form":
@@ -466,6 +466,10 @@
   "blog":{
     "read_more": "En savoir plus →",
     "by": "De"
+  },
+  "app_button":{
+    "signup": "S’inscrire",
+    "account": "Compte"
   },
   "common": {
     "and": "et",

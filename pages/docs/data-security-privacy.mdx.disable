@@ -30,14 +30,14 @@ Avec Aiop cloud, nous gérons :
 - Nous chiffrons toutes les données et les transitons à l'aide de TLS.
 {/* - Notre base de donnée est hébergée sur l'infrastructure AWS. */}
 - Tous les utilisateurs ont accès à la SSO (Single Sign-On) via OAuth 2.0 avec GitHub. Nous pouvons imposer la SSO pour votre organisation (plan Team et supérieur) pour exiger une double authentification.
-- Toutes demandes concernant la sécurité sont à envoyer à valentin.rudloff.perso@gmail.com.
+- Toutes demandes concernant la sécurité sont à envoyer à support@aiop.io.
 
 ## Politique de confidentialité
 
 - Pour notre politique de confidentialité, voir : [Politique de confidentialité](https://aiop.fr/privacy)
 - Pour le formulaire de demande d'accès des données personnelles, voir : [Formulaire de demande d'accès des données personnelles](https://app.termly.io/notify)
 - Nous pouvons fournir un DPA (Data Processing Agreement) et une liste de sous-traitants sur demande.
-- Pour toute question relative à la confidentialité, veuillez nous contacter à valentin.rudloff.perso@gmail.com
+- Pour toute question relative à la confidentialité, veuillez nous contacter à support@aiop.io
 
 {/*
 ## Mesures de conformité
@@ -48,4 +48,4 @@ For specific compliance requirements or questions, please contact us at complian
 */}
 ## Divulgation responsable des vulnérabilités de sécurité
 
-Nous accordons une grande importance à la communauté de la sécurité et nous donnons la priorité à la sécurité de nos systèmes. Nous encourageons la divulgation des vulnérabilités de sécurité pour nous aider à protéger la sécurité et la confidentialité de nos utilisateurs. Veuillez envoyer des rapports de vulnérabilités exploitables à valentin.rudloff.perso@gmail.com.
+Nous accordons une grande importance à la communauté de la sécurité et nous donnons la priorité à la sécurité de nos systèmes. Nous encourageons la divulgation des vulnérabilités de sécurité pour nous aider à protéger la sécurité et la confidentialité de nos utilisateurs. Veuillez envoyer des rapports de vulnérabilités exploitables à support@aiop.io.
