@@ -12,7 +12,7 @@ export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
 
   const router = useRouter();
   const changelogPages = getPagesUnderRoute("/blog");
-  const pages = changelogPages.filter((page) => page.locale === router.locale) as Array<Page & { frontMatter: any }>;
+  const pages = changelogPages.filter((page) => (page as any).locale === router.locale) as Array<Page & { frontMatter: any }>;
 
   if (!messages) return null;
   if (!pages) return null;

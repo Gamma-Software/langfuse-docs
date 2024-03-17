@@ -8,7 +8,7 @@ import { Video } from "../Video";
 export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
   const router = useRouter();
   const changelogPages = getPagesUnderRoute("/changelog");
-  const pages = changelogPages.filter((page) => page.locale === router.locale) as Array<Page & { frontMatter: any }>;
+  const pages = changelogPages.filter((page) => (page as any).locale === router.locale) as Array<Page & { frontMatter: any }>;
   if (!pages) return null;
 
   return(
