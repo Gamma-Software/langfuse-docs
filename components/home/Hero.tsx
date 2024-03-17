@@ -13,8 +13,7 @@ import {Meteors} from "../ui/magicui/meteors";
 import { log } from 'console';
 import { useLocalizedMessages } from '@/lib/ParseLang';
 
-export function Hero(props: any) {
-  console.log(props);
+export function Hero() {
   const messages = useLocalizedMessages();
   if (!messages) return null;
 

@@ -10,7 +10,6 @@ import { useLocalizedMessages } from '@/lib/ParseLang';
 export const ChangelogHeader = () => {
   const changelogPages = getPagesUnderRoute("/changelog");
 
-  //console.log(changelogPages);
   const router = useRouter();
   const page = changelogPages.find((page) => page.route === router.asPath && (page as any).locale === router.locale) as Page & { frontMatter: any };
   if (!page) return null;
