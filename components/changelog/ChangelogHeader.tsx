@@ -12,7 +12,7 @@ export const ChangelogHeader = () => {
 
   //console.log(changelogPages);
   const router = useRouter();
-  const page = changelogPages.find((page) => page.route === router.asPath && page.locale === router.locale) as Page & { frontMatter: any };
+  const page = changelogPages.find((page) => page.route === router.asPath && (page as any).locale === router.locale) as Page & { frontMatter: any };
   if (!page) return null;
 
   const { title, description, ogImage, ogVideo, gif, date, author } = page.frontMatter;
