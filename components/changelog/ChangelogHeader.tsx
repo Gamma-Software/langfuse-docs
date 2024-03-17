@@ -8,14 +8,14 @@ import { Video } from "../Video";
 import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export const ChangelogHeader = () => {
-  const router = useRouter();
   const changelogPages = getPagesUnderRoute("/changelog");
-  const page = changelogPages.find(
-    (page) => page.route === router.pathname
-  ) as Page & { frontMatter: any };
 
-  const { title, description, ogImage, ogVideo, gif, date, author } =
-    page.frontMatter;
+  //console.log(changelogPages);
+  const router = useRouter();
+  const page = changelogPages.find((page) => page.route === router.asPath && page.locale === router.locale) as Page & { frontMatter: any };
+  if (!page) return null;
+
+  const { title, description, ogImage, ogVideo, gif, date, author } = page.frontMatter;
 
   const messages = useLocalizedMessages();
   if (!messages) return null;
@@ -24,7 +24,7 @@ export const ChangelogHeader = () => {
     <div className="md:mt-10 flex flex-col gap-10">
       <Link
         href={`/changelog${
-          page.route ? "#" + page.route.replace("/changelog/", "") : ""
+          page.route ? "#" + page.route.replace("/changelog", "") : ""
         }`}
         className="md:mb-10"
       >

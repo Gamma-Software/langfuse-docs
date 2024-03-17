@@ -9,15 +9,17 @@ import { useLocalizedMessages } from '@/lib/ParseLang';
 export const BlogIndex = ({ maxItems }: { maxItems?: number }) => {
 
   const messages = useLocalizedMessages();
-  if (!messages) return null;
 
   const router = useRouter();
-  const { locale } = router;
+  const changelogPages = getPagesUnderRoute("/blog");
+  const pages = changelogPages.filter((page) => page.locale === router.locale) as Array<Page & { frontMatter: any }>;
+
+  if (!messages) return null;
+  if (!pages) return null;
 
   return(
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-      {(getPagesUnderRoute(`/blog/${locale}`) as Array<Page & { frontMatter: any }>)
-        .slice(0, maxItems)
+      {pages.slice(0, maxItems)
         .map((page) => (
           <Link key={page.route} href={page.route} className="block mb-8 group">
             {page.frontMatter?.ogImage ? (

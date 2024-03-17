@@ -430,6 +430,17 @@
       { "name": "Cloud: Personal account management", "checked": false }
     ]
   },
+  "schedule_demo":{
+    "title": "Discuss your project",
+    "description": "We could discuss your project and how Aiop can help you. We can also give you a demonstration of the Aiop solution and how it can help you in your business."
+  },
+  "changelog":{
+    "back": "← Back to changelog"
+  },
+  "blog":{
+    "read_more": "Know more →",
+    "by": "By"
+  },
   "common": {
     "and": "and",
     "documentation": "Documentation",
