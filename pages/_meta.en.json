@@ -30,7 +30,7 @@
     "title": "Docs"
   },
   "pricing": {
-    "title": "Tarifs",
+    "title": "Pricing",
     "type": "page",
     "theme": {
       "layout": "full"
@@ -52,12 +52,12 @@
     "display": "hidden"
   },
   "whitepaper": {
-    "title": "Livre Blanc",
+    "title": "Whitepaper",
     "type": "page",
     "href": "/docs#pourquoi-utiliser-aiop"
   },
   "roadmap": {
-    "title": "Feuille de route",
+    "title": "Roadmap",
     "type": "page",
     "theme": {
       "layout": "full"
@@ -78,7 +78,7 @@
     }
   },
   "waiting-list": {
-    "title": "Liste d’attente",
+    "title": "Waiting List",
     "type": "page",
     "display": "hidden"
   },
@@ -88,12 +88,12 @@
     "display": "hidden"
   },
   "careers": {
-    "title": "Carrière",
+    "title": "Carrier",
     "type": "page",
     "display": "hidden"
   },
   "tnc": {
-    "title": "Termes et conditions",
+    "title": "Terms",
     "type": "page",
     "display": "hidden"
   },

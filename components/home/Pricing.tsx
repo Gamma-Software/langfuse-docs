@@ -78,7 +78,7 @@ export function Pricing({ isPricingPage = false }: { isPricingPage?: boolean }) 
                                   ? "text-gray-500"
                                   : "text-gray-400"
                               }
-                            >{`Souscription mensuelle`}</p>
+                            >{tier.alt}</p>
                           </div>
                         )}
                       </div>

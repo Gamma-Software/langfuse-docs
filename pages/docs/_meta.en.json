@@ -3,41 +3,41 @@
     "type": "separator",
     "title": "Introduction"
   },
-  "index": "Aperçu",
-  "get-started": "Comment démarrer",
+  "intro": "Overview",
+  "get-started": "Getting Started",
   "demo": "Demo",
-  "vocabulary": "Vocabulaire",
+  "vocabulary": "Vocabulary",
 
   "-- Core": {
     "type": "separator",
     "title": "Core"
   },
-  "core-index": "Aperçu",
-  "playbook_structure": "Structure d’un playbook",
+  "core-index": "Overview",
+  "playbook_structure": "Playbook Structure",
   "configurations": "Configurations",
   "declarations": "Declarations",
-  "stages": "Etapes de construction",
+  "stages": "Build Stages",
   "caching": "Caching",
 
   "-- CLI": {
     "type": "separator",
     "title": "CLI"
   },
-  "cli-index": "Aperçu",
-  "cli": "Commandes",
+  "cli-index": "Overview",
+  "cli": "Commands",
 
   "-- Lib": {
     "type": "separator",
-    "title": "Librairie"
+    "title": "Library"
   },
-  "lib-index": "Aperçu",
-  "aiop-lib": "Developpement",
+  "lib-index": "Overview",
+  "aiop-lib": "Development",
 
   "-- More": {
     "type": "separator",
-    "title": "Pour aller plus loin"
+    "title": "For Further Exploration"
   },
-  "third-party": "Librairies tierces",
+  "third-party": "Third-Party Libraries",
   "qna": "FAQ",
-  "even-more": "Encore plus loin"
+  "even-more": "Further Exploration"
 }

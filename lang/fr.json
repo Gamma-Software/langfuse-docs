@@ -137,8 +137,9 @@
           "name": "Community",
           "id": "tier-free",
           "href": "/docs/get-started",
-          "featured": false,
+          "featured": true,
           "description": "Démarrez dès maintenant ! carte de crédit non requise. Parfait pour essayer l’outil.",
+          "alt": "",
           "price": "Gratuit",
           "mainFeatures": [
             "Carte de crédit non requise",
@@ -153,9 +154,10 @@
           "name": "Pro",
           "id": "tier-pro",
           "href": "/waiting-list",
-          "featured": true,
+          "featured": false,
           "description":
             "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
+          "alt": "Souscription mensuelle",
           "price": "--€",
           "mainFeatures": [
             "Toutes les fonctionnalités de la version gratuite",
@@ -178,6 +180,7 @@
           "price": "Démarre à ---€",
           "description":
             "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
+          "alt": "Contact us",
           "mainFeatures": [
             "Toutes les fonctionnalités de la version Pro",
             "Accès à des workshops et formations",
@@ -302,11 +305,6 @@
               "Pour les project personnels et open-source, vous n'avez pas besoin de créer un compte. Pour les projets professionnels, nous avons besoin de votre coordonnées personnelles pour créer un compte Aiop cloud et bénéficier de plugins. Nous ne vendons pas vos données à des tiers. Votre adresse email est utilisée uniquement pour vous contacter à propos de votre compte Aiop."
           },
           {
-            "question": "Où est stocké mes coordonnées personnelles?",
-            "answer":
-              "Aiop Cloud est hébergé sur AWS et les données sont stockées dans l'UE en fonction de votre choix. Consultez notre <a class='underline' href='/docs/data-security-privacy'>documentation sur la sécurité et la confidentialité</a> pour plus de détails."
-          },
-          {
             "question": "Est-ce que vous faites de promotions?",
             "answer":
               "Oui, nous offrons des réductions pour les étudiants et les universitaires. Si vous pensez que votre situation justifie une réduction, veuillez nous contacter à <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>cette adresse mail</a>."
@@ -363,7 +361,7 @@
       {
         "placeholder": "votre email"
       },
-      "submit": "Soumettre"
+      "submit": "Tenir au courant"
     }
   },
   "main_content_wrapper":{

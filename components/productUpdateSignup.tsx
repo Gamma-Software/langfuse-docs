@@ -88,7 +88,7 @@ export function ProductUpdateSignup(props: {
           {form.formState.isSubmitting ? (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           ) : (
-            <>Rester&nbsp;Informé</>
+            <>{messages.product_update_signup.form.submit}</>
           )}
         </Button>
       </form>

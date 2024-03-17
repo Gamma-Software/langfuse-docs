@@ -125,9 +125,10 @@
           "name": "Community",
           "id": "tier-free",
           "href": "/docs/get-started",
-          "featured": false,
+          "featured": true,
           "description": "Start now! No credit card required. Perfect for trying out the tool.",
           "price": "Free",
+          "alt": "",
           "mainFeatures": [
             "No credit card required",
             "All basic features",
@@ -141,8 +142,9 @@
           "name": "Pro",
           "id": "tier-pro",
           "href": "/waiting-list",
-          "featured": true,
+          "featured": false,
           "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
+          "alt": "Monthly subscription",
           "price": "--€",
           "mainFeatures": [
             "All features of the free version",
@@ -164,6 +166,7 @@
           "featured": false,
           "price": "Starts at ---€",
           "description": "Dedicated solution for a team and/or company. You have personalized assistance. Contact us to discuss the price.",
+          "alt": "Contact us",
           "mainFeatures": [
             "All features of the Pro version",
             "Access to workshops and training",
@@ -286,10 +289,6 @@
             "answer": "For personal and open-source projects, you do not need to create an account. For professional projects, we need your personal information to create an Aiop cloud account and benefit from plugins. We do not sell your data to third parties. Your email address is used only to contact you about your Aiop account."
           },
           {
-            "question": "Where are my personal details stored?",
-            "answer": "Aiop Cloud is hosted on AWS and the data is stored in the EU depending on your choice. Check out our <a class='underline' href='/docs/data-security-privacy'>security and privacy documentation</a> for more details."
-          },
-          {
             "question": "Do you offer promotions?",
             "answer": "Yes, we offer discounts for students and academics. If you believe your situation justifies a discount, please contact us at <a class='underline' href='mailto:valentin.rudloff.perso@gmail.com'>this email address</a>."
           }
@@ -337,7 +336,7 @@
       "email": {
         "placeholder": "your email"
       },
-      "submit": "Submit"
+      "submit": "Keep in touch"
     }
   },
   "main_content_wrapper": {

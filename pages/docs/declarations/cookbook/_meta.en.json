@@ -1,0 +1,10 @@
+{
+  "local": "Local resource",
+  "remote": "Remote resource",
+  "zip": "Archive",
+  "combine": "Combine resources",
+  "parse-to-pdf": "Convert to PDF",
+  "executables": "Executable",
+  "multi": "Multiple compatibilty",
+  "all": "All compatibilty"
+}

@@ -53,7 +53,7 @@ const config: DocsThemeConfig = {
     { locale: 'fr', text: 'Français' },
   ],
   search: {
-    placeholder: "Rechercher...",
+    placeholder: "Search...",
   },
   navbar: {
     extraContent: (
@@ -72,11 +72,11 @@ const config: DocsThemeConfig = {
           className="p-1 hidden sm:inline-block hover:opacity-80"
           target="_blank"
           href="https://twitter.com/valentinrudlof1"
-          aria-label="X précédement Twitter"
+          aria-label="X or Twitter"
           rel="nofollow noreferrer"
         >
           <svg
-            aria-label="X précédement Twitter"
+            aria-label="X or Twitter"
             fill="currentColor"
             width="24"
             height="24"
@@ -97,10 +97,10 @@ const config: DocsThemeConfig = {
     toggleButton: true,
   },
   editLink: {
-    text: "Êditer cette page sur Github",
+    text: "Edit this page on GitHub",
   },
   feedback: {
-    content	: "Question ? Faites nous un retour.",
+    content	: "Question ? Make us a feedback",
   },
   toc: {
     backToTop: true,
@@ -137,7 +137,7 @@ const config: DocsThemeConfig = {
               className="inline rounded-none leading-6 text-primary/80 hover:text-primary"
               id="termly-consent-preferences"
             >
-              Préférence des Cookies
+              Cookies
             </a>
           </div>
         </div>
@@ -241,10 +241,10 @@ const config: DocsThemeConfig = {
     text: (
       <Link href="/changelog/2024-03-13-beta-phase">
         {/* mobile */}
-        <span className="sm:hidden">Aiop est en Bêta →</span>
+        <span className="sm:hidden">Phase Bêta →</span>
         {/* desktop */}
         <span className="hidden sm:inline">
-          Aiop est en Bêta →
+         Phase Bêta →
         </span>
       </Link>
     ),

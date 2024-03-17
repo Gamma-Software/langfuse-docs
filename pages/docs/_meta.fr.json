@@ -3,7 +3,7 @@
     "type": "separator",
     "title": "Introduction"
   },
-  "index": "Aperçu",
+  "intro": "Aperçu",
   "get-started": "Comment démarrer",
   "demo": "Demo",
   "vocabulary": "Vocabulaire",
