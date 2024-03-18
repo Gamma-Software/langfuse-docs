@@ -1,0 +1,52 @@
+---
+description: >-
+  The linter is a tool that checks your code for errors and warnings. It is a static analysis tool used to identify problematic patterns present in Python code.
+---
+
+# Linting Command
+
+The linting command allows you to run verification scripts on the playbook, its parameters, its declarations, and its resources. Optionally, it is possible to check the target system and compatible resources. Additionally, custom verification scripts included in the playbook can be executed.
+
+## `lint` Command
+
+To run the `lint` command, the user must navigate to the playbook directory.
+This command checks the playbook, its parameters, and the syntax of its declarations, as well as the existence of its resources.
+
+```bash
+aiop lint
+```
+
+Running the help command displays the available options:
+
+```ansi
+usage: aiop lint [-h]
+
+options:
+  -h, --help  show this help message and exit
+```
+
+## `lint_target` Command
+
+To run the `lint_target` command, the user must navigate to the playbook directory.
+The `lint_target` command verifies the playbook, its parameters, the syntax of its declarations, and the existence of its resources, as well as their compatibility with the target system.
+
+```bash
+aiop lint_target {system_target} {params}
+```
+> `system_target`: The target system for which to validate the playbook
+
+> `params`: The compatibility parameters for the target system. This mandatory parameter will vary depending on the playbook and its configurations as it is defined by the `.aiop/inventory_config.yml` configuration file in the `compatibility` field ([Learn more](/docs/configurations/inventory)).
+
+Running the help command displays the available options:
+
+```ansi
+usage: aiop lint_target [-h] [--mode MODE] system_target [apps ...] context
+
+positional arguments:
+  system_target  System target for which to validate the playbook
+  params         Compatibility parameters
+
+options:
+  -h, --help     show this help message and exit
+  --mode MODE    Mode of the created output (default: dev)
+```

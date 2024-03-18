@@ -5,26 +5,29 @@ import { getPagesUnderRoute } from "nextra/context";
 import Link from "next/link";
 import { Author } from "../Authors";
 import { Video } from "../Video";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export const ChangelogHeader = () => {
-  const router = useRouter();
   const changelogPages = getPagesUnderRoute("/changelog");
-  const page = changelogPages.find(
-    (page) => page.route === router.pathname
-  ) as Page & { frontMatter: any };
 
-  const { title, description, ogImage, ogVideo, gif, date, author } =
-    page.frontMatter;
+  const router = useRouter();
+  const page = changelogPages.find((page) => page.route === router.asPath && (page as any).locale === router.locale) as Page & { frontMatter: any };
+  if (!page) return null;
+
+  const { title, description, ogImage, ogVideo, gif, date, author } = page.frontMatter;
+
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
 
   return (
     <div className="md:mt-10 flex flex-col gap-10">
       <Link
         href={`/changelog${
-          page.route ? "#" + page.route.replace("/changelog/", "") : ""
+          page.route ? "#" + page.route.replace("/changelog", "") : ""
         }`}
         className="md:mb-10"
       >
-        ← Back to changelog
+        {messages.changelog.back}
       </Link>
 
       <div>

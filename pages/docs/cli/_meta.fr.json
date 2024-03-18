@@ -1,0 +1,5 @@
+{
+    "init": "Init",
+    "lint": "Lint",
+    "build": "Build"
+}

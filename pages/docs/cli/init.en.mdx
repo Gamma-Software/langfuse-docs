@@ -1,0 +1,30 @@
+---
+description: Start every new Aiop project by executing the "init" command to create a basic project structure that works right from the start.
+---
+
+# `init` Command
+
+The `init` command is used to create a new playbook project to store resources and declarations and generate packages. The new project will be created from a default [project template](https://gitlab.com/leap_tech/playbooks/skeleton). The created project will contain a basic directory structure, configuration files, and examples of resources.
+
+To create a new project, execute the following command:
+
+```bash
+aiop init {playbook_path}
+```
+
+> `playbook_path` is the path to the directory where you want to create the project.
+
+By running the help command, you can see the available options for the `init` command:
+
+```ansi
+usage: aiop init [-h] [--url URL] playbook_path
+
+positional arguments:
+  playbook_path  Path to create the playbook and git init it.
+
+options:
+  -h, --help     show this help message and exit
+  --url URL      Url of the remote repository to push the playbook
+```
+
+The `--url` option is used to specify the URL of the remote repository where you want to push the project. If you specify this option, the project will be initialized with a git repository and pushed to the remote repository. This can be [Github](https://github.com), [Gitlab](https://gitlab.com), [Bitbucket](https://bitbucket.org/), or any other git repository.

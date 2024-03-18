@@ -1,0 +1,219 @@
+---
+description: Custom tasks are available for each subscription plan. They provide more flexibility and customization for a playbook. This allows running custom Python scripts during linting and post-build steps.
+---
+
+import { Callout } from "nextra-theme-docs";
+
+# Custom Tasks
+
+Custom tasks provide more flexibility and customization for a playbook. They allow running custom Python scripts in the `lint` and `post-build` steps. You could use custom tasks for:
+
+- `lint`
+    - Adding specific naming rules like forcing folder names to adhere to the `snake_case` format.
+    - Adding specific code formatting rules like enforcing the use of `double quotes` for strings.
+    - Adding checks on configuration files like verifying that there are no spaces in key names.
+
+- `post-build`
+    - Adding checks on generated files like ensuring that translation files are well-formatted.
+    - Generating an image (wallpaper) from package data.
+
+## Configuration
+
+To add a custom task, you need to add a `custom_jobs` section in your [configuration file](/docs/configurations/playbook#lint_rules-and-post_scripts). This section can contain two subsections `lint` and `post_build` which contain the custom tasks for the `lint` and `post-build` steps respectively.
+
+```yaml
+custom_jobs:
+  lint:
+    - name: "CustomLintingTask"
+      script: "path/to/your/linting/script.py"
+  post_build:
+    - name: "CustomPostBuildTask"
+      script: "path/to/your/post_build/script.py"
+```
+
+### `name`
+
+The name of the custom task. This name will be used in logs to identify the task being executed.
+
+### `script`
+
+The relative path to the playbook root to the Python script that will be executed. This script must be a valid Python file and must be accessible from the playbook's working directory.
+
+## Base of a Custom Script
+
+The custom script must be a valid Python file. It is required to contain a class that inherits from the `Job` class in the `aiop.libs.job.base` module. This is valid for both `lint` and `post-build` tasks. The class must implement the `prerequisites` and `run` methods which will be called when executing the task.
+
+Here's the basic structure of a custom script:
+
+```python showLineNumbers
+import os
+from pathlib import Path
+from aiop.libs.utils.commons import load_playbook_ignore
+from aiop.libs.job.base import Job
+from aiop.libs.job.metadata import JobResult, JobResultEnum, JobData
+from aiop.libs.package import Package
+from aiop.core.stages.base import PrerequisiteResults
+
+class CustomTask(Job):
+    def __init__(self, stage_name: str):
+        self.stage_name = stage_name
+        self.name = "CustomTask"
+
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+
+    def run(self, package: Package, data: JobData) -> JobResult:
+        # Your custom logic here
+        ...
+        # Return the task result
+        return JobResult(self.name, JobResultEnum.OK, "CustomTask OK")
+```
+
+The class name corresponds to the value of `name` in the configuration. The class must inherit from the `Job` class in the `aiop.libs.job.base` module.
+
+## Methods
+
+### `__init__`
+
+The class constructor. It takes a `stage_name` parameter which is the name of the stage in which the task is executed. This parameter is used to identify the stage in logs. You must also name the task by instantiating the `self.name` variable.
+
+### `prerequisites`
+
+The `prerequisites` method is invoked before executing the task. Tasks are executed in the order they were declared in the configuration file. However, if the prerequisites are not met, the task will not be executed at the scheduled time but it can be executed later. If its prerequisites are never satisfied, an error will be reported, and the package generation will be stopped. This method takes two parameters ([Learn More](#parameters)).
+
+It must return a list of tuples. Each tuple must contain a boolean and a message. If the boolean is `True`, the task will be executed. If any of the booleans are `False`, the task will not be executed, and the message will be displayed in logs if the prerequisite will never be satisfied.
+
+### `run`
+
+The `run` method is called to execute the task. It must return an object of type `JobResult` that contains the task result ([Learn More about Return](#task-result)). This method contains the logic of the custom task. You can make API calls, read and write files, etc. However, it is recommended not to make blocking calls in this method.
+
+<Callout type="warning" emoji="⚠️">
+You can alter the package in this method to generate files or modify existing files. However, you risk corrupting the package if you are not careful. Be cautious when modifying the package.
+</Callout>
+
+## Parameters
+
+### `package`
+
+The `package` parameter is usable in the [`prerequisites`](#prerequisites) and [`run`](#run) methods. This parameter contains information about the package being generated. It is a dynamic variable and therefore changes during the package creation process, so the information it contains may change:
+
+| elements | type | description |
+| --- | --- | --- |
+| `package.target` | SystemTarget | Target system to build the package |
+| `package.setup_version` | SetupVersion | Playbook version (`tag`, `version`) |
+| `package.temporary_package` | Path | Path to the package being built |
+| `package.raw_declarations` | list | Freshly loaded declarations, validated but not yet processed and filtered |
+| `package.declarations` | list | Instances of the `Declaration` class validated but not filtered according to compatibility |
+| `package.matching_declarations` | list | Instances of the `Declaration` class compatible with the target |
+| `package.computed_declarations` | list | Instances of the `Declaration` class processed by Aiop |
+| `package.results` | dict | Task results, Dictionary grouping construction steps then tasks with the task result `JobResult` as value |
+| `package.session_data` | dict
+
+ | Session data where you can add whatever you want to pass from one task to another |
+
+### `data`
+
+The `data` parameter is usable in the [`prerequisites`](#prerequisites) and [`run`](#run) methods. This parameter contains information about user settings, playbook, and user commands. It is a static variable and therefore does not change during Aiop execution:
+
+| elements | type | description |
+| --- | --- | --- |
+| `data.user_commands` | UserCommands | User commands |
+| `data.user_config` | UserConfiguration | User configurations |
+| `data.playbook_config` | PlaybookConfiguration | Playbook configurations |
+
+## Task Result
+
+The `run` method must return an object of type `JobResult` that contains the task result. This object takes three parameters:
+
+| parameter | type | description |
+| --- | --- | --- |
+| `name` | str | The name of the task. Typically, it is the name of the task class (or the task name). |
+| `status` | JobResultEnum | The status of the task. It must be a value from the `JobResultEnum` enumeration which can be `OK`, `FAIL_NOW`, `FAIL_LATER`, `WARN`, or `SKIP`. |
+| `message` | str | A message that will be displayed in logs to describe the task result. |
+
+The values of the `JobResultEnum` enumeration are:
+| Enum | description |
+| --- | --- |
+| `OK` | The task was executed successfully. |
+| `FAIL_NOW` | The task failed and requests Aiop to **immediately** stop package generation. |
+| `FAIL_LATER` | The task failed and requests Aiop to stop package generation **after** executing all tasks in the current stage. This allows in some cases to report as many errors as possible before stopping package generation. |
+| `WARN` | The task failed but does not request Aiop to stop package generation. |
+| `SKIP` | The task was not executed. |
+
+## Example
+
+Here's an example of a custom task that checks if folder names adhere to the `snake_case` format:
+
+```python showLineNumbers
+import os
+from pathlib import Path
+from aiop.libs.utils.commons import load_playbook_ignore
+from aiop.libs.job.base import Job
+from aiop.libs.job.metadata import JobResult, JobResultEnum, JobData
+from aiop.libs.package import Package
+from aiop.core.stages.base import PrerequisiteResults
+
+class NamingConvention(Job):
+    def __init__(self, stage_name: str):
+        self.stage_name = stage_name
+        self.name = "🕵️  Naming Convention"
+
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+
+    def is_snake_case(self, name):
+        return all(x.islower() or x.isdigit() for x in name.split("_"))
+
+    def run(self, package: Package, data: JobData) -> JobResult:
+        # Ignore specified folders in the .aiopignore file
+        self.ignore_files = load_playbook_ignore(
+            data.user_commands.playbook_path, set()
+        )
+
+        # Get the list of folders
+        self.folders = []
+        for root, dirs, _ in os.walk(data.user_commands.playbook_path):
+            dirs[:] = [d for d in dirs if not self.ignore_files(Path(root) / d)]
+            self.folders.extend([str(Path(root) / Path(dir)) for dir in dirs])
+
+        # Check if folder names adhere to the snake_case format
+        not_snake_case_folders = []
+        for folder in self.folders:
+            if not self.is_snake_case(os.path.basename(folder)):
+                not_snake_case_folders.append(folder)
+
+        # If one or more folders do not adhere to the format, return a JobResult object with FAIL_NOW status
+        if len(not_snake_case_folders) == 1:
+            return JobResult(
+                self.name,
+                JobResultEnum.FAIL_NOW,
+                f"Folder {not_snake_case_folders} is not in snake case",
+            )
+        elif len(not_snake_case_folders) > 1:
+            return JobResult(
+                self.name,
+                JobResultEnum.FAIL_NOW,
+                f"Folders {not_snake_case_folders} are not in snake case",
+            )
+        return JobResult(self.name, JobResultEnum.OK, "Snake Case rules are respected")
+```
+
+Note that prerequisites are not used in this example. This is because the task does not require any prerequisites to be executed.
+
+```python {2-3}
+...
+    def prerequisites(self, package: Package, data: JobData) -> PrerequisiteResults:
+        return [(True, "")]
+...
+```
+
+The `is_snake_case` method is a utility method that checks if a string adheres to the `snake_case` format.
+
+```python {2-3}
+...
+    def is_snake_case(self, name):
+        return all(x.islower() or x.isdigit() for x in name.split("_"))
+...
+```
+
+The overridden `run` method contains the task logic. It checks if folder names adhere to the `snake_case` format and returns a `JobResult` object accordingly. In case one or more folders do not adhere to the format, the task returns a `JobResult` object with the `FAIL_NOW` status and an error message to stop package generation **immediately**. Otherwise, the task returns a `JobResult` object with the `OK` status.

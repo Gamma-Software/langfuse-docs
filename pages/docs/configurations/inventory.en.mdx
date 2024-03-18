@@ -1,0 +1,361 @@
+---
+description: Aiop provides a comprehensive configuration file to customize the application's behavior for the playbook using inventory configuration files.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Inventory Configuration
+
+The inventory is a configuration file that lists the target systems and their characteristics. It is used to define the systems for which the playbook has the right to generate a package. It is also used to define system-specific variables. Let's look at the two files to consider:
+
+- `inventory_config.yml`: The inventory configuration file.
+- `inventory.yml`: The inventory file.
+
+<Callout>
+These files are the most important in the playbook. They are **mandatory**, as well as the fields filled in. They will allow Aiop to know the list of target systems and the filtering rules for each parameter of these systems.
+</Callout>
+
+## Configuration File Structure
+
+The inventory configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop.
+
+```yaml filename=".aiop/inventory_config.yml"
+system:
+  order: architecture/model_range/model
+  architecture:
+    allowed:
+      - archi1
+      - archi2
+  model_range:
+    allowed:
+      - model_range1
+      - model_range2
+      - model_range3
+  model:
+    allowed:
+      - model1
+      - model2
+      - model3
+      - model4
+compatibility:
+  apps:
+    rule: least_diff
+    description: "List of apps compatible with the package"
+    allowed:
+      - app1
+      - app2
+      - app3
+  contexts:
+    rule: one_of
+    description: "Contexts where the package can be installed"
+    allowed:
+      - context1
+      - context2
+  envs:
+    rule: one_of
+    description: "Environment where the package can be installed"
+    allowed:
+      - dev
+      - test
+      - bench
+      - prod
+```
+
+### Personalization
+
+We can see that the inventory configuration file contains two sections:
+
+- `system`: This section describes the allowed systems. It is possible to define the order of the fields and the allowed values for each field.
+- `compatibility`: This section contains the rules for the variables specific to each system. It is possible to define the allowed values for each variable and the validation rules.
+
+#### `system`
+
+The `system` section contains the rules for the systems.
+
+- **`order`:** The order of the fields. It is possible to define the order of the fields for the systems. For example, `architecture/model_range/model` means that architecture is the first field, model range is the second, and model is the third. The end-user will thus be required to fill in these three fields in this order to generate a package with this target system.
+
+- **`architecture`:** The allowed values for the architecture. It is possible to define the allowed values for the architecture. For example, `archi1` and `archi2` are the allowed values for the architecture.
+
+- **`model_range`:** The allowed values for the model range. It is possible to define the allowed values for the model range. For example, `model_range1`, `model_range2`, and `model_range3` are the allowed values for the model range.
+
+- **`model`:** The allowed values for the model. It is possible to define the allowed values for the model. For example, `model1`, `model2`, `model3`, and `model4` are the allowed values for the model.
+
+<Callout type="info" emoji="ℹ️">
+  You can add as many fields as you like in the `system` section. If you don't need the `architecture` field, you can remove it, like this:
+  ``` yaml
+  order: model_range/model
+  model_range:
+    allowed:
+      - model_range1
+      - model_range2
+      - model_range3
+  model:
+    allowed:
+      - model1
+      - model2
+      - model3
+      - model4
+  ```
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+  You cannot use values containing spaces.
+</Callout>
+
+#### `compatibility`
+
+The `compatibility` section contains the rules for the parameters of each system. This is where you will indicate the allowed values for each parameter and the selection rules.
+
+- **`apps`:** The allowed values for the applications. It is possible to define the allowed values for the applications. For example, `app1`, `app2`, and `app3` are the allowed values for the applications. The rule is `least_diff`, which means that for a declaration to be selected, it must have the least difference possible with the allowed values compared to other declarations.
+
+- **`contexts`:** The allowed values for the contexts. It is possible to define the allowed values for the contexts. For example, `context1` and `context2` are the allowed values for the contexts. The rule is `one_of`, which means that for a declaration to be selected, it must have at least one allowed value.
+
+- **`envs`:** The allowed values for the environments. It is possible to define the allowed values for the environments. For example, `dev`, `test`, `bench`, and `prod` are the allowed values for the environments.
+
+<Callout type="info" emoji="ℹ️">
+  In this example, we have three parameters: `apps`, `contexts`, and `envs`. You can add as many parameters as you like in the `compatibility` section. If you only want to differentiate declarations by the operating environment, you can remove the `apps` and `contexts` fields, like this:
+  ``` yaml
+  compatibility
+
+:
+    envs:
+      rule: one_of
+      description: "Environment where the package can be installed"
+      allowed:
+        - dev
+        - test
+        - bench
+        - prod
+  ```
+</Callout>
+
+### Configuration Example
+
+Let's take the example of Tesla Motors used in the [previous chapter](docs/configuration/playbook). We could define the inventory configuration file as follows. First, let's look at the system configuration and then the selection rules and options.
+
+```yaml filename=".aiop/inventory_config.yml"
+system:
+  order: type/model/phase
+  type:
+    allowed:
+      - suv
+      - sedan
+      - roadster
+      - truck
+  model:
+    allowed:
+      - modelS
+      - model3
+      - modelX
+      - modelY
+      - cybertruck
+      - roadster
+      - semi
+  phase:
+    allowed:
+      - phase1
+      - phase2
+```
+
+We can see that Tesla's inventory contains three fields: `type`, `model`, and `phase`. We have defined the order of the fields as `type/model/phase`. The `type` indicates the vehicle type, the `model` indicates the vehicle model, and the `phase` indicates the vehicle's development phase. An example of a target system would be `suv/modelX/phase1`, indicating an SUV Model X in development phase 1. However, it is necessary to define the target systems in the [inventory file](#inventory-file-structure).
+
+Now let's define the selection rules and options for the target systems.
+
+```yaml filename="(continuation) .aiop/inventory_config.yml"
+compatibility:
+    functions:
+        rule: least_diff
+        description: "List of functionalities compatible with Tesla vehicles"
+        allowed:
+        - park-assist
+        - air-conditioning
+        - climate-control
+        - ludicrous
+        - towing
+        - four-wheel-drive
+        - two-wheel-drive
+        - regenerative-braking
+        - summon
+        - valet-mode
+        - energy-saving
+        - navigation
+        - entertainment
+        - battery-heating
+        - battery-cooling
+        - over-the-air-updates
+        - adaptive-cruise-control
+        - lane-keeping-assist
+        - 5-seats
+        - 7-seats
+        - 2-seats
+        - butterfly-doors
+    envs:
+        rule: one_of
+        description: "Environment where the package can be installed"
+        allowed:
+        - dev
+        - test
+        - bench
+        - prod
+```
+
+We can see that Tesla's inventory contains two parameters allowing future declaration selection: `functions` and `envs`. The `functions` parameter indicates the functionalities compatible with Tesla vehicles. The `envs` parameter indicates the environment where the package can be installed. The rule for the `functions` parameter is `least_diff`, which means that for a declaration to be selected, it must have the least difference possible with the allowed values compared to other declarations. The rule for the `envs` parameter is `one_of`, which means that for a declaration to be selected, it must have at least one allowed value.
+
+You can see that the number of functionalities is large and there are no restrictions on the number of values. This means that you can add as many values as you like.
+
+## Inventory File Structure
+
+The inventory file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop. This file contains the target systems and the variables specific to each system.
+
+```yaml filename=".aiop/inventory.yml"
+inventory:
+  - system:
+      architecture: archi1
+      model_range: model_range1
+      model: model1
+    compatibility:
+      apps:
+        - app1
+        - app2
+        - app3
+      contexts:
+        - context1
+        - context2
+      envs:
+        - dev
+        - test
+        - bench
+        - prod
+  - system:
+      architecture: archi1
+      model_range: model_range1
+      model: model2
+    compatibility:
+      apps:
+        - app1
+        - app2
+        - app3
+      contexts:
+        - context1
+        - context2
+      envs:
+        - prod
+  - system:
+      architecture: archi2
+      model_range: model_range2
+      model: model3
+    compatibility:
+      apps:
+        - app1
+      contexts:
+        - context1
+      envs:
+        - dev
+        - prod
+```
+
+We can see that the inventory proposes to generate three target systems. The first target system is `archi1/model_range1/model1` with the applications `app1`, `app2`, and `app3`, the contexts `context1` and `context2`, and the environments `dev`, `test`, `bench`, and `prod`. The second target system is `archi1/model_range1/model2` with the applications `app1`, `app2`, and `app3`, the contexts `context1` and `context2`, and the environment `prod`. The third target system is `archi2/model_range2/model3` with the application `app1`, the context `context1`, and the environments `dev` and `prod`.
+
+### Personalization
+
+You can add as many target systems as you like in the inventory file. You can also add as many variables specific to each system as you like. All this within the limits of the possibilities offered by the allowed values in the inventory configuration file.
+
+#### `inventory`
+
+The `inventory` section contains the target systems and the variables specific to each system. Each target system is defined by an object with two fields: `system` and `compatibility`; similar to the inventory configuration. Indeed, you are required to respect the order of the fields and the allowed values defined in the inventory configuration file.
+
+### Configuration Model
+
+Let's take the example of Tesla Motors used in the [previous chapter](docs/configuration/playbook). We could define the inventory file as follows.
+
+```yaml filename=".aiop/inventory.yml"
+
+inventory:
+  - system:
+      type: suv
+      model: modelX
+      phase: phase2
+    compatibility:
+      functions:
+        - four-wheel-drive
+        - butterfly-doors
+        - ... # Other functions
+      envs:
+        - dev
+        - test
+        - bench
+  - system:
+      type: sedan
+      model: model3
+      phase: phase2
+    compatibility:
+      functions:
+        - 5-seats
+        - ludicrous
+        - ... # Other functions
+      envs:
+        - dev
+        - test
+        - bench
+        - prod
+  - system:
+      type: truck
+      model: cybertruck
+      phase: phase1
+    compatibility:
+      functions:
+        - 5-seats
+        - towing
+        - ... # Other functions
+      envs:
+        - dev
+        - test
+        - bench
+        - prod
+  - ... # Other target systems
+```
+
+<Callout type="info" emoji="ℹ️">
+  For readability purposes, we omitted some values for the functions.
+</Callout>
+
+Here is an example of an inventory
+
+ file for Tesla Motors. We can see that the inventory proposes to generate three target systems.
+
+The first target system is `suv/modelX/phase1` with the functionalities `four-wheel-drive`, `butterfly-doors` (and more) and the environment `dev`, `test`, and `bench`. The Model X from Tesla is an SUV which has the particularity of having 7 seats and butterfly doors. It is in phase 2 of development and is not yet available for production, which is why the `prod` environment is not allowed.
+
+The second target system is `sedan/model3/phase2` with the functionalities `5-seats`, `ludicrous` (and more) and the environment `dev`, `test`, `bench`, and `prod`. The Model 3 from Tesla is a sedan which has the particularity of having 5 seats and a breathtaking acceleration. It is in phase 2 of development and is available for production.
+
+The third target system is `truck/cybertruck/phase1` with the functionalities `5-seats`, `towing` (and more) and the environment `dev`, `test`, `bench`, and `prod`. The Cybertruck from Tesla is a pickup which has the particularity of having 5 seats and an impressive towing capacity. It is in phase 1 of development and is available for production.
+
+You can add as many target systems as you like in the inventory file. You can also add as many variables specific to each system as you like. All this gives endless possibilities for package generation.
+
+## Selection Rules
+
+<Callout type="warning" emoji="ℹ️">
+  This is the most important part of the documentation, as it helps understand how declarations are selected based on the selection rules defined in the inventory configuration file.
+</Callout>
+
+Selection rules are used to filter declarations based on their specific compatibilities defined by the user. There are four selection rules:
+
+- `one_of`: For a declaration to be selected, the parameter requested by the user must be included in the allowed values.
+- `all_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values, and no compatible parameters must be missing.
+- `least_diff`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the least difference possible with the allowed values compared to other declarations to be selected. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](docs/declarations/conflicts).
+- `most_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the most possible similarities with the allowed values compared to other declarations. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](docs/declarations/conflicts).
+
+Additionally, the end user will be asked for more or fewer arguments depending on the selection rule. For example:
+- `one_of`: They can specify only one of the allowed values.
+- `all_of`: They can specify one or more of the allowed values.
+- `least_diff`: They can specify one or more of the allowed values.
+- `most_of`: They can specify one or more of the allowed values.
+
+### Example
+
+Let's take the example of Tesla Motors. We might ask to create packages for:
+| Target | Functionalities | Environment |
+| --- | --- | --- |
+| `suv/modelX/phase2` | `four-wheel-drive` `butterfly-doors` | `dev` |
+| `sedan/model3/phase2` | `5-seats` `ludicrous` | `prod` |
+| `truck/cybertruck/phase1` | `5-seats` `towing` | `test` |
+
+In the first case, the user requests to generate a package for a Model X with the functionalities `four-wheel-drive` and `butterfly-doors` working in the `dev` environment. The rule for functionalities being `least_diff`, the user can specify one or more of the allowed functionalities. The rule for the environment being `one_of`, the user can specify only one of the allowed values. This way, Aiop can generate a package for a Model X with the functionalities `four-wheel-drive` and `butterfly-doors` working in the `dev` environment.

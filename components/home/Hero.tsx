@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { YCLogo } from "./img/ycLogo";
-import { Button } from "../ui/button";
+import { Button } from "../ui/shadcn/button";
 import Image from "next/image";
 import phLight from "./img/ph_product_of_the_day_light.png";
 import phDark from "./img/ph_product_of_the_day_dark.png";
@@ -8,9 +9,14 @@ import { CloudflareVideo } from "../Video";
 import GoldenKittyAwardSVG from "./img/ph_gke_ai_infra.svg";
 import GoldenKittyAwardSVGWhite from "./img/ph_gke_ai_infra_white.svg";
 import { HomeSection } from "./components/HomeSection";
-import {Meteors} from "../magicui/meteors";
+import {Meteors} from "../ui/magicui/meteors";
+import { log } from 'console';
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 export function Hero() {
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
+
   return (
     <HomeSection>
       {/* HERO */}
@@ -22,19 +28,19 @@ export function Hero() {
           Packager
         </h1>
         <span className="mt-2 text-primary/70 text-2xl sm:text-3xl lg:text-4xl md:text-balance font-semibold tracking-wide">
-          <span className="underline">Valider</span>,{" "}
-          <span className="underline">Construire</span>,{" "}
-          <span className="underline">Déployer</span> et{" "}
-          <span className="underline">Contrôler</span><br/>
-          vos packages pour tous vos <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">clients</span> et <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">configurations</span>.
+          <span className="underline">{messages.home.Hero.validate}</span>,{" "}
+          <span className="underline">{messages.home.Hero.build}</span>,{" "}
+          <span className="underline">{messages.home.Hero.deploy}</span> {messages.common.and} {" "}
+          <span className="underline">{messages.home.Hero.control}</span><br/>
+          {messages.home.Hero.packages} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.clients}</span> {messages.common.and} <span className="font-extrabold bg-clip-text text-transparent bg-[linear-gradient(to_right,theme(colors.cyan.400),theme(colors.blue.400),theme(colors.cyan.400))] bg-[length:200%_auto] animate-gradient">{messages.home.Hero.configuration}</span>.
         </span>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">
           <Button size="lg" variant="cta" asChild>
-            <Link href="/docs/demo">Démonstration</Link>
+            <Link href="/docs/demo">{messages.home.Hero.demoButton}</Link>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <Link href="/docs">Voir la documentation</Link>
+            <Link href="/docs">{messages.home.Hero.documentationButton}</Link>
           </Button>
         </div>
       </div>

@@ -1,0 +1,90 @@
+---
+description: Declarations can conflict during filtering based on the target system. Aiop provides helpful guidance.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Declaration Conflicts
+
+Declaration conflicts are situations where two (or more) declarations conflict with each other. For beginners, resolving these situations can be challenging, but with experience, it becomes more manageable. To assist you in resolving them, it is **important** to understand how declaration selection works (refer to [Declaration Selection](/docs/declarations/selection)). First, let's look at an example of conflict, and then we'll see how to resolve it.
+
+## Example of Conflicts
+
+Let's revisit the example of Tesla. Imagine we have two conflicting declarations for Tesla. As a reminder, this happens because both declarations are competing for the same target and destination.
+
+Here's the first declaration:
+
+```yaml
+- source: parameters/dev/param.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+And here's the second declaration. The difference is that the source is different, and the target encompasses all development phases of the Cybertruck:
+
+```yaml
+- source: parameters/test/towing.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+And here's the package target: system `truck/cybertruck/phase1` and functions `towing` and environment `dev`.
+
+You can see that both declarations conflict because they have the **same destination** and both are compatible with the target. This means both declarations are competing for the same target and destination.
+
+> **Method to Resolve Conflict**
+>
+> 1. The first step is to isolate the two declarations and compare them.
+> 2. Then try to understand the purpose of each declaration.
+> 3. Finally, decide whether to delete, modify, or merge the declarations.
+
+To resolve this case, here's the reasoning:
+
+1. We isolate the two declarations and note the differences. We observe that in the first declaration, the resource is more specific than in the second declaration because it is related to phase 1 of the Cybertruck. The second declaration is more general as it is related to all development phases of the Cybertruck.
+2. Both declarations aim to add a parameter file for the Cybertruck to the package for towing function and development environment. We notice that the second declaration is indeed more general, but the source seems to indicate that the parameter is compatible with the test environment only. This could be an error from the declaration author. Therefore, we need to verify the source (and especially discuss it with the source author) to confirm this assumption.
+3. We can then decide to modify both declarations so that in the first one, the environment is `dev` and the second one is `test`.
+
+So, the first declaration would become:
+
+```yaml
+- source: parameters/dev/param.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev]
+```
+
+And the second declaration would become:
+
+```yaml
+- source: parameters/test/towing.json
+  destination: param.json
+  compatibility:
+    - truck/cybertruck:
+        functions: [towing]
+        envs: [test]
+```
+
+Now, both declarations are no longer in conflict, and according to the package generation target, the first declaration will be considered.
+
+<Callout type="info" emoji="ℹ️">
+  Note that here we make assumptions about the content of the sources. It's important to verify the sources and discuss with your colleagues (especially the declaration author) to confirm these assumptions.
+</Callout>
+
+## Reasons for Conflicts
+
+**Reasons why conflicts occur and how to avoid them**
+
+There are several reasons why declaration conflicts occur. Here are some of the most common reasons:
+
+1. **Poorly Designed Declarations**: Declarations can be poorly designed, leading to conflicts. For example, declarations may be poorly designed if they are incompatible with the target or if they have incorrect destinations.
+2. **Poorly Documented Declarations**: Declarations can be poorly documented, leading to conflicts. For example, declarations may be poorly documented if they are unclear about their purpose or content.
+3. **Incorrect Merges**: Conflicts can also occur if merges are incorrect. It can happen that a branch merge results in a conflict. For example, a developer added a declaration for a new feature, but a previous merge also added this declaration. In this case, after this new merge, both declarations will conflict.
+
+The key here is **communication**. It's important to communicate with declaration authors to understand their purpose and content. This will allow you to understand the reasons for the conflicts and resolve them.

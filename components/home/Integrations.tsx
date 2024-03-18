@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { AnimatedBeam } from "@/components/ui/magicui/animated-beam";
 import { forwardRef, useRef, type ReactNode } from "react";
-import { Code } from "lucide-react";
+import { Code, MessagesSquare } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
 import { SiPython } from "react-icons/si";
@@ -11,6 +11,7 @@ import { FaFilePdf } from "react-icons/fa";
 import ArtifactoryLogo from "./img/artifactory.png";
 import NexusLogo from "./img/nexus.webp";
 import AiopLogo from "public/logo_180.png";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -37,7 +38,7 @@ const Circle = forwardRef<
   );
 });
 
-export function Integrations() {
+export function Integrations () {
   const containerRef = useRef<HTMLDivElement>(null);
   const inPythonRef = useRef<HTMLDivElement>(null);
   const inTypescriptRef = useRef<HTMLDivElement>(null);
@@ -49,14 +50,17 @@ export function Integrations() {
   const out2ref = useRef<HTMLDivElement>(null);
   const out3ref = useRef<HTMLDivElement>(null);
 
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
+
   return (
     <HomeSection>
       <Header
-        title="Intégrations"
-        description="Intégration native des registres d'artefacts et librairies."
+        title={messages.home.Integrations.title}
+        description={messages.home.Integrations.description}
         button={{
           href: "/docs/integrations/overview",
-          text: "Documentation",
+          text: messages.common.documentation,
         }}
       />
       <div

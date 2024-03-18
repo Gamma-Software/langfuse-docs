@@ -1,0 +1,452 @@
+{
+  "home": {
+    "Hero": {
+      "validate": "Validate",
+      "build": "Build",
+      "deploy": "Deploy",
+      "control": "Control",
+      "packages": "your packages for all your",
+      "configuration": "configurations",
+      "clients": "clients",
+      "demoButton": "Demo",
+      "documentationButton": "View Documentation"
+    },
+    "FromTheBlog": {
+      "title": "Blog",
+      "description": "Here are the latest blog articles. Discover the latest news, tips, and insights from our team."
+    },
+    "FeatureBento": {
+      "title": "Your requirements",
+      "description": "our priority",
+      "feature": {
+        "extensible": {
+          "title": "Extensible",
+          "description": "Extend the application's features to match your needs. Our team is here to assist you.",
+          "alt": "Language"
+        },
+        "packages": {
+          "title": "Package Management",
+          "description": "Manage and version all your packages from one place. Track changes and debug more easily.",
+          "alt": "Package Versioning"
+        },
+        "tools": {
+          "title": "Tools",
+          "description": "Aiop offers a suite of tools (Expanding) to assist you in maintenance, design, and production of packages."
+        },
+        "customization": {
+          "title": "Customization",
+          "description": "Customize the behavior of Aiop and your projects to match your needs."
+        },
+        "collaboration": {
+          "title": "Collaboration",
+          "description": "Work together on a project remotely. Share your packages, resources, and knowledge among teams. Gain productivity and quality.",
+          "alt": "Collaboration"
+        }
+      }
+    },
+    "Benefits": {
+      "title": "Benefits",
+      "description": "Aiop saves you time... a lot, period.",
+      "list": [
+        {
+          "title": "Infinite Packages",
+          "description": "Aiop is designed to manage an unlimited number of packages. Use package nesting to manage complex packages."
+        },
+        {
+          "title": "3 hours -> 5 seconds",
+          "description": "On average, our users reduce the package generation time from 3 hours to just 7 seconds with Aiop."
+        },
+        {
+          "title": "Knowledge Sharing",
+          "description": "Collaboration is at the core of Aiop. Share your declarations, packages, resources, and knowledge among teams. Gain clarity, productivity, and quality."
+        },
+        {
+          "title": "Debugging Speed",
+          "description": "Trust in automatic package generation. Reduce the chances of errors slipping into your packages."
+        },
+        {
+          "title": "Quality Control",
+          "description": "Ensure no surprises when generating your packages. Aiop allows you to validate your resources before generating them."
+        },
+        {
+          "title": "Versioning",
+          "description": "Manage and version all your packages from one place. Track changes and trace them. Aiop also allows you to regenerate previous versions of your packages."
+        }
+      ]
+    },
+    "Clients": {
+      "title": "Developed by engineers for engineers",
+      "description": "Initially, the tool is designed to generate packages specifically for embedded systems but should not be limited to that. Aiop is designed for and by software engineers, testers, delivery managers.",
+      "list": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "designation": "Software Engineer",
+          "description": "John uses Aiop to generate packages for his simulation and testing environment. He will also be involved in modifying the project to add his features during development.",
+          "image": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
+        },
+        {
+          "id": 2,
+          "name": "Robert Johnson",
+          "designation": "Tester",
+          "description": "Robert uses Aiop to generate and modify packages for his simulation and testing environment.",
+          "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+        },
+        {
+          "id": 3,
+          "name": "Jane Smith",
+          "designation": "Delivery Manager",
+          "description": "Jane initiated this project and uses the modifications made by developers and testers to generate packages.",
+          "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+        },
+        {
+          "id": 4,
+          "name": "Jarvis",
+          "designation": "Our CI-CD",
+          "description": "The CI-CD will be able to launch package generation and perform continuous integration and continuous deployment.",
+          "image": "https://images.unsplash.com/photo-1593349480506-8433634cdcbe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+      ]
+    },
+    "Integrations": {
+      "title": "Integration",
+      "description": "Native integration of artifact registries and libraries."
+    },
+    "Pricing": {
+      "title": "Pricing",
+      "description": "Start now with the free version! No credit card required.",
+      "compare": {
+        "title": "Feature Comparison",
+        "description": "For a detailed comparison and frequently asked questions, see our",
+        "link": "pricing page"
+      },
+      "tiers": [
+        {
+          "name": "Community",
+          "id": "tier-free",
+          "href": "/docs/get-started",
+          "featured": true,
+          "description": "Start now! No credit card required. Perfect for trying out the tool.",
+          "price": "Free",
+          "alt": "",
+          "mainFeatures": [
+            "No credit card required",
+            "All basic features",
+            "Linting / Post-Build customization tasks",
+            "Personal use only",
+            "Community support (Discord & Gitlab & Slack)"
+          ],
+          "cta": "Start for Free"
+        },
+        {
+          "name": "Pro",
+          "id": "tier-pro",
+          "href": "/waiting-list",
+          "featured": false,
+          "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
+          "alt": "Monthly subscription",
+          "price": "--€",
+          "mainFeatures": [
+            "All features of the free version",
+            "Access to custom task cookbooks",
+            "Access to playbook cookbooks",
+            "Playbook and package comparison tool",
+            "Advanced caching system",
+            "Unlimited package generation",
+            "Unlimited playbooks",
+            "Professional use",
+            "Dedicated support in addition to community support"
+          ],
+          "cta": "Join the Waiting List"
+        },
+        {
+          "name": "Team",
+          "id": "tier-team",
+          "href": "/schedule-demo",
+          "featured": false,
+          "price": "Starts at ---€",
+          "description": "Dedicated solution for a team and/or company. You have personalized assistance. Contact us to discuss the price.",
+          "alt": "Contact us",
+          "mainFeatures": [
+            "All features of the Pro version",
+            "Access to workshops and training",
+            "Unlimited playbooks, no limits on users",
+            "Active collaboration on playbooks",
+            "Custom feature development (plugins)",
+            "Personalized support, hotfixes"
+          ],
+          "cta": "Discuss"
+        }
+      ],
+      "sections": [
+        {
+          "name": "Rules",
+          "features": [
+            {
+              "name": "Playbooks",
+              "tiers": {
+                "Free": "1 playbook",
+                "Pro": "1 playbook",
+                "Team": "Unlimited"
+              }
+            },
+            {
+              "name": "Inventory",
+              "tiers": {
+                "Free": "2 target systems",
+                "Pro": "Unlimited",
+                "Team": "Unlimited"
+              }
+            },
+            {
+              "name": "Packages",
+              "tiers": {
+                "Free": "10 package generations / month",
+                "Pro": "300 package generations / month",
+                "Team": "Unlimited"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Additional Tools",
+          "features": [
+            {
+              "name": "CI/CD",
+              "tiers": { "Free": false, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Playbook and package comparisons",
+              "tiers": { "Free": false, "Pro": true, "Team": true }
+            }
+          ]
+        },
+        {
+          "name": "Customizations",
+          "features": [
+            {
+              "name": "User",
+              "tiers": { "Free": true, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Playbook",
+              "tiers": { "Free": true, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Custom tasks",
+              "tiers": { "Free": true, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Plugins",
+              "tiers": { "Free": false, "Pro": false, "Team": true }
+            }
+          ]
+        },
+        {
+          "name": "Training & Consulting",
+          "features": [
+            {
+              "name": "Cookbooks",
+              "tiers": { "Free": false, "Pro": "Custom tasks & playbook", "Team": "Custom tasks & playbook" }
+            },
+            {
+              "name": "Training",
+              "tiers": { "Free": false, "Pro": "On demand - extra charge", "Team": "On demand (priority) - extra charge" }
+            },
+            {
+              "name": "Consulting",
+              "tiers": { "Free": false, "Pro": false, "Team": "Plugin development - extra charge" }
+            }
+          ]
+        },
+        {
+          "name": "Support",
+          "features": [
+            {
+              "name": "Community (Discord, GitLab, Slack)",
+              "tiers": { "Free": true, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Personal channel (Slack, Discord, Email)",
+              "tiers": { "Free": false, "Pro": true, "Team": true }
+            },
+            {
+              "name": "Phone",
+              "tiers": { "Free": false, "Pro": false, "Team": true }
+            }
+          ]
+        }
+      ],
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "list": [
+          {
+            "question": "Why pay for a subscription?",
+            "answer": "Aiop is offered for free for personal projects and open-source projects. For professional projects, we charge a subscription to cover infrastructure and support costs. We also offer <a class='underline' href='/docs/plugins'>advanced features</a> for teams and businesses."
+          },
+          {
+            "question": "Why do I need to create an account to use Aiop?",
+            "answer": "For personal and open-source projects, you do not need to create an account. For professional projects, we need your personal information to create an Aiop cloud account and benefit from plugins. We do not sell your data to third parties. Your email address is used only to contact you about your Aiop account."
+          },
+          {
+            "question": "Do you offer promotions?",
+            "answer": "Yes, we offer discounts for students and academics. If you believe your situation justifies a discount, please contact us at <a class='underline' href='mailto:support@aiop.io'>this email address</a>."
+          }
+        ]
+      }
+    }
+  },
+  "product_waiting_list": {
+    "title": "Waiting List",
+    "description": "For now, Aiop is in Beta version. To subscribe to the Pro version, please sign up for the waiting list by providing your email.",
+    "description2": "You can still start using Aiop for free by clicking the button below.",
+    "modal": {
+      "error": "Uh oh! Something went wrong. Please try again or contact us directly by email: support@aiop.io",
+      "success": "Message sent! Thank you for your registration, we will notify you as soon as the Pro version is available."
+    },
+    "form": {
+      "email": {
+        "title": "Email",
+        "placeholder": "your email",
+        "onerror": "Please enter a valid email address.",
+        "description": "Enter your email to be notified when the Pro version is released."
+      },
+      "job": {
+        "title": "Occupation",
+        "placeholder": "your profession",
+        "onerror": "Please enter your profession.",
+        "description": "Enter your profession to help us better understand our users."
+      },
+      "extra": {
+        "title": "Message",
+        "placeholder": "message to convey",
+        "description": "If you have any questions or suggestions, feel free to share them with us."
+      },
+      "submit": "Join the List"
+    }
+  },
+  "product_update_signup": {
+    "title": "Account Creation",
+    "description": "To be notified of updates, sign up for our newsletter.",
+    "modal": {
+      "error": "Something went wrong. Please try again later.",
+      "success": "Thank you!"
+    },
+    "form": {
+      "email": {
+        "placeholder": "your email"
+      },
+      "submit": "Keep in touch"
+    }
+  },
+  "main_content_wrapper": {
+    "feedback": {
+      "question": "Was this page helpful?",
+      "positive": "What was most helpful?",
+      "negative": "What could be improved?",
+      "thanks": "Thank you for your feedback!",
+      "submit": "It could be better",
+      "placeholder": {
+        "positive": "Tell us what you found helpful",
+        "negative": "Tell us what we can improve"
+      },
+      "submitting": {
+        "loading": "Sending feedback...",
+        "success": "Feedback sent!"
+      },
+      "again": "Provide another feedback"
+    },
+    "doc_support": {
+      "question": "Question? We're here to help!",
+      "talk_to_us": "Tell us about your project"
+    },
+    "doc_sub": {
+      "title": "Sign up for updates"
+    }
+  },
+  "roadmap":{
+    "features":[
+      { "name": "Facilitate installation and uninstallation", "checked": true },
+      { "name": "Set up the declaration base", "checked": true },
+      { "name": "Implementation of the inventory system", "checked": true },
+      { "name": "Retrieve resources remotely (Artifactory / Nexus)", "checked": true },
+      { "name": "Implementation of remote resource caching", "checked": true },
+      { "name": "Unzip a resource", "checked": true },
+      { "name": "Check the integrity of installed resources from Artifactory and Nexus", "checked": true },
+      { "name": "Generate a PDF from a Markdown file", "checked": true },
+      { "name": "Make all playbook parameters configurable", "checked": true },
+      { "name": "Ignore playbook files from the .amlignore file", "checked": true },
+      { "name": "Generate a package summary (aiop version, playbook version, aiop movements, post-build changes)", "checked": true },
+      { "name": "Implementation of the building steps principle (lint, pre-build, build, post-build, seal, deploy)", "checked": true },
+      { "name": "Package target validation", "checked": true },
+      { "name": "Command-line interface (CLI) on Windows", "checked": true },
+      { "name": "Command-line interface (CLI) on Linux", "checked": true },
+      { "name": "Command-line interface (CLI) on MacOS", "checked": true },
+      { "name": "Implementation of the logging system", "checked": true },
+      { "name": "Implementation of the Licensing system", "checked": true },
+      { "name": "Implementation of the Custom Tasks system", "checked": true },
+      { "name": "Implementation of the Plugin system", "checked": true },
+      { "name": "Improve VSCode integration with built-in declaration validation schema", "checked": true },
+      { "name": "Compare two packages by commit and/or target", "checked": false },
+      { "name": "Make Pydantic the basis of typing for the entire application", "checked": false },
+      { "name": "Add CLI auto-completion", "checked": false },
+      { "name": "Get the list of target systems and parameters by command and auto-completion", "checked": false },
+      { "name": "Perform a `dry-run` of the build generation", "checked": false },
+      { "name": "Store logs on disk", "checked": false },
+      { "name": "Upload the package to repositories", "checked": false },
+      { "name": "Create EXE installers (Windows)", "checked": false },
+      { "name": "Create TAR.GZ or RPM installers (Linux)", "checked": false },
+      { "name": "Create DMG installers (macOS)", "checked": false },
+      { "name": "Create partial update installers EXE (Windows)", "checked": false },
+      { "name": "Create partial update installers TAR.GZ or RPM (Linux)", "checked": false },
+      { "name": "Create partial update installers DMG (macOS)", "checked": false },
+      { "name": "Package traceability per cloud app", "checked": false },
+      { "name": "Add local statistics", "checked": false },
+      { "name": "Add remote statistics", "checked": false },
+      { "name": "Automatically report errors to Gitlab", "checked": false },
+      { "name": "Use pyinstaller for packaging as a standalone executable", "checked": false },
+      { "name": "Create a vscode extension with AIOP and a schema", "checked": false },
+      { "name": "Core in Rust to improve speed", "checked": false },
+      { "name": "AI: Prefix errors reported by Aiop via Artificial Intelligence", "checked": false },
+      { "name": "AI: Interact with a Chatbot to manipulate declarations and assist in declaration generation", "checked": false },
+      { "name": "Create custom aliases in declarations to avoid repeating arguments", "checked": false },
+      { "name": "CI: 🐳 Dockerize Aiop", "checked": false },
+      { "name": "CI: Facilitate Aiop integration into CI", "checked": false },
+      { "name": "CI: Base Dockerfile with Aiop", "checked": false },
+      { "name": "CLI: Manipulate configurations via CLI", "checked": false },
+      { "name": "GUI: Windows", "checked": false },
+      { "name": "GUI: Linux", "checked": false },
+      { "name": "GUI: MacOS", "checked": false },
+      { "name": "Cache entire packages", "checked": false },
+      { "name": "Dependency and version management", "checked": false },
+      { "name": "CLI-GUI: Notification integration", "checked": false },
+      { "name": "CLI-GUI: Manage multi-language", "checked": false },
+      { "name": "Hub: Create a Playbook example hub", "checked": false },
+      { "name": "Hub: Create a Custom Task example hub", "checked": false },
+      { "name": "Hub: Create a hub of examples of declarations to be placed directly in the playbooks", "checked": false },
+      { "name": "Cloud: Team roles and authorization management", "checked": false },
+      { "name": "Cloud: Personal account management", "checked": false },
+      { "name": "Cloud: Personal account management", "checked": false }
+    ]
+  },
+  "schedule_demo":{
+    "title": "Discuss your project",
+    "description": "We could discuss your project and how Aiop can help you. We can also give you a demonstration of the Aiop solution and how it can help you in your business."
+  },
+  "changelog":{
+    "back": "← Back to changelog"
+  },
+  "blog":{
+    "read_more": "Know more →",
+    "by": "By"
+  },
+  "app_button":{
+    "signup": "Sign up",
+    "account": "Account"
+  },
+  "common": {
+    "and": "and",
+    "documentation": "Documentation",
+    "learn_more": "Learn More"
+  }
+}

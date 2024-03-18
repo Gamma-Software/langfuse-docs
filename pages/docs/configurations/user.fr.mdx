@@ -1,0 +1,74 @@
+---
+description: Aiop fournit un fichier de configuration étendu pour personnaliser le comportement de l'application pour un utilisateur.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Configuration utilisateur
+
+Aiop permet à l’utilisateur de personnaliser le comportement de l’application en modifiant le fichier de configuration. Le fichier de configuration est situé dans le répertoire de l’utilisateur:
+- Unix: `~/.aiop/config.yaml`
+- Windows: `%HOME%\.aiop\config.yaml`
+
+<Callout type="info" emoji="ℹ️">
+  À l’installation de Aiop, un fichier de configuration par défaut est créé. Il est possible de le [modifier](#personalisation) pour personnaliser le comportement de l’application.
+</Callout>
+
+Le fichier de configuration est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser son comportement.
+
+## Structure du fichier de configuration
+
+Voici la structure du fichier de configuration. Il comprend des paramètres donnant la possibilité de personnaliser le comportement de l'application, ainsi que des réglages pour les journaux, les dépôts distants et les informations de licence.
+
+Les dépôts distants exigent une authentification pour télécharger des ressources distantes. Si l'un des playbooks sur lesquels vous travaillez nécessite une connexion à un dépôt distant, vous avez l'obligation d'ajouter les informations de connexion dans la section `repositories`.
+
+La licence est utilisée pour l'authentification à Aiop. Si vous avez une licence, vous devez ajouter les informations correspondantes dans la section `license`.
+
+Dans le cas où un plugin nécessite une configuration spécifique, il doit être intégré dans la section `plugin_config`. Veuillez vous référer à la documentation du plugin ou contacter le support via [support@aiop.io] pour plus d'informations.
+
+```yaml filename="~/.aiop/config.yaml"
+build_timeout: {valeur numérique}
+check_update: {true|false}
+default_package_path: {chemin absolu ou relatif à la racine du playbook}
+download_retries: {valeur numérique}
+plugin_config: {dictionnaire de configuration spécifique à un plugin}
+logs:
+  level: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|DISABLED}
+  output: {stdout|file}
+  pathdir: {chemin absolu}
+repositories:
+  - instance: {nom de l'instance}
+    username: {nom d'utilisateur}
+    password: {mot de passe}
+    auth_type: {basic|api_key}
+license:
+  key: {clé de licence}
+  username: {nom d'utilisateur}
+  password: {mot de passe}
+  api_token: {token d'API}
+```
+
+## Personalisation
+
+Pour personnaliser le comportement de l’application, il suffit d’ouvrir et de modifier le fichier de configuration.
+
+| **Nom** | **Type** | **Description** | **Valeurs possibles** | **Valeur par défaut** |
+| :--- | :--- | :--- | :--- | :--- |
+| build_timeout | int | Durée maximale en secondes pour la construction d’un package | > 0 | 300 |
+| check_update | bool | Activer ou désactiver la vérification des mises à jour à l’exécution de l’application | true, false | true |
+| default_package_path | str | Chemin par défaut ou stocker les packages générés | Chemin absolu ou relatif à la racine du playbook | `~/.aiop/packages` |
+| download_retries | int | Nombre de tentatives pour télécharger une ressource distante | > 0 | 3 |
+| plugin_config | dict | Configurations spécifique aux plugins. Se fier à la documentation du plugin pour plus d’informations. [Contacter le support](/support) pour plus d’informations | Dictionnaire | |
+| logs | dict | Configuration des logs | Dictionnaire |  |
+| logs.level | str | Niveau de log | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, DISABLED | DEBUG |
+| logs.output | str | Sortie des logs | stdout, file | stdout |
+| logs.pathdir | str | Chemin absolu du répertoire de stockage des logs | Chemin absolu | `~/.aiop/logs` |
+| repositories | list | Liste des dépôts distants | Liste de dictionnaires | |
+| repositories.instance | str | Nom de l’instance. Utilisée pour identifier le dépôt | | |
+| repositories.username | str | Nom d’utilisateur pour l’authentification au dépôt | | |
+| repositories.password | str | Mot de passe pour l’authentification au dépôt | | |
+| repositories.auth_type | str | Type d’authentification | basic, api_key | basic |
+| license | dict | Informations de licence | Dictionnaire | |
+| license.key | str | Clé de licence | | |
+| license.username | str | Nom d’utilisateur pour l’authentification à Aiop | | |
+| license.password | str | Mot de passe pour l’authentification à Aiop | | |
+| license.api_token | str | Token d’API pour l’authentification à Aiop. Si `api_token` est défini, `username` et `password` sont ignorés | | |

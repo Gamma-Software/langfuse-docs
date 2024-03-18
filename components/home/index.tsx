@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 import { FeatureBento } from "./FeatureBento";
 import { Integrations } from "./Integrations";
 import { FromTheBlog } from "./FromTheBlog";
-import { Avantages } from "./Avantages";
+import { Benefits } from "./Benefits";
 import { Clients } from "./Clients";
 
 export const Home = () => (
@@ -15,13 +15,13 @@ export const Home = () => (
     <main className="relative overflow-hidden w-full">
       <Hero/>
       {/* <Users /> */}
-      <FeatureBento />
-      <Avantages />
-      <Clients />
-      <Integrations />
+      <FeatureBento/>
+      <Benefits/>
+      <Clients/>
+      <Integrations/>
       {/* <OpenSource /> */}
-      <Pricing />
-      {/* <FromTheBlog /> */}
+      <Pricing/>
+      {/* <FromTheBlog locale={lang} /> */}
       {/* <CTA /> */}
       <Footer />
     </main>

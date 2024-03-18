@@ -1,0 +1,79 @@
+---
+description: This is the base structure of a playbook.
+---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Playbook Structure
+
+A `playbook` is the project that Aiop will use to build packages. It consists of multiple files and folders, some of which are mandatory and others optional.
+
+Here's an example of a playbook structure:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop" defaultOpen>
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.Folder name="locales" defaultOpen>
+            <FileTree.File name="resource_locale_1.txt" />
+            <FileTree.File name="resource_locale_2.md" />
+        </FileTree.Folder>
+        <FileTree.File name="resources_locales.aml" />
+        <FileTree.File name="resources_distantes.aml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="custom_jobs" defaultOpen>
+        <FileTree.File name="snake_case_lint.py" />
+        <FileTree.File name="apply_patch.py" />
+    </FileTree.Folder>
+    <FileTree.File name=".amlignore" />
+    <FileTree.File name="README.md" />
+    <FileTree.File name="CHANGELOG.md" />
+  </FileTree.Folder>
+</FileTree>
+
+You'll notice that the `.git` folder is present because the playbook is a git project, which is recommended for versioning and effective collaboration. The playbook is a git project like any other, and you can use all the features of [git](/docs/vocabulary#git).
+
+<Callout type="info" emoji="ℹ️">
+  The only mandatory folder is `.aiop`, which contains the mandatory configuration files. Of course, the playbook must contain at least one `.aml` file to create a package; otherwise, Aiop will not launch.
+</Callout>
+
+## Details of Files and Folders
+
+### The `.aiop` Folder
+
+This folder contains the playbook's configuration files. It is mandatory and must contain the following files:
+
+- `inventory_config.yml`: Inventory configuration file. [Learn more](/docs/configurations/playbook#inventory).
+- `inventory.yml`: Inventory file. [Learn more](/docs/configurations/playbook#inventory).
+- `playbook.yml`: Playbook configuration file. [Learn more](/docs/configurations/playbook#base).
+
+### The `resources` Folder
+
+For this example, the folder named `resources` contains the playbook's resources. It is optional, and you can name it as you like. It contains a `locales` folder with two files with the `.aml` extension. The `locales` folder contains two local resources.
+
+### The `custom_jobs` Folder
+
+This folder is optional and contains Python scripts that can be used in custom package generation tasks. The Python scripts must be placed in a folder of your choice (name and location) and specified in the playbook's configuration file. [Learn more](/docs/configurations/playbook)
+
+<Callout type="warning" emoji="⚠️">
+  The `free` plan does not allow adding custom tasks and they will be ignored.
+</Callout>
+
+### The `.aml` File
+
+The [`.aml`](/docs/vocabulary#aml) file serves as the entry point for resources sent to Aiop. The tool reads this file to interpret the resources and build the associated packages. Although optional, this file can be placed anywhere in the playbook, but if Aiop finds no `.aml` files in the project or its subdirectories, no package generation will be initiated.
+
+### The `.amlignore` File
+
+The `.amlignore` file is a configuration file that allows you to ignore certain files or folders when generating packages. It is optional but must be named `.amlignore` and placed at the root of the playbook. The format of this file is the same as that of `.gitignore`, and you can find documentation on adding files and folders to ignore [here](https://git-scm.com/docs/gitignore).
+
+### The `README.md` and `CHANGELOG.md` Files
+
+These files are optional but recommended. They document the project and track changes made to the project. The `README.md` file is the project's documentation file, and the `CHANGELOG.md` file contains the changes made to the project.

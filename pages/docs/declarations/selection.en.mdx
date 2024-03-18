@@ -1,0 +1,140 @@
+---
+description: Declarations are static and are dynamically filtered by the user's system target at runtime.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Declaration Selection
+
+Declaration selection is a mechanism that allows filtering declarations based on the target system and its parameters. This enables defining system-specific declarations and making them available only for that target system.
+
+## Target System
+
+The target systems compatible with the playbook are defined in the `.aiop/inventory.yml` file. The end-user then specifies the target system for which they want to generate the playbook. The target system will be considered for filtering declarations.
+
+### Example
+
+If we take the [example from Tesla](/docs/configurations/inventory#exemple), the target system could be:
+- `suv/modelX/phase2`
+- `sedan/model3/phase2`
+- `truck/cybertruck/phase1`
+
+Or:
+- `suv/modelX/phase1`
+- `sedan/modelS/phase1`
+
+<Callout type="warning" emoji="⚠️">
+You must separate the elements of your target system with slashes `/` and follow the order defined in the [inventory configuration file](/docs/configurations/inventory#exemple-de-configuration).
+</Callout>
+
+## Compatibility
+
+Declarations are also filtered based on compatibility with the target system. A declaration's compatibility is defined in the `compatibility` field of the declaration.
+Let's revisit Tesla's example with the target system `truck/cybertruck/phase1`.
+
+### Compatible System
+
+You can declare that the declaration is compatible with a specific system. But also with a range of models or with all models of an architecture. In this case, all models of the `model_range1` range of the `archi1` architecture are compatible with the declaration. Here we declare the binary of a towing torque monitoring software compatible with the `truck/cybertruck/phase1` system:
+
+```yaml {4}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+Similarly, you can indicate that the declaration is compatible with all Cybertruck model ranges (if a Cybertruck range existed) or with the `truck` architecture:
+
+```yaml {4}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+Finally, you can indicate that the declaration is compatible with all systems with the value `all`:
+
+```yaml {4}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - all:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+You'll notice that the `compatibility` field expects a list of compatible system/parameter combinations. It is thus possible to declare multiple combinations for a resource. In this case, you can declare that the resource is compatible with 2 specific development phases (`phase1` and `phase2`):
+
+```yaml {4-12}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
+    - truck/cybertruck/phase2:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+### Compatibility Parameters
+
+In our case, `functions` and `envs` are the parameters to fill in to indicate compatible functionalities and environments with the declaration. Let's focus on the `envs` parameter for now.
+
+```yaml {6}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [dev, test]
+```
+
+As a reminder, the allowed values for `envs` for the `truck/cybertruck/phase1` system are `test`, `bench`, `prod`, and `dev`, and the selection rule is `one_of` ([review the inventory](/docs/configurations/inventory#modèle-de-configuration)). In this case, we can declare that the resource is only compatible with the `test` environment:
+
+```yaml {6}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [test]
+```
+
+Or with the `test` and `bench` environments:
+
+```yaml {6}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [test, bench]
+```
+
+Or with all environments:
+
+```yaml {6}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [test, bench, prod, dev]
+```
+
+Or with the value `all` to indicate that the resource is compatible with all possible `envs` values:
+
+```yaml {6}
+- source: software/towing-torque-monitor/1.24.100/bin
+  destination: software/towing-torque-monitor
+  compatibility:
+    - truck/cybertruck/phase1:
+        functions: [towing]
+        envs: [all]
+```
+
+There is no order in the list of `envs` values. However, it is recommended to organize them logically relative to the other declaration for readability and maintenance.

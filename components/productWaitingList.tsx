@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/shadcn/button";
 import Link from "next/link";
 import {
   Form,
@@ -14,19 +14,21 @@ import {
   FormLabel,
   FormDescription,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/shadcn/form";
 import { Send } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea"
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/shadcn/textarea"
+import { Input } from "@/components/ui/shadcn/input";
 import { useForm } from "react-hook-form";
+import { useLocalizedMessages } from '@/lib/ParseLang';
+
 
 const formSchema = z.object({
-  email: z.string().email("Entrez une adresse email valide, s’il vous plait."),
+  email: z.string().email("Enter a valid email address"),
   job: z.string().min(2, {
-    message: "Veuillez entrer votre profession.",
+    message: "Enter a valid job title",
   }),
   message: z.string(),
-})
+});
 
 export function ProductWaitingList(props: {
   source?: string;
@@ -42,7 +44,12 @@ export function ProductWaitingList(props: {
     },
   });
 
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
+
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
+
     const res = await fetch("/api/productWaitingList", {
       method: "POST",
       body: JSON.stringify({
@@ -54,9 +61,9 @@ export function ProductWaitingList(props: {
       },
     });
     if (!res.ok) {
-      alert("Uh oh! Quelque chose s’est mal passé. Reessayez ou contacter nous directement par email: valentin.rudloff.perso@gmail.com");
+      alert(messages.product_waiting_list.modal.error);
     } else {
-      alert("Message envoyé! Merci pour votre inscription, nous vous préviendrons dès que la version Pro sera disponible.");
+      alert(messages.product_waiting_list.modal.success);
       form.reset();
     }
   }
@@ -66,13 +73,13 @@ export function ProductWaitingList(props: {
       <div className="max-w-2xl mx-auto p-4">
         <div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
           <Header
-            title="Liste d’attente"
+            title={messages.product_waiting_list.title}
             description={
               <>
-                Pour le moment Aiop est en version Bêta. Pour souscrire à la version Pro veuillez vous inscrire à la liste d’attente en indiquant votre email.
+                {messages.product_waiting_list.description}
                 <br />
                 <br />
-                Vous pouvez tout de même commencer à utiliser Aiop gratuitement en cliquant sur le bouton ci-dessous.
+                {messages.product_waiting_list.description2}
               </>
             }
             className="mb-8"
@@ -88,12 +95,12 @@ export function ProductWaitingList(props: {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{messages.product_waiting_list.form.email.title}</FormLabel>
                   <FormControl>
-                    <Input placeholder="votre email" {...field} />
+                    <Input placeholder={messages.product_waiting_list.form.email.placeholder} {...field} />
                   </FormControl>
                   <FormDescription>
-                    Entrez votre email pour être notifié lors de la sortie de la version Pro.
+                    {messages.product_waiting_list.form.email.description}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -104,12 +111,12 @@ export function ProductWaitingList(props: {
               name="job"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Profession</FormLabel>
+                  <FormLabel>{messages.product_waiting_list.form.job.title}</FormLabel>
                   <FormControl>
-                    <Input placeholder="votre profession" {...field} />
+                    <Input placeholder={messages.product_waiting_list.form.job.placeholder} {...field} />
                   </FormControl>
                   <FormDescription>
-                    Entrez votre profession pour nous aider à mieux comprendre nos utilisateurs.
+                    {messages.product_waiting_list.form.job.description}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -120,22 +127,22 @@ export function ProductWaitingList(props: {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Message</FormLabel>
+                  <FormLabel>{messages.product_waiting_list.form.extra.title}</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="message à faire passer"
+                      placeholder={messages.product_waiting_list.form.extra.placeholder}
                       className="resize-none"
                       {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                    Entrez un message à faire passer à l’équipe Aiop.
+                    {messages.product_waiting_list.form.extra.description}
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Faire partie de la liste<Send size={14} className="ml-2" /></Button>
+            <Button type="submit">{messages.product_waiting_list.form.submit}<Send size={14} className="ml-2" /></Button>
           </form>
         </Form>
         </div>

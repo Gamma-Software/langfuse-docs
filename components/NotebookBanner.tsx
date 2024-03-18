@@ -1,5 +1,5 @@
 import { Callout } from "nextra-theme-docs";
-import { Button } from "./ui/button";
+import { Button } from "./ui/shadcn/button";
 
 export const NotebookBanner: React.FC<{ src: string; className?: string }> = ({
   src,

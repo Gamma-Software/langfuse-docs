@@ -5,7 +5,7 @@ import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuSeparator,
-} from "./ui/dropdown-menu";
+} from "./ui/shadcn/dropdown-menu";
 
 import { useState } from "react";
 import { Download, ExternalLink } from "lucide-react";

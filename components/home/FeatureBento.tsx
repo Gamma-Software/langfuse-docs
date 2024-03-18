@@ -1,17 +1,10 @@
-import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import { BentoCard, BentoGrid } from "@/components/ui/magicui/bento-grid";
 import {
   Boxes,
-  GanttChart,
-  Workflow,
   UserRoundCog,
   Blocks,
   DraftingCompass,
-  GitPullRequestArrow,
-  LineChart,
   Users,
-  Rocket,
-  Cable,
-  ThumbsUp,
 } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
@@ -21,9 +14,8 @@ import bentoVersionnigPng from "./img/bento_versionning.png";
 import bentoVersionnigDarkPng from "./img/bento_versionning_dark.png";
 import bentoCollabPng from "./img/bento_collab.png";
 import bentoCollabDarkPng from "./img/bento_collab_dark.png";
-import bentoPromptPng from "./img/bento_prompt_management.png";
-import bentoPromptDarkPng from "./img/bento_prompt_management_dark.png";
 import Image, { type StaticImageData } from "next/image";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 const BentoBgImage = ({
   imgLight,
@@ -62,83 +54,83 @@ const BentoBgImage = ({
   </>
 );
 
-const features = [
-  {
-    Icon: Blocks,
-    name: "Extensible",
-    description:
-      "Etendez les fonctionnalités de l’application pour correspondre à vos besoins. Notre équipe est là pour vous accompagner.",
-    href: "/docs/lib-index",
-    cta: "En savoir plus",
-    background: (
-      <BentoBgImage
-        imgLight={bentoLanguagePng}
-        imgDark={bentoLanguageDarkPng}
-        alt="Languages"
-      />
-    ),
-    className: "md:row-start-1 md:row-end-4 md:col-start-2 md:col-end-2",
-  },
-  {
-    Icon: Boxes,
-    name: "Gestion des packages",
-    description:
-      "Gérez et versionnez tous vos packages d'un seul endroit. Suivez les évolutions et debuggez plus facilement.",
-    href: "/docs",
-    cta: "En savoir plus",
-    background: (
-      <BentoBgImage
-        imgLight={bentoVersionnigPng}
-        imgDark={bentoVersionnigDarkPng}
-        alt="Versionning des packages"
-      />
-    ),
-    className: "md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3",
-  },
-  {
-    Icon: DraftingCompass,
-    name: "Outils",
-    description:
-      "Aiop propose une suite d'outils (En expension) pour vous aider à la maintenance, conception et la production des packages.",
-    href: "/docs",
-    cta: "En savoir plus",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "md:col-start-1 md:col-end-2 md:row-start-3 md:row-end-4",
-  },
-  {
-    Icon: UserRoundCog,
-    name: "Personnalisation",
-    description:
-      "Personnalisez le comportement de Aiop et de vos projets pour correspondre à vos problématiques.",
-    href: "/docs/configurations/user",
-    cta: "En savoir plus",
-    background: <img className="absolute -right-20 -top-20 opacity-60" />,
-    className: "md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-2",
-  },
-  {
-    Icon: Users,
-    name: "Collaboration",
-    description: "Travaillez à plusieurs sur un même projet; à distance. Partagez vos packages, ressources et vos connaissances entre équipes. Gagnez en productivité et en qualité.",
-    href: "/docs",
-    cta: "En savoir plus",
-    background: (
-      <BentoBgImage
-        imgLight={bentoCollabPng}
-        imgDark={bentoCollabDarkPng}
-        alt="Personnalisation"
-      />
-    ),
-    className: "md:col-start-3 md:col-end-3 md:row-start-2 md:row-end-4",
-  },
-];
 
 export function FeatureBento() {
+  const messages = useLocalizedMessages();
+  if (!messages) return null;
+
+  const features = [
+    {
+      Icon: Blocks,
+      name: messages.home.FeatureBento.feature.extensible.title,
+      description: messages.home.FeatureBento.feature.extensible.description,
+      href: "/docs/lib-index",
+      cta: messages.common.learn_more,
+      background: (
+        <BentoBgImage
+          imgLight={bentoLanguagePng}
+          imgDark={bentoLanguageDarkPng}
+          alt={messages.home.FeatureBento.feature.extensible.alt}
+        />
+      ),
+      className: "md:row-start-1 md:row-end-4 md:col-start-2 md:col-end-2",
+    },
+    {
+      Icon: Boxes,
+      name: messages.home.FeatureBento.feature.packages.title,
+      description: messages.home.FeatureBento.feature.packages.description,
+      href: "/docs",
+      cta: messages.common.learn_more,
+      background: (
+        <BentoBgImage
+          imgLight={bentoVersionnigPng}
+          imgDark={bentoVersionnigDarkPng}
+          alt={messages.home.FeatureBento.feature.packages.alt}
+        />
+      ),
+      className: "md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3",
+    },
+    {
+      Icon: DraftingCompass,
+      name: messages.home.FeatureBento.feature.tools.title,
+      description: messages.home.FeatureBento.feature.tools.description,
+      href: "/docs",
+      cta: messages.common.learn_more,
+      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      className: "md:col-start-1 md:col-end-2 md:row-start-3 md:row-end-4",
+    },
+    {
+      Icon: UserRoundCog,
+      name: messages.home.FeatureBento.feature.customization.title,
+      description: messages.home.FeatureBento.feature.customization.description,
+      href: "/docs/configurations/user",
+      cta: messages.common.learn_more,
+      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      className: "md:col-start-3 md:col-end-3 md:row-start-1 md:row-end-2",
+    },
+    {
+      Icon: Users,
+      name: messages.home.FeatureBento.feature.collaboration.title,
+      description: messages.home.FeatureBento.feature.collaboration.description,
+      href: "/docs",
+      cta: messages.common.learn_more,
+      background: (
+        <BentoBgImage
+          imgLight={bentoCollabPng}
+          imgDark={bentoCollabDarkPng}
+          alt={messages.home.FeatureBento.feature.collaboration.alt}
+        />
+      ),
+      className: "md:col-start-3 md:col-end-3 md:row-start-2 md:row-end-4",
+    },
+  ];
+
   return (
     <HomeSection id="features">
       <Header
-        title="Vos exigences"
-        description="notre priorité"
-        button={{ href: "/docs", text: "Documentation" }}
+        title={messages.home.FeatureBento.title}
+        description={messages.home.FeatureBento.description}
+        button={{ href: "/docs", text: messages.common.documentation }}
       />
       <BentoGrid>
         {features.map((feature) => (
