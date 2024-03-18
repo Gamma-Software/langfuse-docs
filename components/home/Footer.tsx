@@ -1,4 +1,4 @@
-import RetroGrid from "../magicui/retro-grid";
+import RetroGrid from "../ui/magicui/retro-grid";
 import { HomeSection } from "./components/HomeSection";
 import localFont from 'next/font/local'
 

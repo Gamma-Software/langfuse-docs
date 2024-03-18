@@ -1,0 +1,78 @@
+---
+description: AML file declarations are the foundation of Aiop.
+---
+
+# Overview
+
+**Declarations are the basic elements of Aiop**. They are used to declare any resource. After [configuring the playbook](/docs/configurations/playbook) and the [inventory](/docs/configurations/inventory), you can start writing declarations to declare resources. Let's see how this works in detail.
+
+## Declarations
+
+A declaration is a `.aml` file that contains one or more declarations. You can declare a large number of different resources (see [list of resources](/docs/core-index#composition)) and organize them in any order you want and separated into as many files as you want. Indeed, Aiop is not supposed to follow a particular order to consider the declarations. However, it is recommended to organize them logically for readability and maintenance.
+
+## Base of a Declaration
+
+Before diving into details in the upcoming chapters, here's the base of a declaration (the mandatory fields) that we will then detail.
+
+```yaml
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {compatible deployment environments}
+        ...
+```
+
+### `source`
+
+```yaml {1}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {compatible deployment environments}
+        ...
+```
+
+The `source` field is the location of the resource to be retrieved. It can take various forms. It can be a local resource relative to the declaration file or a remote resource. In the case of a remote resource, it can be a URL or a path to a file from a repository. Aiop also allows combining resources ([Learn more](/docs/declarations/cookbook/combine)).
+
+### `destination`
+
+```yaml {2}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {compatible deployment environments}
+        ...
+```
+
+The `destination` field is the location of the artifact coming from the `source` in the package. It is the path relative to the package root. You can name the destination as you like. However, there are naming rules that will generate PDFs (see [PDF Conversion](/docs/declarations/cookbook/parse-to-pdf)) in some cases or generate a folder with unzipped artifacts (see [Archive](/docs/declarations/cookbook/zip)). Note that it is important not to use special characters or spaces in the destination name.
+
+### `compatibility`
+
+The `compatibility` field determines if a declaration is compatible with the selected system (target + parameters) for package generation. First, let's declare the target system(s) for which the declaration is compatible. Here you can specify a specific model or model range or architecture.
+
+```yaml {4}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {compatible deployment environments}
+        ...
+```
+
+Then, specify the parameters for which the declaration is compatible. The parameter names and allowed values are defined in the inventory ([Learn more](/docs/configurations/inventory#compatibility)).
+
+```yaml {5-6}
+- source: {resource to be retrieved locally or remotely}
+  destination: {artifact destination in the package}
+  compatibility:
+    - archi1/model_range1/model1:
+        envs: {compatible deployment environments}
+        ...
+```
+
+## Conflict Management
+
+A conflict between two declarations is a situation where two declarations are contradictory. The contradiction only arises if two declarations have the same `destination` in the package and both are compatible with the target chosen for package generation. Indeed, this situation is only possible if Aiop knows which target it is. In the case where two declarations would contradict each other, Aiop does not handle conflicts but will raise a fairly explicit error (with a hint) to allow you to correct the issue.

@@ -1,0 +1,74 @@
+---
+description: Aiop provides an extended configuration file to customize the application's behavior for a user.
+---
+import { Callout } from "nextra-theme-docs";
+
+# User Configuration
+
+Aiop allows the user to customize the application's behavior by modifying the configuration file. The configuration file is located in the user's directory:
+- Unix: `~/.aiop/config.yaml`
+- Windows: `%HOME%\.aiop\config.yaml`
+
+<Callout type="info" emoji="ℹ️">
+  Upon Aiop installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
+</Callout>
+
+The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop to customize its behavior.
+
+## Configuration File Structure
+
+Here's the structure of the configuration file. It includes parameters that allow customizing the application's behavior, as well as settings for logs, remote repositories, and license information.
+
+Remote repositories require authentication to download remote resources. If any of the playbooks you are working on require a connection to a remote repository, you are required to add the login information in the `repositories` section.
+
+The license is used for Aiop authentication. If you have a license, you need to add the corresponding information in the `license` section.
+
+In case a plugin requires specific configuration, it should be integrated into the `plugin_config` section. Please refer to the plugin documentation or contact support via [support@aiop.io] for more information.
+
+```yaml filename="~/.aiop/config.yaml"
+build_timeout: {numeric value}
+check_update: {true|false}
+default_package_path: {absolute or relative path to playbook root}
+download_retries: {numeric value}
+plugin_config: {specific plugin configuration dictionary}
+logs:
+  level: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|DISABLED}
+  output: {stdout|file}
+  pathdir: {absolute path}
+repositories:
+  - instance: {instance name}
+    username: {username}
+    password: {password}
+    auth_type: {basic|api_key}
+license:
+  key: {license key}
+  username: {username}
+  password: {password}
+  api_token: {API token}
+```
+
+## Personalization
+
+To customize the application's behavior, simply open and modify the configuration file.
+
+| **Name** | **Type** | **Description** | **Possible Values** | **Default Value** |
+| :--- | :--- | :--- | :--- | :--- |
+| build_timeout | int | Maximum duration in seconds for building a package | > 0 | 300 |
+| check_update | bool | Enable or disable update checks upon application runtime | true, false | true |
+| default_package_path | str | Default path to store generated packages | Absolute or relative path to playbook root | `~/.aiop/packages` |
+| download_retries | int | Number of attempts to download a remote resource | > 0 | 3 |
+| plugin_config | dict | Plugin-specific configurations. Refer to plugin documentation for more information. [Contact support](/support) for more information | Dictionary | |
+| logs | dict | Logs configuration | Dictionary |  |
+| logs.level | str | Log level | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, DISABLED | DEBUG |
+| logs.output | str | Log output | stdout, file | stdout |
+| logs.pathdir | str | Absolute path to log storage directory | Absolute path | `~/.aiop/logs` |
+| repositories | list | List of remote repositories | List of dictionaries | |
+| repositories.instance | str | Instance name. Used to identify the repository | | |
+| repositories.username | str | Username for repository authentication | | |
+| repositories.password | str | Password for repository authentication | | |
+| repositories.auth_type | str | Authentication type | basic, api_key | basic |
+| license | dict | License information | Dictionary | |
+| license.key | str | License key | | |
+| license.username | str | Username for Aiop authentication | | |
+| license.password | str | Password for Aiop authentication | | |
+| license.api_token | str | API token for Aiop authentication. If `api_token` is defined, `username` and `password` are ignored | | |

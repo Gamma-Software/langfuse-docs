@@ -1,4 +1,4 @@
-import ShimmerButton from "../magicui/shimmer-button";
+import ShimmerButton from "../ui/magicui/shimmer-button";
 import { BsGithub } from "react-icons/bs";
 import Link from "next/link";
 import Changelog from "./Changelog";

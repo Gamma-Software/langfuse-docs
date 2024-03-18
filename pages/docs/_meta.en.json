@@ -1,0 +1,43 @@
+{
+  "-- Introduction": {
+    "type": "separator",
+    "title": "Introduction"
+  },
+  "intro": "Overview",
+  "get-started": "Getting Started",
+  "demo": "Demo",
+  "vocabulary": "Vocabulary",
+
+  "-- Core": {
+    "type": "separator",
+    "title": "Core"
+  },
+  "core-index": "Overview",
+  "playbook_structure": "Playbook Structure",
+  "configurations": "Configurations",
+  "declarations": "Declarations",
+  "stages": "Build Stages",
+  "caching": "Caching",
+
+  "-- CLI": {
+    "type": "separator",
+    "title": "CLI"
+  },
+  "cli-index": "Overview",
+  "cli": "Commands",
+
+  "-- Lib": {
+    "type": "separator",
+    "title": "Library"
+  },
+  "lib-index": "Overview",
+  "aiop-lib": "Development",
+
+  "-- More": {
+    "type": "separator",
+    "title": "For Further Exploration"
+  },
+  "third-party": "Third-Party Libraries",
+  "qna": "FAQ",
+  "even-more": "Further Exploration"
+}

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { StarCount } from "@/components/GitHubBadge";
 import { Header } from "@/components/Header";
 
-import ShimmerButton from "@/components/magicui/shimmer-button";
+import ShimmerButton from "@/components/ui/magicui/shimmer-button";
 
 <div className="md:container">
 
@@ -21,7 +21,7 @@ import ShimmerButton from "@/components/magicui/shimmer-button";
       className="mb-8"
       h="h1"
     />
-  <Link href="mailto:valentin.rudloff.perso@gmail.com">
+  <Link href="mailto:support@aiop.io">
     <ShimmerButton borderRadius="0.25rem" className="mt-11">
         <div className="flex gap-4 items-center whitespace-pre-wrap bg-gradient-to-b from-white from-30% to-gray-300/70 bg-clip-text text-center text-md font-semibold leading-none tracking-tight text-transparent">
         <SiMinutemailer size={28} className="text-white" />

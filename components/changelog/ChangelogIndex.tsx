@@ -1,13 +1,19 @@
 import { getPagesUnderRoute } from "nextra/context";
+import { useRouter } from 'next/router'
 import Link from "next/link";
 import Image from "next/image";
 import { type Page } from "nextra";
 import { Video } from "../Video";
 
-export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
+export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => {
+  const router = useRouter();
+  const changelogPages = getPagesUnderRoute("/changelog");
+  const pages = changelogPages.filter((page) => (page as any).locale === router.locale) as Array<Page & { frontMatter: any }>;
+  if (!pages) return null;
+
+  return(
   <div className="mt-12 max-w-6xl mx-auto divide-y divide-primary/10">
-    {(getPagesUnderRoute("/changelog") as Array<Page & { frontMatter: any }>)
-      .slice(0, maxItems)
+    {pages.slice(0, maxItems)
       .map((page, i) => (
         <div
           className="md:grid md:grid-cols-4 md:gap-5 py-16 transition-all"
@@ -72,4 +78,5 @@ export const ChangelogIndex = ({ maxItems }: { maxItems?: number }) => (
         </div>
       ))}
   </div>
-);
+  )
+};

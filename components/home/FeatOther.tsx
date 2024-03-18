@@ -1,4 +1,4 @@
-import { MagicCard, MagicContainer } from "../magicui/magic-card";
+import { MagicCard, MagicContainer } from "../ui/magicui/magic-card";
 
 export const FeatOther = () => (
   <section className="flex flex-col gap-2 items-center">
