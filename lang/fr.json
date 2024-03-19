@@ -46,7 +46,7 @@
     },
     "Benefits": {
       "title": "Avantages",
-      "description": "Aiop vous permet de gagner du temps... beaucoup de temps. Un point c’est tout.",
+      "description": "Aiop vous permet de gagner du temps... beaucoup de temps.",
       "list":
       [
         {
@@ -83,7 +83,7 @@
     },
     "Clients": {
       "title": "Développé par des ingénieurs pour des ingénieurs",
-      "description": "Initialement l’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués mais ne doit pas se limiter à cela. Aiop est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery managers.",
+      "description": "L’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués. Aiop est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery managers.",
       "list":[
         {
           "id": 1,

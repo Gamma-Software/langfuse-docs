@@ -17,7 +17,7 @@ export const Clients = () => {
         title={messages.home.Clients.title}
         description={messages.home.Clients.description}
         button={{
-          href: "/docs",
+          href: "/docs/intro",
           text: messages.common.documentation,
         }}
       />

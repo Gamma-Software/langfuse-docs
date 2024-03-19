@@ -51,11 +51,6 @@
     },
     "display": "hidden"
   },
-  "whitepaper": {
-    "title": "Livre Blanc",
-    "type": "page",
-    "href": "/docs#pourquoi-utiliser-aiop"
-  },
   "roadmap": {
     "title": "Feuille de route",
     "type": "page",
@@ -68,7 +63,7 @@
     "type": "menu",
     "items": {
       "video": {
-        "title": "Video (2 min)",
+        "title": "Introduction (Video)",
         "href": "/docs/demo"
       },
       "schedule-demo": {
