@@ -14,7 +14,7 @@ export function Benefits() {
         title={messages.home.Benefits.title}
         description={messages.home.Benefits.description}
         button={{
-          href: "/docs",
+          href: "/docs/intro",
           text: messages.common.documentation,
         }}
       />

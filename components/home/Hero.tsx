@@ -22,7 +22,7 @@ export function Hero() {
       {/* HERO */}
       {/* <Meteors/> */}
       <div className="flex flex-col items-start justify-center gap-3 md:min-h-[calc(60vh-100px)] pb-12 lg:py-20">
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300  font-sans font-bold">
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 dark:bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 font-sans font-bold">
           All-In-One
           <br />
           Packager
@@ -40,7 +40,7 @@ export function Hero() {
             <Link href="/docs/demo">{messages.home.Hero.demoButton}</Link>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <Link href="/docs">{messages.home.Hero.documentationButton}</Link>
+            <Link href="/docs/intro">{messages.home.Hero.documentationButton}</Link>
           </Button>
         </div>
       </div>

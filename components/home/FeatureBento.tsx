@@ -79,7 +79,7 @@ export function FeatureBento() {
       Icon: Boxes,
       name: messages.home.FeatureBento.feature.packages.title,
       description: messages.home.FeatureBento.feature.packages.description,
-      href: "/docs",
+      href: "/docs/intro",
       cta: messages.common.learn_more,
       background: (
         <BentoBgImage
@@ -94,7 +94,7 @@ export function FeatureBento() {
       Icon: DraftingCompass,
       name: messages.home.FeatureBento.feature.tools.title,
       description: messages.home.FeatureBento.feature.tools.description,
-      href: "/docs",
+      href: "/docs/intro",
       cta: messages.common.learn_more,
       background: <img className="absolute -right-20 -top-20 opacity-60" />,
       className: "md:col-start-1 md:col-end-2 md:row-start-3 md:row-end-4",
@@ -112,7 +112,7 @@ export function FeatureBento() {
       Icon: Users,
       name: messages.home.FeatureBento.feature.collaboration.title,
       description: messages.home.FeatureBento.feature.collaboration.description,
-      href: "/docs",
+      href: "/docs/intro",
       cta: messages.common.learn_more,
       background: (
         <BentoBgImage
