@@ -1,0 +1,55 @@
+---
+description: >-
+  Les archives peuvent dézippée pendant l’éxecution.
+---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Unzip an archive
+
+When you have an archive to unzip on a target system, you can use the optional `unzip` field to declare this action.
+
+## Declaration
+
+If you have an archive to unzip, you can use the `unzip` field to declare this action. You must, of course, declare a file with the following extensions:
+
+- `.zip`
+- `.tar`
+- `.tar.gz`
+- `.tar.bz2`
+- `.tar.xz`
+- `.rar`
+- `.7z`
+
+And you will specify the destination folder path. Indeed, it is mandatory to unzip the archive into a folder.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="ressources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="archive.zip" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {2, 3} filename="ressources/.aml" /dossier/
+- source: archive.zip
+  destination: dossier/
+  unzip: True
+  compatibility:
+    - ...
+```
+
+<Callout type="warning" emoji="⚠️">
+To specify the destination folder path, it is mandatory to end with a `/`.
+</Callout>
+
+By default, the `unzip` field is declared as `False` and will not unzip the file. Therefore, it is necessary to declare it as `True` for the archive to be unzipped.

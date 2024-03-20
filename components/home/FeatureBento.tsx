@@ -130,7 +130,7 @@ export function FeatureBento() {
       <Header
         title={messages.home.FeatureBento.title}
         description={messages.home.FeatureBento.description}
-        button={{ href: "/docs", text: messages.common.documentation }}
+        button={{ href: "/docs/intro", text: messages.common.documentation }}
       />
       <BentoGrid>
         {features.map((feature) => (

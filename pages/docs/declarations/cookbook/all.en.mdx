@@ -1,0 +1,86 @@
+---
+description: Compatibility of declarations can be very extensive and expose them to all targets or compatible argument targets.
+---
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Value `all`
+
+The `all` value is used to simplify the declaration. It is sometimes useful to declare a resource for all target systems or for all its compatible parameters. This avoids having to repeat the declaration for each target system or for each target argument.
+
+## `all` target systems
+
+In cases where the target systems declared in the inventory are all compatible with a resource, you can use the `all` value to declare compatibility with all target systems.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="file.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {4} filename="resources/.aml" /all/
+- source: file.txt
+  destination: file.txt
+  compatibility:
+    - all:
+        ...
+```
+
+For this example, the file `file.txt` is compatible with all target systems declared in the inventory.
+
+## `all` target arguments
+
+In cases where the parameters of a target declared in the inventory are all compatible with a resource, you can use the `all` value to declare compatibility with all parameters.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="file.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {5} filename="resources/.aml" /all/
+- source: file.txt
+  destination: file.txt
+  compatibility:
+    - archi/range/model:
+        app: [all]
+        envs: [test, dev]
+```
+
+For this example, the file `file.txt` is compatible with all values of the `app` parameter of the `archi/range/model` target.
+
+You could very well declare the file `file.txt` for each value of the `app` parameter of the `archi/range/model` target, but that would be very unreadable if there are **many** allowed values. Using the `all` value simplifies the declaration.
+
+Let's continue the example and modify the declaration so that the file `file.txt` is also compatible with all values of the `envs` parameter of the `archi/range/model` target. This would look like:
+
+```yaml {5-6} filename="resources/.aml" /all/
+- source: file.txt
+  destination: file.txt
+  compatibility:
+  - archi/range/model:
+      app: [all]
+      envs: [all]
+```

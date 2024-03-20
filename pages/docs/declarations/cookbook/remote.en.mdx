@@ -1,0 +1,175 @@
+---
+description: >-
+  Remote resources can be retrieved from different artifact repositories.
+---
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Remote Resources
+
+Aiop allows retrieving resources remotely from different artifact repositories (or repositories). This is a very useful feature for fetching resources from a variety of remote servers. Currently, the following repositories are supported:
+
+- [Artifactory](#artifactory)
+- [Nexus](#nexus)
+
+<Callout type="info" emoji="ℹ️">
+There are still other repositories to support. If you have a specific need, feel free to contact us.
+</Callout>
+
+You can retrieve any type of resource.
+
+## Configuration Requirements
+
+Access to remote servers and especially Aiop configuration must be set up. For more information, please refer to the [User Configuration](/docs/configurations/user#structure-du-fichier-de-configuration) and [Playbook](/docs/configurations/playbook) sections.
+
+### Playbook Configuration
+
+Let's take the example of the playbook configuration file below. Let's focus on the first two items in the `repositories` list:
+
+```yaml {3-12} filename="~/.aiop/config.yaml"
+...
+repositories:
+  - name: artifactory-release
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/release
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$
+  - name: artifactory-develop
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+  - name: nexus-develop
+    instance: nexus-company
+    type: nexus
+    base_url: https://nexus.my-company.com/repo/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+...
+```
+
+We have set up an artifact registry instance called `artifactory-company` with two repositories `artifactory-release` and `artifactory-develop`. These repositories have different base URLs as they do not point to the same artifact repository. They also have different regular expressions to filter the resources to retrieve.
+
+Let's dissect the regular expression of the first repository `^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$`. As a reminder, the naming of groups allows you to retrieve the values and use them during package generation:
+- `(?P<app_name>.+)` : application name (any name without character limit and constraints)
+- `(?P<version>\d+\.\d+)` : application version (2 integer numbers with a dot as separator)
+- `(?P<filename>.+)` : file name (any name without character limit and constraints)
+
+You'll notice that the second repository `artifactory-develop` has a different regular expression `^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$`. This allows retrieving resources with a development version, hence the `-dev` added in the application version `(?P<version>\d+\.\d+-dev)`.
+
+```yaml {13-17} filename="~/.aiop/config.yaml"
+...
+repositories:
+  - name: artifactory-release
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/release
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$
+  - name: artifactory-develop
+    instance: artifactory-company
+    type: artifactory
+    base_url: https://artifactory.my-company.com/artifactory/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+  - name: nexus-develop
+    instance: nexus-company
+    type: nexus
+    base_url: https://nexus.my-company.com/repo/develop
+    repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
+...
+```
+
+Then, we have set up another artifact registry instance called `nexus-company` with a repository `nexus-develop`. For clarity in the explanation, we chose to use the same regular expression as the one used for the second repository `artifactory-develop`.
+
+### User Configuration
+
+Next, let's look at the user configuration for authentication on the remote `artifactory` server.
+
+```yaml {3-6} filename="~/.aiop/config.yaml"
+...
+repositories:
+  - instance: artifactory-company
+    username: admin
+    password: KhH479X66hH98i
+    auth_type: basic
+...
+```
+
+You'll notice that the instance `artifactory-company` corresponds to the one configured in the playbook. Here, the user decides to authenticate with a username `admin` and a password `KhH479X66hH98i` using the `basic` authentication type. (See the [User Configuration](/docs/configurations/user#personalisation) section for more information)
+
+## Artifactory
+
+The configurations have been defined previously. We are now able to retrieve resources from the remote `Artifactory` server. Here's a concrete example of retrieving a parameter file from the `artifactory-release` repository:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="ressources" defaultOpen>
+        <FileTree.File name=".aml" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="info" emoji="ℹ️">
+You'll notice that there are no local resources in the `ressources` folder as everything is remote on the server.
+</Callout>
+
+```yaml {1, 6} filename="ressources/.aml" /<artifactory-release>/ /<artifactory-develop>/
+- source: <artifactory-release>my-app/1.0/fichier
+  destination: fichier
+  compatibility:
+    - apps: [my-app]
+      envs: [prod]
+- source: <artifactory-develop>my-app/1.0-dev/fichier
+  destination: fichier
+  compatibility:
+    - apps: [my-app]
+      envs: [dev]
+```
+
+In the first declaration, the `fichier` file will be retrieved from the `artifactory-release` repository of the `artifactory-company` instance with the application name `my-app` and version `1.0` and placed in the package at its root with the name `fichier`. The file will be retrieved from the remote repository verified by the regular expression `^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$` and also verified by its hash to ensure its integrity and security.
+
+In the second declaration, the `bin` file will be retrieved from the `artifactory-release` repository of the `artifactory-company` instance with the application name `my-app` and version `1.0` and placed in the package at its root with the name `fichier`. The file will be retrieved from the remote repository verified by the regular expression `^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$` and also verified by its hash to ensure its integrity and security.
+
+<Callout type="info" emoji="ℹ️">
+You'll notice that the binary in the second declaration will be retrieved only when the desired package is intended for the **development** environment. This is possible due to the declared compatibility in the second declaration. And the source does not come from the same repository as the first declaration.
+</Callout>
+
+## Nexus
+
+The configurations have been set up earlier, and now we can retrieve resources from the remote `artifactory` server. Here's a concrete example to retrieve a parameter file from the `artifactory-release` repository:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="ressources" defaultOpen>
+        <FileTree.File name=".aml" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {1} filename="ressources/.aml" /<nexus-develop>/
+- source: <nexus-develop>my-app-from-nexus/1.0-dev/fichier
+  destination: fichier
+  compatibility:
+    - ...
+```
+
+In this case, the `fichier` file will be retrieved from the `nexus-develop` repository of the `nexus-company` instance with the application name `my-app-from-nexus` and version `1.0-dev` and placed in the package at its root with the name `app`. The file will be retrieved from the remote repository verified by the regular expression `^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$` and also verified by its hash to ensure its integrity and security.
+
+## Caching and Verification
+
+Please note that remote resources are stored in the local cache to avoid retrieving them on every package generation ([Learn more about caching](/docs/caching)). However, they are verified on each package generation to ensure that the resource is up to date compared to the latest version available on the remote server ([Learn more about verification](/docs/cli/build)).
