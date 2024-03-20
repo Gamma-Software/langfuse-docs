@@ -1,0 +1,54 @@
+---
+description: >-
+  Resources can be combined to create a new resource at runtime. Thus, a new resource is created that is a combination of the original resources.
+---
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Combining Resources
+
+You can generate arbitrary files or parameter files from multiple resource files. This can be useful for configuring your applications based on the compatibilities of your targets.
+
+## Declaration
+
+Let's start with the simplest by combining text files. To combine text files, you need to declare the source of the files one after the other with a pipe delimiter `|`. Here's a concrete example of combining 3 parameter files into a single parameter file.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.txt" />
+        <FileTree.File name="param2.txt" />
+        <FileTree.File name="param3.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.txt | param2.txt | param3.txt
+  destination: param.txt
+  compatibility:
+    - ...
+```
+
+The generated `param.txt` file in the package will be a combination of the `param1.txt`, `param2.txt`, and `param3.txt` files.
+
+<Callout type="warning" emoji="⚠️">
+  There is no line break or separator between the files to be combined. The contents of the files are simply concatenated.
+</Callout>
+
+
+{/*
+## Parameter Combination
+
+## Markdown Combination */}

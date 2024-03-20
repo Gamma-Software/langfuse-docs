@@ -1,0 +1,54 @@
+---
+description: >-
+  This page explains how to manage executable resources in the package.
+---
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Executable Resources
+
+An executable resource is a file that can be executed. It can be a file with an `.exe`, `.sh`, `.bat`, etc. extension. You can find a list of executable file extensions [here](https://aerorock.co.nz/list-of-executable-file-extensions-windows/).
+
+## Declaration
+
+In case you have resources that are executables, you can declare them in the `.aml` file so that they are copied into the package with their associated execution mode. Simply add the `executable` field as `True`. Let's take the following example, we have a folder `resources` containing three files `app1.py`, `app2.sh`, and `app3`, and the declaration file `.aml`. We want these files to be copied into the package with their associated execution mode.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="app1.py" />
+        <FileTree.File name="app2.sh" />
+        <FileTree.File name="app3" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {3, 8, 13} filename="resources/.aml" /True/
+- source: app1.py
+  destination: app1.py
+  executable: True
+  compatibility:
+    - ...
+- source: app2.sh
+  destination: app2.sh
+  executable: True
+  compatibility:
+    - ...
+- source: app3
+  destination: app1
+  executable: True
+  compatibility:
+    - ...
+```
+
+By default, this field is set to `False`. If you do not declare it, the file will be copied into the package but will not be executable.
