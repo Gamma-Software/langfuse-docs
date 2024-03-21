@@ -17,8 +17,6 @@ import { BsDiscord } from "react-icons/bs";
 import { GithubMenuBadge } from "./components/GitHubBadge";
 import { ToAppButton } from "./components/ToAppButton";
 import FooterMenu from "./components/footerMenu";
-import EditPage from "./components/ui/EditPage";
-import QuestionFeedback from "./components/ui/QuestionFeedback";
 import { useLocalizedMessages } from '@/lib/ParseLang';
 
 const config: DocsThemeConfig = {

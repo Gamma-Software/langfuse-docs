@@ -1,13 +1,7 @@
 {
   "home": {
     "Hero": {
-      "validate": "Validate",
-      "build": "Build",
-      "deploy": "Deploy",
-      "control": "Control",
-      "packages": "your packages for all your",
-      "configuration": "configurations",
-      "clients": "clients",
+      "packages": "Create multiple packages from a single source of configuration.",
       "demoButton": "Demo",
       "documentationButton": "View Documentation"
     },
@@ -44,9 +38,13 @@
         }
       }
     },
+    "Workflow": {
+      "title": "Package as code",
+      "description": "Aiop standardizes and automates the process of building embedded system packages."
+    },
     "Benefits": {
-      "title": "Benefits",
-      "description": "Aiop saves you time... a lot, period.",
+      "title": "Why Aiop ?",
+      "description": "It saves you time... a lot.",
       "list": [
         {
           "title": "Infinite Packages",

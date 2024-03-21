@@ -1,13 +1,7 @@
 {
   "home": {
     "Hero": {
-      "validate": "Valider",
-      "build": "Construire",
-      "deploy": "Déployer",
-      "control": "Contrôler",
-      "packages": "vos packages pour tous vos",
-      "configuration": "configurations",
-      "clients": "clients",
+      "packages": "Créez tous vos packages à partir d'un seul fichier de configuration.",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
     },
@@ -16,8 +10,8 @@
       "description": "Voici les derniers articles du blog. Découvrez les dernières nouveautés, les astuces et les conseils de notre équipe."
     },
     "FeatureBento": {
-      "title": "Vos exigences",
-      "description": "notre priorité",
+      "title": "Points clés",
+      "description": "",
       "feature": {
         "extensible": {
           "title": "Extensible",
@@ -44,9 +38,13 @@
         }
       }
     },
+    "Workflow": {
+      "title": "Package as code",
+      "description": "Aiop standardise et automatise le processus de construction de packages pour systèmes embarqués."
+    },
     "Benefits": {
-      "title": "Avantages",
-      "description": "Aiop vous permet de gagner du temps... beaucoup de temps.",
+      "title": "Pourquoi l'utiliser ?",
+      "description": "pour gagner du temps... beaucoup de temps.",
       "list":
       [
         {

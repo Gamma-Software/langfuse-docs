@@ -9,14 +9,16 @@ import { Integrations } from "./Integrations";
 import { FromTheBlog } from "./FromTheBlog";
 import { Benefits } from "./Benefits";
 import { Clients } from "./Clients";
+import { Workflow } from "./Workflow";
 
 export const Home = () => (
   <>
     <main className="relative overflow-hidden w-full">
       <Hero/>
       {/* <Users /> */}
+      <Workflow/>
+      {/* <Benefits/> */}
       <FeatureBento/>
-      <Benefits/>
       <Clients/>
       <Integrations/>
       {/* <OpenSource /> */}
