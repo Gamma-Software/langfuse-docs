@@ -1,13 +1,7 @@
 {
   "home": {
     "Hero": {
-      "validate": "Valider",
-      "build": "Construire",
-      "deploy": "Déployer",
-      "control": "Contrôler",
-      "packages": "vos packages pour tous vos",
-      "configuration": "configurations",
-      "clients": "clients",
+      "packages": "Créez tous vos packages à partir d'un seul fichier de configuration.",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
     },
@@ -16,8 +10,8 @@
       "description": "Voici les derniers articles du blog. Découvrez les dernières nouveautés, les astuces et les conseils de notre équipe."
     },
     "FeatureBento": {
-      "title": "Vos exigences",
-      "description": "notre priorité",
+      "title": "Points clés",
+      "description": "",
       "feature": {
         "extensible": {
           "title": "Extensible",
@@ -44,9 +38,13 @@
         }
       }
     },
+    "Workflow": {
+      "title": "Package as code",
+      "description": "Aiop standardise et automatise le processus de construction de packages pour systèmes embarqués."
+    },
     "Benefits": {
-      "title": "Avantages",
-      "description": "Aiop vous permet de gagner du temps... beaucoup de temps.",
+      "title": "Pourquoi l'utiliser ?",
+      "description": "pour gagner du temps... beaucoup de temps.",
       "list":
       [
         {
@@ -474,7 +472,66 @@
   "common": {
     "and": "et",
     "documentation": "Documentation",
-    "learn_more": "En savoir plus"
-  }
-
+    "learn_more": "En savoir plus",
+    "footerNav":[
+      {
+        "heading": "Ressources",
+        "items": [
+          { "name": "Documentation", "href": "/docs/intro" },
+          {
+            "name": "Démonstration",
+            "href": "/docs/demo"
+          },
+          {
+            "name": "Changelog",
+            "href": "/changelog"
+          },
+          {
+            "name": "Feuille de route",
+            "href": "/roadmap"
+          },
+          {
+            "name": "Tarification",
+            "href": "/pricing"
+          },
+          {
+            "name": "Status",
+            "href": "https://aiop-uptime.pival.fr/status/services"
+          }
+        ]
+      },
+      {
+        "heading": "A propos",
+        "items": [
+          { "name": "Blog", "href": "/blog" },
+          { "name": "Contact", "href": "mailto:contact@aiop.io" },
+          {
+            "name": "Participer à une démo",
+            "href": "/schedule-demo"
+          }
+        ]
+      },
+      {
+        "heading": "Légal",
+        "items": [
+          {
+            "name": "Termes & Conditions",
+            "href": "/tnc"
+          },
+          {
+            "name": "Politique de confidentialité",
+            "href": "/privacy"
+          },
+          {
+            "name": "Contact",
+            "href": "/contact"
+          }
+        ]
+      }
+    ],
+    "edit": "Editer cette page sur GitHub",
+    "question": "Des questions ? Faites nous un retour",
+    "search": "Rechercher..."
+  },
+  "banner": "Phase Bêta en cours →"
 }
