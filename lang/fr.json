@@ -474,7 +474,62 @@
   "common": {
     "and": "et",
     "documentation": "Documentation",
-    "learn_more": "En savoir plus"
+    "learn_more": "En savoir plus",
+    "footerNav":[
+      {
+        "heading": "Ressources",
+        "items": [
+          { "name": "Documentation", "href": "/docs/intro" },
+          {
+            "name": "Démonstration",
+            "href": "/docs/demo"
+          },
+          {
+            "name": "Changelog",
+            "href": "/changelog"
+          },
+          {
+            "name": "Feuille de route",
+            "href": "/roadmap"
+          },
+          {
+            "name": "Tarification",
+            "href": "/pricing"
+          },
+          {
+            "name": "Status",
+            "href": "https://aiop-uptime.pival.fr/status/services"
+          }
+        ]
+      },
+      {
+        "heading": "A propos",
+        "items": [
+          { "name": "Blog", "href": "/blog" },
+          { "name": "Contact", "href": "mailto:contact@aiop.io" },
+          {
+            "name": "Participer à une démo",
+            "href": "/schedule-demo"
+          }
+        ]
+      },
+      {
+        "heading": "Légal",
+        "items": [
+          {
+            "name": "Termes & Conditions",
+            "href": "/tnc"
+          },
+          {
+            "name": "Politique de confidentialité",
+            "href": "/privacy"
+          },
+          {
+            "name": "Contact",
+            "href": "/contact"
+          }
+        ]
+      }
+    ]
   }
-
 }

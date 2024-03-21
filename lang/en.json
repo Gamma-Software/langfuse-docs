@@ -447,6 +447,62 @@
   "common": {
     "and": "and",
     "documentation": "Documentation",
-    "learn_more": "Learn More"
+    "learn_more": "Learn More",
+    "footerNav":[
+      {
+        "heading": "Resources",
+        "items": [
+          { "name": "Documentation", "href": "/docs/intro" },
+          {
+            "name": "Demo",
+            "href": "/docs/demo"
+          },
+          {
+            "name": "Changelog",
+            "href": "/changelog"
+          },
+          {
+            "name": "Roadmap",
+            "href": "/roadmap"
+          },
+          {
+            "name": "Pricing",
+            "href": "/pricing"
+          },
+          {
+            "name": "Status",
+            "href": "https://aiop-uptime.pival.fr/status/services"
+          }
+        ]
+      },
+      {
+        "heading": "About",
+        "items": [
+          { "name": "Blog", "href": "/blog" },
+          { "name": "Contact", "href": "mailto:contact@aiop.io" },
+          {
+            "name": "Schedule a Demo",
+            "href": "/schedule-demo"
+          }
+        ]
+      },
+      {
+        "heading": "Legal",
+        "items": [
+          {
+            "name": "Terms & Conditions",
+            "href": "/tnc"
+          },
+          {
+            "name": "Privacy Policy",
+            "href": "/privacy"
+          },
+          {
+            "name": "Contact",
+            "href": "/contact"
+          }
+        ]
+      }
+    ]
   }
 }

@@ -16,6 +16,7 @@ import { Frame } from "./components/Frame";
 import { BsDiscord } from "react-icons/bs";
 import { GithubMenuBadge } from "./components/GitHubBadge";
 import { ToAppButton } from "./components/ToAppButton";
+import FooterMenu from "./components/footerMenu";
 
 const footerNav = [
   {
@@ -43,6 +44,17 @@ const footerLegalNav = [
     name: "Contact",
     href: "/contact",
   },
+];
+
+const internationalNav = [
+  {
+    name: "English",
+    href: "/en",
+  },
+  {
+    name: "Français",
+    href: "/",
+  }
 ];
 
 const config: DocsThemeConfig = {
@@ -107,45 +119,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/Gamma-Software/aiop-docs/tree/main",
   footer: {
-    text: (
-      <div className="flex md:justify-between md:flex-row flex-col items-center flex-1 flex-wrap gap-2 text-sm">
-        <div className="md:order-last flex flex-col lg:flex-row gap-y-1 gap-x-4">
-          <div className="flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-end">
-            {footerNav.map((nav) => (
-              <Link
-                key={nav.name}
-                href={nav.href}
-                className="inline rounded-none leading-6 text-primary/80 hover:text-primary whitespace-nowrap"
-              >
-                {nav.name}
-              </Link>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 justify-center md:justify-end">
-            {footerLegalNav.map((nav) => (
-              <Link
-                key={nav.name}
-                href={nav.href}
-                className="inline rounded-none leading-6 text-primary/80 hover:text-primary whitespace-nowrap"
-              >
-                {nav.name}
-              </Link>
-            ))}
-            <a
-              href="#"
-              onClick={() => (window as any).displayPreferenceModal()}
-              className="inline rounded-none leading-6 text-primary/80 hover:text-primary"
-              id="termly-consent-preferences"
-            >
-              Cookies
-            </a>
-          </div>
-        </div>
-        <span className="text-primary/80">
-          {new Date().getFullYear()} © Leaptech
-        </span>
-      </div>
-    ),
+    text: <FooterMenu />,
   },
   useNextSeoProps() {
     const { asPath } = useRouter();
