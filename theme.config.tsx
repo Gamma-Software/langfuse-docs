@@ -17,45 +17,9 @@ import { BsDiscord } from "react-icons/bs";
 import { GithubMenuBadge } from "./components/GitHubBadge";
 import { ToAppButton } from "./components/ToAppButton";
 import FooterMenu from "./components/footerMenu";
-
-const footerNav = [
-  {
-    name: "Participer à une démo",
-    href: "/schedule-demo",
-  },
-  {
-    name: "Status",
-    href: "https://aiop-uptime.pival.fr/status/services",
-  },
-];
-
-const footerLegalNav = [
-  // { name: "Security", href: "/security" },
-  // { name: "Imprint", href: "/imprint" },
-  {
-    name: "Termes & Conditions",
-    href: "/tnc",
-  },
-  {
-    name: "Politique de confidentialité",
-    href: "/privacy",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
-];
-
-const internationalNav = [
-  {
-    name: "English",
-    href: "/en",
-  },
-  {
-    name: "Français",
-    href: "/",
-  }
-];
+import EditPage from "./components/ui/EditPage";
+import QuestionFeedback from "./components/ui/QuestionFeedback";
+import { useLocalizedMessages } from '@/lib/ParseLang';
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -65,7 +29,13 @@ const config: DocsThemeConfig = {
     { locale: 'fr', text: 'Français' },
   ],
   search: {
-    placeholder: "Search...",
+    placeholder: () => {
+      const messages = useLocalizedMessages();
+      if (!messages) return null;
+      return (
+        messages.common.search
+      )
+    }
   },
   navbar: {
     extraContent: (
@@ -109,10 +79,22 @@ const config: DocsThemeConfig = {
     toggleButton: true,
   },
   editLink: {
-    text: "Edit this page on GitHub",
+    text: () => {
+      const messages = useLocalizedMessages();
+      if (!messages) return null;
+      return (
+        messages.common.edit
+      )
+    }
   },
   feedback: {
-    content	: "Question ? Make us a feedback",
+    content: () => {
+      const messages = useLocalizedMessages();
+      if (!messages) return null;
+      return (
+        messages.common.question
+      )
+    }
   },
   toc: {
     backToTop: true,
@@ -137,6 +119,7 @@ const config: DocsThemeConfig = {
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter();
     const { frontMatter, title: pageTitle } = useConfig();
+
     const url =
       "https://aiop.fr" +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
@@ -212,16 +195,18 @@ const config: DocsThemeConfig = {
   banner: {
     key: "beta-banner",
     dismissible: false,
-    text: (
-      <Link href="/changelog/2024-03-13-beta-phase">
+    text: () => {
+      const messages = useLocalizedMessages();
+      if (!messages) return null;
+      return(<Link href="/changelog/2024-03-13-beta-phase">
         {/* mobile */}
-        <span className="sm:hidden">Phase Bêta →</span>
+        <span className="sm:hidden">{messages.banner}</span>
         {/* desktop */}
         <span className="hidden sm:inline">
-         Phase Bêta →
+         {messages.banner}
         </span>
-      </Link>
-    ),
+      </Link>)
+    }
   },
 };
 

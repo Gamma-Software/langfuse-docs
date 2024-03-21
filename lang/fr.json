@@ -530,6 +530,10 @@
           }
         ]
       }
-    ]
-  }
+    ],
+    "edit": "Editer cette page sur GitHub",
+    "question": "Des questions ? Faites nous un retour",
+    "search": "Rechercher..."
+  },
+  "banner": "Phase Bêta en cours →"
 }

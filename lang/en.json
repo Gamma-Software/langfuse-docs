@@ -503,6 +503,10 @@
           }
         ]
       }
-    ]
-  }
+    ],
+    "edit": "Edit this page on GitHub",
+    "question": "Question ? Make us a feedback",
+    "search": "Search..."
+  },
+  "banner": "Bêta phase in progress →"
 }
