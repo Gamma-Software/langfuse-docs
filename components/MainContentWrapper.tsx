@@ -162,7 +162,7 @@ export const DocsFeedback = () => {
             onClick={() => handleFeedbackSelection("positive")}
             disabled={submitting}
           >
-            <span>Oui</span>
+            <span>{messages.common.yes}</span>
             <ThumbsUp className="h-5 w-5 ml-4 text-green-800" />
           </Button>
           <Button

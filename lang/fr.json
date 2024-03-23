@@ -345,8 +345,7 @@
       "submit": "Faire partie de la liste"
     }
   },
-  "product_update_signup":
-  {
+  "product_update_signup":{
     "title": "Création de compte",
     "description": "Pour être notifié des mises à jour, inscrivez-vous à notre newsletter.",
     "modal":{
@@ -470,6 +469,7 @@
     "account": "Compte"
   },
   "common": {
+    "yes": "Oui",
     "and": "et",
     "documentation": "Documentation",
     "learn_more": "En savoir plus",
