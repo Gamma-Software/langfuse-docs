@@ -10,6 +10,8 @@ import { TbBrandVscode } from "react-icons/tb";
 
 This quick introduction helps you start using Aiop quickly. Feel free to check out the [demo video](/docs/demo) that covers the elements of this page.
 
+You can install Aiop in a local Python environment or with Docker. For a local installation, follow the instructions below. For installation with Docker, refer to this [section](/docs/get-started#docker).
+
 ## Prerequisites
 
 ### Python
@@ -165,16 +167,82 @@ aiop build archi1/model_range1/model1 --apps app1 --envs dev --contexts context1
 ```
 
 <Callout type="info" emoji="✅">
-  Done, you've just generated your first package
-
-!
+  Done, you've just generated your first package !
 </Callout>
 
 You can now see the generated package in the `.build` folder at the root of the playbook.
 
 </Steps>
 
+## Docker
 
+If you prefer to use Docker, you can install it by following the instructions below.
+
+<Steps>
+
+### Install Docker
+
+Install Docker on your machine:
+
+- [Docker](https://docs.docker.com/get-docker/)
+
+### Download the Docker image
+
+Download the aiop Docker image by running the following command:
+
+```bash
+docker pull registry.gitlab.com/aiop/aiop:latest
+```
+
+For a specific version, replace `latest` with the desired version.
+
+```bash
+docker pull registry.gitlab.com/aiop/aiop:0.3.1
+```
+
+For a development version:
+
+```bash
+docker pull registry.gitlab.com/aiop/aiop/dev:latest
+```
+
+### (Recommended / Optional) Rename the image
+
+To simplify the use of the Docker image, you can rename the image by running the following command:
+
+```bash
+docker tag registry.gitlab.com/aiop/aiop:latest aiop
+```
+
+### Run aiop
+
+To run aiop, execute the following command:
+
+```bash
+docker run -it registry.gitlab.com/aiop/aiop:latest
+```
+
+<Callout type="info" emoji="ℹ️">
+  The `-it` option is used to run the container in interactive mode and allocate a pseudo-TTY.
+</Callout>
+
+Or, if you have renamed the image:
+
+```bash
+docker run -it aiop
+```
+
+### Generate your first package
+
+You can now generate your first package by running the following command:
+
+```bash
+docker run -it -v {local_playbook}:/playbook -v {path_to_aiop.yml}:/config/aiop.yml aiop build {build_args}
+```
+
+Where `{local_playbook}` is the path to your playbook on your local machine and `{path_to_aiop.yml}` is the path to your aiop.yml file on your local machine.
+
+</Steps>
 
 ## What's Next?
 

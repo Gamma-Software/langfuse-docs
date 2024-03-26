@@ -10,7 +10,9 @@ import { TbBrandVscode } from "react-icons/tb";
 
 Cette introduction rapide vous aide à commencer à utiliser Aiop rapidement. N’hésitez pas à consulter la [vidéo](/docs/demo) démonstration qui reprend les éléments de cette page.
 
-## Prerequis
+Vous pouvez installer Aiop dans un environnement local Python ou avec Docker. Pour une installation locale, suivez les instructions ci-dessous. Pour une installation avec Docker, consultez cette [section](/docs/get-started#docker).
+
+## Préréquis
 
 ### Python
 
@@ -172,7 +174,75 @@ Vous pouvez maintenant voir le package généré dans le dossier `.build` à la 
 
 </Steps>
 
+## Docker
 
+Si vous préférez utiliser Docker, vous pouvez l’installer en suivant les instructions ci-dessous.
+
+<Steps>
+
+### Installer Docker
+
+Installer Docker sur votre machine:
+
+- [Docker](https://docs.docker.com/get-docker/)
+
+### Téléchargez l’image docker
+
+Téléchargez l’image docker aiop en exécutant la commande suivante:
+
+```bash copy
+docker pull registry.gitlab.com/aiop/aiop:latest
+```
+
+Pour une version spécifique, remplacez `latest` par la version souhaitée.
+
+```bash copy
+docker pull registry.gitlab.com/aiop/aiop:0.3.1
+```
+
+Pour une version en cours de développement:
+
+```bash copy
+docker pull registry.gitlab.com/aiop/aiop/dev:latest
+```
+
+### (Recommandé / optionnel) changer le nom de l’image
+
+Pour simplifier l’utilisation de l’image docker, vous pouvez renommer l’image en exécutant la commande suivante:
+
+```bash copy
+docker tag registry.gitlab.com/aiop/aiop:latest aiop
+```
+
+### Exécuter aiop
+
+Pour exécuter aiop, exécutez la commande suivante:
+
+```bash copy
+docker run -it registry.gitlab.com/aiop/aiop:latest
+```
+
+<Callout type="info" emoji="ℹ️">
+  L'option `-it` est utilisée pour exécuter le conteneur en mode interactif et allouer un pseudo-TTY.
+</Callout>
+
+Ou, si vous avez renommé l’image:
+
+```bash copy
+docker run -it aiop
+```
+
+### Générer son premier package
+
+Vous pouvez maintenant générer votre premier package en exécutant la commande suivante:
+
+```bash copy
+docker run -it -v {local_playbook}:/playbook -v {path_to_aiop.yml}:/config/aiop.yml aiop build {build_args}
+```
+
+Où `{local_playbook}` est le chemin vers votre playbook sur votre machine locale et `{path_to_aiop.yml}` est le chemin vers votre fichier aiop.yml sur votre machine locale.
+
+</Steps>
 
 ## Que faire ensuite ?
 
@@ -187,3 +257,4 @@ Il est maintenant temps de modifier le playbook ainsi que vous l’appropriez. P
     ![Quickstart icon (rocket)](/images/cards/code.svg)
   </Card>
 </Cards>
+import { machine } from "os"
