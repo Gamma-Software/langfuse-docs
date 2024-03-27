@@ -240,7 +240,11 @@ You can now generate your first package by running the following command:
 docker run -it -v {local_playbook}:/playbook -v {path_to_aiop.yml}:/config/aiop.yml aiop build {build_args}
 ```
 
-Where `{local_playbook}` is the path to your playbook on your local machine and `{path_to_aiop.yml}` is the path to your aiop.yml file on your local machine.
+You'll notice 3 arguments:
+
+- `-v {local_playbook}:/playbook`: local_playbook is the path to your playbook on your local machine.
+- `-v {path_to_aiop.yml}:/config/aiop.yml`: path_to_aiop.yml is the path to your aiop.yml file on your local machine.
+- `aiop build {build_args}`: build_args are the package build arguments.
 
 </Steps>
 

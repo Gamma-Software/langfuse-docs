@@ -186,7 +186,7 @@ Installer Docker sur votre machine:
 
 - [Docker](https://docs.docker.com/get-docker/)
 
-### Téléchargez l’image docker
+### Télécharger l’image docker
 
 Téléchargez l’image docker aiop en exécutant la commande suivante:
 
@@ -240,7 +240,11 @@ Vous pouvez maintenant générer votre premier package en exécutant la commande
 docker run -it -v {local_playbook}:/playbook -v {path_to_aiop.yml}:/config/aiop.yml aiop build {build_args}
 ```
 
-Où `{local_playbook}` est le chemin vers votre playbook sur votre machine locale et `{path_to_aiop.yml}` est le chemin vers votre fichier aiop.yml sur votre machine locale.
+Vous observerez 3 arguments:
+
+- `-v {local_playbook}:/playbook`: `local_playbook` est le chemin vers votre playbook sur votre machine locale.
+- `-v {path_to_aiop.yml}:/config/aiop.yml`: `path_to_aiop.yml` est le chemin vers votre fichier aiop.yml sur votre machine locale.
+- `aiop build {build_args}`: `build_args` sont les arguments de génération de package.
 
 </Steps>
 
