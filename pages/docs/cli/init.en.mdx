@@ -17,7 +17,7 @@ aiop init {playbook_path}
 By running the help command, you can see the available options for the `init` command:
 
 ```ansi
-usage: aiop init [-h] [--url URL] playbook_path
+usage: aiop init [-h] [--url URL] [-v] [--init_ref] playbook_path
 
 positional arguments:
   playbook_path  Path to create the playbook and git init it.
@@ -25,6 +25,10 @@ positional arguments:
 options:
   -h, --help     show this help message and exit
   --url URL      Url of the remote repository to push the playbook
+  --init_ref     Force the git initialization of the playbook(default: False)
+  -v, --verbose  Force the verbosity of the logs to DEBUG. Thus overriding the verbosity set in the configuration file.
 ```
 
 The `--url` option is used to specify the URL of the remote repository where you want to push the project. If you specify this option, the project will be initialized with a git repository and pushed to the remote repository. This can be [Github](https://github.com), [Gitlab](https://gitlab.com), [Bitbucket](https://bitbucket.org/), or any other git repository.
+
+The `--init_ref` option is used to force the initialization of the git repository. By default, the git repository is initialized only if the directory is not already a git repository.

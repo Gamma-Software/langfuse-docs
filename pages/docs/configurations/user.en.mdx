@@ -32,9 +32,8 @@ default_package_path: {absolute or relative path to playbook root}
 download_retries: {numeric value}
 plugin_config: {specific plugin configuration dictionary}
 logs:
-  level: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|DISABLED}
-  output: {stdout|file}
-  pathdir: {absolute path}
+  stdout: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|NOTSET|DISABLED}
+  file: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|NOTSET|DISABLED}
 repositories:
   - instance: {instance name}
     username: {username}
@@ -59,9 +58,8 @@ To customize the application's behavior, simply open and modify the configuratio
 | download_retries | int | Number of attempts to download a remote resource | > 0 | 3 |
 | plugin_config | dict | Plugin-specific configurations. Refer to plugin documentation for more information. [Contact support](/support) for more information | Dictionary | |
 | logs | dict | Logs configuration | Dictionary |  |
-| logs.level | str | Log level | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, DISABLED | DEBUG |
-| logs.output | str | Log output | stdout, file | stdout |
-| logs.pathdir | str | Absolute path to log storage directory | Absolute path | `~/.aiop/logs` |
+| logs.stdout | str | Log level displayed in the terminal | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET, DISABLED | DEBUG |
+| logs.file | str | Log level stored in the `~/.aiop/logs` folder | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET, DISABLED | DEBUG |
 | repositories | list | List of remote repositories | List of dictionaries | |
 | repositories.instance | str | Instance name. Used to identify the repository | | |
 | repositories.username | str | Username for repository authentication | | |

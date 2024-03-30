@@ -1,5 +1,6 @@
 {
   "user": "User",
   "playbook": "Playbook",
-  "inventory": "Inventory"
+  "inventory": "Inventory",
+  "packages": "Packages"
 }

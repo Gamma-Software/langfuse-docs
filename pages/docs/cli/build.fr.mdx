@@ -1,8 +1,11 @@
 ---
-description: La commande de construction est utilisée pour construire un package en fonction de la cible système et des propriétés de l'utilisateur.
+description: Les commandes de construction sont utilisées pour construire des packages en fonction de la cible système et des propriétés de l'utilisateur.
 ---
+import { Callout } from "nextra-theme-docs";
 
-# Commande `build`
+# Commandes de construction
+
+## Commande `build`
 
 La commande de `build` permet de construire un package basé sur la cible système de l'utilisateur et ses propriétés. Il y a également des options que nous allons détailler.
 
@@ -16,37 +19,40 @@ aiop build {system_target} {params}
 En lançant la commande d'aide voici les options disponibles:
 
 ```ansi
-usage: aiop build [-h] [--destination_path DESTINATION_PATH] [--force] [--no_caching] [--no_verify]
-                  [--retries RETRIES] [--zip_pack] [--goto_pack] [--init_ref] [--upload UPLOAD]
+usage: aiop build [-h] --args ARGS [ARGS ...] [--destination_path DESTINATION_PATH] [--force] [--zip_pack] [--goto_pack]
+                  [--upload UPLOAD] [--no_verify] [--retries RETRIES] [--no_caching] [-v] [-sll STDOUT_LOG_LEVEL] [-fll FILE_LOG_LEVEL] [-hp]
                   system_target
 
-Build a package from a playbook. Be aware that the current positionnal arguments are dynamic and corresponds to
-the compatibility arguments defined in the playbook.In order to build a package, you need to be at the root
-folder of the playbook.
+Build a package from a playbook. Be aware that the current positionnal arguments are dynamic and corresponds to the compatibility arguments defined in the
+playbook.In order to build a package, you need to be at the root folder of the playbook.
 
 positional arguments:
   system_target         System target for which to create a package
 
 options:
   -h, --help            show this help message and exit
+  --compat_args ARGS [ARGS ...]
+                      List of compatibility arguments.
   --destination_path DESTINATION_PATH
-                        Path to destination. By default it will be generated in the root of the playbook_path
-                        in the .build folder
+                        Path to destination. By default it will be generated in the root of the playbook_path in the .build folder
   --force               Use destination_path even if it is not empty
-  --no_caching          The binaries are copied to the destination folder (not from the cache)
-  --no_verify           Do not verify the Artifact integrity. It will not betaken into account if
-                        `--no_caching` is not set or the Artifact is not in cache. (default: False, means
-                        verifythe artifact integrity)
-  --retries RETRIES     Number of retries when downloading an artifact.One retry means that the download was
-                        not successful because of an invalid file integrity (checksum).This parameter will
-                        override [download_retries] in the user configuration file. - default: 3
   --zip_pack            Zip the built package (default: False)
   --goto_pack           Open in the explorer the newly created package (default: False)
-  --upload UPLOAD       Upload the generated installer to a repository (default: ). Requires ' --installer'
-                        option
+  --upload UPLOAD       Upload the generated installer to a repository (default: ). Requires ' --installer' option
+  --no_verify           Do not verify the Artifact integrity. It will not betaken into account if `--no_caching` is not set or the Artifact is not in cache.
+                        (default: False, means verifythe artifact integrity)
+  --retries RETRIES     Number of retries when downloading an artifact.One retry means that the download was not successful because of an invalid file integrity
+                        (checksum).This parameter will override [download_retries] in the user configuration file. - default: 3
+  --no_caching          The binaries are copied to the destination folder (not from the cache)
+  -v, --verbose         Force the verbosity of the logs to DEBUG. Thus overriding the verbosity set in the configuration file.
+  -sll STDOUT_LOG_LEVEL, --stdout_log_level STDOUT_LOG_LEVEL
+                        Sets and overrides the stdoutlog level of the logs.
+  -fll FILE_LOG_LEVEL, --file_log_level FILE_LOG_LEVEL
+                        Sets and overrides the file_log level of the logs.
+  -hp, --hide_progress  Hide the progress bar.
 ```
 
-## Options
+### Options
 
 | Option | Description | Défaut |
 | --- | --- | --- |
@@ -58,3 +64,52 @@ options:
 | `zip_pack` | Zip le package généré | `False`: Ne le zip pas |
 | `goto_pack` | Ouvre l'explorateur de fichier sur le package généré | `False`: Ne l'ouvre pas |
 | `upload` | Dépose le package dans un dépôt distante | `None`: Ne l'envoie pas dans le dépôt distant |
+| `verbose` | Force la verbosité des logs à `DEBUG` à la fois pour la console et les fichiers de log. Les paramètres de l’utilisateur ne seront pas pris en compte. | `None`: Ne force pas |
+| `stdout_log_level` | Force la verbosité des logs dans la console à un niveau. Les paramètres de l’utilisateur ne seront pas pris en compte. | `None`: Ne force pas |
+| `file_log_level` | Force la verbosité des logs dans les fichiers de log à un niveau. Les paramètres de l’utilisateur ne seront pas pris en compte | `None`: Ne force pas |
+| `hide_progress` | Cache l’encart de progression de la génération | `None`: La progression est affichée par défaut |
+
+<Callout type="info" emoji="ℹ️">
+  Si vous combinez dans la même commande les options `verbose` et `stdout_log_level` ou `file_log_level`, les deux dernières ne seront pas pris en compte et les logs seront affiché à un niveau maximum de verbosité.
+
+  - Par exemple, si vous utilisez `aiop build --verbose --stdout_log_level INFO`, les logs seront affichés à un niveau `DEBUG` et non `INFO`.
+  - Autre exemple, si vous souhaitez désactiver les logs dans la console pour ce build mais que vous utilisez l’option `--verbose`: `aiop build --verbose --stdout_log_level DISABLED` les logs seront quand même affichés à un niveau `DEBUG`.
+</Callout>
+
+## Commande `build_all`
+
+La commande `build_all` est utilisée pour construire tous les packages du playbook. La commande a les options suivantes :
+
+```bash
+aiop build_all [--threads THREADS]
+```
+
+Elle lira le fichier `packages.yml` du dossier de configuration du playbook `.aiop` et construira tous les packages définis dans le fichier. Veuillez vous référer à la [documentation](/docs/configurations/packages) pour apprendre comment configurer le fichier `packages.yml`.
+
+Les packages seront générés en parallèle en utilisant des threads pour accélérer le processus. Le nombre de threads peut être défini en utilisant l'option `--threads`. Après la construction de tous les packages, un résumé sera affiché dans la console pour afficher les packages construits et ceux qui ont échoué.
+
+
+<Callout type="info" emoji="ℹ️">
+  La commande `build_all` désactivera les logs dans la console pour éviter la surcharge de la console. Les logs seront toujours enregistrés dans les fichiers de log.
+</Callout>
+
+
+Lors de l'exécution de la commande d'aide, voici les options disponibles :
+
+```ansi
+usage: aiop build_all [-h] [--threads THREADS]
+
+Build all the package from the playbook. You need first to have parametrizedthe .aiop/packages.yml. See the documentation https://aiop.io/docs/build_all to know how
+to do it.
+
+options:
+  -h, --help            show this help message and exit
+  --threads THREADS, -t THREADS
+                        Number of threads. Determines the number of parallel package build. Default is 4.
+```
+
+### Options
+
+| Option | Description | Valeur par défaut |
+| --- | --- | --- |
+| `threads` | Nombre de threads à utiliser pour la construction de packages en parallèle | 4 |
