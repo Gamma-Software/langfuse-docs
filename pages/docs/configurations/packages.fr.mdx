@@ -46,6 +46,6 @@ Les points d’attention à avoir dans le fichier de configuration des packages 
 
 - Les arguments suivants ne sont pas autorisés dans le fichier de configuration des packages:[`verbose`, `sll`, `stdout_log_level`, `fll`, `file_log_level`, `hp`, `hide_progress`]
 - Les logs dans la console de la génération des packages sont désactivés par défaut. Cependant les logs sont toujours écrits dans les fichiers de logs.
-- L’argument
+- L’argument `destination_path` est obligatoire pour chaque package.
 - Par défaut la génération des packages sera forcée et écrasera des packages précédement générés. C’est à dire que l’option `force` est activée par défaut.
 - N’utilisez pas les mêmes chemin de destination pour plusieurs packages. Cela pourrait écraser un package en cours de génération.

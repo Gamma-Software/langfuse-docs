@@ -46,5 +46,6 @@ The key points to consider in the packages configuration file are as follows:
 
 - The following arguments are not allowed in the packages configuration file: [`verbose`, `sll`, `stdout_log_level`, `fll`, `file_log_level`, `hp`, `hide_progress`]
 - Console logs for package generation are disabled by default. However, logs are still written to log files.
+- The `destination_path` argument is mandatory for all packages.
 - By default, package generation will be forced and will overwrite previously generated packages. This means that the `force` option is enabled by default.
 - Do not use the same destination path for multiple packages. This could overwrite a package being generated.
