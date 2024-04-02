@@ -19,10 +19,16 @@ aiop lint
 Running the help command displays the available options:
 
 ```ansi
-usage: aiop lint [-h]
+usage: aiop lint [-h] [-v] [-sll STDOUT_LOG_LEVEL] [-fll FILE_LOG_LEVEL] [-hp]
 
 options:
-  -h, --help  show this help message and exit
+  -h, --help            show this help message and exit
+  -v, --verbose         Force the verbosity of the logs to DEBUG. Thus overriding the verbosity set in the configuration file.
+  -sll STDOUT_LOG_LEVEL, --stdout_log_level STDOUT_LOG_LEVEL
+                        Sets and overrides the stdoutlog level of the logs.
+  -fll FILE_LOG_LEVEL, --file_log_level FILE_LOG_LEVEL
+                        Sets and overrides the file_log level of the logs.
+  -hp, --hide_progress  Hide the progress bar.
 ```
 
 ## `lint_target` Command
@@ -40,13 +46,27 @@ aiop lint_target {system_target} {params}
 Running the help command displays the available options:
 
 ```ansi
-usage: aiop lint_target [-h] [--mode MODE] system_target [apps ...] context
+usage: aiop lint_target [-h] --compat_args ARGS [ARGS ...] [--no_verify] [--retries RETRIES] [--no_caching] [-v] [-sll STDOUT_LOG_LEVEL]
+                        [-fll FILE_LOG_LEVEL] [-hp]
+                        system_target
 
 positional arguments:
-  system_target  System target for which to validate the playbook
-  params         Compatibility parameters
+  system_target         System target for which to create a package
 
 options:
-  -h, --help     show this help message and exit
-  --mode MODE    Mode of the created output (default: dev)
+  -h, --help            show this help message and exit
+  --compat_args ARGS [ARGS ...]
+                      List of compatibility arguments for the target system
+  --no_verify           Do not verify the Artifact integrity. It will not betaken into account if `--no_caching` is not set or the Artifact is not in cache.
+                        (default: False, means verifythe artifact integrity)
+  --retries RETRIES     Number of retries when downloading an artifact.One retry means that the download was not successful because of an invalid file integrity
+                        (checksum).This parameter will override [download_retries] in the user configuration file. - default: 3
+  --no_caching          The binaries are copied to the destination folder (not from the cache)
+  -v, --verbose         Force the verbosity of the logs to DEBUG. Thus overriding the verbosity set in the configuration file.
+  -sll STDOUT_LOG_LEVEL, --stdout_log_level STDOUT_LOG_LEVEL
+                        Sets and overrides the stdoutlog level of the logs.
+  -fll FILE_LOG_LEVEL, --file_log_level FILE_LOG_LEVEL
+                        Sets and overrides the file_log level of the logs.
+  -hp, --hide_progress  Hide the progress bar.
 ```
+

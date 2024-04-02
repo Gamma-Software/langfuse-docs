@@ -1,0 +1,51 @@
+---
+description: Ce fichier optionnel permet de configurer tous les packages que vous souhaitez générez. Il est utilisé uniquement par la commande `aiop build_all` pour générer tous les packages en une fois.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Fichier de configuration des packages
+
+Le fichier de configuration des packages est un fichier optionnel qui permet de configurer tous les packages que vous souhaitez générer. Il est utilisé __uniquement__ par la commande `aiop build_all` pour générer tous les packages en une fois [[En savoir plus](/docs/cli/build#commande-build_all)].
+
+## Configuration
+
+Le fichier de configuration des packages est situé dans le répertoire relatif au playbook:
+- Unix: `<racine_playbook>/.aiop/packages.yaml`
+- Windows: `<racine_playbook>\.aiop\packages.yaml`
+
+> `<racine_playbook>` est le répertoire racine du playbook.
+
+Voici un exemple de fichier de configuration des packages:
+
+```yaml filename=".aiop/packages.yaml"
+packages:
+  - target_system: archi1/model_range1/model1
+    compat_arg: [arg1]
+    destination_path: .build_test
+  - target_system: archi1/model_range1/model2
+    compat_arg: [arg1]
+    destination_path: .build_test2
+```
+
+Vous constaterez ici que nous souhaitons générer deux packages dont les cibles diffères pour les mêmes arguments.
+
+## Structure du fichier de configuration
+
+Listez les arguments de vos packages dans le champs `packages`. Si nous reprenons l’exemple au dessus:
+
+- `packages` est une liste de packages à générer. Chaque package doit avoir les champs suivants:
+- `target_system` est le système cible du package.
+- `compat_arg` est une liste d’arguments de construction du package.
+- `destination_path` est le chemin relatif du répertoire de destination du package.
+
+Vous constaterez que les arguments sont les mêmes que ceux de la commande `aiop build` [[En savoir plus](/docs/cli/build#commande-build)]. En effet, vous pouvez utiliser les mêmes arguments pour générer un package avec la commande `aiop build` ou avec le fichier de configuration des packages.
+
+## ⚠️ Notes importantes
+
+Les points d’attention à avoir dans le fichier de configuration des packages sont les suivants:
+
+- Les arguments suivants ne sont pas autorisés dans le fichier de configuration des packages:[`verbose`, `sll`, `stdout_log_level`, `fll`, `file_log_level`, `hp`, `hide_progress`]
+- Les logs dans la console de la génération des packages sont désactivés par défaut. Cependant les logs sont toujours écrits dans les fichiers de logs.
+- L’argument `destination_path` est obligatoire pour chaque package.
+- Par défaut la génération des packages sera forcée et écrasera des packages précédement générés. C’est à dire que l’option `force` est activée par défaut.
+- N’utilisez pas les mêmes chemin de destination pour plusieurs packages. Cela pourrait écraser un package en cours de génération.

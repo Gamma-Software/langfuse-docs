@@ -1,0 +1,51 @@
+---
+description: This optional file allows you to configure all the packages you want to generate. It is only used by the `aiop build_all` command to generate all packages at once.
+---
+import { Callout } from "nextra-theme-docs";
+
+# Packages Configuration File
+
+The packages configuration file is an optional file that allows you to configure all the packages you want to generate. It is used __exclusively__ by the `aiop build_all` command to generate all packages at once [[Learn more](/docs/cli/build#build_all-command)].
+
+## Configuration
+
+The packages configuration file is located in the playbook-relative directory:
+- Unix: `<playbook_root>/.aiop/packages.yaml`
+- Windows: `<playbook_root>\.aiop\packages.yaml`
+
+> `<playbook_root>` is the root directory of the playbook.
+
+Here's an example of a packages configuration file:
+
+```yaml filename=".aiop/packages.yaml"
+packages:
+  - target_system: archi1/model_range1/model1
+    compat_arg: [arg1]
+    destination_path: .build_test
+  - target_system: archi1/model_range1/model2
+    compat_arg: [arg1]
+    destination_path: .build_test2
+```
+
+Here, we want to generate two packages with different targets for the same arguments.
+
+## File Configuration Structure
+
+List the arguments of your packages in the `packages` field. If we refer back to the example above:
+
+- `packages` is a list of packages to generate. Each package must have the following fields:
+- `target_system` is the target system of the package.
+- `compat_arg` is a list of package build arguments.
+- `destination_path` is the relative path of the package's destination directory.
+
+You'll notice that the arguments are the same as those of the `aiop build` command [[Learn more](/docs/cli/build#build-command)]. Indeed, you can use the same arguments to generate a package with the `aiop build` command or with the packages configuration file.
+
+## ⚠️ Important Notes
+
+The key points to consider in the packages configuration file are as follows:
+
+- The following arguments are not allowed in the packages configuration file: [`verbose`, `sll`, `stdout_log_level`, `fll`, `file_log_level`, `hp`, `hide_progress`]
+- Console logs for package generation are disabled by default. However, logs are still written to log files.
+- The `destination_path` argument is mandatory for all packages.
+- By default, package generation will be forced and will overwrite previously generated packages. This means that the `force` option is enabled by default.
+- Do not use the same destination path for multiple packages. This could overwrite a package being generated.
