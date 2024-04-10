@@ -9,4 +9,7 @@
     "Quickstart"
   ],
   "editor.wordWrap": "on",
+  "python.testing.pytestEnabled": false,
+  "python.analysis.enablePytestSupport": false,
+  "python.testing.promptToConfigure": false,
 }
