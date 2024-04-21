@@ -3,6 +3,7 @@
   "remote": "Ressource distante",
   "zip": "Archive",
   "combine": "Combinations de ressources",
+  "generate_file": "Générer un fichier pendant l'exécution",
   "parse-to-pdf": "Conversion PDF",
   "multi": "Compatibilité multiple",
   "executables": "Exécutables",

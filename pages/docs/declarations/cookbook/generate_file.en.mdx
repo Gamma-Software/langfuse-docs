@@ -1,0 +1,116 @@
+---
+description: >-
+  Learn how to generate files dynamically during the build phase. This can be useful for generating configuration files, data files, specific code files based on your declaration. This allows generating multiple destination files from a source based on the resource declaration.
+---
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Generating Files Dynamically
+
+AIOP allows generating files dynamically during the build phase. This can be useful for generating configuration files, data files, specific code files based on your declaration.
+
+The principle is to create a `template` with predefined tags as well as custom tags that will be replaced by values defined in the resource declaration. To do this, you must use the [FreeMarker template format](https://freemarker.apache.org/). AIOP relies on the tool [`FMPP`](docs/vocabulary#fmpp) to generate files dynamically.
+
+## Conditions
+
+To use this feature, you must install the dependency `fmpp` on your machine (see [installation](#installation)). To generate the file dynamically, you must name the resource file with the extension [`.ftl`](docs/vocabulary#ftl).
+
+## Declaration
+
+For example, you can declare a file template that will generate a different `readme` for each system and client.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="readme.ftl" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml {7-8, 12-13} filename="resources/.aml"
+- source: readme.ftl
+  destination: readme.md
+  compatibility:
+    - archi1/model1:
+        apps: [app]
+        clients: [client1, client2]
+      fmpp_data:
+        version: 1.0
+    - archi1/model2:
+        apps: [app]
+        clients: [client1, client2]
+      fmpp_data:
+        version: 2.0
+```
+
+Here, the file `readme.ftl` is a template that will be used to generate the file `readme.md`. We have declared the resource for two specific system models. They both contain additional data to use in the FreeMarker template with the additional field `fmpp_data`. __This field is optional__. Let's take an example content of the `readme.ftl` file:
+
+```ftl filename="readme.ftl"
+# README
+Version: ${version}
+Target: ${system_target.name}
+<#if system_target.args.clients=="client1">
+<#assign client=system_target.args.clients>
+
+This message is for ${client?cap_first}... keep it secret...
+</#if>
+
+Here's a completely normal readme...
+```
+
+You'll notice that there are FreeMarker tags `${version}` and `${system_target...}`. The `${version}` tag is a custom tag specific to a given system. However, the `${system_target...}` tag is a predefined tag by AIOP. It allows retrieving values from the resource declaration (the list of predefined values is available [here](#predifined)).
+
+In this case, if we request to generate a package for the model `archi1/model1` with the client `client1`, the generated `readme.md` file will be:
+
+```md filename="readme.md"
+# README
+Version: 1.0
+Target: archi1/model1
+
+This message is for Client1... keep it secret...
+
+Here's a completely normal readme...
+```
+
+However, if we request to generate a package for the model `archi1/model2` with the client `client1`, the generated `readme.md` file will be:
+
+```md filename="readme.md"
+# README
+Version: 2.0
+Target: archi1/model2
+
+This message is for Client1... keep it secret...
+
+Here's a completely normal readme...
+```
+
+Continuing with the comparison, if we request to generate a package for the model `archi1/model2` with the client `client2`, the generated `readme.md` file will be:
+
+```md filename="readme.md"
+# README
+Version: 2.0
+Target: archi1/model2
+
+Here's a completely normal readme...
+```
+
+## Predefined Data [#predifined]
+
+Here's the list of predefined values by AIOP that you can use in your FreeMarker templates:
+
+- `system_target.name`: the name of the target system in the format `x/x/x` (e.g., `archi1/model1`)
+- `system_target.args`: the arguments of the target system. In our example, `system_target.args.clients` is the list of clients of the target system.
+
+## Going Further
+
+For more information on FreeMarker tags, you can consult the [official documentation](https://freemarker.apache.org/docs/dgui_template_exp.html). You can also check the FreeMarker template language reference [here](https://freemarker.apache.org/docs/ref.html).
