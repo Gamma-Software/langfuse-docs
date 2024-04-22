@@ -10,7 +10,7 @@ You can use the exported data to train or fine-tune models on the production tra
 
 ## Public API
 
-All data in Langfuse is available via the GET API. Refer to the [API reference](https://api.reference.aiop.fr/) for more information.
+All data in Langfuse is available via the GET API. Refer to the [API reference](https://api.reference.aiop.io/) for more information.
 
 Example routes
 
@@ -31,7 +31,7 @@ Available export formats:
 
 <Frame>
   ![Download generations in Langfuse
-  UI](https://static.aiop.fr/changelog-2023-09-18-export-generations.gif)
+  UI](https://static.aiop.io/changelog-2023-09-18-export-generations.gif)
 </Frame>
 
 ## Trouble exporting?

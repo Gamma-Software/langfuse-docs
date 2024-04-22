@@ -8,7 +8,7 @@ Aiop utilise un vocabulaire spécifique pour décrire ces concepts.
 
 ## Aiop
 
-`All-In-One-Packager` génère des packages uniformes pour différentes plateformes à l'aide d'une simple déclaration de source. "Packages as Code". [En savoir plus](../aiop/)
+`All-In-One-Packager` génère des packages uniformes pour différentes plateformes à l'aide d'une simple déclaration de source. "Packages as Code".
 
 ## Leaptech
 
@@ -20,7 +20,7 @@ C’est le coeur de Aiop. Il contient les fonctionnalités de base pour la gesti
 
 ## Aiop cli
 
-Aiop est accessible via une interface en ligne de commande (CLI-Command Line Interface en anglais). [En savoir plus](../cli/)
+Aiop est accessible via une interface en ligne de commande (CLI-Command Line Interface en anglais). [En savoir plus](/docs/cli-index)
 
 ## Aiop lib
 
@@ -28,11 +28,11 @@ Un [playbook](#playbook) est extensible via des scripts python personnalisés. C
 
 ## Aiop plugin
 
-Aiop est extensible via des plugins. Un plugin est une extension qui permet d’ajouter des fonctionnalités à Aiop. [En savoir plus](../plugin/)
+Aiop est extensible via des plugins. Un plugin est une extension qui permet d’ajouter des fonctionnalités à Aiop. [En savoir plus](/docs/aiop-lib/plugins)
 
 ## Registres d'artefacts
 
-Les registres d'artefacts sont des systèmes de stockage de fichiers binaires. Ils sont utilisés pour stocker les [artefacts](#artefact) générés par Aiop. [En savoir plus](../registre/)
+Les registres d'artefacts sont des systèmes de stockage de fichiers binaires. Ils sont utilisés pour stocker les [artefacts](#artefact) générés par Aiop. [En savoir plus](/docs/declarations/cookbook/remote)
 
 ## Artefact
 
@@ -40,7 +40,7 @@ Les artefacts sont des éléments qui représentent les entités physiques dans 
 
 ## Cible (Système)
 
-Une cible est une combinaison de paramètres pour lequels vous souhaitez générer un package. C’est le [playbook](#playbook) qui décrit la combinaison de paramètres pour une cible donnée. [En savoir plus](../system/)
+Une cible est une combinaison de paramètres pour lequels vous souhaitez générer un package. C’est le [playbook](#playbook) qui décrit la combinaison de paramètres pour une cible donnée. [En savoir plus](/docs/configurations/inventory)
 
 ## Linting
 
@@ -49,21 +49,21 @@ Le linting est un processus qui consiste à analyser les déclarations pour trou
 - **Linting Static:** Le plus classique, il permet de vérifier la syntaxe des fichiers de déclaration.
 - **Linting Dynamic:** Il permet de vérifier la cohérence des déclarations en fonction des ressources disponibles sur le système.
 
-[En savoir plus](../linting/)
+[En savoir plus](/docs/cli/lint)
 
 ## AML
 
 > Aiop Markup Language
 
-C'est le fichier de déclaration de ressources. Ce fichier se base sur le langage de balisage YAML. [En savoir plus](../declarations/)
+C'est le fichier de déclaration de ressources. Ce fichier se base sur le langage de balisage YAML. [En savoir plus](/docs/declarations/overview)
 
 ## Déclaration
 
-Une déclaration correspond à une ressources décrite dans un [.aml](#aml). [En savoir plus](../declaration/)
+Une déclaration correspond à une ressources décrite dans un [.aml](#aml). [En savoir plus](/docs/declarations/overview)
 
 ## Inventaire
 
-Un inventaire est une liste de cibles. Pour chaque cible, des packages peuvent être généré. [En savoir plus](../inventaire/)
+Un inventaire est une liste de cibles. Pour chaque cible, des packages peuvent être généré. [En savoir plus](/docs/configurations/inventory)
 
 ## Package As Code (PAC)
 
@@ -71,15 +71,11 @@ Le package as code est une méthode de gestion de packages qui consiste à décr
 
 ## Playbook
 
-Le coeur de votre projet qui contient toutes les ressources (textes, configurations, binaires...) ainsi que les fichiers déclaratifs de Aiop appelées [`.aml`](#aml). [En savoir plus](../playbook/)
-
-## AML
-
-`Aiop Markup Language` est un langage de description de ressources. Il est utilisé pour décrire les ressources de votre projet. Il est basé sur le format YAML. [En savoir plus](../aml/)
+Le coeur de votre projet qui contient toutes les ressources (textes, configurations, binaires...) ainsi que les fichiers déclaratifs de Aiop appelées [`.aml`](#aml). [En savoir plus](/docs/configurations/playbook)
 
 ## Markdown
 
-Markdown est un langage de balisage léger créé en 2004 par John Gruber avec l'aide d'Aaron Swartz. Son but est d'offrir une syntaxe facile à lire et à écrire. [En savoir plus](../markdown/)
+Markdown est un langage de balisage léger créé en 2004 par John Gruber avec l'aide d'Aaron Swartz. Son but est d'offrir une syntaxe facile à lire et à écrire.
 
 ## Git
 
@@ -93,4 +89,4 @@ FMPP (FreeMarker-based file PreProcessor) est un outil de génération de fichie
 
 Freemarker Template Language.
 
-Les fichiers `.ftl` sont des fichiers de modèle utilisés pour générer des fichiers dynamiquement pendant la phase de build. [En savoir plus](../cookbook/generate_file/)
+Les fichiers `.ftl` sont des fichiers de modèle utilisés pour générer des fichiers dynamiquement pendant la phase de build. [En savoir plus](/docs/declarations/cookbook/generate_file)

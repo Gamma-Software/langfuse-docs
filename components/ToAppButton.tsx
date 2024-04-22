@@ -8,11 +8,11 @@ export const ToAppButton = () => {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
       Promise.all([
-        fetch("https://us.cloud.aiop.fr/api/auth/session", {
+        fetch("https://us.cloud.aiop.io/api/auth/session", {
           credentials: "include",
           mode: "cors",
         }),
-        fetch("https://cloud.aiop.fr/api/auth/session", {
+        fetch("https://cloud.aiop.io/api/auth/session", {
           credentials: "include",
           mode: "cors",
         }),
@@ -34,8 +34,8 @@ export const ToAppButton = () => {
       <Link
         href={
           //signedIn === "US"
-          //  ? "https://us.cloud.aiop.fr"
-          //  //: "https://cloud.aiop.fr"
+          //  ? "https://us.cloud.aiop.io"
+          //  //: "https://cloud.aiop.io"
           //  //: "/sign-up"
           //  : "/waiting-list"
           "/waiting-list"
