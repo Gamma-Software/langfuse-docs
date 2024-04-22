@@ -31,6 +31,7 @@ check_update: {true|false}
 default_package_path: {chemin absolu ou relatif à la racine du playbook}
 download_retries: {valeur numérique}
 plugin_config: {dictionnaire de configuration spécifique à un plugin}
+fmpp_bin_filepath: {chemin vers le binaire FMPP}
 logs:
   stdout: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|NOTSET|DISABLED}
   file: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|NOTSET|DISABLED}
@@ -57,6 +58,7 @@ Pour personnaliser le comportement de l’application, il suffit d’ouvrir et d
 | default_package_path | str | Chemin par défaut ou stocker les packages générés | Chemin absolu ou relatif à la racine du playbook | `~/.aiop/packages` |
 | download_retries | int | Nombre de tentatives pour télécharger une ressource distante | > 0 | 3 |
 | plugin_config | dict | Configurations spécifique aux plugins. Se fier à la documentation du plugin pour plus d’informations. [Contacter le support](/contact) pour plus d’informations | Dictionnaire | |
+| fmpp_bin_filepath | string | (Optionel) Chemin vers la dépendance FMPP (voir comment l'installer [ici](docs/even-more/install_dependencies)) | regex d'un chemin au format unix | |
 | logs | dict | Configuration des logs | Dictionnaire |  |
 | logs.stdout | str | Niveau de log affichés dans la console | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET, DISABLED | DEBUG |
 | logs.file | str | Niveau de log affichés dans les logs `~/.aiop/logs` | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET, DISABLED | DEBUG |

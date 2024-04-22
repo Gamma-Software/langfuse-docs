@@ -31,6 +31,7 @@ check_update: {true|false}
 default_package_path: {absolute or relative path to playbook root}
 download_retries: {numeric value}
 plugin_config: {specific plugin configuration dictionary}
+fmpp_bin_filepath: {path to FMPP binary}
 logs:
   stdout: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|NOTSET|DISABLED}
   file: {CRITICAL|FATAL|ERROR|WARNING|WARN|INFO|DEBUG|NOTSET|DISABLED}
@@ -57,6 +58,7 @@ To customize the application's behavior, simply open and modify the configuratio
 | default_package_path | str | Default path to store generated packages | Absolute or relative path to playbook root | `~/.aiop/packages` |
 | download_retries | int | Number of attempts to download a remote resource | > 0 | 3 |
 | plugin_config | dict | Plugin-specific configurations. Refer to plugin documentation for more information. [Contact support](/support) for more information | Dictionary | |
+| fmpp_bin_filepath | string | (Optionnal) Filepath to FMPP dependency (see how to install [here](docs/even-more/install_dependencies)) | filepath regex unix formated | |
 | logs | dict | Logs configuration | Dictionary |  |
 | logs.stdout | str | Log level displayed in the terminal | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET, DISABLED | DEBUG |
 | logs.file | str | Log level stored in the `~/.aiop/logs` folder | CRITICAL, FATAL, ERROR, WARNING, WARN, INFO, DEBUG, NOTSET, DISABLED | DEBUG |

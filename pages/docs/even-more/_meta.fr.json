@@ -1,5 +1,10 @@
 {
     "uninstall": "Desinstaller Aiop",
+    "install_dependencies": "Install les dépendances",
+    "freemarker_template": {
+      "title": "FreeMarker Templating ↗",
+      "href": "https://freemarker.apache.org/"
+    },
     "roadmap": {
       "title": "Feuille de route ↗",
       "href": "/roadmap"
