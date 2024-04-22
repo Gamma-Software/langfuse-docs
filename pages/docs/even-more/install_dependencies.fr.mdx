@@ -1,0 +1,37 @@
+---
+description: Ce guide vous aidera à installer les dépendances d'Aiop sur votre machine.
+---
+
+# Installation des dépendances
+
+À ce jour, Aiop nécessite la dépendance FreeMarker Pre Processor pour fonctionner au mieux. C'est facultatif mais sinon, il ne pourra pas générer de fichiers. Ce guide vous aidera à installer les dépendances d'Aiop sur votre machine.
+
+C'est un processus simple, il vous suffit d'exécuter la commande suivante :
+
+```bash
+aiop_install dep
+```
+
+Cela installera [`FMPP`](docs/vocabulary#fmpp) sur votre machine ainsi que son JDK requis (OpenJDK sera installé). Sur macOS, il installera également `brew` s'il n'est pas déjà installé.
+
+Pour l'instant, cela a été testé sur Linux aarch64 et MacOS arm64. Si l'installation échoue sur votre machine, vous pouvez l'installer manuellement (voir la section suivante).
+
+## Désinstallation manuelle
+
+Si votre machine n'est pas prise en charge par l'installation automatique, vous pouvez l'installer manuellement.
+
+### Installer FMPP
+
+Vous pouvez télécharger la dernière version de FMPP depuis le [site officiel](https://fmpp.sourceforge.net/#sect4). Une fois téléchargé, vous pouvez l'extraire et ajouter le dossier `bin` à votre `PATH`.
+
+Une fois que c'est installé vous devez mettre à jour votre configuration utilisateur `~/.aiop/aiop.yml` pour ajouter ce qui suit :
+
+```yaml
+fmpp_bin_filepath: <fmpp_path>
+```
+
+Où `<fmpp_path>` est le chemin vers le binaire FMPP, par exemple `/usr/local/bin/fmpp/bin/fmpp`.
+
+### Installer JDK
+
+FMPP nécessite un JDK pour fonctionner. Vous pouvez télécharger la dernière version d'OpenJDK depuis le [site officiel](https://openjdk.org/install/). Une fois téléchargé, vous pouvez l'extraire et ajouter le dossier `bin` à votre `PATH`.

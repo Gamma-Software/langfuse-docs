@@ -7,9 +7,11 @@ import { Code, MessagesSquare } from "lucide-react";
 import { HomeSection } from "./components/HomeSection";
 import { Header } from "../Header";
 import { SiPython } from "react-icons/si";
+import { BsThreeDots } from "react-icons/bs";
 import { FaFilePdf } from "react-icons/fa";
 import ArtifactoryLogo from "./img/artifactory.png";
 import NexusLogo from "./img/nexus.webp";
+import FreemarkerLogo from "./img/freemarker.png";
 import AiopLogo from "public/logo_180.png";
 import { useLocalizedMessages } from '@/lib/ParseLang';
 
@@ -42,9 +44,11 @@ export function Integrations () {
   const containerRef = useRef<HTMLDivElement>(null);
   const inPythonRef = useRef<HTMLDivElement>(null);
   const inTypescriptRef = useRef<HTMLDivElement>(null);
+  const inFreemarkerRef = useRef<HTMLDivElement>(null);
   const inOpenAiRef = useRef<HTMLDivElement>(null);
   const inLangchainRef = useRef<HTMLDivElement>(null);
   const inApiRef = useRef<HTMLDivElement>(null);
+  const inOtherRef = useRef<HTMLDivElement>(null);
   const langfuseNodeRef = useRef<HTMLDivElement>(null);
   const out1ref = useRef<HTMLDivElement>(null);
   const out2ref = useRef<HTMLDivElement>(null);
@@ -85,6 +89,11 @@ export function Integrations () {
             <Circle ref={inOpenAiRef} title="Nexus">
               <img src={NexusLogo.src} alt="Logo"/>
             </Circle>
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <Circle ref={inFreemarkerRef} title="FMPP">
+              <img src={FreemarkerLogo.src} alt="Logo"/>
+            </Circle>
             <Circle ref={langfuseNodeRef} className="h-16 w-16">
               <img src={AiopLogo.src} alt="Logo" className="-translate-y-1"/>
             </Circle>
@@ -103,6 +112,11 @@ export function Integrations () {
           <div className="flex flex-row items-center justify-between">
             <Circle ref={inApiRef} title="API">
               <Code className="h-6 w-6" />
+            </Circle>
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <Circle ref={inOtherRef} title="Yaml, Json">
+              <BsThreeDots className="h-6 w-6" />
             </Circle>
           </div>
         </div>
@@ -133,7 +147,19 @@ export function Integrations () {
         />
         <AnimatedBeam
           containerRef={containerRef}
+          fromRef={inFreemarkerRef}
+          toRef={langfuseNodeRef}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef}
           fromRef={inApiRef}
+          toRef={langfuseNodeRef}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef}
+          fromRef={inOtherRef}
           toRef={langfuseNodeRef}
           duration={3}
         />

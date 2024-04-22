@@ -3,6 +3,7 @@
   "remote": "Remote resource",
   "zip": "Archive",
   "combine": "Combine resources",
+  "generate_file": "Generate file on build",
   "parse-to-pdf": "Convert to PDF",
   "executables": "Executable",
   "multi": "Multiple compatibilty",

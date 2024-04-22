@@ -1,8 +1,7 @@
 ---
 description: >-
-  Resources can be combined to create a new resource at runtime. Thus, a new resource is created that is a combination of the original resources.
+  Resources can be combined to create a new resource at runtime. Thus, a new resource is created which is a combination of the original resources.
 ---
-
 import { FileTree } from 'nextra/components'
 import { Callout } from "nextra-theme-docs";
 
@@ -10,9 +9,9 @@ import { Callout } from "nextra-theme-docs";
 
 You can generate arbitrary files or parameter files from multiple resource files. This can be useful for configuring your applications based on the compatibilities of your targets.
 
-## Declaration
+## Basics
 
-Let's start with the simplest by combining text files. To combine text files, you need to declare the source of the files one after the other with a pipe delimiter `|`. Here's a concrete example of combining 3 parameter files into a single parameter file.
+Let's start with the simplest by combining texts. To combine text files, you need to declare the source files one after the other with a pipe delimiter `|`. Here's a concrete example to combine 3 parameter files into a single parameter file.
 
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
@@ -41,14 +40,447 @@ Let's start with the simplest by combining text files. To combine text files, yo
     - ...
 ```
 
-The generated `param.txt` file in the package will be a combination of the `param1.txt`, `param2.txt`, and `param3.txt` files.
+The `param.txt` file generated in the package will be the combination of the `param1.txt`, `param2.txt`, and `param3.txt` files.
+
+## Combining Parameters
+
+Now let's see how to combine parameter files. Here we'll see how to combine files of the following formats:
+
+- [`yaml`](#yaml)
+- [`yml`](#yaml)
+- [`json`](#json)
+- [`xml`](#xml)
+- [`ini`](#ini)
+- [`toml`](#toml)
+- [`plist`](#plist)
 
 <Callout type="warning" emoji="⚠️">
-  There is no line break or separator between the files to be combined. The contents of the files are simply concatenated.
+  __Note__
+
+  It is currently impossible to convert one parameter file to another.
 </Callout>
 
+### Combining yaml or yml [#yaml]
 
-{/*
-## Parameter Combination
+The declaration is the same except that you declare YAML or YML configuration files here. Here's an example of combining YAML or YML configuration files.
 
-## Markdown Combination */}
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.yaml" />
+        <FileTree.File name="param2.yaml" />
+        <FileTree.File name="param3.yml" />
+        <FileTree.File name="param4.yml" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+We will here combine the parameter files `param1.yaml`, `param2.yaml` together as well as `param3.yml` and `param4.yml`. Here's how it looks in the resource file.
+
+```yaml showLineNumbers {1, 6} filename="resources/.aml"
+- source: param1.yaml | param2.yaml
+  destination: param.yaml
+  compatibility:
+    - ...
+
+- source: param3.yml | param4.yml
+  destination: param.yml
+  compatibility:
+    - ...
+```
+
+Aiop reads the parameter files in the order of declaration (`param1.yaml`, `param2.yaml`), then combines the fields and writes to the destination file (`param.yaml`) by sorting the keys alphabetically.
+
+For example, if `param1.yaml` contains:
+
+```yaml filename="param1.yaml"
+version:
+  major: 1
+  minor: 0
+name: aiop
+```
+
+and `param2.yaml` contains:
+
+```yaml filename="param2.yaml"
+version:
+  patch: 0
+```
+
+then the destination file `param.yaml` will contain:
+
+```yaml filename="param.yaml"
+name: aiop
+version:
+  major: 1
+  minor: 0
+  patch: 0
+```
+
+The keys are sorted alphabetically and the version fields are combined.
+
+### Combining json [#json]
+
+Here's an example of combining JSON configuration files.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.json" />
+        <FileTree.File name="param2.json" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+We will here combine the parameter files `param1.json`, `param2.json`. Here's how it looks in the resource file.
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.json | param2.json
+  destination: param.json
+  compatibility:
+    - ...
+```
+
+Aiop reads the parameter files in the order of declaration (`param1.json`, `param2.json`), then combines the fields and writes to the destination file (`param.json`) by sorting the keys alphabetically.
+
+For example, if `param1.json` contains:
+
+```json filename="param1.json"
+{
+  "version": {
+    "major": 1,
+    "minor": 0
+  },
+  "name" : "aiop"
+}
+```
+
+and `param2.json` contains:
+
+```json filename="param2.json"
+{
+  "version": {
+    "patch": 0
+  }
+}
+```
+
+then the destination file `param.json` will contain:
+
+```json filename="param.json"
+{
+  "name": "aiop",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  }
+}
+```
+
+### Combining xml [#xml]
+
+Here's an example of combining XML configuration files.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name
+
+="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.xml" />
+        <FileTree.File name="param2.xml" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+We will here combine the parameter files `param1.xml`, `param2.xml`. Here's how it looks in the resource file.
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.xml | param2.xml
+  destination: param.xml
+  compatibility:
+    - ...
+```
+
+Aiop reads the parameter files in the order of declaration (`param1.xml`, `param2.xml`), then combines the fields and writes to the destination file (`param.xml`) by sorting the keys alphabetically.
+
+For example, if `param1.xml` contains:
+
+```xml filename="param1.xml"
+</version>
+  <major>1</major>
+  <minor>0</minor>
+</version>
+<name>aiop</name>
+```
+
+and `param2.xml` contains:
+
+```xml filename="param2.xml"
+<version>
+  <patch>0</patch>
+```
+
+then the destination file `param.xml` will contain:
+
+```xml filename="param.xml"
+<name>aiop</name>
+<version>
+  <major>1</major>
+  <minor>0</minor>
+  <patch>0</patch>
+```
+
+### Combining ini [#ini]
+
+Here's an example of combining INI configuration files.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.ini" />
+        <FileTree.File name="param2.ini" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+We will here combine the parameter files `param1.ini`, `param2.ini`. Here's how it looks in the resource file.
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.ini | param2.ini
+  destination: param.ini
+  compatibility:
+    - ...
+```
+
+Aiop reads the parameter files in the order of declaration (`param1.ini`, `param2.ini`), then combines the fields and writes to the destination file (`param.ini`) by sorting the keys alphabetically.
+
+For example, if `param1.ini` contains:
+
+```ini filename="param1.ini"
+[version]
+major = 1
+minor = 0
+
+[name]
+value = aiop
+```
+
+and `param2.ini` contains:
+
+```ini filename="param2.ini"
+[version]
+patch = 0
+```
+
+then the destination file `param.ini` will contain:
+
+```ini filename="param.ini"
+[name]
+value = aiop
+
+[version]
+major = 1
+minor = 0
+patch = 0
+```
+
+### Combining toml [#toml]
+
+Here's an example of combining TOML configuration files.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.toml" />
+        <FileTree.File name="param2.toml" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+We will here combine the parameter files `param1.toml`, `param2.toml`. Here's how it looks in the resource file.
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.toml | param2.toml
+  destination: param.toml
+  compatibility:
+    - ...
+```
+
+Aiop reads the parameter files in the order of declaration (`param1.toml`, `param2.toml`), then combines the fields and writes to the destination file (`param.toml`) by sorting the keys alphabetically.
+
+For example, if `param1.toml` contains:
+
+```toml filename="param1.toml"
+[version]
+major = 1
+minor = 0
+
+[name]
+value = aiop
+```
+
+and `param2.toml` contains:
+
+```toml filename="param2.toml"
+[version]
+patch = 0
+```
+
+then the destination file `param.toml` will contain:
+
+```toml filename="param.toml"
+[name]
+value = aiop
+
+[version]
+major = 1
+minor = 0
+patch = 0
+```
+
+### Combining plist [#plist]
+
+Here's an example of combining PLIST configuration files.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop">
+        <FileTree.File name="inventory_config.yml" />
+        <FileTree.File name="inventory.yml" />
+        <FileTree.File name="playbook.yml" />
+    </FileTree.Folder>
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+        <FileTree.File name="param1.plist" />
+        <FileTree.File name="param2.plist" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+
+We will here combine the parameter files `param1.plist`, `param2.plist`. Here's how it looks in the resource file.
+
+```yaml showLineNumbers {1} filename="resources/.aml"
+- source: param1.plist | param2.plist
+  destination: param.plist
+  compatibility:
+    - ...
+```
+
+Aiop reads the parameter files in the order of declaration (`param1.plist`, `param2.plist`), then combines the fields and writes to the destination file (`param.plist`) by sorting the keys alphabetically.
+
+For example, if `param1.plist` contains:
+
+```xml filename="param1.plist"
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>version</key>
+    <dict>
+        <key>major</key>
+        <integer>1</integer>
+        <
+
+key>minor</key>
+        <integer>0</integer>
+    </dict>
+    <key>name</key>
+    <string>aiop</string>
+</dict>
+</plist>
+
+```
+
+and `param2.plist` contains:
+
+```xml filename="param2.plist"
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>version</key>
+    <dict>
+        <key>patch</key>
+        <integer>0</integer>
+    </dict>
+</dict>
+</plist>
+
+```
+
+then the destination file `param.plist` will contain:
+
+```xml filename="param.plist"
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>aiop</string>
+    <key>version</key>
+    <dict>
+        <key>major</key>
+        <integer>1</integer>
+        <key>minor</key>
+        <integer>0</integer>
+        <key>patch</key>
+        <integer>0</integer>
+    </dict>
+</dict>
+</plist>
+```
+
+### Other Files
+
+Any other type of file can be combined in the same manner. The only difference will be that the files will be simply concatenated without line breaks or separators.
