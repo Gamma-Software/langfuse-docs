@@ -119,7 +119,7 @@ const config: DocsThemeConfig = {
     const { frontMatter, title: pageTitle } = useConfig();
 
     const url =
-      "https://aiop.fr" +
+      "https://aiop.io" +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
 
     const description = frontMatter.description ?? "";
@@ -133,15 +133,15 @@ const config: DocsThemeConfig = {
       : "";
 
     const image = frontMatter.ogImage
-      ? "https://aiop.fr" + frontMatter.ogImage
-      : `https://aiop.fr/api/og?title=${encodeURIComponent(
+      ? "https://aiop.io" + frontMatter.ogImage
+      : `https://aiop.io/api/og?title=${encodeURIComponent(
           title
         )}&description=${encodeURIComponent(
           description
         )}&section=${encodeURIComponent(section)}`;
 
     const video = frontMatter.ogVideo
-      ? "https://aiop.fr" + frontMatter.ogVideo
+      ? "https://aiop.io" + frontMatter.ogVideo
       : null;
 
     return (
@@ -159,8 +159,8 @@ const config: DocsThemeConfig = {
         <meta property="twitter:image" content={image} />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site:domain" content="aiop.fr" />
-        <meta name="twitter:url" content="https://aiop.fr" />
+        <meta name="twitter:site:domain" content="aiop.io" />
+        <meta name="twitter:url" content="https://aiop.io" />
 
         <link
           rel="logo_180"

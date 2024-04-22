@@ -7,7 +7,7 @@ description: Improve your LLM application with open source product analytics mea
 Langfuse analytics derives actionable insights from production data.
 
 <Frame>
-  ![Analytics](https://static.aiop.fr/changelog-2023-10-09-dashboard-out-of-alpha.gif)
+  ![Analytics](https://static.aiop.io/changelog-2023-10-09-dashboard-out-of-alpha.gif)
 </Frame>
 
 → Not using Langfuse yet? Explore the dashboard in our [interactive demo](/docs/demo).

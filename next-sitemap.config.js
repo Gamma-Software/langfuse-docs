@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: 'https://aiop.fr',
+    siteUrl: 'https://aiop.io',
     generateRobotsTxt: true,
     changefreq: 'daily',
     additionalPaths: async (config) => [{
