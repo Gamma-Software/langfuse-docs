@@ -15,7 +15,7 @@
       "feature": {
         "extensible": {
           "title": "Extensible",
-          "description": "Etendez les fonctionnalités de l'application pour correspondre à vos besoins. Notre équipe est là pour vous accompagner.",
+          "description": "Etendez les fonctionnalités de l'application pour correspondre à vos besoins. Nous fournissons un SDK et notre équipe est là pour vous accompagner.",
           "alt": "Language"
         },
         "packages": {
@@ -156,7 +156,7 @@
           "description":
             "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
           "alt": "Souscription mensuelle",
-          "price": "--€",
+          "price": "Bêta",
           "mainFeatures": [
             "Toutes les fonctionnalités de la version gratuite",
             "Accès à des cookbook de tâches personnalisées",
@@ -175,7 +175,7 @@
           "id": "tier-team",
           "href": "/schedule-demo",
           "featured": false,
-          "price": "Démarre à ---€",
+          "price": "Bêta",
           "description":
             "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
           "alt": "Contact us",
