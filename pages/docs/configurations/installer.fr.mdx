@@ -1,0 +1,90 @@
+---
+description: Comment configurer les installer ?
+---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Configurer l'installeur
+
+Dans le dossier `.aiop` de votre playbook, vous pouvez configurer les installeurs que vous souhaitez générer. Ces dossiers sont utilisés uniquement lors que vous souhaitez générer un installeur avec la commande `aiop build --installer deb` [[En savoir plus](/docs/cli/build#commande-build_installer)].
+
+<Callout type="info" emoji="ℹ️">
+  La configuration des installeurs est optionel et devrait dans la plupart des cas vous permettre de générer un installeur sans complexité. Cette page est destinée à ceux qui souhaitent personnaliser la génération des installeurs.
+</Callout>
+
+## Configuration
+
+Le dossier de configuration des installeurs est situé dans le répertoire relatif au playbook:
+- `<racine_playbook>/.aiop/installer/`
+
+> `<racine_playbook>` est le répertoire racine du playbook.
+
+Ensuite vous placez les fichiers de configuration spécifiques aux installeurs dans un sous-dossier. Par exemple, si vous souhaitez générer un installeur `deb` et un installeur `rpm`, vous pouvez créer le dossier `deb` et `rpm` dans le dossier `installer` comme suit:
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop" defaultOpen>
+      <FileTree.Folder name="installer" defaultOpen>
+        <FileTree.Folder name="deb" defaultOpen>
+        </FileTree.Folder>
+        <FileTree.Folder name="rpm" defaultOpen>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="info" emoji="ℹ️">
+  Pour le moment, l'installeur `deb` est le seul installeur supporté par Aiop. Les autres installeurs seront supportés dans les prochaines versions.
+</Callout>
+
+### Configuration de l'installeur `deb`
+
+Pour personnaliser la configuration d'un installeur `deb` pour des machines linux Debian, vous pouvez créer tous les fichers de configuration relatif à l'installeur `deb` dans le dossier `deb` du dossier `installer`.
+
+Par exemple, nous souhaitons modifier le fichier de configuration `control`, pour ajouter la dépendance avec le paquet `python`.
+
+```ansi filename=".aiop/installer/deb/control"
+Package: ${package_name}
+Priority: extra
+Maintainer: Valentin Rudloff <valentin.rudloff.perso@gmail.com>
+Version: ${version}
+Homepage: https://aiop.io
+Architecture: all
+Depends: python
+Description: This is my description
+```
+
+Vous constaterez que nous avons ajouté la ligne `Depends: python` pour ajouter une dépendance avec le paquet `python`. De plus nous utilisons les variables `${package_name}` et `${version}` qui seront remplacées par les valeurs du package généré.
+
+Nous pourrions aller plus loin et rajouter un script de post-installation dans le fichier `postinst`:
+
+```bash filename=".aiop/installer/deb/postinst"
+#!/bin/bash
+echo "Je suis lancé après l'installation du package"
+```
+
+Dans ce script, nous affichons simplement un message dans la console après l'installation du package.
+
+L'arbre des fichiers de configuration de l'installeur `deb` ressemblerait à ceci:
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop" defaultOpen>
+      <FileTree.Folder name="installer" defaultOpen>
+        <FileTree.Folder name="deb" defaultOpen>
+          <FileTree.File name="control" />
+          <FileTree.File name="postinst" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="info" emoji="ℹ️">
+  Pour plus d'informations sur la configuration des installeurs `deb`, vous pouvez consulter la documentation officielle de Debian [ici](https://www.debian.org/doc/manuals/maint-guide/dreq.fr.html) ou [ici](https://wiki.debian.org/ConfigPackages).
+</Callout>
