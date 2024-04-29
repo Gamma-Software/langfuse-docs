@@ -20,7 +20,7 @@ En lançant la commande d'aide voici les options disponibles:
 
 ```ansi
 usage: aiop build [-h] --args ARGS [ARGS ...] [--destination_path DESTINATION_PATH] [--force] [--zip_pack] [--goto_pack]
-                  [--upload UPLOAD] [--no_verify] [--retries RETRIES] [--no_caching] [-v] [-sll STDOUT_LOG_LEVEL] [-fll FILE_LOG_LEVEL] [-hp]
+                  [--upload UPLOAD] [--installer {deb}] [--installer_name INSTALLER_NAME] [--no_verify] [--retries RETRIES] [--no_caching] [-v] [-sll STDOUT_LOG_LEVEL] [-fll FILE_LOG_LEVEL] [-hp]
                   system_target
 
 Build a package from a playbook. Be aware that the current positionnal arguments are dynamic and corresponds to the compatibility arguments defined in the
@@ -39,6 +39,8 @@ options:
   --zip_pack            Zip the built package (default: False)
   --goto_pack           Open in the explorer the newly created package (default: False)
   --upload UPLOAD       Upload the generated installer to a repository (default: ). Requires ' --installer' option
+  --installer {deb}     Type of installer to generate
+  --installer_name INSTALLER_NAME
   --no_verify           Do not verify the Artifact integrity. It will not betaken into account if `--no_caching` is not set or the Artifact is not in cache.
                         (default: False, means verifythe artifact integrity)
   --retries RETRIES     Number of retries when downloading an artifact.One retry means that the download was not successful because of an invalid file integrity
@@ -60,6 +62,8 @@ options:
 | `force` | Supprimer le dossier du chemin `destination_path` peut importe ce qu'il contient | `False`: Ne forcera pas la création |
 | `no_caching` | Ne pas utiliser le cache pour récupérer les ressources distantes déjà téléchargées | `False`: Les ressources distantes sont copiés depuis le cache, si elles existent |
 | `no_verify` | Ne pas vérifier l'intégrité de la ressource distante| `False`: Vérifie l'intégrité de l'artifact |
+| `installer` | Type de l'installeur à créer. Vous pouvez créer un seul isntalleur par build | |
+| `installer_name` | Nom de l'installeur | |
 | `retries` | Nombre de tentatives de téléchargement d'un artifact. Surcharge la configuration utilisateur | 3 |
 | `zip_pack` | Zip le package généré | `False`: Ne le zip pas |
 | `goto_pack` | Ouvre l'explorateur de fichier sur le package généré | `False`: Ne l'ouvre pas |

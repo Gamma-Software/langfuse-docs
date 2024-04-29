@@ -15,7 +15,7 @@
       "feature": {
         "extensible": {
           "title": "Extensible",
-          "description": "Extend the application's features to match your needs. Our team is here to assist you.",
+          "description": "Extend the application's features to match your needs. We provide a SDK and our team is here to assist you.",
           "alt": "Language"
         },
         "packages": {
@@ -143,7 +143,7 @@
           "featured": false,
           "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
           "alt": "Monthly subscription",
-          "price": "--€",
+          "price": "Bêta",
           "mainFeatures": [
             "All features of the free version",
             "Access to custom task cookbooks",
@@ -162,7 +162,7 @@
           "id": "tier-team",
           "href": "/schedule-demo",
           "featured": false,
-          "price": "Starts at ---€",
+          "price": "Bêta",
           "description": "Dedicated solution for a team and/or company. You have personalized assistance. Contact us to discuss the price.",
           "alt": "Contact us",
           "mainFeatures": [

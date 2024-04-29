@@ -2,5 +2,6 @@
   "user": "Utilisateur",
   "playbook": "Playbook",
   "inventory": "Inventaire",
-  "packages": "Packages"
+  "packages": "Packages",
+  "installer": "Installeur"
 }

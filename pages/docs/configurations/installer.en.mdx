@@ -1,0 +1,90 @@
+---
+description: How to configure installers ?
+---
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+### Setting up the Installer
+
+In your playbook's `.aiop` directory, you can configure the installers you wish to generate. These directories are only used when you want to generate an installer using the `aiop build --installer deb` command [[Learn More](/docs/cli/build#commande-build_installer)].
+
+<Callout type="info" emoji="ℹ️">
+  Configuring installers is optional and should, in most cases, allow you to generate an installer without complexity. This page is intended for those who wish to customize installer generation.
+</Callout>
+
+## Configuration
+
+The installer configuration directory is located within the playbook's relative directory:
+- `<playbook_root>/.aiop/installer/`
+
+> `<playbook_root>` is the root directory of the playbook.
+
+Next, you place the installer-specific configuration files in a subfolder. For example, if you want to generate a `deb` installer and an `rpm` installer, you can create the `deb` and `rpm` folders in the `installer` directory as follows:
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop" defaultOpen>
+      <FileTree.Folder name="installer" defaultOpen>
+        <FileTree.Folder name="deb" defaultOpen>
+        </FileTree.Folder>
+        <FileTree.Folder name="rpm" defaultOpen>
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="info" emoji="ℹ️">
+  Currently, the `deb` installer is the only installer supported by Aiop. Other installers will be supported in future versions.
+</Callout>
+
+### Configuring the `deb` Installer
+
+To customize the configuration of a `deb` installer for Debian Linux machines, you can create all configuration files related to the `deb` installer in the `deb` folder within the `installer` directory.
+
+For example, if we want to modify the `control` configuration file to add a dependency with the `python` package:
+
+```ansi filename=".aiop/installer/deb/control"
+Package: ${package_name}
+Priority: extra
+Maintainer: Valentin Rudloff <valentin.rudloff.perso@gmail.com>
+Version: ${version}
+Homepage: https://aiop.io
+Architecture: all
+Depends: python
+Description: This is my description
+```
+
+You'll notice that we added the line `Depends: python` to add a dependency with the `python` package. Additionally, we use the `${package_name}` and `${version}` variables, which will be replaced by the values of the generated package.
+
+We could go further and add a post-installation script in the `postinst` file:
+
+```bash filename=".aiop/installer/deb/postinst"
+#!/bin/bash
+echo "I am launched after the package installation"
+```
+
+In this script, we simply display a message in the console after the package installation.
+
+The file tree of the `deb` installer configuration would look like this:
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.Folder name=".aiop" defaultOpen>
+      <FileTree.Folder name="installer" defaultOpen>
+        <FileTree.Folder name="deb" defaultOpen>
+          <FileTree.File name="control" />
+          <FileTree.File name="postinst" />
+        </FileTree.Folder>
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="info" emoji="ℹ️">
+  For more information on configuring `deb` installers, you can refer to the official Debian documentation [here](https://www.debian.org/doc/manuals/maint-guide/dreq.fr.html) or [here](https://wiki.debian.org/ConfigPackages).
+</Callout>
