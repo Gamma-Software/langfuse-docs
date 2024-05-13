@@ -75,7 +75,7 @@ export const DocsSupport = () => {
       </h3>
       <div className="flex gap-3 flex-wrap">
         <Button variant="outline" size="sm" asChild>
-          <a href="/discord" target="_blank">
+          <a href="/slack" target="_blank">
             <span>Discord</span>
             <RxDiscordLogo className="h-4 w-4 ml-3" />
           </a>

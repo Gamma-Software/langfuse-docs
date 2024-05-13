@@ -13,7 +13,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { MainContentWrapper } from "./components/MainContentWrapper";
 import { Frame } from "./components/Frame";
-import { BsDiscord } from "react-icons/bs";
+//import { BsDiscord } from "react-icons/bs";
+import { FaSlack } from "react-icons/fa";
 import { GithubMenuBadge } from "./components/GitHubBadge";
 import { ToAppButton } from "./components/ToAppButton";
 import FooterMenu from "./components/footerMenu";
@@ -41,11 +42,11 @@ const config: DocsThemeConfig = {
         <a
           className="p-1 hidden sm:inline-block hover:opacity-80"
           target="_blank"
-          href="/discord"
+          href="/slack"
           aria-label="aiop Discord"
           rel="nofollow noreferrer"
         >
-          <BsDiscord size={24} />
+          <FaSlack size={24} />
         </a>
 
         <a
