@@ -24,15 +24,15 @@ export function Logo() {
         <Image
           src="/logo_light_512.png"
           alt="aiop Logo"
-          width={120}
-          height={20}
+          width={200}
+          height={30}
           className="hidden dark:block"
         />
         <Image
           src="/logo_dark_512.png"
           alt="aiop Logo"
-          width={120}
-          height={20}
+          width={200}
+          height={30}
           className="block dark:hidden"
         />
       </div>

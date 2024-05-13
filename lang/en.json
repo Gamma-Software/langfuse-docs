@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Create multiple packages from a single source of configuration.",
+      "packages": "Reduce application integration time and boost cross-team collaboration.",
       "demoButton": "Demo",
       "documentationButton": "View Documentation"
     },
@@ -113,6 +113,7 @@
     "Pricing": {
       "title": "Pricing",
       "description": "Start now with the free version! No credit card required.",
+      "eur": "",
       "compare": {
         "title": "Feature Comparison",
         "description": "For a detailed comparison and frequently asked questions, see our",

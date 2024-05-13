@@ -67,7 +67,7 @@ const nextraConfig = withNextra({
 
 const nonPermanentRedirects = [
   ["/analytics", "https://docs.google.com/document/d/1PEFSqn-VWjNXOZZ1U7FC0oH-spDdkKJxLwgp15iK7zY"],
-  ["/discord", "https://discord.gg/vdbnZQwKuB"],
+  ["/slack", "https://leaptech-workspace.slack.com/archives/C068PQUS2P7"],
   ["/status/prod/availability", "https://aiop-uptime.pival.fr/api/badge/8/uptime/72?style=flat-square"],
   ["/status/prod/ping", "https://aiop-uptime.pival.fr/api/badge/8/ping/72?style=flat-square"],
   ["/demo", "/docs/demo"],

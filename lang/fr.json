@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Créez tous vos packages à partir d'un seul fichier de configuration.",
+      "packages": "Réduisez le temps d’intégration de vos applications et favorisez la collaboration inter-équipe.",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
     },
@@ -125,6 +125,7 @@
     "Pricing": {
       "title": "Tarification",
       "description": "Commencez dès maintenant avec la version gratuite ! Pas besoin de carte de crédit.",
+      "eur": "",
       "compare": {
         "title": "Comparaison des fonctionnalités",
         "description": "Pour une comparaison détaillée et des questions fréquentes, consultez notre",
@@ -155,7 +156,7 @@
           "featured": false,
           "description":
             "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
-          "alt": "Souscription mensuelle",
+          "alt": "",
           "price": "Bêta",
           "mainFeatures": [
             "Toutes les fonctionnalités de la version gratuite",

@@ -70,7 +70,7 @@ export function Pricing({ isPricingPage = false }: { isPricingPage?: boolean }) 
                                 tier.featured ? "text-gray-900" : "text-white"
                               }
                             >
-                              EUR
+                              {messages.home.Pricing.eur}
                             </p>
                             <p
                               className={
