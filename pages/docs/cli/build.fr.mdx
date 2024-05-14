@@ -19,7 +19,7 @@ aiop build {system_target} {params}
 En lançant la commande d'aide voici les options disponibles:
 
 ```ansi
-usage: aiop build [-h] --args ARGS [ARGS ...] [--destination_path DESTINATION_PATH] [--force] [--zip_pack] [--goto_pack]
+usage: aiop build [-h] --args ARGS [ARGS ...] [--destination_path DESTINATION_PATH] [--force] [--zip_pack] [--goto_pack] [--upload UPLOAD [UPLOAD ...]] [--upload_url UPLOAD_URL]
                   [--upload UPLOAD] [--installer {deb}] [--installer_name INSTALLER_NAME] [--no_verify] [--retries RETRIES] [--no_caching] [-v] [-sll STDOUT_LOG_LEVEL] [-fll FILE_LOG_LEVEL] [-hp]
                   system_target
 
@@ -38,7 +38,10 @@ options:
   --force               Use destination_path even if it is not empty
   --zip_pack            Zip the built package (default: False)
   --goto_pack           Open in the explorer the newly created package (default: False)
-  --upload UPLOAD       Upload the generated installer to a repository (default: ). Requires ' --installer' option
+  --upload UPLOAD [UPLOAD ...]
+                        Upload the generated installer or zipped package to a repository. Requires `--upload_url` option
+  --upload_url UPLOAD_URL
+                        Upload repository URL. Requires `--upload` option.
   --installer {deb}     Type of installer to generate
   --installer_name INSTALLER_NAME
   --no_verify           Do not verify the Artifact integrity. It will not betaken into account if `--no_caching` is not set or the Artifact is not in cache.
@@ -67,7 +70,8 @@ options:
 | `retries` | Nombre de tentatives de téléchargement d'un artifact. Surcharge la configuration utilisateur | 3 |
 | `zip_pack` | Zip le package généré | `False`: Ne le zip pas |
 | `goto_pack` | Ouvre l'explorateur de fichier sur le package généré | `False`: Ne l'ouvre pas |
-| `upload` | Dépose le package dans un dépôt distante | `None`: Ne l'envoie pas dans le dépôt distant |
+| `upload` | Selectionne le package généré à uploaded. Cela peut être le `zip`ou le `deb`. Nécessite l'option `--upload_url` | |
+| `upload_url` | URL du dépôt du package | |
 | `verbose` | Force la verbosité des logs à `DEBUG` à la fois pour la console et les fichiers de log. Les paramètres de l’utilisateur ne seront pas pris en compte. | `None`: Ne force pas |
 | `stdout_log_level` | Force la verbosité des logs dans la console à un niveau. Les paramètres de l’utilisateur ne seront pas pris en compte. | `None`: Ne force pas |
 | `file_log_level` | Force la verbosité des logs dans les fichiers de log à un niveau. Les paramètres de l’utilisateur ne seront pas pris en compte | `None`: Ne force pas |

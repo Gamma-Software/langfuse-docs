@@ -19,7 +19,7 @@ aiop build {system_target} {params}
 When running the help command, here are the available options:
 
 ```ansi
-usage: aiop build [-h] --args ARGS [ARGS ...] [--destination_path DESTINATION_PATH] [--force] [--zip_pack] [--goto_pack]
+usage: aiop build [-h] --args ARGS [ARGS ...] [--destination_path DESTINATION_PATH] [--force] [--zip_pack] [--goto_pack] [--upload UPLOAD [UPLOAD ...]] [--upload_url UPLOAD_URL]
                   [--upload UPLOAD] [--installer {deb}] [--installer_name INSTALLER_NAME] [--no_verify] [--retries RETRIES] [--no_caching] [-v] [-sll STDOUT_LOG_LEVEL] [-fll FILE_LOG_LEVEL] [-hp]
                   system_target
 
@@ -38,7 +38,10 @@ options:
   --force               Use destination_path even if it is not empty
   --zip_pack            Zip the built package (default: False)
   --goto_pack           Open in the explorer the newly created package (default: False)
-  --upload UPLOAD       Upload the generated installer to a repository (default: ). Requires ' --installer' option
+  --upload UPLOAD [UPLOAD ...]
+                        Upload the generated installer or zipped package to a repository. Requires `--upload_url` option
+  --upload_url UPLOAD_URL
+                        Upload repository URL. Requires `--upload` option.
   --installer {deb}     Type of installer to generate
   --installer_name INSTALLER_NAME
   --no_verify           Do not verify the Artifact integrity. It will not betaken into account if `--no_caching` is not set or the Artifact is not in cache.
@@ -67,7 +70,8 @@ options:
 | `retries` | Number of download retries for an artifact. Overrides the user configuration | 3 |
 | `zip_pack` | Zip the generated package | `False`: Does not zip it |
 | `goto_pack` | Open file explorer on the generated package | `False`: Does not open it |
-| `upload` | Upload the package to a remote repository | `None`: Does not upload to remote repository |
+| `upload` | Select the package to upload. It could be `zip` or `deb`. It needs the `--upload_url` option to work. | |
+| `upload_url` | package upload URL | |
 | `verbose` | Forces logging verbosity to `DEBUG` for both console and log files. User settings will not be considered. | `None`: Does not force |
 | `stdout_log_level` | Forces logging verbosity in the console to a level. User settings will not be considered. | `None`: Does not force |
 | `file_log_level` | Forces logging verbosity in log files to a level. User settings will not be considered. | `None`: Does not force |
