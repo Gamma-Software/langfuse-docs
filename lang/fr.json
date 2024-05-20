@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Réduisez le temps d’intégration de vos applications et favorisez la collaboration inter-équipe.",
+      "packages": "Réduisez le temps d’intégration de vos applications et augmentez la cadence de livraison.",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
     },
@@ -417,8 +417,9 @@
       { "name": "Ajout de l’auto-complétion de la CLI", "checked": false },
       { "name": "Obtenir la liste des systèmes cibles et les paramètres par command et en auto-complétion", "checked": false },
       { "name": "Faire un `dry-run` de la génération de build", "checked": false },
-      { "name": "Stocker les logs en disque", "checked": false },
-      { "name": "Upload du package dans les dépôts", "checked": false },
+      { "name": "Stocker les logs en disque", "checked": true },
+      { "name": "Upload du package dans les dépôts", "checked": true },
+      { "name": "Créer des installeurs DEB (Debian)", "checked": true },
       { "name": "Créer des installeurs EXE (windows)", "checked": false },
       { "name": "Créer des installeurs TAR.GZ ou RPM (linux)", "checked": false },
       { "name": "Créer des installeurs DMG (macos)", "checked": false },
@@ -435,9 +436,9 @@
       { "name": "AI: Pré-fixer les erreurs remonté par Aiop via de l’Intelligence Artificiel", "checked": false },
       { "name": "AI: Interagir avec un Chatbot pour manipuler les déclarations et aider à la génération des déclarations", "checked": false },
       { "name": "Créer des alias personnalisés dans les déclarations pour éviter de répéter des arguments", "checked": false },
-      { "name": "CI: 🐳 Dockeriser Aiop", "checked": false },
-      { "name": "CI: Faciliter l’intégration de Aiop dans la CI", "checked": false },
-      { "name": "CI: Dockerfile base avec Aiop", "checked": false },
+      { "name": "CI: 🐳 Dockeriser Aiop", "checked": true },
+      { "name": "CI: Faciliter l’intégration de Aiop dans la CI", "checked": true },
+      { "name": "CI: Dockerfile base avec Aiop", "checked": true },
       { "name": "CLI: Manipulation des configurations via la CLI", "checked": false },
       { "name": "GUI: Windows", "checked": false },
       { "name": "GUI: Linux", "checked": false },

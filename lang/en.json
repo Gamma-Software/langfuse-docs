@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Reduce application integration time and boost cross-team collaboration.",
+      "packages": "Reduce applications integration time and increase your delivering rate.",
       "demoButton": "Demo",
       "documentationButton": "View Documentation"
     },
@@ -391,8 +391,9 @@
       { "name": "Add CLI auto-completion", "checked": false },
       { "name": "Get the list of target systems and parameters by command and auto-completion", "checked": false },
       { "name": "Perform a `dry-run` of the build generation", "checked": false },
-      { "name": "Store logs on disk", "checked": false },
-      { "name": "Upload the package to repositories", "checked": false },
+      { "name": "Store logs on disk", "checked": true },
+      { "name": "Upload the package to repositories", "checked": true },
+      { "name": "Create DEB installers (Debian)", "checked": true },
       { "name": "Create EXE installers (Windows)", "checked": false },
       { "name": "Create TAR.GZ or RPM installers (Linux)", "checked": false },
       { "name": "Create DMG installers (macOS)", "checked": false },
@@ -409,9 +410,9 @@
       { "name": "AI: Prefix errors reported by Aiop via Artificial Intelligence", "checked": false },
       { "name": "AI: Interact with a Chatbot to manipulate declarations and assist in declaration generation", "checked": false },
       { "name": "Create custom aliases in declarations to avoid repeating arguments", "checked": false },
-      { "name": "CI: 🐳 Dockerize Aiop", "checked": false },
-      { "name": "CI: Facilitate Aiop integration into CI", "checked": false },
-      { "name": "CI: Base Dockerfile with Aiop", "checked": false },
+      { "name": "CI: 🐳 Dockerize Aiop", "checked": true },
+      { "name": "CI: Facilitate Aiop integration into CI", "checked": true },
+      { "name": "CI: Base Dockerfile with Aiop", "checked": true },
       { "name": "CLI: Manipulate configurations via CLI", "checked": false },
       { "name": "GUI: Windows", "checked": false },
       { "name": "GUI: Linux", "checked": false },
