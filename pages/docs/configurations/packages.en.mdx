@@ -10,14 +10,14 @@ The packages configuration file is an optional file that allows you to configure
 ## Configuration
 
 The packages configuration file is located in the playbook-relative directory:
-- Unix: `<playbook_root>/.aiop/packages.yaml`
-- Windows: `<playbook_root>\.aiop\packages.yaml`
+- Unix: `<playbook_root>/.aiop/packages.yml`
+- Windows: `<playbook_root>\.aiop\packages.yml`
 
 > `<playbook_root>` is the root directory of the playbook.
 
 Here's an example of a packages configuration file:
 
-```yaml filename=".aiop/packages.yaml"
+```yaml filename=".aiop/packages.yml"
 packages:
   - target_system: archi1/model_range1/model1
     compat_arg: [arg1]
