@@ -130,7 +130,7 @@ The `compatibility` section contains the rules for the parameters of each system
 
 ### Configuration Example
 
-Let's take the example of Tesla Motors used in the [previous chapter](docs/configuration/playbook). We could define the inventory configuration file as follows. First, let's look at the system configuration and then the selection rules and options.
+Let's take the example of Tesla Motors used in the [previous chapter](/docs/configuration/playbook). We could define the inventory configuration file as follows. First, let's look at the system configuration and then the selection rules and options.
 
 ```yaml filename=".aiop/inventory_config.yml"
 system:
@@ -265,7 +265,7 @@ The `inventory` section contains the target systems and the variables specific t
 
 ### Configuration Model
 
-Let's take the example of Tesla Motors used in the [previous chapter](docs/configuration/playbook). We could define the inventory file as follows.
+Let's take the example of Tesla Motors used in the [previous chapter](/docs/configuration/playbook). We could define the inventory file as follows.
 
 ```yaml filename=".aiop/inventory.yml"
 
@@ -340,8 +340,8 @@ Selection rules are used to filter declarations based on their specific compatib
 
 - `one_of`: For a declaration to be selected, the parameter requested by the user must be included in the allowed values.
 - `all_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values, and no compatible parameters must be missing.
-- `least_diff`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the least difference possible with the allowed values compared to other declarations to be selected. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](docs/declarations/conflicts).
-- `most_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the most possible similarities with the allowed values compared to other declarations. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](docs/declarations/conflicts).
+- `least_diff`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the least difference possible with the allowed values compared to other declarations to be selected. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](/docs/declarations/conflicts).
+- `most_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the most possible similarities with the allowed values compared to other declarations. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](/docs/declarations/conflicts).
 
 Additionally, the end user will be asked for more or fewer arguments depending on the selection rule. For example:
 - `one_of`: They can specify only one of the allowed values.

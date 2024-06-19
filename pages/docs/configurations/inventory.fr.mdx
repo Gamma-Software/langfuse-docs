@@ -130,7 +130,7 @@ La section `compatibility` contient les règles pour les paramètres de chaque s
 
 ### Exemple de configuration
 
-Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier de configuration de l’inventaire comme suit. Voyons d'abord la configuration système et ensuite les règles de sélection et les options.
+Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](/docs/configuration/playbook). Nous pourrions définir le fichier de configuration de l’inventaire comme suit. Voyons d'abord la configuration système et ensuite les règles de sélection et les options.
 
 ```yaml filename=".aiop/inventory_config.yml"
 system:
@@ -265,7 +265,7 @@ La section `inventory` contient les systèmes cible et les variables spécifique
 
 ### Modèle de configuration
 
-Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](docs/configuration/playbook). Nous pourrions définir le fichier d’inventaire comme suit.
+Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](/docs/configuration/playbook). Nous pourrions définir le fichier d’inventaire comme suit.
 
 ```yaml filename=".aiop/inventory.yml"
 
@@ -340,8 +340,8 @@ Les règles de sélection sont utilisées pour filtrer les déclarations en fonc
 
 - `one_of` : Pour qu'une déclaration soit sélectionnée, le paramètre demandé par l'utilisateur doit être inclus dans les valeurs autorisées.
 - `all_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées et aucun paramètre compatible ne doit être manquant.
-- `least_diff` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le moins de différence possible avec les valeurs autorisées par rapport aux autres déclarations pour être sélectionnées. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](docs/declarations/conflicts).
-- `most_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le plus de similarités possibles avec les valeurs autorisées par rapport aux autres déclarations. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](docs/declarations/conflicts).
+- `least_diff` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le moins de différence possible avec les valeurs autorisées par rapport aux autres déclarations pour être sélectionnées. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](/docs/declarations/conflicts).
+- `most_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le plus de similarités possibles avec les valeurs autorisées par rapport aux autres déclarations. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](/docs/declarations/conflicts).
 
 De plus il sera demandé à l’utilisateur final plus ou moins d’arguments en fonction de la règle de sélection. Par exemple:
 - `one_of`: Il pourra renseigner une seule des valeurs autorisées.
