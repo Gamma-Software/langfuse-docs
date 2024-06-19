@@ -103,3 +103,15 @@ The content of the `destination_folder` will be:
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
+
+## Unzip at package root folder
+
+In case you want to extract all files at the root of the package, here is the syntax:
+
+```yaml {2} filename="ressources/.aml"
+- source: archive.zip
+  destination: ./
+  unzip: true
+  compatibility:
+    - ...
+```

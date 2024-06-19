@@ -103,3 +103,15 @@ Le contenu du dossier `dossier_destination` sera:
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
+
+## Décompression à la racine du package
+
+Si vous souhaitez décompresser votre archive à la racine du package (et non dans le dossier `dossier_destination`), vous pouvez employer la syntaxe suivante.
+
+```yaml {2} filename="ressources/.aml"
+- source: archive.zip
+  destination: ./
+  unzip: true
+  compatibility:
+    - ...
+```
