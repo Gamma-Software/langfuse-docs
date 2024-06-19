@@ -47,10 +47,9 @@ export default function App({ Component, pageProps }) {
         data-auto-block="on"
         data-website-uuid="488cc3b0-ed5a-4e9d-81f2-76014dcae784"
       />
-      <Script
-        src="https://gist.githubusercontent.com/Gamma-Software/982e8b020e7047475f21db1fc1b61c46/raw/7d6e39c8f917021d2baab58368a748919c1bb4d4/uxsniff_integration.js"
-        strategy="beforeInteractive"
-      />
+      <Script id="integrate_uxsniffer">
+        {`(function(u,x,s,n,i,f){u.ux=u.ux||function(){(u.ux.q=u.ux.q||[]).push(arguments)};i=x.getElementsByTagName('head')[0]; f=x.createElement('script');f.async=1; f.src=s+n;i.appendChild(f);})(window,document,'https://api.uxsniff.com/cdn/js/uxsnf_track','.js');`}
+      </Script>
     </div>
   );
 }
