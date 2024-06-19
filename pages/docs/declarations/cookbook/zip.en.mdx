@@ -55,3 +55,51 @@ To specify the destination folder path, it is mandatory to end with a `/`.
 </Callout>
 
 By default, the `unzip` field is declared as `False` and will not unzip the file. Therefore, it is necessary to declare it as `True` for the archive to be unzipped.
+
+## Ignoring Folders and Files While Unzipping
+
+You can ignore certain files or folders from the archive by replacing the value `True` in the `unzip` field with a list of strings. This method is inspired by gitignore (you can find patterns here -> [Github](https://gist.github.com/jstnlvns/ebaa046fae16543cc9efc7f24bcd0e31)).
+
+We have an archive with the following content:
+
+<FileTree>
+  <FileTree.Folder name="archive.zip" defaultOpen>
+    <FileTree.Folder name="any_folder" defaultOpen>
+        <FileTree.File name="any_file.cpp" />
+    </FileTree.Folder>
+    <FileTree.File name="my_file.txt" />
+    <FileTree.Folder name="folder_to_delete" defaultOpen>
+        <FileTree.File name="file_to_keep.txt" />
+        <FileTree.File name="my_other_file.txt" />
+        <FileTree.File name="my_video.mp4" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+And the following declaration:
+
+```yaml {4, 5, 6} filename="resources/.aml"
+- source: archive.zip
+  destination: destination_folder/
+  unzip:
+    - "*.txt"
+    - "folder_to_delete/**"
+    - "!folder_to_delete/file_to_keep.txt"
+  compatibility:
+    - ...
+```
+
+In the example above, all files with the `.txt` extension and the `folder_to_delete/**` folder will be ignored during the extraction. Therefore, they will not appear in the `destination_folder`. However, the file `folder_to_delete/file_to_keep.txt` will be retained.
+
+The content of the `destination_folder` will be:
+
+<FileTree>
+  <FileTree.Folder name="destination_folder" defaultOpen>
+    <FileTree.Folder name="any_folder" defaultOpen>
+        <FileTree.File name="any_file.cpp" />
+    </FileTree.Folder>
+    <FileTree.Folder name="folder_to_delete" defaultOpen>
+        <FileTree.File name="file_to_keep.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>

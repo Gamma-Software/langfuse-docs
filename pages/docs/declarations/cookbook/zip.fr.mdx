@@ -55,3 +55,51 @@ Et que vous indiquerez le chemin du dossier destination. En effet, il est obliga
 </Callout>
 
 Par défaut, le champ `unzip` est déclaré à `False` et ne dézippera donc pas le fichier. Il est donc nécessaire de le déclarer à `True` pour que l'archive soit dézippée.
+
+## Ignorer des dossiers et fichiers à dézipper
+
+Vous pouvez ignorer certains fichiers ou dossiers de l'archive en remplaçant la valeur `True` dans le champ `unzip` par une liste de chaines de caractères. Cette méthode est inspiré du gitignore (vous pouvez retrouver des patterns ici -> [Github](https://gist.github.com/jstnlvns/ebaa046fae16543cc9efc7f24bcd0e31)).
+
+Nous avons une archive avec le contenu suivant:
+
+<FileTree>
+  <FileTree.Folder name="archive.zip" defaultOpen>
+    <FileTree.Folder name="dossier_quelconque" defaultOpen>
+        <FileTree.File name="fichier_quelconque.cpp" />
+    </FileTree.Folder>
+    <FileTree.File name="mon_fichier.txt" />
+    <FileTree.Folder name="dossier_a_supp" defaultOpen>
+        <FileTree.File name="mais_fichier_a_garder.txt" />
+        <FileTree.File name="mon_fichier_autre_fichier.txt" />
+        <FileTree.File name="ma_video.mp4" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+Et la déclaration suivante:
+
+```yaml {4, 5, 6} filename="ressources/.aml"
+- source: archive.zip
+  destination: dossier_destination/
+  unzip:
+    - "*.txt"
+    - "dossier_a_supp/**"
+    - "!dossier_a_supp/mais_fichier_a_garder.txt"
+  compatibility:
+    - ...
+```
+
+Dans l'exemple ci-dessus, tous les fichiers avec l'extention `.txt` et le dossier `dossier_a_supp/**` seront ignorés lors de la décompression. Ils n'apparaitrons donc pas dans le dissier `dossier_destination`. Le fichier `dossier_a_supp/mais_fichier_a_garder.txt` en revanche sera conservé.
+
+Le contenu du dossier `dossier_destination` sera:
+
+<FileTree>
+  <FileTree.Folder name="dossier_destination" defaultOpen>
+    <FileTree.Folder name="dossier_quelconque" defaultOpen>
+        <FileTree.File name="fichier_quelconque.cpp" />
+    </FileTree.Folder>
+    <FileTree.Folder name="dossier_a_supp" defaultOpen>
+        <FileTree.File name="mais_fichier_a_garder.txt" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
