@@ -35,17 +35,17 @@ repositories:
   - name: artifactory-release
     instance: artifactory-company
     type: artifactory
-    base_url: https://artifactory.my-company.com/artifactory/release
+    base_url: https://artifactory.my-company.com/artifactory/release/
     repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$
   - name: artifactory-develop
     instance: artifactory-company
     type: artifactory
-    base_url: https://artifactory.my-company.com/artifactory/develop
+    base_url: https://artifactory.my-company.com/artifactory/develop/
     repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
   - name: nexus-develop
     instance: nexus-company
     type: nexus
-    base_url: https://nexus.my-company.com/repo/develop
+    base_url: https://nexus.my-company.com/repo/develop/
     repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
 ...
 ```
@@ -65,17 +65,17 @@ repositories:
   - name: artifactory-release
     instance: artifactory-company
     type: artifactory
-    base_url: https://artifactory.my-company.com/artifactory/release
+    base_url: https://artifactory.my-company.com/artifactory/release/
     repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+)\/(?P<filename>.+)$
   - name: artifactory-develop
     instance: artifactory-company
     type: artifactory
-    base_url: https://artifactory.my-company.com/artifactory/develop
+    base_url: https://artifactory.my-company.com/artifactory/develop/
     repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
   - name: nexus-develop
     instance: nexus-company
     type: nexus
-    base_url: https://nexus.my-company.com/repo/develop
+    base_url: https://nexus.my-company.com/repo/develop/
     repository_regex: ^(?P<app_name>.+)\/(?P<version>\d+\.\d+-dev)\/(?P<filename>.+)$
 ...
 ```
