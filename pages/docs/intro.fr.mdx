@@ -22,10 +22,15 @@ En résumé, Aiop est comme ton assistant personnel pour l'assemblage de projets
 
 ## Origine
 
-Aiop a été créé pour répondre à un besoin croissant de **simplification du processus de packaging**. Les développeurs et les équipes de développement sont confrontés à des défis de plus en plus complexes lorsqu'il s'agit de créer des packages pour des systèmes embarqués, des applications, des logiciels, etc. Ces défis sont liés à la diversité des plateformes, des configurations, des environnements de déploiement et des [registres d'artefacts](/docs/vocabulary#registres-dartefacts). Aiop a été conçu pour relever ces défis et offrir une solution complète et puissante pour simplifier le processus de packaging.
+Aiop a été créé pour répondre à un besoin croissant de **simplification du processus de packaging** pour les systèmes embarqués. Les développeurs et les équipes de développement sont confrontés à des défis de plus en plus complexes lorsqu'il s'agit de créer des packages pour des systèmes embarqués, des applications, des logiciels, etc. Ces défis sont liés à la diversité des plateformes, des configurations, des environnements de déploiement et des [registres d'artefacts](/docs/vocabulary#registres-dartefacts). Aiop a été conçu pour relever ces défis et offrir une solution complète et puissante pour simplifier le processus de packaging.
 
-Nous avions constaté dans nos différentes expériences professionnelles que les outils et méthodes existantes pour packager des logiciels de systèmes embarqués étaient souvent complexes, laborieux et sujets à des erreurs humaines. Nous avons donc décidé de créer Aiop pour offrir une alternative simple, efficace et fiable pour la génération de packages.
 
+## Les cas d'usages
+
+Imaginons que vous ayez un projet qui a besoin d'être déployé sur différents systèmes. Prenons le cas d'un vehicule autonomes. Vous avez une ligne de produit composée de 4 véhicules différents. Ils ont tous les 4 des dimensions différentes et des capteurs et intégrations différentes. En revanche ils ont une base commune de librairie, application, configuration, etc. Avec AIOP, vous pourrez alors déclarer les ressources communes ainsi que les différentes configurations spécifiques à chaque véhicule dans des fichiers de déclaration. Comme un livre de recette, AIOP récupérera les ressources communes et spécifiques à chaque véhicule et les déploiera dans le système approprié.
+
+Demain si vous souhaitez mettre à jour la librairie, vous n'aurez à le mettre à jour qu'à un seul endroit dans les déclarations.
+Si nous continuons dans la logique il est possible d'ajouter la notion d'environnemenents et construire des packages pour des environnemenents de dev, pré-prod, prod, etc... qui auront chacun des outils de test ou des connexions à des serveurs différents.
 
 ## Comment démarrer
 
