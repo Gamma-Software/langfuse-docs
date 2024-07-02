@@ -3,5 +3,5 @@
   "playbook": "Playbook",
   "inventory": "Inventory",
   "packages": "Packages",
-  "installer": "Installer",
+  "installer": "Installer"
 }
