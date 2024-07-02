@@ -13,9 +13,8 @@ export const YouTubeEmbed = ({
       src={`https://www.youtube.com/embed/${embedId}`}
       title="YouTube video player"
       width="100%"
-      frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
+      allowFullScreen
     ></iframe>
   </div>)
 };
