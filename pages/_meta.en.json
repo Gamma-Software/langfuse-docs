@@ -29,6 +29,20 @@
     "type": "page",
     "title": "Docs"
   },
+  "demo": {
+    "title": "Demo",
+    "type": "menu",
+    "items": {
+      "video": {
+        "title": "Brief intro (Video)",
+        "href": "/docs/demo"
+      },
+      "schedule-demo": {
+        "title": "Schedule a demo",
+        "href": "/schedule-demo"
+      }
+    }
+  },
   "pricing": {
     "title": "Pricing",
     "type": "page",
@@ -56,20 +70,6 @@
     "type": "page",
     "theme": {
       "layout": "full"
-    }
-  },
-  "demo": {
-    "title": "Demo",
-    "type": "menu",
-    "items": {
-      "video": {
-        "title": "Brief intro (Video)",
-        "href": "/docs/demo"
-      },
-      "schedule-demo": {
-        "title": "Schedule a demo",
-        "href": "/schedule-demo"
-      }
     }
   },
   "waiting-list": {
