@@ -1,4 +1,4 @@
-- source: <repo:artifactory:ingenico>c3_emb_qa/T3/ADM/16.38/8293221638_ADM_DEV.P3A
+- source: <repo:artifactory:leaptech>c3_emb_qa/T3/ADM/16.38/8293221638_ADM_DEV.P3A
   destination: c3_applications/adm/adm.P3A
   authors: [valentin.rudloff@test.com]
   compatibility:
