@@ -16,7 +16,7 @@ import ShimmerButton from "@/components/ui/magicui/shimmer-button";
   <div className="flex flex-col items-center content-center text-center my-10">
 
     <Header
-      title="Création de compte Aiop"
+      title="Création de compte AIOP"
       description="Pour le moment la création d’un compte se fait par mail. Nous vous enverrons un mot de passe temporaire et vous pourrez le changer."
       className="mb-8"
       h="h1"

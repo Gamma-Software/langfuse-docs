@@ -1,12 +1,12 @@
 ---
 description: >-
-  Tools: Aiop allows you to compare two packages based on commit or system target
+  Tools: AIOP allows you to compare two packages based on commit or system target
 ---
 import { Callout } from "nextra-theme-docs";
 
 # Comparer des packages
 
-Aiop vous permet de comparer deux packages basés sur plusieurs critères:
+AIOP vous permet de comparer deux packages basés sur plusieurs critères:
 - Comparer deux packages avec la même cible système sur **deux commits différents**
 - Comparer deux packages avec **deux cibles système différents** sur le même commit
 

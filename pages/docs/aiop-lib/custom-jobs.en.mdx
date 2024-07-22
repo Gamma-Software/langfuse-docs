@@ -105,7 +105,7 @@ The `package` parameter is usable in the [`prerequisites`](#prerequisites) and [
 | `package.raw_declarations` | list | Freshly loaded declarations, validated but not yet processed and filtered |
 | `package.declarations` | list | Instances of the `Declaration` class validated but not filtered according to compatibility |
 | `package.matching_declarations` | list | Instances of the `Declaration` class compatible with the target |
-| `package.computed_declarations` | list | Instances of the `Declaration` class processed by Aiop |
+| `package.computed_declarations` | list | Instances of the `Declaration` class processed by AIOP |
 | `package.results` | dict | Task results, Dictionary grouping construction steps then tasks with the task result `JobResult` as value |
 | `package.session_data` | dict
 
@@ -113,7 +113,7 @@ The `package` parameter is usable in the [`prerequisites`](#prerequisites) and [
 
 ### `data`
 
-The `data` parameter is usable in the [`prerequisites`](#prerequisites) and [`run`](#run) methods. This parameter contains information about user settings, playbook, and user commands. It is a static variable and therefore does not change during Aiop execution:
+The `data` parameter is usable in the [`prerequisites`](#prerequisites) and [`run`](#run) methods. This parameter contains information about user settings, playbook, and user commands. It is a static variable and therefore does not change during AIOP execution:
 
 | elements | type | description |
 | --- | --- | --- |
@@ -135,9 +135,9 @@ The values of the `JobResultEnum` enumeration are:
 | Enum | description |
 | --- | --- |
 | `OK` | The task was executed successfully. |
-| `FAIL_NOW` | The task failed and requests Aiop to **immediately** stop package generation. |
-| `FAIL_LATER` | The task failed and requests Aiop to stop package generation **after** executing all tasks in the current stage. This allows in some cases to report as many errors as possible before stopping package generation. |
-| `WARN` | The task failed but does not request Aiop to stop package generation. |
+| `FAIL_NOW` | The task failed and requests AIOP to **immediately** stop package generation. |
+| `FAIL_LATER` | The task failed and requests AIOP to stop package generation **after** executing all tasks in the current stage. This allows in some cases to report as many errors as possible before stopping package generation. |
+| `WARN` | The task failed but does not request AIOP to stop package generation. |
 | `SKIP` | The task was not executed. |
 
 ## Example

@@ -6,7 +6,7 @@ import { Callout } from "nextra-theme-docs";
 
 # Playbook Structure
 
-A `playbook` is the project that Aiop will use to build packages. It consists of multiple files and folders, some of which are mandatory and others optional.
+A `playbook` is the project that AIOP will use to build packages. It consists of multiple files and folders, some of which are mandatory and others optional.
 
 Here's an example of a playbook structure:
 
@@ -42,7 +42,7 @@ Here's an example of a playbook structure:
 You'll notice that the `.git` folder is present because the playbook is a git project, which is recommended for versioning and effective collaboration. The playbook is a git project like any other, and you can use all the features of [git](/docs/vocabulary#git).
 
 <Callout type="info" emoji="ℹ️">
-  The only mandatory folder is `.aiop`, which contains the mandatory configuration files. Of course, the playbook must contain at least one `.aml` file to create a package; otherwise, Aiop will not launch.
+  The only mandatory folder is `.aiop`, which contains the mandatory configuration files. Of course, the playbook must contain at least one `.aml` file to create a package; otherwise, AIOP will not launch.
 </Callout>
 
 ## Details of Files and Folders
@@ -70,7 +70,7 @@ This folder is optional and contains Python scripts that can be used in custom p
 
 ### The `.aml` File
 
-The [`.aml`](/docs/vocabulary#aml) file serves as the entry point for resources sent to Aiop. The tool reads this file to interpret the resources and build the associated packages. Although optional, this file can be placed anywhere in the playbook, but if Aiop finds no `.aml` files in the project or its subdirectories, no package generation will be initiated.
+The [`.aml`](/docs/vocabulary#aml) file serves as the entry point for resources sent to AIOP. The tool reads this file to interpret the resources and build the associated packages. Although optional, this file can be placed anywhere in the playbook, but if AIOP finds no `.aml` files in the project or its subdirectories, no package generation will be initiated.
 
 ### The `.amlignore` File
 

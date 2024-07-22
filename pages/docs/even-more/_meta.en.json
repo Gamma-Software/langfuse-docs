@@ -1,5 +1,5 @@
 {
-    "uninstall": "Uninstall Aiop",
+    "uninstall": "Uninstall AIOP",
     "install_dependencies": "Install dependencies",
     "freemarker_template": {
       "title": "FreeMarker Templating ↗",

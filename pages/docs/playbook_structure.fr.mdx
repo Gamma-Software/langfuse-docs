@@ -6,7 +6,7 @@ import { Callout } from "nextra-theme-docs";
 
 # Structure d’un Playbook
 
-Un `playbook` est le projet qu’Aiop va utiliser pour construire les packages. Il est composé de plusieurs fichiers et dossiers. Il y a des fichiers obligatoires et d’autres optionnels.
+Un `playbook` est le projet qu’AIOP va utiliser pour construire les packages. Il est composé de plusieurs fichiers et dossiers. Il y a des fichiers obligatoires et d’autres optionnels.
 
 Voici un exemple de structure d’un `playbook`:
 
@@ -44,7 +44,7 @@ Vous remarquerez que le dossier `.git` est présent. C’est parce que le playbo
 
 
 <Callout type="info" emoji="ℹ️">
-  Le seul dossier obligatoire est `.aiop` qui contient les fichiers de configuration également obligatoires. Bien entendu, le playbook doit au moins contenir un fichier `.aml` pour créer un package sinon Aiop ne va pas se lancer.
+  Le seul dossier obligatoire est `.aiop` qui contient les fichiers de configuration également obligatoires. Bien entendu, le playbook doit au moins contenir un fichier `.aml` pour créer un package sinon AIOP ne va pas se lancer.
 </Callout>
 
 ## Détails des fichiers et dossiers
@@ -73,7 +73,7 @@ Ce dossier est optionnel et contient des scripts python qui peuvent être utilis
 ### Le fichier `.aml`
 
 
-Le fichier [`.aml`](/docs/vocabulary#aml) constitue le point d'entrée des ressources envoyées à Aiop. L'outil lit ce fichier pour interpréter les ressources et construire les packages associés. Bien qu'optionnel, ce fichier peut être placé n'importe où dans le playbook mais si Aiop ne trouve aucun fichier `.aml` dans le projet ou ses sous-dossiers, aucune génération de package ne sera lancée.
+Le fichier [`.aml`](/docs/vocabulary#aml) constitue le point d'entrée des ressources envoyées à AIOP. L'outil lit ce fichier pour interpréter les ressources et construire les packages associés. Bien qu'optionnel, ce fichier peut être placé n'importe où dans le playbook mais si AIOP ne trouve aucun fichier `.aml` dans le projet ou ses sous-dossiers, aucune génération de package ne sera lancée.
 
 ### Le fichier `.amlignore`
 

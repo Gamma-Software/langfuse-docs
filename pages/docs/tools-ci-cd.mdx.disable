@@ -1,6 +1,6 @@
 ---
 description: >-
-  Tools: CI-CD integrates Aiop to build packages in the pipeline and perform the playbook validation.
+  Tools: CI-CD integrates AIOP to build packages in the pipeline and perform the playbook validation.
 ---
 import { Callout } from "nextra-theme-docs";
 

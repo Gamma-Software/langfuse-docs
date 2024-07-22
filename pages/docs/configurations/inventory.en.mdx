@@ -1,5 +1,5 @@
 ---
-description: Aiop provides a comprehensive configuration file to customize the application's behavior for the playbook using inventory configuration files.
+description: AIOP provides a comprehensive configuration file to customize the application's behavior for the playbook using inventory configuration files.
 ---
 import { Callout } from "nextra-theme-docs";
 
@@ -11,12 +11,12 @@ The inventory is a configuration file that lists the target systems and their ch
 - `inventory.yml`: The inventory file.
 
 <Callout>
-These files are the most important in the playbook. They are **mandatory**, as well as the fields filled in. They will allow Aiop to know the list of target systems and the filtering rules for each parameter of these systems.
+These files are the most important in the playbook. They are **mandatory**, as well as the fields filled in. They will allow AIOP to know the list of target systems and the filtering rules for each parameter of these systems.
 </Callout>
 
 ## Configuration File Structure
 
-The inventory configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop.
+The inventory configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by AIOP.
 
 ```yaml filename=".aiop/inventory_config.yml"
 system:
@@ -204,7 +204,7 @@ You can see that the number of functionalities is large and there are no restric
 
 ## Inventory File Structure
 
-The inventory file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop. This file contains the target systems and the variables specific to each system.
+The inventory file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by AIOP. This file contains the target systems and the variables specific to each system.
 
 ```yaml filename=".aiop/inventory.yml"
 inventory:
@@ -340,8 +340,8 @@ Selection rules are used to filter declarations based on their specific compatib
 
 - `one_of`: For a declaration to be selected, the parameter requested by the user must be included in the allowed values.
 - `all_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values, and no compatible parameters must be missing.
-- `least_diff`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the least difference possible with the allowed values compared to other declarations to be selected. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](/docs/declarations/conflicts).
-- `most_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the most possible similarities with the allowed values compared to other declarations. In case of a tie, all declarations will be selected, which constitutes a conflict reported by Aiop. [Learn more about conflicts](/docs/declarations/conflicts).
+- `least_diff`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the least difference possible with the allowed values compared to other declarations to be selected. In case of a tie, all declarations will be selected, which constitutes a conflict reported by AIOP. [Learn more about conflicts](/docs/declarations/conflicts).
+- `most_of`: For a declaration to be selected, the parameters requested by the user must be included in the allowed values. Additionally, the declaration(s) must have the most possible similarities with the allowed values compared to other declarations. In case of a tie, all declarations will be selected, which constitutes a conflict reported by AIOP. [Learn more about conflicts](/docs/declarations/conflicts).
 
 Additionally, the end user will be asked for more or fewer arguments depending on the selection rule. For example:
 - `one_of`: They can specify only one of the allowed values.
@@ -358,4 +358,4 @@ Let's take the example of Tesla Motors. We might ask to create packages for:
 | `sedan/model3/phase2` | `5-seats` `ludicrous` | `prod` |
 | `truck/cybertruck/phase1` | `5-seats` `towing` | `test` |
 
-In the first case, the user requests to generate a package for a Model X with the functionalities `four-wheel-drive` and `butterfly-doors` working in the `dev` environment. The rule for functionalities being `least_diff`, the user can specify one or more of the allowed functionalities. The rule for the environment being `one_of`, the user can specify only one of the allowed values. This way, Aiop can generate a package for a Model X with the functionalities `four-wheel-drive` and `butterfly-doors` working in the `dev` environment.
+In the first case, the user requests to generate a package for a Model X with the functionalities `four-wheel-drive` and `butterfly-doors` working in the `dev` environment. The rule for functionalities being `least_diff`, the user can specify one or more of the allowed functionalities. The rule for the environment being `one_of`, the user can specify only one of the allowed values. This way, AIOP can generate a package for a Model X with the functionalities `four-wheel-drive` and `butterfly-doors` working in the `dev` environment.

@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Reduce applications integration time and increase your delivering rate.",
+      "packages": "Software modularity at ease. Reduce integration time and increase your delivering rate.",
       "demoButton": "Demo",
       "documentationButton": "View Documentation"
     },
@@ -25,11 +25,11 @@
         },
         "tools": {
           "title": "Tools",
-          "description": "Aiop offers a suite of tools (Expanding) to assist you in maintenance, design, and production of packages."
+          "description": "AIOP offers a suite of tools (Expanding) to assist you in maintenance, design, and production of packages."
         },
         "customization": {
           "title": "Customization",
-          "description": "Customize the behavior of Aiop and your projects to match your needs."
+          "description": "Customize the behavior of AIOP and your projects to match your needs."
         },
         "collaboration": {
           "title": "Collaboration",
@@ -40,23 +40,23 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "Aiop standardizes and automates the process of building embedded system packages."
+      "description": "AIOP standardizes and automates the process of building embedded system packages."
     },
     "Benefits": {
-      "title": "Why Aiop ?",
+      "title": "Why AIOP ?",
       "description": "It saves you time... a lot.",
       "list": [
         {
           "title": "Infinite Packages",
-          "description": "Aiop is designed to manage an unlimited number of packages. Use package nesting to manage complex packages."
+          "description": "AIOP is designed to manage an unlimited number of packages. Use package nesting to manage complex packages."
         },
         {
           "title": "3 hours -> 5 seconds",
-          "description": "On average, our users reduce the package generation time from 3 hours to just 7 seconds with Aiop."
+          "description": "On average, our users reduce the package generation time from 3 hours to just 7 seconds with AIOP."
         },
         {
           "title": "Knowledge Sharing",
-          "description": "Collaboration is at the core of Aiop. Share your declarations, packages, resources, and knowledge among teams. Gain clarity, productivity, and quality."
+          "description": "Collaboration is at the core of AIOP. Share your declarations, packages, resources, and knowledge among teams. Gain clarity, productivity, and quality."
         },
         {
           "title": "Debugging Speed",
@@ -64,30 +64,30 @@
         },
         {
           "title": "Quality Control",
-          "description": "Ensure no surprises when generating your packages. Aiop allows you to validate your resources before generating them."
+          "description": "Ensure no surprises when generating your packages. AIOP allows you to validate your resources before generating them."
         },
         {
           "title": "Versioning",
-          "description": "Manage and version all your packages from one place. Track changes and trace them. Aiop also allows you to regenerate previous versions of your packages."
+          "description": "Manage and version all your packages from one place. Track changes and trace them. AIOP also allows you to regenerate previous versions of your packages."
         }
       ]
     },
     "Clients": {
       "title": "Developed by engineers for engineers",
-      "description": "Initially, the tool is designed to generate packages specifically for embedded systems but should not be limited to that. Aiop is designed for and by software engineers, testers, delivery managers.",
+      "description": "Initially, the tool is designed to generate packages specifically for embedded systems but should not be limited to that. AIOP is designed for and by software engineers, testers, delivery managers.",
       "list": [
         {
           "id": 1,
           "name": "John Doe",
           "designation": "Software Engineer",
-          "description": "John uses Aiop to generate packages for his simulation and testing environment. He will also be involved in modifying the project to add his features during development.",
+          "description": "John uses AIOP to generate packages for his simulation and testing environment. He will also be involved in modifying the project to add his features during development.",
           "image": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
         },
         {
           "id": 2,
           "name": "Robert Johnson",
           "designation": "Tester",
-          "description": "Robert uses Aiop to generate and modify packages for his simulation and testing environment.",
+          "description": "Robert uses AIOP to generate and modify packages for his simulation and testing environment.",
           "image": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
         {
@@ -281,11 +281,11 @@
         "list": [
           {
             "question": "Why pay for a subscription?",
-            "answer": "Aiop is offered for free for personal projects and open-source projects. For professional projects, we charge a subscription to cover infrastructure and support costs. We also offer <a class='underline' href='/docs/plugins'>advanced features</a> for teams and businesses."
+            "answer": "AIOP is offered for free for personal projects and open-source projects. For professional projects, we charge a subscription to cover infrastructure and support costs. We also offer <a class='underline' href='/docs/plugins'>advanced features</a> for teams and businesses."
           },
           {
-            "question": "Why do I need to create an account to use Aiop?",
-            "answer": "For personal and open-source projects, you do not need to create an account. For professional projects, we need your personal information to create an Aiop cloud account and benefit from plugins. We do not sell your data to third parties. Your email address is used only to contact you about your Aiop account."
+            "question": "Why do I need to create an account to use AIOP?",
+            "answer": "For personal and open-source projects, you do not need to create an account. For professional projects, we need your personal information to create an AIOP cloud account and benefit from plugins. We do not sell your data to third parties. Your email address is used only to contact you about your AIOP account."
           },
           {
             "question": "Do you offer promotions?",
@@ -297,8 +297,8 @@
   },
   "product_waiting_list": {
     "title": "Waiting List",
-    "description": "For now, Aiop is in Beta version. To subscribe to the Pro version, please sign up for the waiting list by providing your email.",
-    "description2": "You can still start using Aiop for free by clicking the button below.",
+    "description": "For now, AIOP is in Beta version. To subscribe to the Pro version, please sign up for the waiting list by providing your email.",
+    "description2": "You can still start using AIOP for free by clicking the button below.",
     "modal": {
       "error": "Uh oh! Something went wrong. Please try again or contact us directly by email: support@aiop.io",
       "success": "Message sent! Thank you for your registration, we will notify you as soon as the Pro version is available."
@@ -407,12 +407,12 @@
       { "name": "Use pyinstaller for packaging as a standalone executable", "checked": false },
       { "name": "Create a vscode extension with AIOP and a schema", "checked": false },
       { "name": "Core in Rust to improve speed", "checked": false },
-      { "name": "AI: Prefix errors reported by Aiop via Artificial Intelligence", "checked": false },
+      { "name": "AI: Prefix errors reported by AIOP via Artificial Intelligence", "checked": false },
       { "name": "AI: Interact with a Chatbot to manipulate declarations and assist in declaration generation", "checked": false },
       { "name": "Create custom aliases in declarations to avoid repeating arguments", "checked": false },
-      { "name": "CI: 🐳 Dockerize Aiop", "checked": true },
-      { "name": "CI: Facilitate Aiop integration into CI", "checked": true },
-      { "name": "CI: Base Dockerfile with Aiop", "checked": true },
+      { "name": "CI: 🐳 Dockerize AIOP", "checked": true },
+      { "name": "CI: Facilitate AIOP integration into CI", "checked": true },
+      { "name": "CI: Base Dockerfile with AIOP", "checked": true },
       { "name": "CLI: Manipulate configurations via CLI", "checked": false },
       { "name": "GUI: Windows", "checked": false },
       { "name": "GUI: Linux", "checked": false },
@@ -431,7 +431,7 @@
   },
   "schedule_demo":{
     "title": "Discuss your project",
-    "description": "We could discuss your project and how Aiop can help you. We can also give you a demonstration of the Aiop solution and how it can help you in your business."
+    "description": "We could discuss your project and how AIOP can help you. We can also give you a demonstration of the AIOP solution and how it can help you in your business."
   },
   "changelog":{
     "back": "← Back to changelog"
