@@ -21,11 +21,7 @@ To declare a local resource, simply specify in the `source` field the path to th
     <FileTree.Folder name=".git">
         <FileTree.File name="..." />
     </FileTree.Folder>
-    <FileTree.Folder name=".aiop">
-        <FileTree.File name="inventory_config.yml" />
-        <FileTree.File name="inventory.yml" />
-        <FileTree.File name="playbook.yml" />
-    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
     <FileTree.Folder name="resources" defaultOpen>
         <FileTree.File name=".aml" />
         <FileTree.File name="image.png" />
@@ -47,11 +43,7 @@ Of course, you can load any type of file, not just images, and also folders. In 
     <FileTree.Folder name=".git">
         <FileTree.File name="..." />
     </FileTree.Folder>
-    <FileTree.Folder name=".aiop">
-        <FileTree.File name="inventory_config.yml" />
-        <FileTree.File name="inventory.yml" />
-        <FileTree.File name="playbook.yml" />
-    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
     <FileTree.Folder name="resources" defaultOpen>
         <FileTree.File name=".aml" />
       <FileTree.Folder name="folder" defaultOpen>
@@ -67,3 +59,41 @@ Of course, you can load any type of file, not just images, and also folders. In 
   compatibility:
     - ...
 ```
+
+## Declare Multiple Sources
+
+Since `v0.12.0`, AIOP introduced the possibility of using the `&` key to declare multiple sources at once. This allows you to simplify your configuration and avoid repeating the same values. You can reference as much as files you are capable with the `&` key.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
+    <FileTree.Folder name="resources" defaultOpen>
+        <FileTree.File name=".aml" />
+      <FileTree.Folder name="folder1" defaultOpen>
+        <FileTree.File name="file1" />
+      </FileTree.Folder>
+      <FileTree.Folder name="folder2" defaultOpen>
+        <FileTree.File name="file2" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml filename="resources/.aml" /folder/
+- source: folder1/file1 & folder2/file2
+  destination: dest_folder/
+```
+
+AIOP will retrieve the `file1` and `file2` from their respective folders and add them to the source list to be copied into the `dest_folder`. The `dest_folder` will look like this:
+
+<FileTree>
+  <FileTree.Folder name=".build" defaultOpen>
+      <FileTree.Folder name="dest_folder" defaultOpen>
+        <FileTree.File name="file1" />
+        <FileTree.File name="file2" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+</FileTree>

@@ -16,6 +16,7 @@
   "playbook_structure": "Playbook Structure",
   "configurations": "Configurations",
   "declarations": "Declarations",
+  "integrations": "Integrations",
   "stages": "Build Stages",
   "caching": "Caching",
 
