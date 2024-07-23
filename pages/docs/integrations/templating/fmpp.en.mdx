@@ -1,5 +1,128 @@
 ---
 description: >-
-  AIOP uses FMPP templating tool to generate files in runtime.
+  AIOP uses FMPP Templating to generate file content during execution.
 ---
-# FMPP Templating
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Generating Files Dynamically with FMPP
+
+AIOP allows for the dynamic generation of files during the build phase. This can be useful for generating configuration files, data files, and specific code files based on your declarations.
+
+The principle is to create a `template` with predefined tags as well as custom tags that will be replaced by values defined in the resource declaration. AIOP relies on the tool [`FMPP`](/docs/vocabulary#fmpp) to generate the files dynamically. It is also possible to use [Jinja](/docs/integrations/templating/jinja).
+
+## Conditions
+
+To use this feature, you need to install the `fmpp` dependency on your machine (see [installation](#installation)).
+
+## Usage
+
+FMPP is simple to use. Let's look at some ways to use it. Here is a guide to help you get started:
+
+<Steps>
+### 1. Create an FMPP Template
+
+An FMPP template is essentially a text file with special tags that will be replaced by dynamic values. For example, suppose you have a `template.txt` file with the following content:
+
+```jinja  filename="template.txt"
+Hello ${name},
+
+Thank you for your order of ${product}. Your order will be shipped to the following address:
+${address}.
+
+Best regards,
+The Sales Team
+```
+
+### 2. Declare the Template
+
+Next, declare the template in your playbook as follows:
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: fmpp
+  compatibility:
+    - system:
+      template_data:
+        name: My Name
+        product: My Product
+        address: My Address
+```
+
+The result after package generation:
+
+```txt  filename="file.txt"
+Hello My Name,
+
+Thank you for your order of My Product. Your order will be shipped to the following address:
+My Address.
+
+Best regards,
+The Sales Team
+```
+
+### 3. Use Control Structures
+
+Jinja allows you to use control structures such as loops and conditions to generate more complex dynamic content. For example:
+
+```jinja filename="template.txt"
+Hello ${name},
+
+Thank you for your order of ${product}. Your order contains the following items:
+
+<#list articles as article>
+  - ${a}
+</#list>
+
+Your order will be shipped to the following address:
+${address}.
+
+Best regards,
+The Sales Team
+```
+
+### 4. Declare the Template
+
+And in the declaration:
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        name: My Name
+        product: My Product
+        articles: [Article1, Article2]
+        address: My Address
+```
+
+The result after package generation:
+
+```txt filename="file.txt"
+Hello My Name,
+
+Thank you for your order of My Product. Your order contains the following items:
+
+- Article1
+- Article2
+
+Your order will be shipped to the following address:
+My Address.
+
+Best regards,
+The Sales Team
+```
+
+</Steps>
+
+## Go Further
+
+FMPP is a very powerful template engine and offers advanced features that we will not discuss here. To learn more, consult the [official documentation](https://fmpp.sourceforge.net/index.html). For a list of predefined functions by FMPP, see [this documentation](https://freemarker.apache.org/docs/ref_builtins.html).
+
+Learn more about declaring a template: [Declare a template](/docs/declarations/cookbook/generate_file).
+
+Finally, AIOP predefines variables for templates, the list of which can be found [here](/docs/integrations/templating/predefined_variables).

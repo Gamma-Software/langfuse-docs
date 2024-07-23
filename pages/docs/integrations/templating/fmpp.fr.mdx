@@ -2,4 +2,128 @@
 description: >-
   AIOP utilise FMPP Templating pour générer le contenu de fichiers pendant l'execution.
 ---
-# FMPP Templating
+
+import { FileTree } from 'nextra/components'
+import { Callout } from "nextra-theme-docs";
+
+# Générer des fichiers dynamiquement avec FMPP
+
+AIOP permet de générer des fichiers dynamiquement pendant la phase de build. Cela peut être utile pour générer des fichiers de configuration, des fichiers de données, des fichiers de code spécifique en fonction de votre déclaration.
+
+Le principe est de créer un `modèle` avec des balises pré-définies ainsi que des balises personnalisées qui seront remplacé par des valeurs définies dans la déclaration de la ressource. AIOP se base sur l’outil [`FMPP`](/docs/vocabulary#fmpp) pour générer les fichiers dynamiquement. Il est également possible d'utiliser [Jinja](/docs/integrations/templating/jinja).
+
+## Conditions
+
+Pour utiliser cette fonctionnalité, vous devez installer la dépendance `fmpp` sur votre machine (voir [installation](#installation)).
+
+
+## Utilisation
+
+FMPP est simple d'utilisation. Voyons ensemble quelques façon de l'utiliser. Voici un guide pour vous aider à démarrer :
+
+<Steps>
+### 1. Créer un Template FMPP
+
+Un template FMPP est essentiellement un fichier texte avec des balises spéciales qui seront remplacées par des valeurs dynamiques. Par exemple, supposons que vous avez un fichier `template.txt` avec le contenu suivant :
+
+```jinja  filename="template.txt"
+Bonjour ${nom},
+
+Merci pour votre commande de ${produit}. Votre commande sera expédiée à l'adresse suivante :
+${adresse}.
+
+Cordialement,
+L'équipe de vente
+```
+
+### 2. Déclarer le template
+
+Ensuite déclarez le template dans votre playbook de la manière suivante:
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: fmpp
+  compatibility:
+    - system:
+      template_data:
+        nom: Mon nom
+        produit: Mon produit
+        adresse: Mon adresse
+```
+
+Le résultat après génération du package:
+
+```txt  filename="file.txt"
+Bonjour Mon nom,
+
+Merci pour votre commande de Mon produit. Votre commande sera expédiée à l'adresse suivante :
+Mon adresse.
+
+Cordialement,
+L'équipe de vente
+```
+
+### 3. Utiliser des Structures de Contrôle
+
+Jinja permet d'utiliser des structures de contrôle telles que des boucles et des conditions pour générer du contenu dynamique plus complexe. Par exemple :
+
+```jinja filename="template.txt"
+Bonjour ${nom},
+
+Merci pour votre commande de ${produit}. Votre commande contient les articles suivants :
+
+<#list articles as article>
+  - ${a}
+</#list>
+
+Votre commande sera expédiée à l'adresse suivante :
+${adresse}.
+
+Cordialement,
+L'équipe de vente
+```
+
+### 4. Déclarer le template
+
+Et dans la déclaration :
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        nom: Mon nom
+        produit: Mon produit
+        articles: [Article1, Article2]
+        adresse: Mon adresse
+```
+
+Le résultat après génération du package:
+
+```txt filename="file.txt"
+Bonjour Mon nom,
+
+Merci pour votre commande de Mon produit. Votre commande contient les articles suivants :
+
+- Article1
+- Article2
+
+Votre commande sera expédiée à l'adresse suivante :
+Mon adresse.
+
+Cordialement,
+L'équipe de vente
+```
+
+</Steps>
+
+## Allez plus loin
+
+FMPP est un moteur de template très puissant et vous propose des fonctionnalitées avancée que nous n'évoquerons pas ici. Pour en savoir plus, consultez la [documentation officielle](https://fmpp.sourceforge.net/index.html). Pour avoir la liste des fonctions pré-définies par FMPP, consultez [cette documentation](https://freemarker.apache.org/docs/ref_builtins.html).
+
+En savoir plus sur la déclaration d'un template: [Déclarer un template](/docs/declarations/cookbook/generate_file).
+
+Enfin, AIOP pré-définie des variables pour les templates dont la liste est à retrouver [ici](/docs/integrations/templating/predefined_variables)
