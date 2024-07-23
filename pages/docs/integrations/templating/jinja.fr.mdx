@@ -2,4 +2,120 @@
 description: >-
   AIOP utilise Jinja Templating pour générer le contenu de fichiers pendant l'execution.
 ---
+
 # Jinja Templating
+
+AIOP propose à chaque utilisateur de générer des fichiers à partir d'un template [Jinja](https://jinja.palletsprojects.com). Il est également possible de générer des PDF templatisé (en savoir plus [ici](/docs/integrations/pdf#le-markdown-templatis%C3%A9)). Il est également possible d'utiliser [FMPP](/docs/integrations/templating/fmpp).
+
+Jinja est un moteur de création de modèles rapide, expressif et extensible. Des champs permettent d'écrire du code similaire à la syntaxe Python syntaxe Python.
+
+## Utilisation
+
+Jinja est simple d'utilisation. Voyons ensemble quelques façon de l'utiliser. Voici un guide pour vous aider à démarrer :
+
+<Steps>
+### 1. Créer un Template Jinja
+
+Un template Jinja est essentiellement un fichier texte avec des balises spéciales qui seront remplacées par des valeurs dynamiques. Par exemple, supposons que vous avez un fichier `template.txt` avec le contenu suivant :
+
+```jinja  filename="template.txt"
+Bonjour {{ nom }},
+
+Merci pour votre commande de {{ produit }}. Votre commande sera expédiée à l'adresse suivante :
+{{ adresse }}.
+
+Cordialement,
+L'équipe de vente
+```
+
+### 2. Déclarer le template
+
+Ensuite déclarez le template dans votre playbook de la manière suivante:
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        nom: Mon nom
+        produit: Mon produit
+        adresse: Mon adresse
+```
+
+Le résultat après génération du package:
+
+```txt  filename="file.txt"
+Bonjour Mon nom,
+
+Merci pour votre commande de Mon produit. Votre commande sera expédiée à l'adresse suivante :
+Mon adresse.
+
+Cordialement,
+L'équipe de vente
+```
+
+### 3. Utiliser des Structures de Contrôle
+
+Jinja permet d'utiliser des structures de contrôle telles que des boucles et des conditions pour générer du contenu dynamique plus complexe. Par exemple :
+
+```jinja filename="template.txt"
+Bonjour {{ nom }},
+
+Merci pour votre commande de {{ produit }}. Votre commande contient les articles suivants :
+
+{% for article in articles %}
+- {{ article }}
+{% endfor %}
+
+Votre commande sera expédiée à l'adresse suivante :
+{{ adresse }}.
+
+Cordialement,
+L'équipe de vente
+```
+
+### 4. Déclarer le template
+
+Et dans la déclaration :
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        nom: Mon nom
+        produit: Mon produit
+        articles: [Article1, Article2]
+        adresse: Mon adresse
+```
+
+Le résultat après génération du package:
+
+```txt filename="file.txt"
+Bonjour Mon nom,
+
+Merci pour votre commande de Mon produit. Votre commande contient les articles suivants :
+
+- Article1
+- Article2
+
+Votre commande sera expédiée à l'adresse suivante :
+Mon adresse.
+
+Cordialement,
+L'équipe de vente
+```
+
+</Steps>
+
+## Allez plus loin
+
+Jinja est un moteur de template très puissant et vous propose des fonctionnalitées avancée que nous n'évoquerons pas ici. Pour en savoir plus, consultez la [documentation officielle](https://jinja.palletsprojects.com/en/3.0.x/). Pour avoir la liste des fonctions pré-définies par Jinja, consultez [cette documentation](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters).
+
+En savoir plus sur la déclaration d'un template: [Déclarer un template](/docs/declarations/cookbook/generate_file)
+
+Enfin, AIOP pré-définie des variables pour les templates dont la liste est à retrouver [ici](/docs/integrations/templating/predefined_variables)

@@ -5,65 +5,61 @@ import { Callout } from "nextra-theme-docs";
 
 # Configuration de l’inventaire
 
-L’inventaire est un fichier de configuration qui répertorie les systèmes cible et ces caractéristiques. Il est utilisé pour définir les systèmes pour lesquels le playbook à le doit de générer un package. Il est également utilisé pour définir les variables spécifiques à chaque système. Nous allons voir les deux fichiers à prendre en compte:
+L’inventaire est une configuration qui répertorie les systèmes cible et ces caractéristiques. Il est utilisé pour définir les systèmes pour lesquels le playbook à le doit de générer un package. Il est également utilisé pour définir les variables spécifiques à chaque système. Veuillez définir l'inventaire et sa configuration dans le fichier `.aiop` à la racine du playbook.
 
-- `inventory_config.yml`: Le fichier de configuration de l’inventaire.
-- `inventory.yml`: Le fichier d’inventaire.
+- `inventory_config`: Le dictionnaire de configuration de l’inventaire.
+- `inventory.`: Le dictionnaire de l'inventaire.
 
-<Callout>
-Ces fichiers sont les plus importants du playbook. Ils sont **obligatoires** ainsi que les champs renseignés. Ils permettrons à AIOP de connaitre la liste des systèmes cible et les règles de filtrage de chaque paramètre de ces systèmes.
-</Callout>
+## Structure de la configuration de l'inventaire
 
+La configuration de l’inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP.
 
-## Structure du fichier de configuration
-
-Le fichier de configuration de l’inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP.
-
-```yaml filename=".aiop/inventory_config.yml"
-system:
-  order: architecture/model_range/model
-  architecture:
-    allowed:
-      - archi1
-      - archi2
-  model_range:
-    allowed:
-      - model_range1
-      - model_range2
-      - model_range3
-  model:
-    allowed:
-      - model1
-      - model2
-      - model3
-      - model4
-compatibility:
-  apps:
-    rule: least_diff
-    description: "List of apps compatible with the package"
-    allowed:
-      - app1
-      - app2
-      - app3
-  contexts:
-    rule: one_of
-    description: "Contexts where the package can be installed"
-    allowed:
-      - context1
-      - context2
-  envs:
-    rule: one_of
-    description: "Environment where the package can be installed"
-    allowed:
-      - dev
-      - test
-      - bench
-      - prod
+```yaml filename=".aiop"
+inventory_config:
+  system:
+    order: architecture/model_range/model
+    architecture:
+      allowed:
+        - archi1
+        - archi2
+    model_range:
+      allowed:
+        - model_range1
+        - model_range2
+        - model_range3
+    model:
+      allowed:
+        - model1
+        - model2
+        - model3
+        - model4
+  compatibility:
+    apps:
+      rule: least_diff
+      description: "List of apps compatible with the package"
+      allowed:
+        - app1
+        - app2
+        - app3
+    contexts:
+      rule: one_of
+      description: "Contexts where the package can be installed"
+      allowed:
+        - context1
+        - context2
+    envs:
+      rule: one_of
+      description: "Environment where the package can be installed"
+      allowed:
+        - dev
+        - test
+        - bench
+        - prod
 ```
 
 ### Personnalisation
 
-Nous pouvons voir que le fichier de configuration de l’inventaire contient deux sections:
+Nous pouvons voir que le fichier de configuration de l’inventaire contient deux sections dans le champ `inventory_config`:
 
 - `system`: Cette section décrit les systèmes autorisés. Il est possible de définir l’ordre des champs et les valeurs autorisées pour chaque champ.
 - `compatibility`: Cette section contient les règles pour les variables spécifiques à chaque système. Il est possible de définir les valeurs autorisées pour chaque variable et les règles de validation.
@@ -132,35 +128,36 @@ La section `compatibility` contient les règles pour les paramètres de chaque s
 
 Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](/docs/configurations/playbook). Nous pourrions définir le fichier de configuration de l’inventaire comme suit. Voyons d'abord la configuration système et ensuite les règles de sélection et les options.
 
-```yaml filename=".aiop/inventory_config.yml"
-system:
-  order: type/model/phase
-  type:
-    allowed:
-      - suv
-      - sedan
-      - roadster
-      - truck
-  model:
-    allowed:
-      - modelS
-      - model3
-      - modelX
-      - modelY
-      - cybertruck
-      - roadster
-      - semi
-  phase:
-    allowed:
-      - phase1
-      - phase2
-    ```
+```yaml filename=".aiop"
+inventory_config:
+  system:
+    order: type/model/phase
+    type:
+      allowed:
+        - suv
+        - sedan
+        - roadster
+        - truck
+    model:
+      allowed:
+        - modelS
+        - model3
+        - modelX
+        - modelY
+        - cybertruck
+        - roadster
+        - semi
+    phase:
+      allowed:
+        - phase1
+        - phase2
+```
 
 Nous pouvons voir que l’inventaire de Tesla contient trois champs: `type`, `model` et `phase`. Nous avons défini l’ordre des champs comme `type/model/phase`. Le `type`indique le type de véhicule, le `model` indique le modèle du véhicule et le `phase` indique la phase de développement du véhicule. Un exemple de système cible serait `suv/modelX/phase1` qui indique un SUV Model X en phase 1 de développement. Toutefois, il est nécessaire de définir les systèmes cible dans le [fichier d’inventaire](#structure-du-fichier-dinventaire).
 
 Définissons maintenant les règles de sélection et les options pour les systèmes cible.
 
-```yaml filename="(suite de) .aiop/inventory_config.yml"
+```yaml filename="(suite de) .aiop"
 compatibility:
     functions:
         rule: least_diff
@@ -202,11 +199,11 @@ Nous pouvons voir que l’inventaire de Tesla contient deux paramètres permetta
 
 Vous pouvez constater que le nombre de fonctionnalité est grande et il n'y aucune restriction au nombre de valeurs. Cela signifie que vous pouvez ajouter autant de valeurs que vous le souhaitez.
 
-## Structure du fichier d’inventaire
+## Structure de l'inventaire
 
-Le fichier d'inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP. C'est ce fichier qui contient les systèmes cible et les variables spécifiques à chaque système.
+L'inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP. C'est ce fichier qui contient les systèmes cible et les variables spécifiques à chaque système.
 
-```yaml filename=".aiop/inventory.yml"
+```yaml filename=".aiop"
 inventory:
   - system:
       architecture: archi1
@@ -267,8 +264,7 @@ La section `inventory` contient les systèmes cible et les variables spécifique
 
 Reprenons l'exemple de la société Tesla utilisé dans le [chapitre précédent](/docs/configurations/playbook). Nous pourrions définir le fichier d’inventaire comme suit.
 
-```yaml filename=".aiop/inventory.yml"
-
+```yaml filename=".aiop"
 inventory:
   - system:
       type: suv

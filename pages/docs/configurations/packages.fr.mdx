@@ -1,23 +1,23 @@
 ---
-description: Ce fichier optionnel permet de configurer tous les packages que vous souhaitez générez. Il est utilisé uniquement par la commande `aiop build_all` pour générer tous les packages en une fois.
+description: Cette configuration permet de configurer tous les packages que vous souhaitez générez. Il est utilisé uniquement par la commande `aiop build_all` pour générer tous les packages en une fois.
 ---
 import { Callout } from "nextra-theme-docs";
 
-# Fichier de configuration des packages
+# Configuration des packages
 
-Le fichier de configuration des packages est un fichier optionnel qui permet de configurer tous les packages que vous souhaitez générer. Il est utilisé __uniquement__ par la commande `aiop build_all` pour générer tous les packages en une fois [[En savoir plus](/docs/cli/build#commande-build_all)].
+La configuration des packages est optionnel et permet de configurer tous les packages que vous souhaitez générer. Il est utilisé __uniquement__ par la commande `aiop build_all` pour générer tous les packages en une fois [[En savoir plus](/docs/cli/build#commande-build_all)].
 
 ## Configuration
 
 Le fichier de configuration des packages est situé dans le répertoire relatif au playbook:
-- Unix: `<racine_playbook>/.aiop/packages.yml`
-- Windows: `<racine_playbook>\.aiop\packages.yml`
+- Unix: `<racine_playbook>/.aiop`
+- Windows: `<racine_playbook>\.aiop`
 
 > `<racine_playbook>` est le répertoire racine du playbook.
 
 Voici un exemple de fichier de configuration des packages:
 
-```yaml filename=".aiop/packages.yml"
+```yaml filename=".aiop"
 packages:
   - target_system: archi1/model_range1/model1
     compat_arg: [arg1]

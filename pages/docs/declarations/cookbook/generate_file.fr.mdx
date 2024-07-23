@@ -10,17 +10,17 @@ import { Callout } from "nextra-theme-docs";
 
 AIOP permet de générer des fichiers dynamiquement pendant la phase de build. Cela peut être utile pour générer des fichiers de configuration, des fichiers de données, des fichiers de code spécifique en fonction de votre déclaration.
 
-Le principe est de créer un `modèle` avec des balises pré-définies ainsi que des balises personnalisées qui seront remplacé par des valeurs définies dans la déclaration de la ressource. Pour cela vous devez utiliser le format de modèle [FreeMarker](https://freemarker.apache.org/). AIOP se base sur l’outil [`FMPP`](/docs/vocabulary#fmpp) pour générer les fichiers dynamiquement.
+Le principe est de créer un `modèle` avec des balises pré-définies ainsi que des balises personnalisées qui seront remplacé par des valeurs définies dans la déclaration de la ressource. Pour cela vous devez utiliser le format de modèle [FreeMarker](https://freemarker.apache.org/). AIOP se base sur les outils [`FMPP`](/docs/vocabulary#fmpp) ou [`Jinja`](/docs/vocabulary#jinja) pour générer les fichiers dynamiquement.
 
 <iframe width="853" height="480" src="https://www.youtube.com/embed/T6v8PWgCguo?si=2SGnJQW5kKza0dsh?rel=0" title="YouTube video player" frameborder="0" allow="fullscreen; accelerometer;" allowfullscreen/>
 
 ## Conditions
 
-Pour utiliser cette fonctionnalité, vous devez installer la dépendance `fmpp` sur votre machine (voir [installation](#installation)). Pour générer le fichier dynamiquement, vous devez nommer le fichier de ressource avec l’extension [`.ftl`](/docs/vocabulary#ftl).
+Pour utiliser `fmpp`, vous devez installer la dépendance `fmpp` sur votre machine (voir [installation](#installation)). Il n'y a pas d'installation spécifique pour `Jinja`. Pour générer le fichier dynamiquement, vous devez déclarer la resource comme un template soit `fmpp` soit `jinja`.
 
 ## Déclaration
 
-Par exemple, vous pouvez déclarer un modèle de fichier qui va générer un `readme` différent pour chaque système et client.
+Par exemple, vous pouvez déclarer un modèle de fichier qui va générer un `readme.md` différent pour chaque système et client.
 
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
@@ -30,30 +30,31 @@ Par exemple, vous pouvez déclarer un modèle de fichier qui va générer un `re
     <FileTree.File name=".aiop" />
     <FileTree.Folder name="resources" defaultOpen>
         <FileTree.File name=".aml" />
-        <FileTree.File name="readme.ftl" />
+        <FileTree.File name="readme.md" />
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-```yaml {7-8, 12-13} filename="resources/.aml"
-- source: readme.ftl
+```yaml {3, 7-8, 12-13} filename="resources/.aml"
+- source: readme.md
   destination: readme.md
+  template: fmpp
   compatibility:
     - archi1/model1:
         apps: [app]
         clients: [client1, client2]
-      fmpp_data:
+      template_data:
         version: 1.0
     - archi1/model2:
         apps: [app]
         clients: [client1, client2]
-      fmpp_data:
+      template_data:
         version: 2.0
 ```
 
-Ici le fichier `readme.ftl` est un modèle qui sera utilisé pour générer le fichier `readme.md`. Nous avons déclaré la ressource pour deux modèles de système spécifiquement. Ils contienent tous les deux des données en plus à utiliser dans le modèle FreeMarker avec le champ additionnel `fmpp_data`. __Ce champ est optionel__. Prenons un exemple de contenu du fichier `readme.ftl` :
+Ici le fichier `readme.md` est un modèle qui sera utilisé pour générer le fichier `readme.md`. Nous avons déclaré la ressource pour deux modèles de système spécifiquement. Ils contienent tous les deux des données en plus à utiliser dans le modèle FreeMarker avec le champ additionnel `template_data`. __Ce champ est optionel__. Prenons un exemple de contenu du fichier `readme.md` :
 
-```ftl filename="readme.ftl"
+```ftl filename="readme.md"
 # README
 Version: ${version}
 Target: ${system_target.name}
@@ -102,13 +103,6 @@ Target: archi1/model2
 Voici en readme tout à fait normal...
 ```
 
-## Données pré-définies [#predifined]
-
-Voici la liste des valeurs prédéfinies par AIOP que vous pouvez utiliser dans vos modèles FreeMarker :
-
-- `system_target.name`: le nom du système cible au format `x/x/x` (ex: `archi1/model1`)
-- `system_target.args`: les arguments du système cible. Dans notre exemple, `system_target.args.clients` est la liste des clients du système cible.
-
 ## Aller plus loin
 
-Pour plus d’informations sur les balises FreeMarker, vous pouvez consulter la [documentation officielle](https://freemarker.apache.org/docs/dgui_template_exp.html). Vous pouvez également consulter la référence du langage de modèle FreeMarker [ici](https://freemarker.apache.org/docs/ref.html).
+Pour aller plus loin de la compréhension de la templatisation, veuillez vous référer au chapitre [Templatisation FMPP](/docs/integrations/templating/jinja) or [Templatisation Jinja](/docs/integrations/templating/jinja).

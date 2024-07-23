@@ -1,130 +1,124 @@
 ---
-description: AIOP provides an extended configuration file to customize the application's behavior for the playbook.
+description: AIOP allows you to configure the playbook.
 ---
 import { Callout } from "nextra-theme-docs";
 
 # Playbook Configuration
 
-The playbook needs to be configured to meet your requirements. The configuration file is located in the playbook's relative directory:
-- Unix: `<playbook_root>/.aiop/playbook.yaml`
-- Windows: `<playbook_root>\.aiop\playbook.yaml`
-
-The playbook must also contain an inventory configuration file that lists the target systems and their characteristics. The inventory configuration file is located in the playbook's relative directory:
-- Unix: `<playbook_root>/.aiop/inventory.yaml`
-- Windows: `<playbook_root>\.aiop\inventory.yaml` and `<playbook_root>\.aiop\inventory_config.yml`
+The playbook can be configured to meet your needs. The configuration file is located in the playbook's root directory:
+- Unix: `<playbook_root>/.aiop` in the `playbook` field
+- Windows: `<playbook_root>\.aiop` in the `playbook` field
 
 > `<playbook_root>` is the root directory of the playbook.
 
-<Callout type="info" emoji="ℹ️">
-  Upon AIOP installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
-</Callout>
-
 <Callout type="warning" emoji="⚠️">
-  Plugins may also provide additional configuration options. Please refer to the plugin documentation for more information. [Contact](mailto:support@aiop.io) technical support for any inquiries.
+  Plugins can also provide additional configuration options. Please refer to the plugin documentation for more information. [Contact](mailto:support@aiop.io) technical support for any questions.
 </Callout>
 
-The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by AIOP to customize the playbook.
+The configuration file is in YAML format. It can be edited with a text editor or code editor. It will then be read and verified by AIOP to customize the playbook.
 
 ## Configuration File Structure
 
-This configuration file is specific to your playbook. It contains information about plugins, remote repositories, custom validation, and post-build scripts, and other customization options that may come from plugins.
+This configuration file is specific to your playbook. It contains information about plugins, remote repositories, custom validation rules, post-build scripts, and other customization options that may come from plugins.
 
-```yaml filename=".aiop/playbook.yml"
-plugins:
-  - name: {plugin_name}
-    version: {plugin_version}
-repositories:
-  - name: {repository_name}
-    instance: {instance_name}
-    type: {repository_type}
-    base_url: {repository_base_url}
-    repository_regex: {repository_regex}
-lint_rules:
-  - classname: {rule_classname}
-    path: {relative_script_path}
-post_scripts:
-  - classname: {rule_classname}
-    path: {relative_script_path}
+```yaml filename=".aiop"
+playbook:
+  playbook_name: {playbook_name}
+  plugins:
+    - name: {plugin_name}
+      version: {plugin_version}
+  repositories:
+    - name: {repository_name}
+      instance: {instance_name}
+      type: {repository_type}
+      base_url: {repository_base_url}
+      repository_regex: {repository_regex}
+  lint_rules:
+    - classname: {rule_classname}
+      path: {rule_script_path}
+  post_scripts:
+    - classname: {script_classname}
+      path: {script_path}
 ```
 
-## Personalization
+## Customization
 
 To customize, simply open and modify the configuration file.
 
 | **Name** | **Type** | **Description** | **Possible Values** |
 | :--- | :--- | :--- | :--- |
-| [`plugins`](#plugins) | `list` | List of plugins to use for the playbook. | `name`: Plugin name. <br/>`version`: Plugin version. |
-| [`plugins.name`](#plugins) | `str` | Plugin name |  |
-| [`plugins.version`](#plugins) | `str` | Plugin version |
-| [`repositories`](#repositories) | `list` | List of remote repositories to use for the playbook. | `name`: Repository name. <br/>`instance`: Instance name. <br/>`type`: Repository type. <br/>`base_url`: Repository base URL. <br/>`repository_regex`: Regex to filter repositories. |
-| [`repositories.name`](#repositories)  | `str` | Repository name |
-| [`repositories.instance`](#repositories)  | `str` | Instance name |
-| [`repositories.type`](#repositories)  | `str` | Repository type |
-| [`repositories.base_url`](#repositories)  | `str` | Repository base URL |
-| [`repositories.repository_regex`](#repositories)  | `str` | Regex to filter repositories |
-| [`lint_rules`](#lint_rules-and-post_scripts) | `list` | List of validation rules to execute. | `classname`: Class name of the rule to execute at validation. <br/>`path`: Relative path to the script. |
-| [`lint_rules.classname`](#lint_rules-and-post_scripts) | `str` | Class name of the rule to execute at validation. | |
-| [`lint_rules.path`](#lint_rules-and-post_scripts) | `str` | Relative path to the script. | |
-| [`post_scripts`](#lint_rules-and-post_scripts) | `list` | List of scripts to execute after the build. | `classname`: Class name of the rule to execute after the build. <br/>`path`: Relative path to the script. |
-| [`post_scripts.classname`](#lint_rules-and-post_scripts) | `str` | Class name of the rule to execute after the build. | |
-| [`post_scripts.path`](#lint_rules-and-post_scripts) | `str` | Relative path to the script. | |
+| [`playbook.playbook_name`](#playbook_name) | `str` | Playbook name | By default, this will be the name of the playbook folder. |
+| [`playbook.plugins`](#plugins) | `list` | List of plugins to use for the playbook. | `name`: Plugin name. <br/>`version`: Plugin version. |
+| [`playbook.plugins.name`](#plugins) | `str` | Plugin name |  |
+| [`playbook.plugins.version`](#plugins) | `str` | Plugin version |
+| [`playbook.repositories`](#repositories) | `list` | List of remote repositories to use for the playbook. | `name`: Repository name. <br/>`instance`: Instance name. <br/>`type`: Repository type. <br/>`base_url`: Repository base URL. <br/>`repository_regex`: Regex to filter repositories. |
+| [`playbook.repositories.name`](#repositories) | `str` | Repository name |
+| [`playbook.repositories.instance`](#repositories) | `str` | Instance name |
+| [`playbook.repositories.type`](#repositories) | `str` | Repository type |
+| [`playbook.repositories.base_url`](#repositories) | `str` | Repository base URL |
+| [`playbook.repositories.repository_regex`](#repositories) | `str` | Regex to filter repositories |
+| [`playbook.lint_rules`](#lint_rules-and-post_scripts) | `list` | List of validation rules to execute. | `classname`: Classname of the rule to execute during validation. <br/>`path`: Relative path to the script. |
+| [`playbook.lint_rules.classname`](#lint_rules-and-post_scripts) | `str` | Classname of the rule to execute during validation. | |
+| [`playbook.lint_rules.path`](#lint_rules-and-post_scripts) | `str` | Relative path to the script. | |
+| [`playbook.post_scripts`](#lint_rules-and-post_scripts) | `list` | List of scripts to execute after the build. | `classname`: Classname of the rule to execute after the build. <br/>`path`: Relative path to the script. |
+| [`playbook.post_scripts.classname`](#lint_rules-and-post_scripts) | `str` | Classname of the rule to execute after the build. | |
+| [`playbook.post_scripts.path`](#lint_rules-and-post_scripts) | `str` | Relative path to the script. | |
 
-All of these fields are optional.
+All these fields are optional.
 
-<Callout type="info" emoji="ℹ️">
-  In case you don't have any plugins, remote repositories, validation rules, or post-build scripts, you can remove the corresponding sections **but you still must have an empty file**.
-</Callout>
+### `playbook_name`
+
+The `playbook_name` section is the name of the playbook. By default, this will be the name of the playbook folder.
 
 ### `plugins`
 
-The `plugins` section is a list of plugins to use for the playbook. Each plugin must have a name and a version. You are unlimited in the number of plugins.
+The `plugins` section is a list of plugins to use for the playbook. Each plugin must have a name and a version. You can have as many plugins as you like.
 
 ### `repositories`
 
-The `repositories` section is a list of remote repositories to use for the playbook. You are not limited in the number of repositories. Each repository must have a name, an instance, a type, a base URL, and a regex. Here's an explanation of each field:
+The `repositories` section is a list of remote repositories to use for the playbook. You are not limited in the number of repositories. Each repository must have a name, an instance, a type, a base URL, and a regex. Here is an explanation of each field:
 
-- **`name`:** The repository name. This name is used to identify the repository in declarations.
+- **`name`:** The name of the repository. This name is used to identify the repository in declarations.
 
-- **`instance`:** The instance name corresponds to the parameter in the [user configuration file](/docs/configurations/user). It's the instance of a remote repository that the playbook will use.
+- **`instance`:** The instance name corresponds to the parameter in the [user configuration file](/docs/configurations/user). It is the instance of a remote repository that the playbook will use.
 
 - **`type`:** The type can currently be `artifactory` or `nexus`.
 
-- **`base_url`** the base URL of the repository. For example, for an Artifactory repository, the base URL is `https://artifactory.my-company.com/artifactory/`.
+- **`base_url`:** The base URL of the repository. For example, for an Artifactory repository, the base URL is `https://artifactory.my-company.com/artifactory/`.
 
-- **`repository_regex`** is a regular expression to both validate that the path to the remote resource is correct and get additional data to process during generation. For example, you might need to retrieve the resource's version and name and verify that it's a Java application `.jar`. In this case, you can use a regex to extract this information: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. You can then during package generation retrieve the `version` and `name` values to use in your [`post_scripts`](#lint_rules-and-post_scripts) rule.
+- **`repository_regex`:** A regular expression to both validate that the path to the remote resource is correct and obtain additional data for processing during generation. For example, you might need to retrieve the version of the resource and its name and check that it is a Java application `.jar`. In this case, you can use a regex to extract this information: `(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar`. You can then retrieve the `version` and `name` values during package generation to use in your [`post_scripts`](#lint_rules-and-post_scripts).
 
 ### `lint_rules` and `post_scripts`
 
-The `lint_rules` and `post_scripts` sections are lists of rules to execute during package generation. Each rule must specify the class name and the relative path from the project root to the script file.
+The `lint_rules` and `post_scripts` sections are lists of rules to execute at package generation time. Each rule must specify the class name and the relative path from the project root to the script file.
 
+## Configuration Example
 
-## Example Configuration
+This configuration file can be challenging to set up, which is why we have created a sample inventory to help you get started. By default, AIOP will create it for you during project initialization.
 
-This parameter file can be tricky to set up, which is why we created an inventory template to help you get started. By default, AIOP creates it for you when initializing the project.
-
-```yaml filename=".aiop/playbook.yml"
-plugins:
-  - name: tesla-plugin
-    version: "0.2"
-repositories:
-  - name: release
-    instance: artifactory-tesla-repo
-    type: artifactory
-    base_url: https://artifactory.tesla
-
-.com/artifactory/release/
-    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
-  - name: qa
-    instance: artifactory-tesla-repo
-    type: artifactory
-    base_url: https://artifactory.tesla.com/artifactory/qa/
-    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
-lint_rules:
-  - classname: SnakeCaseRule
-    path: .aiop/rules/snake_case_rule.py
-post_scripts:
-  - classname: ApplyPatch
-    path: .aiop/rules/apply_patch.py
+```yaml filename=".aiop"
+playbook:
+  playbook_name: aiop-playbook
+  plugins:
+    - name: tesla-plugin
+      version: "0.2"
+  repositories:
+    - name: release
+      instance: artifactory-tesla-repo
+      type: artifactory
+      base_url: https://artifactory.tesla.com/artifactory/release/
+      repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+    - name: qa
+      instance: artifactory-tesla-repo
+      type: artifactory
+      base_url: https://artifactory.tesla.com/artifactory/qa/
+      repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+  lint_rules:
+    - classname: SnakeCaseRule
+      path: .aiop/rules/snake_case_rule.py
+  post_scripts:
+    - classname: ApplyPatch
+      path: .aiop/rules/apply_patch.py
 ```
 
 Let's break it down:
@@ -132,54 +126,58 @@ Let's break it down:
 <Steps>
 
 ```yaml
-plugins:
-  - name: tesla-plugin
-    version: "0.2"
+playbook:
+  plugins:
+    - name: tesla-plugin
+      version: "0.2"
 ```
 
-The playbook needs the `tesla-plugin` plugin with version `0.2`. Remember that you can have as many plugins as you like.
+The playbook requires the plugin named `tesla-plugin` with version `0.2`. Remember, you can have as many plugins as you want.
 
 <Callout type="warning" emoji="⚠️">
-  You need the rights to access this plugin. If you don't have it, you can [contact](mailto:support@aiop.io) technical support for assistance.
+  You must have the rights to access this plugin. If you don't, you can [contact](mailto:support@aiop.io) technical support for assistance.
 </Callout>
 
 ```yaml
-repositories:
-  - name: release
-    instance: artifactory-tesla-repo
-    type: artifactory
-    base_url: https://artifactory.tesla.com/artifactory/release/
-    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
-  - name: dev
-    instance: artifactory-tesla-repo
-    type: artifactory
-    base_url: https://artifactory.tesla.com/artifactory/dev/
-    repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+playbook:
+  repositories:
+    - name: release
+      instance: artifactory-tesla-repo
+      type: artifactory
+      base_url: https://artifactory.tesla.com/artifactory/release/
+      repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
+    - name: dev
+      instance: artifactory-tesla-repo
+      type: artifactory
+      base_url: https://artifactory.tesla.com/artifactory/dev/
+      repository_regex: (?<team>((sensors)|(driving)))/(?<version>[0-9.]+)/(?<name>[a-zA-Z0-9-]+).jar
 ```
 
-There are two remote repositories in this template. The first one is `release`, and the second one is `dev`. In our case, `release` stores production resources, and `dev` stores development resources. It's the same remote repository, which is why the instance is the same. The type is `artifactory` because it's a repository using the Artifactory solution. The base URL is `https://artifactory.tesla.com/artifactory/release/` for the first one and `https://artifactory.tesla.com/artifactory/dev/` for the second one. The regex extracts information about the team responsible for the resource, its version, and its name.
+There are two remote repositories in this example. The first is `release` and the second is `dev`. In our case, `release` stores production resources, and `dev` stores development resources. It is the same remote repository, hence the same instance. The type is `artifactory` because it is a repository using the Artifactory solution. The base URL is `https://artifactory.tesla.com/artifactory/release/` for the first and `https://artifactory.tesla.com/artifactory/dev/` for the second. The regex extracts information about the team responsible for the resource, its version, and its name.
 
 ```yaml
-lint_rules:
-  - classname: SnakeCaseRule
-    path: .aiop/rules/snake_case_rule.py
+playbook:
+  lint_rules:
+    - classname: SnakeCaseRule
+      path: .aiop/rules/snake_case_rule.py
 ```
 
-The `SnakeCaseRule` rule is defined in the `.aiop/rules/snake_case_rule.py` file. For this example, this rule checks that file names are in snake_case.
+The `SnakeCaseRule` rule is defined in the file `.aiop/rules/snake_case_rule.py`. In this example, this rule checks that file names are in snake_case.
 
 ```yaml
-post_scripts:
-  - classname: ApplyPatch
-    path: .aiop/rules/apply_patch.py
+playbook:
+  post_scripts:
+    - classname: ApplyPatch
+      path: .aiop/rules/apply_patch.py
 ```
 
-The `ApplyPatch` script is defined in the `.aiop/rules/apply_patch.py` file. For this example, this script applies a patch on the generated package.
+The `ApplyPatch` script is defined in the file `.aiop/rules/apply_patch.py`. In this example, this script applies a patch to the generated package.
 
 </Steps>
 
 ## Ignoring Files
 
-It's possible to ignore files in the playbook. To do this, simply create a `.amlignore` file at the root of the playbook. This file follows the same syntax as the `.gitignore` file. For example, to ignore all files with the `.jar` extension:
+It is possible to ignore files in the playbook. To do this, create a `.amlignore` file at the root of the playbook. This file follows the same syntax as the `.gitignore` file. For example, to ignore all files with the `.jar` extension:
 
 ```plaintext filename=".amlignore"
 *.jar

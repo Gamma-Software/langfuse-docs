@@ -1,0 +1,55 @@
+---
+description: >-
+  AIOP pré-définie des variables disponibles pendant la génération de fichier à partir de templates
+---
+
+# Variables disponibles
+
+AIOP offre des variables pré-définie utilisable dans vos templates de fichiers. Ces données sont stockés dans des dictionnaires Python:
+
+```Python
+template_data = {
+    "system_target": {
+      "name": "System",
+      "args": {
+          "function": ["function1"]
+      },
+    },
+    "system_inventory": {
+      "name": "System",
+      "args": {
+          "function": ["function1", "function2"]
+      },
+    },
+    "my_variable": "Variable value"
+}
+```
+
+## Variables système
+
+Les variables systèmes que AIOP propose sont des données de la cible système et l'inventaire du playbook. Décomposons les variables systèmes:
+
+- `system_target` : Stocke les données de la cible système
+  - `name`: Nom de la cible système
+  - `args`: Dictionnaire contenant les éléments souhaités avec la cible. Cela est défini par l'utilisateur passé en argument lors de la commande `aiop build`
+    - `function`: Dans ce cas ci, l'utilisateur à demandé un package avec la fonction `function1`.
+- `system_inventory`: Stocke les données de l'inventaire lié à la cible système
+  - `name` : Nom de la cible dans l'inventaire (redondant avec `system_target`)
+  - `args` : Dictionnaire contenant les éléments compatibles avec la cible système souhaitée dans l'inventaire.
+    - `function`: Dans ce cas ci, les fonctions compatibles avec la cible système souhaitée sont `["function1", "function2"]`.
+
+## Variables personnalisées
+
+Les variables personnalisées utilisables dans le template sont déclarés spécifiquement pour une cible dans la déclaration de la resource. Voici l'exemple:
+
+```yaml {3,6-7}
+- source: template.md
+  destination: generated.md
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        my_variable: Variable value
+```
+
+La variable `my_variable` est définie dans la déclaration de la resource `template.md` dans le champ `template_data`. Ensuite à la génération du fichier la variable `my_variable` sera disponible.

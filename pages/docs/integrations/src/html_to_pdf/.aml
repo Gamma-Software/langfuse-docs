@@ -1,0 +1,2 @@
+- source: invoice/
+  destination: invoice_folder.pdf

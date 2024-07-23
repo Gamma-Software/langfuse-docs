@@ -6,7 +6,7 @@ import { Callout } from "nextra-theme-docs";
 
 # Playbook Structure
 
-A `playbook` is the project that AIOP will use to build packages. It consists of multiple files and folders, some of which are mandatory and others optional.
+A `playbook` is the project that AIOP will use to build packages. It consists of multiple files and folders.
 
 Here's an example of a playbook structure:
 
@@ -15,12 +15,7 @@ Here's an example of a playbook structure:
     <FileTree.Folder name=".git">
         <FileTree.File name="..." />
     </FileTree.Folder>
-    <FileTree.Folder name=".aiop" defaultOpen>
-        <FileTree.File name="inventory_config.yml" />
-        <FileTree.File name="inventory.yml" />
-        <FileTree.File name="playbook.yml" />
-        <FileTree.File name="packages.yml" />
-    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
     <FileTree.Folder name="resources" defaultOpen>
         <FileTree.Folder name="locales" defaultOpen>
             <FileTree.File name="resource_locale_1.txt" />
@@ -42,19 +37,19 @@ Here's an example of a playbook structure:
 You'll notice that the `.git` folder is present because the playbook is a git project, which is recommended for versioning and effective collaboration. The playbook is a git project like any other, and you can use all the features of [git](/docs/vocabulary#git).
 
 <Callout type="info" emoji="ℹ️">
-  The only mandatory folder is `.aiop`, which contains the mandatory configuration files. Of course, the playbook must contain at least one `.aml` file to create a package; otherwise, AIOP will not launch.
+  No files are required for AIOP to work. You can use AIOP without playbook configuration. However, functionality will be limited.
 </Callout>
 
 ## Details of Files and Folders
 
-### The `.aiop` Folder
+### The `.aiop` file
 
-This folder contains the playbook's configuration files. It is mandatory and must contain the following files:
+This file contains the playbook's configuration files:
 
-- `inventory_config.yml`: Inventory configuration file. [Learn more](/docs/configurations/playbook#inventory).
-- `inventory.yml`: Inventory file. [Learn more](/docs/configurations/playbook#inventory).
-- `playbook.yml`: Playbook configuration file. [Learn more](/docs/configurations/playbook#base).
-- `packages.yml`: Packages to build configuration file. __This configuration file is optional__. [En savoir plus](/docs/configurations/packages).
+- `inventory_config`: Inventory configuration. [Learn more](/docs/configurations/playbook#inventory).
+- `inventory`: Inventory list. [Learn more](/docs/configurations/playbook#inventory).
+- `playbook`: Playbook configuration. [Learn more](/docs/configurations/playbook#base).
+- `packages`: Packages to build configuration. [En savoir plus](/docs/configurations/packages).
 
 ### The `resources` Folder
 
