@@ -19,6 +19,7 @@ La génération d'un PDF depuis un Markdown est la manière la plus simple, il v
 Voici un exemple de PDF généré depuis un Markdown:
 ![pdf](./img/pdf.png)
 
+Il est possible de combiner des fichiers Markdown pour créer un seul PDF. Chaque Markdown sera séparé d'un saut de page.
 
 ### Syntaxe Markdown
 
@@ -62,6 +63,15 @@ AIOP génère un fichier PDF à partir d'une Markdown si vous déclarer une reso
 ```
 
 À la suite de la génération du package, le fichier `mypdf.pdf` sera créé dans le dossier racine du package.
+
+Pour générer un PDF à partir de plusieurs Markdowns, vous pouvez les déclarer de la manière suivante:
+
+```yaml
+- source: mymarkdown.md | myothermarkdown.md
+  destination: mypdf.pdf
+```
+
+Le fichier `mypdf.pdf` sera créé dans le dossier racine du package et contiendra le contenu des deux fichiers Markdowns séparé d'un saut de page.
 
 ## Depuis un HTML
 
@@ -121,3 +131,45 @@ Il est également possible de générer un PDF à partir d'une liste de fichier 
 - source: invoice/invoice.html & invoice/invoice.css & invoice/pacifico.ttf & invoice/sourcesanspro-bold.otf & invoice/sourcesanspro-regular.otf
   destination: invoice_merged.pdf
 ```
+
+## Fonctions avancées
+
+Il est possible de combiner la génération d'un PDF avec un template FMPP ([en savoir plus](/docs/integrations/templating/fmpp)) ou Jinja ([en savoir plus](/docs/integrations/templating/jinja)). C'est à dire que vous pouvez templatiser un HTML, CSS ou un Markdown.
+
+### Le markdown templatisé
+
+Prenons un exemple de Markdown templatisé avec Jinja.
+
+```markdown filename="invoice_template.md"
+# {{system_target.name|title}} documentation
+
+This is the documentation of {{system_target.name}}.
+
+This is a custom variable: {{my_variable}}
+
+```
+
+Les variables utilisée ici sont pré-définies par AIOP. Vous pouvez les retrouver [ici](/docs/integrations/templating/predifined_variables). Nous utilisons également ici des fonctions Jinja (Liste des fonctions à retrouver [ici](https://jinja.palletsprojects.com/en/3.1.x/templates)):
+
+- `system_target.name` permet de récupérer le nom du système cible. Additionnellement nous utilisons la [fonction Jinja `title`](https://jinja.palletsprojects.com/en/3.1.x/templates/#filters) qui permet de mettre en majuscule le premier caractère d'une chaine de caractères.
+- `my_variable` est une variable définie dans le fichier YAML de la déclaration de la resource.
+
+### La déclaration du markdown templatisée
+
+La déclaration de resources pour ce fichier est la suivante :
+
+```yaml filename="invoice.aml"
+- source: invoice_template.md
+  destination: invoice.pdf
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        my_variable: my value
+```
+
+Nous avons ici déclaré le Markdown, indiqué que le fichier à obtenir est un PDF et doit passer Jinja pour appliquer les variables du template. La variable personnalisées `my_variable` est définie dans le champ `template_data` lié au système compatible.
+
+Le PDF résultant est le suivant :
+
+![pdf_ex](./img/pdf_ex.png)
