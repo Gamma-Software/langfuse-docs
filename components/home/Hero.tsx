@@ -30,6 +30,7 @@ export function Hero() {
         <span className="mt-2 text-primary/70 text-2xl sm:text-2xl lg:text-3xl md:text-balance font-semibold tracking-wide">
           {messages.home.Hero.packages}
         </span>
+        <script src="https://gist.github.com/Gamma-Software/8d931d0d243cbe650009672d62d90f00.js"></script>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">
           <Button size="lg" variant="cta" asChild>

@@ -8,6 +8,7 @@ import { FeatureBento } from "./FeatureBento";
 import { Integrations } from "./Integrations";
 import { FromTheBlog } from "./FromTheBlog";
 import { Benefits } from "./Benefits";
+import { QuickStart } from "./QuickStart";
 import { Clients } from "./Clients";
 import { Workflow } from "./Workflow";
 
