@@ -1,0 +1,55 @@
+---
+description: >-
+  Predefined AIOP variables available during file generation from templates
+---
+
+# Available Variables
+
+AIOP offers predefined variables that can be used in your file templates. These data are stored in Python dictionaries:
+
+```Python
+template_data = {
+    "system_target": {
+      "name": "System",
+      "args": {
+          "function": ["function1"]
+      },
+    },
+    "system_inventory": {
+      "name": "System",
+      "args": {
+          "function": ["function1", "function2"]
+      },
+    },
+    "my_variable": "Variable value"
+}
+```
+
+## System Variables
+
+The system variables provided by AIOP include data from the system target and the playbook inventory. Let's break down the system variables:
+
+- `system_target`: Stores data of the system target
+  - `name`: Name of the system target
+  - `args`: Dictionary containing the desired elements with the target. This is defined by the user passed as an argument during the `aiop build` command
+    - `function`: In this case, the user requested a package with the `function1` function.
+- `system_inventory`: Stores data of the inventory related to the system target
+  - `name`: Name of the target in the inventory (redundant with `system_target`)
+  - `args`: Dictionary containing the elements compatible with the desired system target in the inventory.
+    - `function`: In this case, the functions compatible with the desired system target are `["function1", "function2"]`.
+
+## Custom Variables
+
+Custom variables that can be used in the template are specifically declared for a target in the resource declaration. Here is an example:
+
+```yaml {3,6-7}
+- source: template.md
+  destination: generated.md
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        my_variable: Variable value
+```
+
+The variable `my_variable` is defined in the resource declaration `template.md` under the `template_data` field. During file generation, the `my_variable` variable will be available.
