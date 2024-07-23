@@ -1,5 +1,117 @@
 ---
 description: >-
-  AIOP uses Jinja templating tool to generate files in runtime.
+  AIOP uses Jinja Templating to generate the content of files during execution.
 ---
+
 # Jinja Templating
+
+AIOP allows each user to generate files from a [Jinja](https://jinja.palletsprojects.com) template. It is also possible to generate templated PDFs (learn more [here](/docs/integrations/pdf#le-markdown-templatis%C3%A9)).
+
+Jinja is a fast, expressive, and extensible template engine. It allows fields to write code similar to Python syntax.
+
+## Usage
+
+Jinja is simple to use. Let's look at some ways to use it. Here is a guide to help you get started:
+
+<Steps>
+### 1. Create a Jinja Template
+
+A Jinja template is essentially a text file with special tags that will be replaced by dynamic values. For example, suppose you have a file `template.txt` with the following content:
+
+```jinja  filename="template.txt"
+Hello {{ name }},
+
+Thank you for your order of {{ product }}. Your order will be shipped to the following address:
+{{ address }}.
+
+Regards,
+The Sales Team
+```
+
+### 2. Declare the Template
+
+Next, declare the template in your playbook as follows:
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        name: My name
+        product: My product
+        address: My address
+```
+
+The result after generating the package:
+
+```txt  filename="file.txt"
+Hello My name,
+
+Thank you for your order of My product. Your order will be shipped to the following address:
+My address.
+
+Regards,
+The Sales Team
+```
+
+### 3. Use Control Structures
+
+Jinja allows the use of control structures such as loops and conditions to generate more complex dynamic content. For example:
+
+```jinja filename="template.txt"
+Hello {{ name }},
+
+Thank you for your order of {{ product }}. Your order contains the following items:
+
+{% for item in items %}
+- {{ item }}
+{% endfor %}
+
+Your order will be shipped to the following address:
+{{ address }}.
+
+Regards,
+The Sales Team
+```
+
+### 4. Declare the Template
+
+And in the declaration:
+
+```yaml
+- source: template.txt
+  destination: file.txt
+  template: jinja
+  compatibility:
+    - system:
+      template_data:
+        name: My name
+        product: My product
+        items: [Item1, Item2]
+        address: My address
+```
+
+The result after generating the package:
+
+```txt filename="file.txt"
+Hello My name,
+
+Thank you for your order of My product. Your order contains the following items:
+
+- Item1
+- Item2
+
+Your order will be shipped to the following address:
+My address.
+
+Regards,
+The Sales Team
+```
+
+</Steps>
+
+## Go Further
+
+Jinja is a very powerful template engine and offers advanced features that we won't cover here. To learn more, check out the [official documentation](https://jinja.palletsprojects.com/en/3.0.x/). For a list of predefined functions in Jinja, see [this documentation](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters).
