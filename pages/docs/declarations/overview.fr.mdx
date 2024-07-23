@@ -1,14 +1,14 @@
 ---
-description: AML file declaration are the fundation of Aiop.
+description: AML file declaration are the fundation of AIOP.
 ---
 
 # Aperçu
 
-**Les déclarations sont les éléments de base de Aiop**. Elles sont utilisées pour déclarer une ressource quelconque. Après avoir [configuré le playbook](/docs/configurations/playbook) et l’[inventaire](/docs/configurations/inventory) vous pouvez commencer à écrire des déclarations pour déclarer des ressources. Voyons comment cela fonctionne en détail.
+**Les déclarations sont les éléments de base de AIOP**. Elles sont utilisées pour déclarer une ressource quelconque. Après avoir [configuré le playbook](/docs/configurations/playbook) et l’[inventaire](/docs/configurations/inventory) vous pouvez commencer à écrire des déclarations pour déclarer des ressources. Voyons comment cela fonctionne en détail.
 
 ## Déclarations
 
-Une déclaration est un fichier `.aml` qui contient une ou plusieurs déclarations. Vous pouvez déclarer un grand nombre de ressources différentes (voir [liste des ressources](/docs/core-index#composition)) et les organiser dans l’ordre que vous souhaitez et séparé dans autant de fichiers que vous le souhaitez. En effet, Aiop n’est pas censé respecter un ordre particulier pour prendre en compte les déclarations. Cependant, il est recommandé de les organiser de manière logique pour faciliter la lecture et la maintenance.
+Une déclaration est un fichier `.aml` qui contient une ou plusieurs déclarations. Vous pouvez déclarer un grand nombre de ressources différentes (voir [liste des ressources](/docs/core-index#composition)) et les organiser dans l’ordre que vous souhaitez et séparé dans autant de fichiers que vous le souhaitez. En effet, AIOP n’est pas censé respecter un ordre particulier pour prendre en compte les déclarations. Cependant, il est recommandé de les organiser de manière logique pour faciliter la lecture et la maintenance.
 
 ## Base d'une déclaration
 
@@ -34,7 +34,7 @@ Avant de rentrer dans les détails dans les prochains chapitres, voici la base d
         ...
 ```
 
-Le champ `source` est l’emplacement de la ressource à récupérer. Elle peut être de différentes formes. Cela peut être une ressource local et relative au fichier de déclaration ou une ressource distante. Dans le cas d’une ressource distante, elle peut être un URL ou un chemin vers un fichier distant d'un dépôt. Aiop permet également de combiner des ressources ([En savoir plus](/docs/declarations/cookbook/combine)).
+Le champ `source` est l’emplacement de la ressource à récupérer. Elle peut être de différentes formes. Cela peut être une ressource local et relative au fichier de déclaration ou une ressource distante. Dans le cas d’une ressource distante, elle peut être un URL ou un chemin vers un fichier distant d'un dépôt. AIOP permet également de combiner des ressources ([En savoir plus](/docs/declarations/cookbook/combine)).
 
 
 ### `destination`
@@ -76,4 +76,4 @@ Ensuite, indiquez les paramètres pour lesquels la déclaration est compatible. 
 
 ## Gestion des conflits
 
-Un conflit entre deux déclarations est une situation où deux déclarations sont en contradiction. La contradiction se manifeste uniquement dans le cas où deux déclarations auraient la même `destination` dans le package et qu’elle sont toutes les deux compatibles avec la cible choisie pour la génération du package. En effet, cette situation n’est possible que si Aiop sait de quelle cible il s’agit. Dans le cas où deux déclarations viendraient se contredire, Aiop ne gère pas les conflits, mais remontera une erreur assez explicite (avec une astuce) pour vous permettre de corriger le problème.
+Un conflit entre deux déclarations est une situation où deux déclarations sont en contradiction. La contradiction se manifeste uniquement dans le cas où deux déclarations auraient la même `destination` dans le package et qu’elle sont toutes les deux compatibles avec la cible choisie pour la génération du package. En effet, cette situation n’est possible que si AIOP sait de quelle cible il s’agit. Dans le cas où deux déclarations viendraient se contredire, AIOP ne gère pas les conflits, mais remontera une erreur assez explicite (avec une astuce) pour vous permettre de corriger le problème.

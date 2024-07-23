@@ -1,18 +1,18 @@
 ---
-description: Get an overview of the core functionality, workflow, and usage of Aiop.
+description: Get an overview of the core functionality, workflow, and usage of AIOP.
 ---
 
 import { Callout } from "nextra-theme-docs";
 import { IntegrationBeam } from "../../components/docs/aiop-core/IntegrationBeam.tsx";
 
 
-# Aiop Core
+# AIOP Core
 
-[The Aiop Core](/docs/vocabulary#aiop-core) is the heart of the Aiop solution. It consists of several modules that handle the different phases of building a package. Let's explore the basic concepts and workings of Aiop Core.
+[The AIOP Core](/docs/vocabulary#aiop-core) is the heart of the AIOP solution. It consists of several modules that handle the different phases of building a package. Let's explore the basic concepts and workings of AIOP Core.
 
 ## Basic Concepts
 
-Aiop Core is built upon several basic concepts. These concepts form the foundation of the Aiop solution.
+AIOP Core is built upon several basic concepts. These concepts form the foundation of the AIOP solution.
 
 ### Package
 
@@ -72,7 +72,7 @@ import { DownloadCloud, Laptop } from "lucide-react";
 
 #### Organization of Artifacts
 
-You are free to organize the artifacts as you wish. Aiop does not impose a structure on you. However, it is recommended to adopt a standard structure for all your packages.
+You are free to organize the artifacts as you wish. AIOP does not impose a structure on you. However, it is recommended to adopt a standard structure for all your packages.
 
 <Callout emoji="💡">
   The advantage of AIOP lies in its ability to establish a standard artifact structure for all your packages defined by you and your team. This approach facilitates maintenance and debugging of packages, as everyone involved will know this structure and will be accustomed to navigating inside it.
@@ -80,27 +80,27 @@ You are free to organize the artifacts as you wish. Aiop does not impose a struc
 
 ### Validation and Error Handling
 
-Aiop Core is designed to display as much information as possible about errors encountered before and during the construction of a package. Errors are reported to the user in the form of reports in the console.
+AIOP Core is designed to display as much information as possible about errors encountered before and during the construction of a package. Errors are reported to the user in the form of reports in the console.
 
-Aiop reports errors **as early as possible** so that the user can correct them quickly.
+AIOP reports errors **as early as possible** so that the user can correct them quickly.
 
 <Callout emoji="🚨">
-  It is important to note that Aiop does not correct errors for you ([this would happen sooner or later](/roadmap)). It informs you of the errors and gives you indications on how to correct them. It is up to you to correct them.
+  It is important to note that AIOP does not correct errors for you ([this would happen sooner or later](/roadmap)). It informs you of the errors and gives you indications on how to correct them. It is up to you to correct them.
 </Callout>
 
 
 ### Configurations
 
-The behavior of Aiop Core can be modified by configurations. There are several types of configurations: user configuration, project configuration, system configuration.
+The behavior of AIOP Core can be modified by configurations. There are several types of configurations: user configuration, project configuration, system configuration.
 [Learn more](/docs/configurations/user).
 
 ### Declarations
 
-Aiop operates on the declarative principle of resources. Declarations are files that describe the artifacts of a package as well as their compatibilities with systems. [Learn more](/docs/declarations/overview).
+AIOP operates on the declarative principle of resources. Declarations are files that describe the artifacts of a package as well as their compatibilities with systems. [Learn more](/docs/declarations/overview).
 
 ### Integrations
 
-Aiop Core includes various third-party tools and services to perform different tasks. Among them are universal artifact repository managers such as [Nexus](https://www.sonatype.com/nexus-repository-oss) or [Artifactory](https://jfrog.com/artifactory/). Additionally, it integrates a PDF building tool.
+AIOP Core includes various third-party tools and services to perform different tasks. Among them are universal artifact repository managers such as [Nexus](https://www.sonatype.com/nexus-repository-oss) or [Artifactory](https://jfrog.com/artifactory/). Additionally, it integrates a PDF building tool.
 
 <IntegrationBeam />
 
@@ -108,11 +108,11 @@ A multitude of other features and services will arrive in future versions (see t
 
 ### Caching
 
-Aiop Core utilizes a caching mechanism to store remote resources. This feature aims to reduce the time required to build packages, especially in cases where the connection with remote servers is interrupted or when internet connection is limited.
+AIOP Core utilizes a caching mechanism to store remote resources. This feature aims to reduce the time required to build packages, especially in cases where the connection with remote servers is interrupted or when internet connection is limited.
 
 ## Operation
 
-Now let's see how Aiop works.
+Now let's see how AIOP works.
 
 ### Used Languages
 
@@ -124,17 +124,17 @@ Selection is an operation that consists of choosing the declarations to use for 
 
 ### Logs and Reports
 
-Aiop Core produces logs for each construction step, displaying various information such as errors, warnings, artifact details, and more, directly in the console.
+AIOP Core produces logs for each construction step, displaying various information such as errors, warnings, artifact details, and more, directly in the console.
 
-Additionally, Aiop Core generates textual reports stored in the build directory. These reports include:
+Additionally, AIOP Core generates textual reports stored in the build directory. These reports include:
 
-- A detailed build report, listing all operations performed by Aiop.
+- A detailed build report, listing all operations performed by AIOP.
 - A summary of the built package, providing essential information about it.
 - A specific report describing changes made to the package during the `post-build` step.
 
 ## Construction Phases
 
-Aiop Core consists of several package construction phases. Each phase is responsible for several specific tasks. Phases are executed in a specific order.
+AIOP Core consists of several package construction phases. Each phase is responsible for several specific tasks. Phases are executed in a specific order.
 Here are the construction phases:
 
 ### Lint

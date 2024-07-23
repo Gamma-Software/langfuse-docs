@@ -125,3 +125,18 @@ options:
 ### CI-CD
 
 When the command `aiop build_all` is invoked in the CI-CD pipeline, a new dynamic pipeline will be created.
+
+## Commande `build_again`
+
+It's possible to run last command with `aiop build_again`.
+
+```ansi
+usage: aiop build_again [-h]
+
+Rebuilds with the last build command.
+
+options:
+  -h, --help  show this help message and exit
+```
+
+AIOP will take the last command of `aiop build` arguments and replay it again.

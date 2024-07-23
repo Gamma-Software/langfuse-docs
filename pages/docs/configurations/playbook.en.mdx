@@ -1,5 +1,5 @@
 ---
-description: Aiop provides an extended configuration file to customize the application's behavior for the playbook.
+description: AIOP provides an extended configuration file to customize the application's behavior for the playbook.
 ---
 import { Callout } from "nextra-theme-docs";
 
@@ -16,14 +16,14 @@ The playbook must also contain an inventory configuration file that lists the ta
 > `<playbook_root>` is the root directory of the playbook.
 
 <Callout type="info" emoji="ℹ️">
-  Upon Aiop installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
+  Upon AIOP installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
   Plugins may also provide additional configuration options. Please refer to the plugin documentation for more information. [Contact](mailto:support@aiop.io) technical support for any inquiries.
 </Callout>
 
-The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop to customize the playbook.
+The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by AIOP to customize the playbook.
 
 ## Configuration File Structure
 
@@ -100,7 +100,7 @@ The `lint_rules` and `post_scripts` sections are lists of rules to execute durin
 
 ## Example Configuration
 
-This parameter file can be tricky to set up, which is why we created an inventory template to help you get started. By default, Aiop creates it for you when initializing the project.
+This parameter file can be tricky to set up, which is why we created an inventory template to help you get started. By default, AIOP creates it for you when initializing the project.
 
 ```yaml filename=".aiop/playbook.yml"
 plugins:

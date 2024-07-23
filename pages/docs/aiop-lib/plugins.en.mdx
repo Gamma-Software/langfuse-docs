@@ -1,12 +1,12 @@
 ---
-description: Plugins allow extending the functionalities of Aiop. They should be used to add new commands, configurations, and declaration possibilities. They are only available for Pro/Team plan users and not accessible for the free plan. They are customized for each user, team, or company benefiting from the Pro plan.
+description: Plugins allow extending the functionalities of AIOP. They should be used to add new commands, configurations, and declaration possibilities. They are only available for Pro/Team plan users and not accessible for the free plan. They are customized for each user, team, or company benefiting from the Pro plan.
 ---
 
 import { Callout } from "nextra-theme-docs";
 
 # Plugins
 
-Plugins are extensions that enable adding new functionalities to Aiop. They are used to add new commands, configurations, declaration possibilities, and specific tasks (outside of the `lint` and `post-build` steps) for a user and/or company. For example, a plugin could be used to add the ability to read, understand, and manipulate proprietary files for companies.
+Plugins are extensions that enable adding new functionalities to AIOP. They are used to add new commands, configurations, declaration possibilities, and specific tasks (outside of the `lint` and `post-build` steps) for a user and/or company. For example, a plugin could be used to add the ability to read, understand, and manipulate proprietary files for companies.
 
 <Callout type="info" emoji="ℹ️">
   Plugins are only available for `Pro` / `Team` plan users.
@@ -14,7 +14,7 @@ Plugins are extensions that enable adding new functionalities to Aiop. They are 
 
 ## How It Works
 
-Plugins are automatically downloaded upon starting Aiop. They are then loaded into memory and used to extend Aiop's functionalities. Each user with the rights to use the plugin can utilize them for package generation.
+Plugins are automatically downloaded upon starting AIOP. They are then loaded into memory and used to extend AIOP's functionalities. Each user with the rights to use the plugin can utilize them for package generation.
 
 ## Configurations
 
@@ -28,7 +28,7 @@ plugins:
 
 > `my-plugin` is the plugin name, and `1.0` is the plugin version.
 
-To create packages from the playbook that includes this plugin, the user must have access rights to the plugin. In other words, they must have a license and an Aiop account associated with this plugin (Contact [support](mailto:support@aiop.io) for this):
+To create packages from the playbook that includes this plugin, the user must have access rights to the plugin. In other words, they must have a license and an AIOP account associated with this plugin (Contact [support](mailto:support@aiop.io) for this):
 
 ```yaml {2-6} filename="~/.aiop/aiop.yml"
 ...
@@ -54,7 +54,7 @@ plugin_config:
 ## How to Create a Plugin?
 
 <Callout type="warning" emoji="⚠️">
-    Currently, we do not offer a self-service plugin creation system. To create a plugin for Aiop, you need to contact [support](mailto:support@aiop.io).
+    Currently, we do not offer a self-service plugin creation system. To create a plugin for AIOP, you need to contact [support](mailto:support@aiop.io).
 </Callout>
 
-Once the plugin is created, we will associate it with your licenses. Aiop will automatically download the plugin upon its startup.
+Once the plugin is created, we will associate it with your licenses. AIOP will automatically download the plugin upon its startup.

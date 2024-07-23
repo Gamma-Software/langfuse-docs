@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Réduisez le temps d’intégration de vos applications et augmentez la cadence de livraison.",
+      "packages": "Rendez vos logiciels modulaires en toute simplicité. Réduisez leur de temps d’intégration et augmentez la cadence de livraison.",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
     },
@@ -25,11 +25,11 @@
         },
         "tools": {
           "title": "Outils",
-          "description": "Aiop propose une suite d'outils (En expension) pour vous aider à la maintenance, conception et la production des packages."
+          "description": "AIOP propose une suite d'outils (En expension) pour vous aider à la maintenance, conception et la production des packages."
         },
         "customization": {
           "title": "Personnalisation",
-          "description": "Personnalisez le comportement de Aiop et de vos projets pour correspondre à vos problématiques."
+          "description": "Personnalisez le comportement de AIOP et de vos projets pour correspondre à vos problématiques."
         },
         "collaboration": {
           "title": "Collaboration",
@@ -40,7 +40,7 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "Aiop standardise et automatise le processus de construction de packages pour systèmes embarqués."
+      "description": "AIOP standardise et automatise le processus de construction de packages pour systèmes embarqués."
     },
     "Benefits": {
       "title": "Pourquoi l'utiliser ?",
@@ -50,17 +50,17 @@
         {
           "title": "Infinité de packages",
           "description":
-            "Aiop est conçu pour gérer un nombre illimité de packages. Utilisez l'imbrication de packages pour gérer des packages complexes."
+            "AIOP est conçu pour gérer un nombre illimité de packages. Utilisez l'imbrication de packages pour gérer des packages complexes."
         },
         {
           "title": "3 heures -> 5 secondes",
           "description":
-            "En moyenne, nos utilisateurs réduisent le temps de génération d'un package de 3 heures à seulement 7 secondes avec Aiop."
+            "En moyenne, nos utilisateurs réduisent le temps de génération d'un package de 3 heures à seulement 7 secondes avec AIOP."
         },
         {
           "title": "Partage de connaissances",
           "description":
-            "La collaboration est au coeur même de Aiop. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clarté, en productivité et en qualité."
+            "La collaboration est au coeur même de AIOP. Partagez vos déclarations, packages, ressources et vos connaissances entre équipes. Gagnez en clarté, en productivité et en qualité."
         },
         {
           "title": "Rapidité de debuggage",
@@ -70,24 +70,24 @@
         {
           "title": "Contrôle qualité",
           "description":
-            "Faites en sorte de ne plus avoir de surprises lors de la génération de vos packages. Aiop vous permet de valider vos ressources avant de les générer."
+            "Faites en sorte de ne plus avoir de surprises lors de la génération de vos packages. AIOP vous permet de valider vos ressources avant de les générer."
         },
         {
           "title": "Versionning",
           "description":
-            "Gérez et versionnez tous vos packages d'un seul endroit. Suivez les évolutions et traçez les. Aiop vous permet également de regénérer des versions antérieures de vos packages."
+            "Gérez et versionnez tous vos packages d'un seul endroit. Suivez les évolutions et traçez les. AIOP vous permet également de regénérer des versions antérieures de vos packages."
         }
       ]
     },
     "Clients": {
       "title": "Développé par des ingénieurs pour des ingénieurs",
-      "description": "L’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués. Aiop est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery managers.",
+      "description": "L’outil est conçu pour générer des packages spécifiquement pour les systèmes embarqués. AIOP est pensé pour et par des ingénieurs logiciels, des testeurs, des delivery managers.",
       "list":[
         {
           "id": 1,
           "name": "John Doe",
           "designation": "Ingénieur logiciel",
-          "description": "John utilise Aiop pour générer des packages pour son environnement de simulation et de tests. Il sera également amené à modifier le projet pour ajouter ses fonctionnalités en cours de développement.",
+          "description": "John utilise AIOP pour générer des packages pour son environnement de simulation et de tests. Il sera également amené à modifier le projet pour ajouter ses fonctionnalités en cours de développement.",
           "image":
             "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
         },
@@ -95,7 +95,7 @@
           "id": 2,
           "name": "Robert Johnson",
           "designation": "Testeur",
-          "description": "Robert se sert d'Aiop pour générer et modifier des packages pour son environnement de simulation et de tests.",
+          "description": "Robert se sert d'AIOP pour générer et modifier des packages pour son environnement de simulation et de tests.",
           "image":
             "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
@@ -296,12 +296,12 @@
           {
             "question": "Pourquoi payer un abonnement?",
             "answer":
-              "Aiop vous est proposé gratuitement pour les projets personnels et les projets open-source. Pour les projets professionnels, nous facturons un abonnement pour couvrir les coûts d'infrastructure et de support. Nous offrons également des <a class='underline' href='/docs/plugins'>fonctionnalités</a> avancées pour les équipes et les entreprises."
+              "AIOP vous est proposé gratuitement pour les projets personnels et les projets open-source. Pour les projets professionnels, nous facturons un abonnement pour couvrir les coûts d'infrastructure et de support. Nous offrons également des <a class='underline' href='/docs/plugins'>fonctionnalités</a> avancées pour les équipes et les entreprises."
           },
           {
-            "question": "Pourquoi dois-je créer un compte pour utiliser Aiop?",
+            "question": "Pourquoi dois-je créer un compte pour utiliser AIOP?",
             "answer":
-              "Pour les project personnels et open-source, vous n'avez pas besoin de créer un compte. Pour les projets professionnels, nous avons besoin de votre coordonnées personnelles pour créer un compte Aiop cloud et bénéficier de plugins. Nous ne vendons pas vos données à des tiers. Votre adresse email est utilisée uniquement pour vous contacter à propos de votre compte Aiop."
+              "Pour les project personnels et open-source, vous n'avez pas besoin de créer un compte. Pour les projets professionnels, nous avons besoin de votre coordonnées personnelles pour créer un compte AIOP cloud et bénéficier de plugins. Nous ne vendons pas vos données à des tiers. Votre adresse email est utilisée uniquement pour vous contacter à propos de votre compte AIOP."
           },
           {
             "question": "Est-ce que vous faites de promotions?",
@@ -314,8 +314,8 @@
   },
   "product_waiting_list": {
     "title": "Liste d’attente",
-    "description": "Pour le moment Aiop est en version Bêta. Pour souscrire à la version Pro veuillez vous inscrire à la liste d’attente en indiquant votre email.",
-    "description2": "Vous pouvez tout de même commencer à utiliser Aiop gratuitement en cliquant sur le bouton ci-dessous.",
+    "description": "Pour le moment AIOP est en version Bêta. Pour souscrire à la version Pro veuillez vous inscrire à la liste d’attente en indiquant votre email.",
+    "description2": "Vous pouvez tout de même commencer à utiliser AIOP gratuitement en cliquant sur le bouton ci-dessous.",
     "modal":
     {
       "error": "Uh oh! Quelque chose s’est mal passé. Reessayez ou contacter nous directement par email: support@aiop.io",
@@ -433,12 +433,12 @@
       { "name": "Utiliser pyinstaller pour le package en tant qu'exécutable autonome", "checked": false },
       { "name": "Créer une extension vscode avec AIOP et un schéma", "checked": false },
       { "name": "Core en Rust pour améliorer la rapidité", "checked": false },
-      { "name": "AI: Pré-fixer les erreurs remonté par Aiop via de l’Intelligence Artificiel", "checked": false },
+      { "name": "AI: Pré-fixer les erreurs remonté par AIOP via de l’Intelligence Artificiel", "checked": false },
       { "name": "AI: Interagir avec un Chatbot pour manipuler les déclarations et aider à la génération des déclarations", "checked": false },
       { "name": "Créer des alias personnalisés dans les déclarations pour éviter de répéter des arguments", "checked": false },
-      { "name": "CI: 🐳 Dockeriser Aiop", "checked": true },
-      { "name": "CI: Faciliter l’intégration de Aiop dans la CI", "checked": true },
-      { "name": "CI: Dockerfile base avec Aiop", "checked": true },
+      { "name": "CI: 🐳 Dockeriser AIOP", "checked": true },
+      { "name": "CI: Faciliter l’intégration de AIOP dans la CI", "checked": true },
+      { "name": "CI: Dockerfile base avec AIOP", "checked": true },
       { "name": "CLI: Manipulation des configurations via la CLI", "checked": false },
       { "name": "GUI: Windows", "checked": false },
       { "name": "GUI: Linux", "checked": false },
@@ -457,7 +457,7 @@
   },
   "schedule_demo":{
     "title": "Discutez avec nous",
-    "description": "Nous pourrons vous faire un démonstration de la solution Aiop et comment elle peut vous aider dans votre entreprise."
+    "description": "Nous pourrons vous faire un démonstration de la solution AIOP et comment elle peut vous aider dans votre entreprise."
   },
   "changelog":{
     "back": "← Retour au changelog"

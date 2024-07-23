@@ -1,11 +1,11 @@
 ---
-description: Les plugins permettent d'étendre les fonctionnalités d'Aiop. Ils doivent être utilisés pour ajouter de nouvelles commandes, configurations et possibilités de déclarations. Ils ne sont disponibles que pour les utilisateurs des plans Pro / Team et ne sont pas disponibles pour le plan gratuit. Ils sont personnalisés pour chaque utilisateur, équipe ou entreprise bénéficiant du plan Pro.
+description: Les plugins permettent d'étendre les fonctionnalités d'AIOP. Ils doivent être utilisés pour ajouter de nouvelles commandes, configurations et possibilités de déclarations. Ils ne sont disponibles que pour les utilisateurs des plans Pro / Team et ne sont pas disponibles pour le plan gratuit. Ils sont personnalisés pour chaque utilisateur, équipe ou entreprise bénéficiant du plan Pro.
 ---
 import { Callout } from "nextra-theme-docs";
 
 # Plugins
 
-Les plugins sont des extensions qui permettent d'ajouter de nouvelles fonctionnalités à Aiop. Ils sont utilisés pour ajouter de nouvelles commandes, configurations, possibilités de déclarations et des tâches spécifiques (en-dehors de l’étape `lint` et `post-build`) à un utilisateur et/ou entreprise. Par exemple, un plugin pourrait être utilisé pour ajouter la possibilité de lire, comprendre et manipuler des fichiers propriétaires à des entreprises.
+Les plugins sont des extensions qui permettent d'ajouter de nouvelles fonctionnalités à AIOP. Ils sont utilisés pour ajouter de nouvelles commandes, configurations, possibilités de déclarations et des tâches spécifiques (en-dehors de l’étape `lint` et `post-build`) à un utilisateur et/ou entreprise. Par exemple, un plugin pourrait être utilisé pour ajouter la possibilité de lire, comprendre et manipuler des fichiers propriétaires à des entreprises.
 
 <Callout type="info" emoji="ℹ️">
   Les plugins ne sont disponibles que pour les utilisateurs des `plans Pro` / `Team`.
@@ -13,7 +13,7 @@ Les plugins sont des extensions qui permettent d'ajouter de nouvelles fonctionna
 
 ## Comment ça marche ?
 
-Les plugins sont téléchargés automatiquement lors du démarrage d’Aiop. Ils sont ensuite chargés en mémoire et utilisés pour étendre les fonctionnalités d’Aiop. Chaque utilisateur ayant les droits d’utiliser le plugin pourrons les utiliser pour la génération de packages.
+Les plugins sont téléchargés automatiquement lors du démarrage d’AIOP. Ils sont ensuite chargés en mémoire et utilisés pour étendre les fonctionnalités d’AIOP. Chaque utilisateur ayant les droits d’utiliser le plugin pourrons les utiliser pour la génération de packages.
 
 ## Configurations
 
@@ -27,7 +27,7 @@ plugins:
 
 > `my-plugin` est le nom du plugin et `1.0` est la version du plugin.
 
-Pour créer des packages depuis le playbook qui inclue ce plugin, il faut que l’utilisateur dispose des droits d’accès au plugin. Autrement dit, il doit avoir une license et un compte Aiop associé à ce plugin (Pour cela contactez le [support](mailto:support@aiop.io)):
+Pour créer des packages depuis le playbook qui inclue ce plugin, il faut que l’utilisateur dispose des droits d’accès au plugin. Autrement dit, il doit avoir une license et un compte AIOP associé à ce plugin (Pour cela contactez le [support](mailto:support@aiop.io)):
 
 ```yaml {2-6} filename="~/.aiop/aiop.yml"
 ...
@@ -53,7 +53,7 @@ Le `param_config` est le nom de la configuration spécifique au plugin. Veuillez
 ## Comment créer un plugin ?
 
 <Callout type="warning" emoji="⚠️">
-    Aujourd’hui nous ne proposons pas de système de création de plugins en libre service. Pour créer un plugin pour Aiop, vous devez contacter le [support](mailto:support@aiop.io)
+    Aujourd’hui nous ne proposons pas de système de création de plugins en libre service. Pour créer un plugin pour AIOP, vous devez contacter le [support](mailto:support@aiop.io)
 </Callout>
 
-Une fois le plugin créé nous l’associerons à vos licenses. Aiop téléchargera automatiquement le plugin lors de son démarrage.
+Une fois le plugin créé nous l’associerons à vos licenses. AIOP téléchargera automatiquement le plugin lors de son démarrage.

@@ -1,28 +1,28 @@
 ---
 description: >-
-  Aiop (All-In-One Packager) est un outil de packaging multi-plateforme qui permet de générer des packages uniformes pour différentes configurations en utilisant une simple déclaration de ressource. "Packages as Code"
+  AIOP (All-In-One Packager) est un outil de packaging multi-plateforme qui permet de générer des packages uniformes pour différentes configurations en utilisant une simple déclaration de ressource. "Packages as Code"
 ---
 
 import { ProductUpdateSignup } from "@/components/productUpdateSignup";
 
 # Aperçu
-Aiop _(All-In-One Packager)_ est un **outil de packaging multi-plateforme/multi-configuration** qui permet de générer des packages uniformes pour différentes configurations en utilisant une simple déclaration de ressource.
+AIOP _(All-In-One Packager)_ est un **outil de packaging multi-plateforme/multi-configuration** qui permet de générer des packages uniformes pour différentes configurations en utilisant une simple déclaration de ressource.
 
-Nous appelons cela **Packages as Code** car vous pouvez déclarer vos ressources de packaging dans un fichier de configuration et les générer en utilisant Aiop.
+Nous appelons cela **Packages as Code** car vous pouvez déclarer vos ressources de packaging dans un fichier de configuration et les générer en utilisant AIOP.
 
-## Aiop expliqué à un ado
+## AIOP expliqué à un ado
 
 Imagine que tu as une passion pour la construction de robots. Maintenant, pour réaliser tous ces projets, tu dois souvent assembler différentes parties - logiciel de détection de piéton, suivi de ligne, graphiques, etc. - et les configurer pour des applications ou des robots spécifiques. Cependant, parfois, le processus d'assemblage peut être un peu compliqué et fastidieux.
 
-Eh bien, c'est là que Aiop entre en jeu. Aiop est comme un super outil qui simplifie tout ce processus d'assemblage. Tu lui dis ce que tu veux construire et quelles parties tu as besoin, et Aiop s'occupe de tout mettre ensemble pour toi, de manière super organisée et efficace.
+Eh bien, c'est là que AIOP entre en jeu. AIOP est comme un super outil qui simplifie tout ce processus d'assemblage. Tu lui dis ce que tu veux construire et quelles parties tu as besoin, et AIOP s'occupe de tout mettre ensemble pour toi, de manière super organisée et efficace.
 
-Cela signifie que tu peux te concentrer sur l'aspect cool de ton projet - comme programmer des mouvements de robots incroyables - sans te soucier des détails ennuyeux de l'assemblage des parties. Aiop rend tout cela beaucoup plus facile et rapide, te permettant de réaliser tes idées plus rapidement et plus facilement.
+Cela signifie que tu peux te concentrer sur l'aspect cool de ton projet - comme programmer des mouvements de robots incroyables - sans te soucier des détails ennuyeux de l'assemblage des parties. AIOP rend tout cela beaucoup plus facile et rapide, te permettant de réaliser tes idées plus rapidement et plus facilement.
 
-En résumé, Aiop est comme ton assistant personnel pour l'assemblage de projets informatiques. Il prend en charge toutes les parties ennuyeuses, vous permettant de vous concentrer sur ce que vous aimez vraiment faire : créer des trucs incroyables !
+En résumé, AIOP est comme ton assistant personnel pour l'assemblage de projets informatiques. Il prend en charge toutes les parties ennuyeuses, vous permettant de vous concentrer sur ce que vous aimez vraiment faire : créer des trucs incroyables !
 
 ## Origine
 
-Aiop a été créé pour répondre à un besoin croissant de **simplification du processus de packaging** pour les systèmes embarqués. Les développeurs et les équipes de développement sont confrontés à des défis de plus en plus complexes lorsqu'il s'agit de créer des packages pour des systèmes embarqués, des applications, des logiciels, etc. Ces défis sont liés à la diversité des plateformes, des configurations, des environnements de déploiement et des [registres d'artefacts](/docs/vocabulary#registres-dartefacts). Aiop a été conçu pour relever ces défis et offrir une solution complète et puissante pour simplifier le processus de packaging.
+AIOP a été créé pour répondre à un besoin croissant de **simplification du processus de packaging** pour les systèmes embarqués. Les développeurs et les équipes de développement sont confrontés à des défis de plus en plus complexes lorsqu'il s'agit de créer des packages pour des systèmes embarqués, des applications, des logiciels, etc. Ces défis sont liés à la diversité des plateformes, des configurations, des environnements de déploiement et des [registres d'artefacts](/docs/vocabulary#registres-dartefacts). AIOP a été conçu pour relever ces défis et offrir une solution complète et puissante pour simplifier le processus de packaging.
 
 
 ## Les cas d'usages
@@ -50,27 +50,27 @@ Si nous continuons dans la logique il est possible d'ajouter la notion d'environ
 
 ### Interface simple
 
-- **CLI:** Aiop est un outil en ligne de commande qui peut être utilisé pour générer des packages pour différents environnements.
-- **Langages déclaratifs:** La définition des ressources à intégrer dans les packages se base sur le [YAML](https://www.redhat.com/fr/topics/automation/what-is-yaml). La configuration de Aiop adopte également le YAML. Cette approche déclarative favorise la clarté et la concision, tout en offrant une flexibilité suffisante pour répondre aux besoins variés des projets.
+- **CLI:** AIOP est un outil en ligne de commande qui peut être utilisé pour générer des packages pour différents environnements.
+- **Langages déclaratifs:** La définition des ressources à intégrer dans les packages se base sur le [YAML](https://www.redhat.com/fr/topics/automation/what-is-yaml). La configuration de AIOP adopte également le YAML. Cette approche déclarative favorise la clarté et la concision, tout en offrant une flexibilité suffisante pour répondre aux besoins variés des projets.
 - **Prêt à l'emploi:** L'outil est prêt à l'emploi, il suffit de l'installer et de l'utiliser. Il viens avec des modèles prêt à l'emploi pour les projets les plus courants.
 
 ### Emballage multi-plateforme/multi-configuration
 
 - **Prédictibilité:** Garantir la génération d'un package pour une cible donnée donnera toujours le même résultat quelque soit l'environnement de génération. Cela veut dire que vous pouvez travailler avec votre équipe à différent endroits du monde avec différents ordinateurs (PC, Mac, Linux) et le package généré par l'un sera le même généré par un autre. ([Prédictibilité](/docs/declarations/overview))
-- **Observabilité:** Comprendre le comportement de Aiop pendant la génération du package. Cela pourrait inclure des outils de journalisation avancés, et d'utilisation. Ces fonctionnalités permettent aux développeurs de détecter rapidement les problèmes et de diagnostiquer les performances de leurs packages dans divers environnements de déploiement.
+- **Observabilité:** Comprendre le comportement de AIOP pendant la génération du package. Cela pourrait inclure des outils de journalisation avancés, et d'utilisation. Ces fonctionnalités permettent aux développeurs de détecter rapidement les problèmes et de diagnostiquer les performances de leurs packages dans divers environnements de déploiement.
 - **Traçabilité:** Chaque package est tracé et permet de savoir exactement quand, comment{/* , qui l'a généré*/} et dans quelles conditions. ([Traçabilité](/docs/declarations/overview#base-dune-déclarationy))
 
 ### Flexibilité
-- **Configuration:** onçus pour offrir une configuration maximale, les packages générés par Aiop peuvent être adaptés à une multitude de cas d'utilisation. ([Flexibilité](/docs/declarations/selection))
-- **Personnalisation:** Aiop permet aux développeurs de personnaliser les packages en fonction de leurs besoins spécifiques, en ajoutant ou en supprimant des ressources, en modifiant les paramètres de configuration, etc. ([Personnalisation](/docs/configurations/user))
-- **Extensibilité:** Aiop est conçu pour être extensible, ce qui signifie que les développeurs peuvent ajouter des fonctionnalités supplémentaires à l'outil pour répondre à des besoins spécifiques. ([Extensibilité](/docs/aiop-lib/plugins))
+- **Configuration:** onçus pour offrir une configuration maximale, les packages générés par AIOP peuvent être adaptés à une multitude de cas d'utilisation. ([Flexibilité](/docs/declarations/selection))
+- **Personnalisation:** AIOP permet aux développeurs de personnaliser les packages en fonction de leurs besoins spécifiques, en ajoutant ou en supprimant des ressources, en modifiant les paramètres de configuration, etc. ([Personnalisation](/docs/configurations/user))
+- **Extensibilité:** AIOP est conçu pour être extensible, ce qui signifie que les développeurs peuvent ajouter des fonctionnalités supplémentaires à l'outil pour répondre à des besoins spécifiques. ([Extensibilité](/docs/aiop-lib/plugins))
 
 ### Automatisation du processus d'emballage
 
-- **Continuité:** Aiop automatise le processus d'emballage, assurant ainsi une continuité dans le déploiement des packages.
-  - En éliminant les tâches manuelles répétitives, Aiop permet aux équipes de développement de **maintenir un flux de travail fluide et efficace**, réduisant les risques d'erreurs et accélérant le déploiement des applications et des logiciels.
-  - La continuité assurée par Aiop favorise une livraison régulière et fiable des packages, ce qui contribue à la stabilité et à la qualité des produits logiciels. Aiop est l'outil idéal pour les équipes de développement qui cherchent à adopter des pratiques de développement modernes et à accélérer leur rythme de livraison via le principe de la [CI/CD (Intégration continue, Déploiement continue)](https://www.redhat.com/fr/topics/devops/what-is-ci-cd).
-- **Intégration:** La force de Aiop est de pouvoir récupérer des artefacts de différents registres d'artefacts ([Artifactory](https://jfrog.com/fr/artifactory/), [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) pour le moment) et de les intégrer dans le package final. ([Intégration](/docs/configurations/playbook#repositories))
+- **Continuité:** AIOP automatise le processus d'emballage, assurant ainsi une continuité dans le déploiement des packages.
+  - En éliminant les tâches manuelles répétitives, AIOP permet aux équipes de développement de **maintenir un flux de travail fluide et efficace**, réduisant les risques d'erreurs et accélérant le déploiement des applications et des logiciels.
+  - La continuité assurée par AIOP favorise une livraison régulière et fiable des packages, ce qui contribue à la stabilité et à la qualité des produits logiciels. AIOP est l'outil idéal pour les équipes de développement qui cherchent à adopter des pratiques de développement modernes et à accélérer leur rythme de livraison via le principe de la [CI/CD (Intégration continue, Déploiement continue)](https://www.redhat.com/fr/topics/devops/what-is-ci-cd).
+- **Intégration:** La force de AIOP est de pouvoir récupérer des artefacts de différents registres d'artefacts ([Artifactory](https://jfrog.com/fr/artifactory/), [Nexus](https://www.sonatype.com/products/sonatype-nexus-repository) pour le moment) et de les intégrer dans le package final. ([Intégration](/docs/configurations/playbook#repositories))
 - **Versionning:** Les playbook sont versionnable via des outils de versionning de code source ([Git](https://git-scm.com/), [SVN](https://subversion.apache.org/), [Mercurial](https://www.mercurial-scm.org/), etc).
 
 
@@ -86,20 +86,20 @@ Si nous continuons dans la logique il est possible d'ajouter la notion d'environ
 <div className="rounded px-5 py-5 my-10 bg-primary/5 ring-1 ring-primary/20">
 
 <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-text-2xl">
-  Challenges de créer des packages uniformes et comment Aiop aide à les résoudre
+  Challenges de créer des packages uniformes et comment AIOP aide à les résoudre
 </h3>
 
-Créer des packages uniformes pour des systèmes embarqués représente l'un des défis majeurs pour les développeurs et les équipes de développement de nos jours. Lorsqu'on aborde ce sujet, on entre dans un monde où la diversité des plateformes, des configurations, et des environnements de déploiement rend la tâche complexe et parfois laborieuse. C'est dans ce contexte que Aiop émerge comme un allié inestimable, offrant des solutions innovantes pour relever ces défis et **simplifier le processus de packaging**.
+Créer des packages uniformes pour des systèmes embarqués représente l'un des défis majeurs pour les développeurs et les équipes de développement de nos jours. Lorsqu'on aborde ce sujet, on entre dans un monde où la diversité des plateformes, des configurations, et des environnements de déploiement rend la tâche complexe et parfois laborieuse. C'est dans ce contexte que AIOP émerge comme un allié inestimable, offrant des solutions innovantes pour relever ces défis et **simplifier le processus de packaging**.
 
-L'un des principaux obstacles auxquels sont confrontés les développeurs est la **fragmentation des environnements**. Les logiciels doivent souvent être compatibles avec une multitude de systèmes d'exploitation, de versions, et de configurations matérielles. Cette fragmentation peut entraîner des erreurs de déploiement, des incompatibilités et des retards dans la mise sur le marché des produits. Aiop aborde cette problématique en offrant une approche multi-plateforme et multi-configuration, permettant ainsi la génération de packages **qui fonctionnent** de manière uniforme, indépendamment du système cible.
+L'un des principaux obstacles auxquels sont confrontés les développeurs est la **fragmentation des environnements**. Les logiciels doivent souvent être compatibles avec une multitude de systèmes d'exploitation, de versions, et de configurations matérielles. Cette fragmentation peut entraîner des erreurs de déploiement, des incompatibilités et des retards dans la mise sur le marché des produits. AIOP aborde cette problématique en offrant une approche multi-plateforme et multi-configuration, permettant ainsi la génération de packages **qui fonctionnent** de manière uniforme, indépendamment du système cible.
 
-Une autre dimension importante dans la création de packages uniformes est l'**intégration transparente des registres d'artefacts**. Ces registres jouent un rôle crucial dans le stockage et la gestion des artefacts logiciels, tels que les bibliothèques, les dépendances, et les packages eux-mêmes. Cependant, l'intégration de ces registres dans le processus de packaging peut souvent être laborieuse et sujette à des erreurs humaines. Aiop brise ces barrières en offrant une **solution simplifiée** pour intégrer les registres d'artefacts dans le flux de travail de packaging. Grâce à des fonctionnalités avancées, Aiop peut **récupérer automatiquement** les artefacts nécessaires à partir de différents registres, tels que Artifactory ou Nexus, et les incorporer de manière transparente dans le package final.
+Une autre dimension importante dans la création de packages uniformes est l'**intégration transparente des registres d'artefacts**. Ces registres jouent un rôle crucial dans le stockage et la gestion des artefacts logiciels, tels que les bibliothèques, les dépendances, et les packages eux-mêmes. Cependant, l'intégration de ces registres dans le processus de packaging peut souvent être laborieuse et sujette à des erreurs humaines. AIOP brise ces barrières en offrant une **solution simplifiée** pour intégrer les registres d'artefacts dans le flux de travail de packaging. Grâce à des fonctionnalités avancées, AIOP peut **récupérer automatiquement** les artefacts nécessaires à partir de différents registres, tels que Artifactory ou Nexus, et les incorporer de manière transparente dans le package final.
 
-La **prédictibilité** est également un aspect crucial dans la création de packages uniformes. Les membres d'une équipe doivent avoir la certitude que **le package généré par l'un soit le même que généré par l'autre**, quel que soit l'environnement de développement ou environnement de travail. Aiop garantit cette prédictibilité en fournissant un processus de génération de packages robuste et reproductible. Ainsi, les équipes de développement peuvent travailler en toute confiance, sachant que leurs packages seront cohérents et fiables dans toutes les conditions et ainsi éviter les longues discussions sur des problèmes de packages.
+La **prédictibilité** est également un aspect crucial dans la création de packages uniformes. Les membres d'une équipe doivent avoir la certitude que **le package généré par l'un soit le même que généré par l'autre**, quel que soit l'environnement de développement ou environnement de travail. AIOP garantit cette prédictibilité en fournissant un processus de génération de packages robuste et reproductible. Ainsi, les équipes de développement peuvent travailler en toute confiance, sachant que leurs packages seront cohérents et fiables dans toutes les conditions et ainsi éviter les longues discussions sur des problèmes de packages.
 
-Enfin, la **traçabilité** et la transparence sont des éléments essentiels pour assurer la qualité et la conformité des packages générés. Aiop offre des fonctionnalités avancées de traçabilité, permettant de suivre chaque étape du processus de génération, de connaître l'origine des modifications.
+Enfin, la **traçabilité** et la transparence sont des éléments essentiels pour assurer la qualité et la conformité des packages générés. AIOP offre des fonctionnalités avancées de traçabilité, permettant de suivre chaque étape du processus de génération, de connaître l'origine des modifications.
 
-En conclusion, les challenges liés à la création de packages uniformes sont nombreux et complexes, mais grâce à des outils innovants comme Aiop, ces défis deviennent des opportunités d'amélioration et de progression. Aiop offre une solution complète et puissante pour simplifier le processus de packaging, permettant aux développeurs de se concentrer sur l'innovation et la création de produits exceptionnels, sans être entravés par des contraintes techniques.
+En conclusion, les challenges liés à la création de packages uniformes sont nombreux et complexes, mais grâce à des outils innovants comme AIOP, ces défis deviennent des opportunités d'amélioration et de progression. AIOP offre une solution complète et puissante pour simplifier le processus de packaging, permettant aux développeurs de se concentrer sur l'innovation et la création de produits exceptionnels, sans être entravés par des contraintes techniques.
 
 {/* <Frame
   transparent
@@ -125,7 +125,7 @@ En conclusion, les challenges liés à la création de packages uniformes sont n
 
 ## Mise à jour
 
-Aiop évolue rapidement, consultez le [changelog](/changelog) pour les dernières mises à jour.
+AIOP évolue rapidement, consultez le [changelog](/changelog) pour les dernières mises à jour.
 
 Inscrivez-vous à la **liste de diffusion** pour être informé des nouvelles fonctionnalités majeures :
 

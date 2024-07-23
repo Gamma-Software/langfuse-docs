@@ -1,28 +1,28 @@
 ---
 description: >-
-  Aiop has a caching system to avoid reloading remote resources again to speed
+  AIOP has a caching system to avoid reloading remote resources again to speed
   up the build time.
 ---
 
 # Cache System: Speed Up Package Building
 
-In the package generation process, time is precious. Every saved second can contribute to faster and more efficient delivery of the final product. That's why Aiop has implemented an intelligent caching system to avoid reloading remote resources, thus speeding up the build time.
+In the package generation process, time is precious. Every saved second can contribute to faster and more efficient delivery of the final product. That's why AIOP has implemented an intelligent caching system to avoid reloading remote resources, thus speeding up the build time.
 
 ## Cache System Principle
 
-The fundamental principle of Aiop's caching system is simple yet powerful: rather than reloading resources every time they are needed, the system stores them locally after the initial retrieval. When these resources are required later, Aiop first checks if they are present in the local cache. If so, it uses them directly from the cache, avoiding the cost of download and waiting associated with remote access.
+The fundamental principle of AIOP's caching system is simple yet powerful: rather than reloading resources every time they are needed, the system stores them locally after the initial retrieval. When these resources are required later, AIOP first checks if they are present in the local cache. If so, it uses them directly from the cache, avoiding the cost of download and waiting associated with remote access.
 
-To ensure that the cached resource is up to date, Aiop checks if the remote resource has been modified via hashing ([Learn more about hashing](https://www.cnil.fr/fr/securite-chiffrer-garantir-lintegrite-ou-signer)). If so, Aiop downloads the new version and updates the cache.
+To ensure that the cached resource is up to date, AIOP checks if the remote resource has been modified via hashing ([Learn more about hashing](https://www.cnil.fr/fr/securite-chiffrer-garantir-lintegrite-ou-signer)). If so, AIOP downloads the new version and updates the cache.
 
 Whenever a resource is retrieved from the remote server, it compares the hash of the remote resource with the hash of the cached resource to ensure the integrity of the resource. Otherwise, it downloads it again or reports an error after several attempts. The number of attempts is configurable ([Learn more about configuration](/docs/configurations/user#structure-du-fichier-de-configuration)).
 
-This system is particularly useful for resources that are frequently used or are unlikely to change frequently. By storing these resources locally, Aiop can significantly speed up the build process, avoiding unnecessary wait times, and optimizing the use of available resources.
+This system is particularly useful for resources that are frequently used or are unlikely to change frequently. By storing these resources locally, AIOP can significantly speed up the build process, avoiding unnecessary wait times, and optimizing the use of available resources.
 
 ## Clearing the Cache
 
 While the cache system offers many advantages in terms of speed and efficiency, it may sometimes be necessary to clear it for various reasons, such as freeing up disk space or updating resources.
 
-For now, Aiop does not provide a command to clear the cache. To do this, you need to delete the `cache` folder in the `.aiop` folder in your personal directories.
+For now, AIOP does not provide a command to clear the cache. To do this, you need to delete the `cache` folder in the `.aiop` folder in your personal directories.
 
 <Tabs items={["Windows","Ubuntu","Mac OS"]}>
 <Tab>

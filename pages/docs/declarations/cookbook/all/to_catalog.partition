@@ -1,4 +1,4 @@
-- source: <repo:nexus:ingenico>c3_emb_release/T3/SSC_MPA/14.64/T3_SSC_MPA_14.64_DEV.P3A
+- source: <repo:nexus:leaptech>c3_emb_release/T3/SSC_MPA/14.64/T3_SSC_MPA_14.64_DEV.P3A
   unzip: true
   destination: c3_applications/ssc
   to_catalog: c3_applications/apps

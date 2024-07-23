@@ -1,5 +1,5 @@
 ---
-description: Aiop fournit un fichier de configuration étendu pour personnaliser le comportement de l'application pour le playbook.
+description: AIOP fournit un fichier de configuration étendu pour personnaliser le comportement de l'application pour le playbook.
 ---
 import { Callout } from "nextra-theme-docs";
 
@@ -16,14 +16,14 @@ Le playbook doit également contenir un fichier de configuration de l’inventai
 > `<racine_playbook>` est le répertoire racine du playbook.
 
 <Callout type="info" emoji="ℹ️">
-  À l’installation de Aiop, un fichier de configuration par défaut est créé. Il est possible de le [modifier](#personalisation) pour personnaliser le comportement de l’application.
+  À l’installation de AIOP, un fichier de configuration par défaut est créé. Il est possible de le [modifier](#personalisation) pour personnaliser le comportement de l’application.
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
   Les plugins peuvent également apporter des options de configuration supplémentaires. Veuillez consulter la documentation du plugin pour plus d'informations. [Contactez](mailto:support@aiop.io) le support technique pour toute question.
 </Callout>
 
-Le fichier de configuration est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop pour personnaliser le playbook.
+Le fichier de configuration est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP pour personnaliser le playbook.
 
 ## Structure du fichier de configuration
 
@@ -102,7 +102,7 @@ La section `lint_rules` et `post_scripts` sont des listes de règles à exécute
 
 ## Exemple de configuration
 
-Ce fichier de paramètre peut être difficile à mettre en place c’est pourquoi nous avons créé un modèle d’inventaire pour vous aider à démarrer. Par défaut, Aiop vous le créer lors de l’initialisation du projet.
+Ce fichier de paramètre peut être difficile à mettre en place c’est pourquoi nous avons créé un modèle d’inventaire pour vous aider à démarrer. Par défaut, AIOP vous le créer lors de l’initialisation du projet.
 
 ```yaml filename=".aiop/playbook.yml"
 plugins:

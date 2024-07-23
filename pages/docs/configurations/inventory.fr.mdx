@@ -1,5 +1,5 @@
 ---
-description: Aiop fournit un fichier de configuration complet pour personnaliser le comportement de l'application pour le playbook en utilisant les fichiers de configuration d'inventaire.
+description: AIOP fournit un fichier de configuration complet pour personnaliser le comportement de l'application pour le playbook en utilisant les fichiers de configuration d'inventaire.
 ---
 import { Callout } from "nextra-theme-docs";
 
@@ -11,13 +11,13 @@ L’inventaire est un fichier de configuration qui répertorie les systèmes cib
 - `inventory.yml`: Le fichier d’inventaire.
 
 <Callout>
-Ces fichiers sont les plus importants du playbook. Ils sont **obligatoires** ainsi que les champs renseignés. Ils permettrons à Aiop de connaitre la liste des systèmes cible et les règles de filtrage de chaque paramètre de ces systèmes.
+Ces fichiers sont les plus importants du playbook. Ils sont **obligatoires** ainsi que les champs renseignés. Ils permettrons à AIOP de connaitre la liste des systèmes cible et les règles de filtrage de chaque paramètre de ces systèmes.
 </Callout>
 
 
 ## Structure du fichier de configuration
 
-Le fichier de configuration de l’inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop.
+Le fichier de configuration de l’inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP.
 
 ```yaml filename=".aiop/inventory_config.yml"
 system:
@@ -204,7 +204,7 @@ Vous pouvez constater que le nombre de fonctionnalité est grande et il n'y aucu
 
 ## Structure du fichier d’inventaire
 
-Le fichier d'inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par Aiop. C'est ce fichier qui contient les systèmes cible et les variables spécifiques à chaque système.
+Le fichier d'inventaire est au format YAML. Il est possible de le modifier avec un éditeur de texte ou un éditeur de code. Il sera ensuite lu et vérifié par AIOP. C'est ce fichier qui contient les systèmes cible et les variables spécifiques à chaque système.
 
 ```yaml filename=".aiop/inventory.yml"
 inventory:
@@ -340,8 +340,8 @@ Les règles de sélection sont utilisées pour filtrer les déclarations en fonc
 
 - `one_of` : Pour qu'une déclaration soit sélectionnée, le paramètre demandé par l'utilisateur doit être inclus dans les valeurs autorisées.
 - `all_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées et aucun paramètre compatible ne doit être manquant.
-- `least_diff` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le moins de différence possible avec les valeurs autorisées par rapport aux autres déclarations pour être sélectionnées. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](/docs/declarations/conflicts).
-- `most_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le plus de similarités possibles avec les valeurs autorisées par rapport aux autres déclarations. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par Aiop. [En savoir plus sur les conflits](/docs/declarations/conflicts).
+- `least_diff` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le moins de différence possible avec les valeurs autorisées par rapport aux autres déclarations pour être sélectionnées. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par AIOP. [En savoir plus sur les conflits](/docs/declarations/conflicts).
+- `most_of` : Pour qu'une déclaration soit sélectionnée, les paramètres demandés par l'utilisateur doivent être inclus dans les valeurs autorisées. De plus, la (ou les) déclaration(s) doit (doivent) présenter le plus de similarités possibles avec les valeurs autorisées par rapport aux autres déclarations. En cas d'égalité, toutes les déclarations seront sélectionnées, ce qui constitue un conflit signalé par AIOP. [En savoir plus sur les conflits](/docs/declarations/conflicts).
 
 De plus il sera demandé à l’utilisateur final plus ou moins d’arguments en fonction de la règle de sélection. Par exemple:
 - `one_of`: Il pourra renseigner une seule des valeurs autorisées.
@@ -358,4 +358,4 @@ Reprenons l’exemple de la société Tesla. Nous pourrions ainsi demander de cr
 | `sedan/model3/phase2` | `5-seats` `ludicrous` | `prod` |
 | `truck/cybertruck/phase1` | `5-seats` `towing` | `test` |
 
-Dans le premier cas, l’utilisateur demande de générer un package pour un Model X avec les fonctionnalités `four-wheel-drive` et `butterfly-doors` fonctionnant dans l'environnement `dev`. La règle des fonctionnalités étant `least_diff`, l’utilisateur pourra renseigner une ou plusieurs des fonctionnalités autorisées. La règle de l’environnement étant `one_of`, l’utilisateur pourra renseigner une seule des valeurs autorisées. De cette manière Aiop pourra générer un package pour un Model X avec les fonctionnalités `four-wheel-drive` et `butterfly-doors` fonctionnant dans environnement `dev`.
+Dans le premier cas, l’utilisateur demande de générer un package pour un Model X avec les fonctionnalités `four-wheel-drive` et `butterfly-doors` fonctionnant dans l'environnement `dev`. La règle des fonctionnalités étant `least_diff`, l’utilisateur pourra renseigner une ou plusieurs des fonctionnalités autorisées. La règle de l’environnement étant `one_of`, l’utilisateur pourra renseigner une seule des valeurs autorisées. De cette manière AIOP pourra générer un package pour un Model X avec les fonctionnalités `four-wheel-drive` et `butterfly-doors` fonctionnant dans environnement `dev`.

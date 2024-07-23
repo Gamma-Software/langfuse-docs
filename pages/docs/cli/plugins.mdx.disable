@@ -77,9 +77,9 @@ options:
 
 | Option | Description | Défaut |
 | --- | --- | --- |
-| `username` | Nom d'utilisateur du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
-| `password` | Mot de passe du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
-| `license` | Clé de licence de l'application Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `username` | Nom d'utilisateur du compte AIOP. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `password` | Mot de passe du compte AIOP. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `license` | Clé de licence de l'application AIOP. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
 | `name` | Nom du plugin à mettre à jour | `None` |
 | `version` | Version du plugin à mettre à jour | `None` |
 
@@ -104,6 +104,6 @@ options:
 
 | Option | Description | Défaut |
 | --- | --- | --- |
-| `username` | Nom d'utilisateur du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
-| `password` | Mot de passe du compte Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
-| `license` | Clé de licence de l'application Aiop. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `username` | Nom d'utilisateur du compte AIOP. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `password` | Mot de passe du compte AIOP. Surcharge la valeur inclue dans les configurations utilisateur| `None` |
+| `license` | Clé de licence de l'application AIOP. Surcharge la valeur inclue dans les configurations utilisateur| `None` |

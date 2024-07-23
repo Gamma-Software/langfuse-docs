@@ -123,13 +123,13 @@ Le paramètre `package` est utilisable dans la méthode [`prerequisites`](#prere
 | `package.raw_declarations` | list | Déclarations fraîchement chargées, validées mais pas encore manipulées et filtrées |
 | `package.declarations` | list | Instances de la classe `Declaration` validée mais non filtrés en fonction de la compatibilité |
 | `package.matching_declarations` | list | Instances de la classe `Declaration` compatibles avec la cible |
-| `package.computed_declarations` | list | Instances de la classe `Declaration` traitées par Aiop |
+| `package.computed_declarations` | list | Instances de la classe `Declaration` traitées par AIOP |
 | `package.results` | dict | Résultas des tâches, Dictionnaire regroupant les étapes de construction ensuite les tâches avec pour valeur le résultat de la tâche `JobResult` |
 | `package.session_data` | dict | Données de session où vous pouvez ajouter ce que vous souhaitez transmettre d'une tâche à un autre |
 
 ### `data`
 
-Le paramètre `data` est utilisable dans la méthode [`prerequisites`](#prerequisites) et [`run`](#run). Ce paramètre contient les informations des paramétrages de l’utilisateur, du playbook et des commandes de l’utilisateur. C'est une variable qui est statique et par conséquent n’a pas vocation à changer pendant l’execution de Aiop:
+Le paramètre `data` est utilisable dans la méthode [`prerequisites`](#prerequisites) et [`run`](#run). Ce paramètre contient les informations des paramétrages de l’utilisateur, du playbook et des commandes de l’utilisateur. C'est une variable qui est statique et par conséquent n’a pas vocation à changer pendant l’execution de AIOP:
 
 | élements | type | description |
 | --- | --- | --- |
@@ -151,9 +151,9 @@ Les valeurs de l'énumération `JobResultEnum` sont :
 | Enum | description |
 | --- | --- |
 | `OK` | La tâche a été exécutée avec succès. |
-| `FAIL_NOW` | La tâche a échoué et demande à Aiop d’arrêter la génération du package **tout de suite**.|
-| `FAIL_LATER` | La tâche a échoué et demande à Aiop d’arrêter la génération du package **après** l’exécution de toutes les tâches de l’étape en cours. Cela permet dans certains cas de remonter le plus d’erreurs possible avant d’arrêter la génération.|
-| `WARN` | La tâche a échoué mais ne demande pas à Aiop d’arrêter la génération du package.|
+| `FAIL_NOW` | La tâche a échoué et demande à AIOP d’arrêter la génération du package **tout de suite**.|
+| `FAIL_LATER` | La tâche a échoué et demande à AIOP d’arrêter la génération du package **après** l’exécution de toutes les tâches de l’étape en cours. Cela permet dans certains cas de remonter le plus d’erreurs possible avant d’arrêter la génération.|
+| `WARN` | La tâche a échoué mais ne demande pas à AIOP d’arrêter la génération du package.|
 | `SKIP` | La tâche n’a pas été exécutée.|
 
 ## Exemple

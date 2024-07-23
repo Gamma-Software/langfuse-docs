@@ -1,19 +1,19 @@
 ---
-description: Aiop provides an extended configuration file to customize the application's behavior for a user.
+description: AIOP provides an extended configuration file to customize the application's behavior for a user.
 ---
 import { Callout } from "nextra-theme-docs";
 
 # User Configuration
 
-Aiop allows the user to customize the application's behavior by modifying the configuration file. The configuration file is located in the user's directory:
+AIOP allows the user to customize the application's behavior by modifying the configuration file. The configuration file is located in the user's directory:
 - Unix: `~/.aiop/config.yaml`
 - Windows: `%HOME%\.aiop\config.yaml`
 
 <Callout type="info" emoji="ℹ️">
-  Upon Aiop installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
+  Upon AIOP installation, a default configuration file is created. It can be [modified](#personalization) to customize the application's behavior.
 </Callout>
 
-The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by Aiop to customize its behavior.
+The configuration file is in YAML format. It can be edited using a text editor or a code editor. It will then be read and validated by AIOP to customize its behavior.
 
 ## Configuration File Structure
 
@@ -21,7 +21,7 @@ Here's the structure of the configuration file. It includes parameters that allo
 
 Remote repositories require authentication to download remote resources. If any of the playbooks you are working on require a connection to a remote repository, you are required to add the login information in the `repositories` section.
 
-The license is used for Aiop authentication. If you have a license, you need to add the corresponding information in the `license` section.
+The license is used for AIOP authentication. If you have a license, you need to add the corresponding information in the `license` section.
 
 In case a plugin requires specific configuration, it should be integrated into the `plugin_config` section. Please refer to the plugin documentation or contact support via [support@aiop.io] for more information.
 
@@ -69,6 +69,6 @@ To customize the application's behavior, simply open and modify the configuratio
 | repositories.auth_type | str | Authentication type | basic, api_key | basic |
 | license | dict | License information | Dictionary | |
 | license.key | str | License key | | |
-| license.username | str | Username for Aiop authentication | | |
-| license.password | str | Password for Aiop authentication | | |
-| license.api_token | str | API token for Aiop authentication. If `api_token` is defined, `username` and `password` are ignored | | |
+| license.username | str | Username for AIOP authentication | | |
+| license.password | str | Password for AIOP authentication | | |
+| license.api_token | str | API token for AIOP authentication. If `api_token` is defined, `username` and `password` are ignored | | |

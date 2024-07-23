@@ -23,11 +23,7 @@ Pour déclarer une ressource en local, il suffit d'indiquer dans le champ `sourc
     <FileTree.Folder name=".git">
         <FileTree.File name="..." />
     </FileTree.Folder>
-    <FileTree.Folder name=".aiop">
-        <FileTree.File name="inventory_config.yml" />
-        <FileTree.File name="inventory.yml" />
-        <FileTree.File name="playbook.yml" />
-    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
     <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
         <FileTree.File name="image.png" />
@@ -42,18 +38,14 @@ Pour déclarer une ressource en local, il suffit d'indiquer dans le champ `sourc
     - ...
 ```
 
-Bien entendu, vous pouvez charger n'importe quel type de fichier, pas seulement des images et aussi des dossiers. Dans ce cas vous pourrez ajouter tous les dossiers et fichiers qu'il contient:
+Bien entendu, vous pouvez charger n'importe quel type de fichier, pas seulement des images et aussi des dossiers. Dans ce cas vous pourrez ajouter tous les dossiers et fichiers qu'il contient
 
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
     <FileTree.Folder name=".git">
         <FileTree.File name="..." />
     </FileTree.Folder>
-    <FileTree.Folder name=".aiop">
-        <FileTree.File name="inventory_config.yml" />
-        <FileTree.File name="inventory.yml" />
-        <FileTree.File name="playbook.yml" />
-    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
     <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.File name=".aml" />
       <FileTree.Folder name="dossier" defaultOpen>
@@ -69,3 +61,41 @@ Bien entendu, vous pouvez charger n'importe quel type de fichier, pas seulement 
   compatibility:
     - ...
 ```
+
+## Déclarer de multiples sources
+
+Depuis la `v0.12.0` AIOP introduit la possibilité d'utiliser la clée `&` pour déclarer plusieurs sources dans une seule fois. Cela vous permet de simplifier votre configuration et de ne pas avoir à répéter les mêmes valeurs. Vous pouvez faire référence à autant de sources que vous souhaitez.
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
+    <FileTree.Folder name="ressources" defaultOpen>
+        <FileTree.File name=".aml" />
+      <FileTree.Folder name="dossier1" defaultOpen>
+        <FileTree.File name="fichier1" />
+      </FileTree.Folder>
+      <FileTree.Folder name="dossier2" defaultOpen>
+        <FileTree.File name="fichier2" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+```yaml filename="ressources/.aml" /&/
+- source: dossier1/fichier1 & dossier2/fichier2
+  destination: dossier_dest/
+```
+
+AIOP récupèrera les fichiers `fichier` et `fichiers` de leur dossier respectif et les ajoutera à la liste des sources pour les copier dans le `dossier_dest`. Le dossier `dossier_dest` ressemblera à cela:
+
+<FileTree>
+  <FileTree.Folder name=".build" defaultOpen>
+      <FileTree.Folder name="dossier_dest" defaultOpen>
+        <FileTree.File name="fichier" />
+        <FileTree.File name="fichier2" />
+      </FileTree.Folder>
+    </FileTree.Folder>
+</FileTree>
