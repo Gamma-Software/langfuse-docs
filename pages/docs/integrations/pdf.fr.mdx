@@ -1,5 +1,123 @@
-
 ---
 description: >-
   AIOP vous permet de générer des PDF depuis un HTML ou un Markdown.
 ---
+
+import { Callout } from "nextra-theme-docs";
+import { FileTree } from 'nextra/components'
+
+# Génération de PDF
+
+AIOP vous permet de générer des PDF depuis un HTML ou un Markdown.
+
+## Depuis un Markdown
+
+AIOP utilise l'outil [mdpdf](https://github.com/elliotblackburn/mdpdf/tree/master) pour la génération d'un PDF à partir d'un fichier Markdown.
+
+La génération d'un PDF depuis un Markdown est la manière la plus simple, il vous suffit de connaitre les bases de Markdown. La forme du document ne sera en revanche pas modifiable (voir génération depuis un [HTML](#depuis-un-html)).
+
+Voici un exemple de PDF généré depuis un Markdown:
+![pdf](./img/pdf.png)
+
+
+### Syntaxe Markdown
+
+Pour apprendre à rédiger un Markdown, vous pouvez consulter [cette page](https://www.markdownguide.org/basic-syntax/).
+
+Prenons l'exemple du fichier PDF généré plus haut. Le contenu de ce Markdown est le suivant:
+
+```markdown
+# Markdown Tutorial
+
+Welcome to this Markdown tutorial! This guide will show you the basics and some advanced features of Markdown.
+
+## Headings
+
+You can create headings using the `#` symbol:
+
+`markdown
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+`
+
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+```
+
+### Déclaration
+
+AIOP génère un fichier PDF à partir d'une Markdown si vous déclarer une resource dont la source à pour extension `.md` (Markdown) et la destination à pour extension `pdf` (PDF). Voici un exemple de déclaration de la resource.
+
+```yaml
+- source: mymarkdown.md
+  destination: mypdf.pdf
+```
+
+À la suite de la génération du package, le fichier `mypdf.pdf` sera créé dans le dossier racine du package.
+
+## Depuis un HTML
+
+Pour générer un PDF depuis un HTML, AIOP utilise l'outil [weasyprint](https://weasyprint.org/). Cela vous permet de générer des PDF élaboré avec du CSS et des polices d'écritures personnalisées.
+
+Voici un exemple de PDF généré depuis un HTML:
+![html](./img/html.png)
+
+### Syntaxe HTML et CSS
+
+Il faut connaitre les bases de HTML et CSS pour pouvoir générer des PDF à partir d'un HTML. Toute fois il existe des examples de PDFs déjà disponibles [ici](https://github.com/CourtBouillon/weasyprint-samples/).
+
+### Déclaration
+
+AIOP génère un fichier PDF à partir d'une resource dont la source à pour extension `.html` (HTML) ou un dossier qui contient un `.html` et la destination à pour extension `.pdf` (PDF). Voici un exemple de déclaration de la resource.
+
+Le contenu du playbook est le suivant:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
+    <FileTree.File name="invoice.aml" />
+    <FileTree.Folder name="invoice" defaultOpen>
+        <FileTree.File name="invoice.html" />
+        <FileTree.File name="invoice.css" />
+        <FileTree.File name="pacifico.ttf" />
+        <FileTree.File name="sourcesanspro-bold.otf" />
+        <FileTree.File name="sourcesanspro-regular.otf" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+La déclaration est la suivante:
+
+```yaml filename="invoice.aml"
+- source: invoice/invoice.html
+  destination: invoice.pdf
+```
+
+<Callout type="info" emoji="ℹ️">
+  Dans ce cas, seul le fichier `.html` est déclaré. Cela veut donc dire que la forme du HTML sera rudimentaire et les polices d'écritures seront celles du système.
+</Callout>
+
+Il est possible de générer un PDF à partir d'un dossier qui contient des fichiers HTML et CSS. Voici un exemple de déclaration de la resource. Si les fichiers HTML et CSS sont dans le dossier AIOP remontera une erreur.
+
+```yaml filename="invoice.aml"
+- source: invoice/
+  destination: invoice_folder.pdf
+```
+
+Il est également possible de générer un PDF à partir d'une liste de fichier dont un fichiers HTML et un fichier CSS. Voici un exemple de déclaration de resources.
+
+```yaml filename="invoice.aml"
+- source: invoice/invoice.html & invoice/invoice.css & invoice/pacifico.ttf & invoice/sourcesanspro-bold.otf & invoice/sourcesanspro-regular.otf
+  destination: invoice_merged.pdf
+```

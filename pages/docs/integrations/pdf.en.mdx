@@ -1,5 +1,122 @@
-
 ---
 description: >-
-  AIOP allows you to generate PDF from HTML or Markdown.
+  AIOP allows you to generate PDFs from HTML or Markdown.
 ---
+
+import { Callout } from "nextra-theme-docs";
+import { FileTree } from 'nextra/components'
+
+# PDF Generation
+
+AIOP allows you to generate PDFs from HTML or Markdown.
+
+## From Markdown
+
+AIOP uses the tool [mdpdf](https://github.com/elliotblackburn/mdpdf/tree/master) for generating a PDF from a Markdown file.
+
+Generating a PDF from Markdown is the simplest way, as you only need to know the basics of Markdown. However, the format of the document will not be customizable (see generation from [HTML](#from-html)).
+
+Here is an example of a PDF generated from Markdown:
+![pdf](./img/pdf.png)
+
+### Markdown Syntax
+
+To learn how to write in Markdown, you can consult [this page](https://www.markdownguide.org/basic-syntax/).
+
+Let's take the example of the PDF file generated above. The content of this Markdown is as follows:
+
+```markdown
+# Markdown Tutorial
+
+Welcome to this Markdown tutorial! This guide will show you the basics and some advanced features of Markdown.
+
+## Headings
+
+You can create headings using the `#` symbol:
+
+`markdown
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+`
+
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+```
+
+### Declaration
+
+AIOP generates a PDF file from a Markdown file if you declare a resource with a source extension `.md` (Markdown) and a destination extension `pdf` (PDF). Here is an example of a resource declaration.
+
+```yaml
+- source: mymarkdown.md
+  destination: mypdf.pdf
+```
+
+After the package generation, the file `mypdf.pdf` will be created in the root folder of the package.
+
+## From HTML
+
+To generate a PDF from HTML, AIOP uses the tool [weasyprint](https://weasyprint.org/). This allows you to create advanced PDFs with CSS and custom fonts.
+
+Here is an example of a PDF generated from HTML:
+![html](./img/html.png)
+
+### HTML and CSS Syntax
+
+You need to know the basics of HTML and CSS to generate PDFs from HTML. However, there are examples of PDFs already available [here](https://github.com/CourtBouillon/weasyprint-samples/).
+
+### Declaration
+
+AIOP generates a PDF file from a resource with a source extension `.html` (HTML) or a folder containing an `.html` file and a destination extension `.pdf` (PDF). Here is an example of a resource declaration.
+
+The playbook content is as follows:
+
+<FileTree>
+  <FileTree.Folder name="playbook" defaultOpen>
+    <FileTree.Folder name=".git">
+        <FileTree.File name="..." />
+    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
+    <FileTree.File name="invoice.aml" />
+    <FileTree.Folder name="invoice" defaultOpen>
+        <FileTree.File name="invoice.html" />
+        <FileTree.File name="invoice.css" />
+        <FileTree.File name="pacifico.ttf" />
+        <FileTree.File name="sourcesanspro-bold.otf" />
+        <FileTree.File name="sourcesanspro-regular.otf" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+The declaration is as follows:
+
+```yaml filename="invoice.aml"
+- source: invoice/invoice.html
+  destination: invoice.pdf
+```
+
+<Callout type="info" emoji="ℹ️">
+  In this case, only the `.html` file is declared. This means that the HTML format will be basic and the fonts will be system fonts.
+</Callout>
+
+It is possible to generate a PDF from a folder containing HTML and CSS files. Here is an example of a resource declaration. If the HTML and CSS files are in the folder, AIOP will return an error.
+
+```yaml filename="invoice.aml"
+- source: invoice/
+  destination: invoice_folder.pdf
+```
+
+It is also possible to generate a PDF from a list of files including an HTML file and a CSS file. Here is an example of resource declaration.
+
+```yaml filename="invoice.aml"
+- source: invoice/invoice.html & invoice/invoice.css & invoice/pacifico.ttf & invoice/sourcesanspro-bold.otf & invoice/sourcesanspro-regular.otf
+  destination: invoice_merged.pdf
+```
