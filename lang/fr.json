@@ -1,7 +1,7 @@
 {
   "home": {
     "Hero": {
-      "packages": "Rendez vos logiciels modulaires en toute simplicité. Réduisez leur de temps d’intégration et augmentez la cadence de livraison.",
+      "packages": "Gérez la modularité de vos systèmes en toute simplicité",
       "demoButton": "Démonstration",
       "documentationButton": "Voir la documentation"
     },

@@ -40,5 +40,6 @@
   },
   "third-party": "Third-Party Libraries",
   "qna": "FAQ",
-  "even-more": "Further Exploration"
+  "even-more": "Further Exploration",
+  "troubleshooting": {"name": "Résolution des problèmes", "display": "hidden"}
 }

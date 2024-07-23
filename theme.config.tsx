@@ -81,9 +81,8 @@ const config: DocsThemeConfig = {
     text: () => {
       const messages = useLocalizedMessages();
       if (!messages) return null;
-      return (
-        messages.common.edit
-      )
+      if (process.env.NODE_ENV === "development") return messages.common.edit
+      return null
     }
   },
   feedback: {
