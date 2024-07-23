@@ -76,18 +76,23 @@ To generate a PDF from multiple Markdown files, you can declare them as follows:
 
 The file `mypdf.pdf` will be created in the package's root folder and contain the content of the two Markdown files separated by a page break.
 
-#### From HTML
+## From HTML
 
 To generate a PDF from HTML, AIOP uses the tool [weasyprint](https://weasyprint.org/). This allows you to generate PDFs with custom CSS and fonts.
 
 Here is an example of a PDF generated from HTML:
 ![html](./img/html.png)
 
-#### HTML and CSS Syntax
+
+<Callout type="info" emoji="ℹ️">
+  In order to use Weasyprint you must install [weasyprint and its libraries](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation).
+</Callout>
+
+### HTML and CSS Syntax
 
 You need to know the basics of HTML and CSS to generate PDFs from HTML. However, there are already examples of PDFs available [here](https://github.com/CourtBouillon/weasyprint-samples/).
 
-#### Declaration
+### Declaration
 
 AIOP generates a PDF from a resource whose source has a `.html` (HTML) extension or a folder containing a `.html` file, and the destination has a `.pdf` (PDF) extension. Here is an example of declaring the resource.
 
@@ -139,7 +144,7 @@ It is also possible to generate a PDF from a list of files including an HTML fil
 
 It is possible to combine PDF generation with an FMPP ([learn more](/docs/integrations/templating/fmpp)) or Jinja ([learn more](/docs/integrations/templating/jinja)) template. This means you can template an HTML, CSS, or Markdown.
 
-#### Templated Markdown
+### Templated Markdown
 
 Here is an example of templated Markdown with Jinja.
 
@@ -156,7 +161,7 @@ The variables used here are predefined by AIOP. You can find them [here](/docs/i
 - `system_target.name` retrieves the name of the target system. Additionally, we use the [Jinja `title` function](https://jinja.palletsprojects.com/en/3.1.x/templates/#filters) to capitalize the first letter of a string.
 - `my_variable` is a variable defined in the YAML declaration file.
 
-#### Declaration of Templated Markdown
+### Declaration of Templated Markdown
 
 The resource declaration for this file is as follows:
 
