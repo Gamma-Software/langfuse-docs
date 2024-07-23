@@ -12,6 +12,9 @@ import { HomeSection } from "./components/HomeSection";
 import {Meteors} from "../ui/magicui/meteors";
 import { log } from 'console';
 import { useLocalizedMessages } from '@/lib/ParseLang';
+import { DownloadButton } from "./components/DownloadButton";
+import { TerminalMockup } from "../ui/shadcn/terminal";
+
 
 export function Hero() {
   const messages = useLocalizedMessages();
@@ -30,17 +33,17 @@ export function Hero() {
         <span className="mt-2 text-primary/70 text-2xl sm:text-2xl lg:text-3xl md:text-balance font-semibold tracking-wide">
           {messages.home.Hero.packages}
         </span>
-        <script src="https://gist.github.com/Gamma-Software/8d931d0d243cbe650009672d62d90f00.js"></script>
 
         <div className="flex gap-4 flex-wrap items-center justify-center my-4">
-          <Button size="lg" variant="cta" asChild>
+          <DownloadButton/>
+          <Button size="xl" variant="secondary" asChild>
             <Link href="/docs/demo">{messages.home.Hero.demoButton}</Link>
-          </Button>
-          <Button variant="secondary" size="lg" asChild>
-            <Link href="/docs/intro">{messages.home.Hero.documentationButton}</Link>
           </Button>
         </div>
       </div>
+
+      {/*<TerminalMockup command={"aiop build"}/>*/}
+
 
       {/* Badges */}
       {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap"> */}

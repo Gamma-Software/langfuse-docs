@@ -1,9 +1,11 @@
 {
   "home": {
     "Hero": {
-      "packages": "Gérez la modularité de vos systèmes en toute simplicité",
+      "packages": "Intégrez simplement et plus rapidement vos logiciels modulaires",
       "demoButton": "Démonstration",
-      "documentationButton": "Voir la documentation"
+      "documentationButton": "Voir la documentation",
+      "download": "Installer",
+      "toaster_download": "La commande pour installer AIOP est copié dans le presse-papier. Executez le dans un terminal."
     },
     "FromTheBlog": {
       "title": "Blog",

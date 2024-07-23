@@ -1,9 +1,10 @@
 {
   "home": {
     "Hero": {
-      "packages": "System modularity at ease",
+      "packages": "Simple and fast Software modular integration engine",
       "demoButton": "Demo",
-      "documentationButton": "View Documentation"
+      "documentationButton": "View Documentation",
+      "toaster_download": "The install command is in your clipboard. Paste it your shell terminal."
     },
     "FromTheBlog": {
       "title": "Blog",
