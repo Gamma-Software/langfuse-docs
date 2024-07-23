@@ -40,7 +40,9 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardizes and automates the process of building embedded system packages."
+      "description": "AIOP standardizes and automates the process of building embedded system packages.",
+      "download_playbook": "Download an example playbook",
+      "download_package": "And one of the many packages available"
     },
     "Benefits": {
       "title": "Why AIOP ?",

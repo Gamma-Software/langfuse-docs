@@ -40,7 +40,9 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardise et automatise le processus de construction de packages pour systèmes embarqués."
+      "description": "AIOP standardise et automatise le processus de construction de packages pour systèmes embarqués.",
+      "download_playbook": "Télécharger un playbook d'example",
+      "download_package": "Et un des packages résultant"
     },
     "Benefits": {
       "title": "Pourquoi l'utiliser ?",

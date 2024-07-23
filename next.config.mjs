@@ -43,7 +43,12 @@ const nextraConfig = withNextra({
         protocol: 'https',
         hostname: 'www.google.com',
         pathname: '/**',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.gitlab.com',
+        pathname: '/**',
+      },
     ],
   },
   i18n: {
