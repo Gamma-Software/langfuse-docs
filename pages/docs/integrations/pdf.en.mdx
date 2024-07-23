@@ -1,19 +1,16 @@
-### Description
+---
+description: >-
+  AIOP vous permet de générer des PDF depuis un HTML ou un Markdown.
+---
 
-AIOP allows you to generate PDFs from HTML or Markdown.
-
-### Import Statements
-
-```javascript
 import { Callout } from "nextra-theme-docs";
 import { FileTree } from 'nextra/components'
-```
 
-### PDF Generation
+# PDF Generation
 
 AIOP enables you to generate PDFs from HTML or Markdown.
 
-#### From Markdown
+## From Markdown
 
 AIOP uses the tool [mdpdf](https://github.com/elliotblackburn/mdpdf/tree/master) for generating a PDF from a Markdown file.
 
@@ -24,7 +21,7 @@ Here is an example of a PDF generated from Markdown:
 
 You can combine Markdown files to create a single PDF. Each Markdown file will be separated by a page break.
 
-#### Markdown Syntax
+## Markdown Syntax
 
 To learn how to write Markdown, you can refer to [this page](https://www.markdownguide.org/basic-syntax/).
 
@@ -56,7 +53,7 @@ You can create headings using the `#` symbol:
 ###### H6
 ```
 
-#### Declaration
+## Declaration
 
 AIOP generates a PDF from Markdown if you declare a resource whose source has a `.md` (Markdown) extension and the destination has a `.pdf` (PDF) extension. Here is an example of declaring the resource.
 
@@ -140,7 +137,7 @@ It is also possible to generate a PDF from a list of files including an HTML fil
   destination: invoice_merged.pdf
 ```
 
-### Advanced Functions
+## Advanced Functions
 
 It is possible to combine PDF generation with an FMPP ([learn more](/docs/integrations/templating/fmpp)) or Jinja ([learn more](/docs/integrations/templating/jinja)) template. This means you can template an HTML, CSS, or Markdown.
 
