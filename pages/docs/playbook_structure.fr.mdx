@@ -6,7 +6,7 @@ import { Callout } from "nextra-theme-docs";
 
 # Structure d’un Playbook
 
-Un `playbook` est le projet qu’AIOP va utiliser pour construire les packages. Il est composé de plusieurs fichiers et dossiers. Il y a des fichiers obligatoires et d’autres optionnels.
+Un `playbook` est le projet qu’AIOP va utiliser pour construire les packages. Il est composé de plusieurs fichiers et dossiers.
 
 Voici un exemple de structure d’un `playbook`:
 
@@ -16,12 +16,7 @@ Voici un exemple de structure d’un `playbook`:
     <FileTree.Folder name=".git">
         <FileTree.File name="..." />
     </FileTree.Folder>
-    <FileTree.Folder name=".aiop" defaultOpen>
-        <FileTree.File name="inventory_config.yml" />
-        <FileTree.File name="inventory.yml" />
-        <FileTree.File name="playbook.yml" />
-        <FileTree.File name="packages.yml" />
-    </FileTree.Folder>
+    <FileTree.File name=".aiop" />
     <FileTree.Folder name="ressources" defaultOpen>
         <FileTree.Folder name="locales" defaultOpen>
             <FileTree.File name="resource_locale_1.txt" />
@@ -42,21 +37,22 @@ Voici un exemple de structure d’un `playbook`:
 
 Vous remarquerez que le dossier `.git` est présent. C’est parce que le playbook est un projet git ce qui est recommandé ce qui permet de versionner le playbook et de collaborer efficacement. Le playbook est un projet git comme un autre et vous pouvez utiliser toutes les fonctionnalités de [git](/docs/vocabulary#git).
 
-
 <Callout type="info" emoji="ℹ️">
-  Le seul dossier obligatoire est `.aiop` qui contient les fichiers de configuration également obligatoires. Bien entendu, le playbook doit au moins contenir un fichier `.aml` pour créer un package sinon AIOP ne va pas se lancer.
+  Il n'y a aucun fichier obligatoire pour que AIOP fonctionne. Vous pouvez utiliser AIOP sans configuration du playbook. En revanche, les fonctionnalités seront limitées.
 </Callout>
 
 ## Détails des fichiers et dossiers
 
-### Le dossier `.aiop`
+### Le fichier `.aiop`
 
-Ce dossier contient les fichiers de configuration du playbook. Il est obligatoire et doit contenir les fichiers suivants:
+Ce fichier contient les configurations du playbook. Il n'est pas obligatoire mais il est recommandé. Il contient les informations suivantes :
 
-- `inventory_config.yml`: Fichier de configuration de l’inventaire. [En savoir plus](/docs/configurations/playbook#inventaire).
-- `inventory.yml`: Fichier de l’inventaire. [En savoir plus](/docs/configurations/playbook#inventaire).
-- `playbook.yml`: Fichier de configuration du playbook. [En savoir plus](/docs/configurations/playbook#base).
-- `packages.yml`: Fichier de configuration des packages à construire. __Ce fichier est optionnel__. [En savoir plus](/docs/configurations/packages).
+- `inventory_config`: Configuration de l’inventaire. [En savoir plus](/docs/configurations/playbook#inventaire).
+- `inventory`: Inventaire des cibles et leur compatibilités. [En savoir plus](/docs/configurations/playbook#inventaire).
+- `playbook`: Configuration du playbook. [En savoir plus](/docs/configurations/playbook#base).
+- `packages`: Configuration des packages à construire. [En savoir plus](/docs/configurations/packages).
+
+Aucun des éléments n'est obligatoire pour que AIOP fonctionne.
 
 ### Le dossier `ressources`
 
@@ -71,7 +67,6 @@ Ce dossier est optionnel et contient des scripts python qui peuvent être utilis
 </Callout>
 
 ### Le fichier `.aml`
-
 
 Le fichier [`.aml`](/docs/vocabulary#aml) constitue le point d'entrée des ressources envoyées à AIOP. L'outil lit ce fichier pour interpréter les ressources et construire les packages associés. Bien qu'optionnel, ce fichier peut être placé n'importe où dans le playbook mais si AIOP ne trouve aucun fichier `.aml` dans le projet ou ses sous-dossiers, aucune génération de package ne sera lancée.
 
