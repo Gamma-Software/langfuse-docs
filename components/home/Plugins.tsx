@@ -13,6 +13,8 @@ import frontifyDark from "./img/frontify_dark.svg";
 import berryLight from "./img/berry_light.png";
 import berryDark from "./img/berry_light.png";
 import { HomeSection } from "./components/HomeSection";
+import lightImage from "https://www.vectorlogo.zone/logos/ros/ros-ar21.svg";
+import darkImage from "https://www.vectorlogo.zone/logos/ros/ros-ar21.svg";
 
 type Plugin = {
   name: string;
@@ -24,8 +26,8 @@ type Plugin = {
 const plugins: Plugin[] = [
   {
     name: "ROS",
-    lightImage: "https://www.vectorlogo.zone/logos/ros/ros-ar21.svg",
-    darkImage: "https://www.vectorlogo.zone/logos/ros/ros-ar21.svg",
+    lightImage: lightImage,
+    darkImage: darkImage,
     href: "https://ros.org",
   }
 ];
