@@ -44,8 +44,10 @@ export function Hero() {
           </Button>
         </div>
       </div>
-      <Image src="/demo_transparent.png" alt="Image" className="visible rounded-xl blur-[0.5px] absolute ml-[800px] mt-[100px] opacity-[30%] " height={100} width={1000}/>
+      <Image src="/demo_transparent.png" alt="preview" className="hidden lg:block rounded-xl blur-[0.5px] absolute ml-[800px] mt-[100px] opacity-[30%] " height={100} width={1000}/>
       </div>
+      <Image src="/demo_transparent_up.png" alt="preview" className="hidden sm:block lg:hidden rounded-xl blur-[0.5px] mt-2 mb-[-70%] opacity-[30%] " height={100} width={1000}/>
+
 
       {/*<TerminalMockup command={"aiop build"}/>*/}
 

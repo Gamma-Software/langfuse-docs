@@ -4,7 +4,7 @@
       "catch_word": ["Integrate", "Validate", "Deliver"],
       "quickly": "quickly",
       "package": "modular softwares.",
-      "desc": "Simple and fast software modular integration engine",
+      "desc": "Toolkit for building modular softwares.",
       "demoButton": "Demo",
       "documentationButton": "Learn more about AIOP",
       "download": "Free Install",
@@ -151,7 +151,7 @@
           "featured": false,
           "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
           "alt": "Monthly subscription / per user",
-          "price": "€125",
+          "price": "$99",
           "mainFeatures": [
             "All features of the free version",
             "Access to custom task cookbooks",

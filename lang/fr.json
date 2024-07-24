@@ -4,7 +4,7 @@
       "catch_word": ["Intégrez", "Validez", "Livrez"],
       "quickly": "rapidement",
       "package": "vos logiciels modulaires",
-      "desc": "Moteur d'intégration de modules rapide et simple",
+      "desc": "La boite à outil pour vos logiciels modulaire.",
       "demoButton": "Démonstration",
       "documentationButton": "En savoir plus sur AIOP",
       "download": "Installer gratuitement",
@@ -164,7 +164,7 @@
           "description":
             "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
           "alt": "Par mois / par utilisateur",
-          "price": "€125",
+          "price": "€99",
           "mainFeatures": [
             "Toutes les fonctionnalités de la version gratuite",
             "Accès à des cookbook de tâches personnalisées",

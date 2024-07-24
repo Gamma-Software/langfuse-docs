@@ -38,7 +38,8 @@ export const ToAppButton = () => {
           //  //: "https://cloud.aiop.io"
           //  //: "/sign-up"
           //  : "/waiting-list"
-          "/waiting-list"
+          //"/waiting-list"
+          "/docs/get-started"
         }
       >
         {signedIn ? messages.app_button.account : messages.app_button.signup}
