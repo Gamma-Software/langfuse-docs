@@ -10,14 +10,18 @@ import { FromTheBlog } from "./FromTheBlog";
 import { Benefits } from "./Benefits";
 import { Clients } from "./Clients";
 import { Workflow } from "./Workflow";
+import { Demo } from "./Demo";
 import { Toaster } from "../ui/shadcn/toaster"
+import { Capable } from "./Capable"
 
 export const Home = () => (
   <>
     <main className="relative overflow-hidden w-full">
       <Hero/>
       {/* <Users /> */}
-      <Workflow/>
+      <Demo/>
+      <Capable/>
+      {/* <Workflow/> */}
       {/* <Benefits/> */}
       <FeatureBento/>
       <Clients/>

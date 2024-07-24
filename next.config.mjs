@@ -49,6 +49,11 @@ const nextraConfig = withNextra({
         hostname: 'www.gitlab.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname:'www.vectorlogo.zone',
+        pathname: '/**',
+      }
     ],
   },
   i18n: {
