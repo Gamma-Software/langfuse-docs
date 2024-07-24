@@ -87,7 +87,7 @@ const nonPermanentRedirects = [
   ["/issue", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new"],
   ["/new-issue", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new"],
   ["/issues", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues"],
-
+  ["/pay", "https://pay.aiop.io/buy/dbfd1e7b-3805-4231-b104-0f2ca501a05a"],
   ["/security", "/docs/data-security-privacy"],
   ["/idea", "https://gitlab.com/leap_tech/aiop-group/aiop/-/issues/new?issuable_template=idea&issue%5Bissue_type%5D=idea"],
   ["/new-idea", "https://github.com/orgs/aiop/discussions/new?category=ideas"],
