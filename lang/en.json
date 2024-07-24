@@ -150,8 +150,8 @@
           "href": "/waiting-list",
           "featured": false,
           "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
-          "alt": "Monthly subscription",
-          "price": "Bêta",
+          "alt": "Monthly subscription / per user",
+          "price": "€125",
           "mainFeatures": [
             "All features of the free version",
             "Access to custom task cookbooks",
@@ -170,9 +170,9 @@
           "id": "tier-team",
           "href": "/schedule-demo",
           "featured": false,
-          "price": "Bêta",
+          "price": "Quote",
           "description": "Dedicated solution for a team and/or company. You have personalized assistance. Contact us to discuss the price.",
-          "alt": "Contact us",
+          "alt": "Monthly subscription",
           "mainFeatures": [
             "All features of the Pro version",
             "Access to workshops and training",
