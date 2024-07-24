@@ -4,7 +4,7 @@
       "catch_word": ["Integrate", "Validate", "Deliver"],
       "quickly": "quickly",
       "package": "modular softwares.",
-      "desc": "Simple and fast Software modular integration engine",
+      "desc": "Simple and fast software modular integration engine",
       "demoButton": "Demo",
       "documentationButton": "Learn more about AIOP",
       "download": "Free Install",
@@ -45,7 +45,7 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardizes and automates the process of building embedded system packages.",
+      "description": "AIOP provides you a toolkit to standardizes and automates the process of building modular softwares.",
       "download_playbook": "Download an example playbook",
       "download_package": "And one of the many packages available"
     },

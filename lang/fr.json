@@ -4,7 +4,7 @@
       "catch_word": ["Intégrez", "Validez", "Livrez"],
       "quickly": "rapidement",
       "package": "vos logiciels modulaires",
-      "desc": "Ensemble d'outils pour réduire le time-to-market de vos logiciels.",
+      "desc": "Moteur d'intégration de modules rapide et simple",
       "demoButton": "Démonstration",
       "documentationButton": "En savoir plus sur AIOP",
       "download": "Installer gratuitement",
@@ -45,7 +45,7 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardise et automatise le processus de construction de packages pour vos logiciels modulaires.",
+      "description": "AIOP fournit un ensemble d'outils pour standardiser et automatiser le processus de construction de packages de vos logiciels modulaires.",
       "download_playbook": "Télécharger un playbook d'example",
       "download_package": "Et un des packages résultant"
     },
