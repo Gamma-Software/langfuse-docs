@@ -1,6 +1,7 @@
 import {
   FiChevronDown,
 } from "react-icons/fi";
+import { useEffect, useRef } from "react";
 import { FaWindows, FaCentos, FaLinux, FaApple } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -16,6 +17,24 @@ export function DownloadButton () {
   const [open, setOpen] = useState(false);
   const { toast } = useToast()
   const [copied, setCopied] = useState(false);
+  const dropdownRef = useRef(null);
+
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+  };
+  useEffect(() => {
+    if (open) {
+      document.addEventListener("click", handleClickOutside);
+    } else {
+      document.removeEventListener("click", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [open]);
 
   const messages = useLocalizedMessages();
   if (!messages) return null;
@@ -37,11 +56,11 @@ export function DownloadButton () {
   const gist = 'sh -c "$(curl -fsSL https://gist.githubusercontent.com/Gamma-Software/8d931d0d243cbe650009672d62d90f00/raw/)"'
 
   return (
-    <div>
+    <div ref={dropdownRef}>
       <motion.div animate={open ? "open" : "closed"} className="relative">
-        <Button size="xl" variant="cta" onClick={() => setOpen((pv) => !pv)}>
+        <Button size="lg" variant="cta" onClick={() => setOpen((pv) => !pv)}>
           <GoCommandPalette className="mr-2"/>
-          <span className="flex font-medium text-sm">{messages.home.Hero.download}</span>
+          {messages.home.Hero.download}
             <motion.span variants={iconVariants}>
               <FiChevronDown />
             </motion.span>
@@ -50,8 +69,8 @@ export function DownloadButton () {
         <motion.ul
           initial={wrapperVariants.closed}
           variants={wrapperVariants}
-          style={{ originY: "top", translateX: "-50%" }}
-          className="flex flex-col gap-2 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-[100%] sm:left-[70%] w-60 overflow-hidden"
+          style={{ originY: "top"}}
+          className="rounded-lg bg-white shadow-xl absolute mt-1 w-55 overflow-hidden"
         >
           <Option setOpen={() => {copyToClipboard(gist)}} Icon={FaApple} text="MacOS" />
           <Option setOpen={() => {copyToClipboard(gist)}} Icon={FaLinux} text="Ubuntu | Debian GNU/Linux" />
@@ -76,7 +95,7 @@ const Option = ({
     <motion.li
       variants={itemVariants}
       onClick={() => setOpen(false)}
-      className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer"
+      className="flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-blue-100 text-slate-700 hover:text-blue-500 transition-colors cursor-pointer"
     >
       <motion.span variants={actionIconVariants}>
         <Icon />

@@ -14,6 +14,7 @@ import { log } from 'console';
 import { useLocalizedMessages } from '@/lib/ParseLang';
 import { DownloadButton } from "./components/DownloadButton";
 import { TerminalMockup } from "../ui/shadcn/terminal";
+import WordRotate from "../ui/magicui/word-rotate";
 
 
 export function Hero() {
@@ -21,25 +22,29 @@ export function Hero() {
   if (!messages) return null;
 
   return (
-    <HomeSection>
+    <HomeSection className="mb-10">
       {/* HERO */}
       {/* <Meteors/> */}
+      <div className="flex flex-row">
       <div className="flex flex-col items-start justify-center gap-3 md:min-h-[calc(60vh-100px)] pb-12 lg:py-20">
         <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 dark:bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 font-sans font-bold">
-          All-In-One
+          <WordRotate className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 dark:bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 font-sans font-bold" words={messages.home.Hero.catch_word}/>
+          {messages.home.Hero.quickly}
           <br />
-          Packager
+          {messages.home.Hero.package}
         </h1>
-        <span className="mt-2 text-primary/70 text-2xl sm:text-2xl lg:text-3xl md:text-balance font-semibold tracking-wide">
-          {messages.home.Hero.packages}
+        <span className="mt-2 text-primary/70 text-2xl sm:text-2xl lg:text-3xl z-10  md:text-balance font-semibold tracking-wide">
+          {messages.home.Hero.desc}
         </span>
 
-        <div className="flex gap-4 flex-wrap items-center justify-center my-4">
+        <div className="flex gap-4 flex-wrap items-center justify-center my-4 z-10">
           <DownloadButton/>
-          <Button size="xl" variant="secondary" asChild>
-            <Link href="/docs/demo">{messages.home.Hero.demoButton}</Link>
+          <Button size="lg" variant="secondary" asChild>
+            <Link href="/docs/demo">{messages.home.Hero.documentationButton}</Link>
           </Button>
         </div>
+      </div>
+      <Image src="/demo_transparent.png" alt="Image" className="visible rounded-xl blur-[0.5px] absolute ml-[800px] mt-[100px] opacity-[30%] " height={100} width={1000}/>
       </div>
 
       {/*<TerminalMockup command={"aiop build"}/>*/}

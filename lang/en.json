@@ -1,9 +1,13 @@
 {
   "home": {
     "Hero": {
-      "packages": "Simple and fast Software modular integration engine",
+      "catch_word": ["Integrate", "Validate", "Deliver"],
+      "quickly": "quickly",
+      "package": "modular softwares.",
+      "desc": "Simple and fast Software modular integration engine",
       "demoButton": "Demo",
-      "documentationButton": "View Documentation",
+      "documentationButton": "Learn more about AIOP",
+      "download": "Free Install",
       "toaster_download": "The install command is in your clipboard. Paste it your shell terminal."
     },
     "FromTheBlog": {

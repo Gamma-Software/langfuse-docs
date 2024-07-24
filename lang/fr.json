@@ -1,10 +1,13 @@
 {
   "home": {
     "Hero": {
-      "packages": "Intégrez simplement et plus rapidement vos logiciels modulaires",
+      "catch_word": ["Intégrez", "Validez", "Livrez"],
+      "quickly": "rapidement",
+      "package": "vos logiciels modulaires",
+      "desc": "Ensemble d'outils pour réduire le time-to-market de vos logiciels.",
       "demoButton": "Démonstration",
-      "documentationButton": "Voir la documentation",
-      "download": "Installer",
+      "documentationButton": "En savoir plus sur AIOP",
+      "download": "Installer gratuitement",
       "toaster_download": "La commande pour installer AIOP est copié dans le presse-papier. Executez le dans un terminal."
     },
     "FromTheBlog": {
@@ -42,7 +45,7 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardise et automatise le processus de construction de packages pour systèmes embarqués.",
+      "description": "AIOP standardise et automatise le processus de construction de packages pour vos logiciels modulaires.",
       "download_playbook": "Télécharger un playbook d'example",
       "download_package": "Et un des packages résultant"
     },
