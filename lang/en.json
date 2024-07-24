@@ -7,7 +7,7 @@
       "desc": "Toolkit for building modular softwares.",
       "demoButton": "Demo",
       "documentationButton": "Learn more about AIOP",
-      "download": "Free Install",
+      "download": "Install for free",
       "toaster_download": "The install command is in your clipboard. Paste it your shell terminal."
     },
     "FromTheBlog": {
@@ -147,7 +147,7 @@
         {
           "name": "Pro",
           "id": "tier-pro",
-          "href": "/waiting-list",
+          "href": "https://aiop.lemonsqueezy.com/buy/d8bfc6e1-4eb8-4ca1-82a3-7596fa02e37b",
           "featured": false,
           "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
           "alt": "Monthly subscription / per user",
@@ -163,7 +163,7 @@
             "Professional use",
             "Dedicated support in addition to community support"
           ],
-          "cta": "Join the Waiting List"
+          "cta": "Free Trial"
         },
         {
           "name": "Team",
