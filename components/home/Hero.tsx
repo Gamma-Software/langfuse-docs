@@ -8,6 +8,8 @@ import phDark from "./img/ph_product_of_the_day_dark.png";
 import { CloudflareVideo } from "../Video";
 import GoldenKittyAwardSVG from "./img/ph_gke_ai_infra.svg";
 import GoldenKittyAwardSVGWhite from "./img/ph_gke_ai_infra_white.svg";
+import HeroLG from "./img/demo_transparent.png";
+import HeroSM from "./img/demo_transparent_up.png";
 import { HomeSection } from "./components/HomeSection";
 import {Meteors} from "../ui/magicui/meteors";
 import { log } from 'console';
@@ -15,6 +17,9 @@ import { useLocalizedMessages } from '@/lib/ParseLang';
 import { DownloadButton } from "./components/DownloadButton";
 import { TerminalMockup } from "../ui/shadcn/terminal";
 import WordRotate from "../ui/magicui/word-rotate";
+import {FlipWords} from "../ui/aceternityui/flip-words";
+import { Plugins } from "./Plugins"
+
 
 
 export function Hero() {
@@ -28,10 +33,11 @@ export function Hero() {
       <div className="flex flex-row">
       <div className="flex flex-col items-start justify-center gap-3 md:min-h-[calc(60vh-100px)] pb-12 lg:py-20">
         <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 dark:bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 font-sans font-bold">
-          <WordRotate className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 dark:bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 font-sans font-bold" words={messages.home.Hero.catch_word}/>
-          {messages.home.Hero.quickly}
+          <FlipWords className="text-5xl sm:text-7xl lg:text-8xl font-bold font-mono relative z-10 md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-600 to-neutral-800 dark:bg-gradient-to-b dark:from-neutral-100 dark:to-neutral-300 font-sans font-bold" words={messages.home.Hero.catch_word} duration={3000}/>
           <br />
           {messages.home.Hero.package}
+          <br />
+          {messages.home.Hero.quickly}
         </h1>
         <span className="mt-2 text-primary/70 text-2xl sm:text-2xl lg:text-3xl z-10  md:text-balance font-semibold tracking-wide">
           {messages.home.Hero.desc}
@@ -44,17 +50,17 @@ export function Hero() {
           </Button>
         </div>
       </div>
-      <Image src="/demo_transparent.png" alt="preview" className="hidden lg:block rounded-xl blur-[0.5px] absolute ml-[800px] mt-[100px] opacity-[30%] " height={100} width={1000}/>
+      <Image src={HeroLG} alt="preview" className="hidden lg:block rounded-xl blur-[0.5px] absolute ml-[800px] mt-[100px] opacity-[30%] " height={100} width={1000}/>
       </div>
-      <Image src="/demo_transparent_up.png" alt="preview" className="hidden sm:block lg:hidden rounded-xl blur-[0.5px] mt-2 mb-[-70%] opacity-[30%] " height={100} width={1000}/>
+      <Image src={HeroSM} alt="preview" className="hidden sm:block lg:hidden rounded-xl blur-[0.5px] mt-2 mb-[-70%] opacity-[30%] " height={100} width={1000}/>
+      <Plugins messages={messages}/>
 
 
       {/*<TerminalMockup command={"aiop build"}/>*/}
 
 
       {/* Badges */}
-      {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap"> */}
-      {/* <div className="grid grid-cols-1 md:grid-cols-1 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap">
+      {/*<div className="grid grid-cols-1 md:grid-cols-1 gap-y-5 gap-x-4 items-center justify-items-center my-10 flex-wrap">
         <Link href="https://github.com/langfuse/langfuse">
           <img
             alt="Langfuse Github stars"
@@ -89,14 +95,13 @@ export function Hero() {
         <div className="max-w-full w-52 px-1">
           <ProductHuntBadge />
         </div>
-      </div>
+      </div>*/}
       {/* <div className="aspect-video bg-blue-200"></div>
       <CloudflareVideo
         videoId="ff57153dd945da86f7549c1f30daaea2"
         aspectRatio={1.71}
         title="What is Langfuse?"
-      />
-      */}
+      />*/}
     </HomeSection>
   );
 }

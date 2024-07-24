@@ -37,6 +37,7 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
 
         primary: {
+          "50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554",
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
@@ -82,8 +83,17 @@ module.exports = {
         marquee: "marquee var(--duration) linear infinite",
         grid: "grid 20s linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "radar-spin": "radar-spin 10s linear infinite",
       },
       keyframes: {
+        "radar-spin": {
+          from: {
+            transform: "rotate(20deg)",
+          },
+          to: {
+            transform: "rotate(380deg)",
+          },
+        },
         spotlight: {
           "0%": {
             opacity: 0,

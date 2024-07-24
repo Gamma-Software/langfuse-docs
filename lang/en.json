@@ -2,13 +2,49 @@
   "home": {
     "Hero": {
       "catch_word": ["Integrate", "Validate", "Deliver"],
-      "quickly": "quickly",
-      "package": "modular softwares.",
+      "quickly": "Fast.",
+      "package": "Modular softwares",
       "desc": "Toolkit for building modular softwares.",
       "demoButton": "Demo",
       "documentationButton": "Learn more about AIOP",
       "download": "Install for free",
-      "toaster_download": "The install command is in your clipboard. Paste it your shell terminal."
+      "toaster_download": "The install command is in your clipboard. Paste it your shell terminal.",
+      "works_with": "Works with"
+    },
+    "Capable": {
+      "title": "What is it capable of?",
+      "desc": "AIOP is a toolbox that includes many predefined functions to facilitate the integration of modular software.",
+      "capable": {
+        "local_file": "Local file",
+        "remote_file": "Remote files",
+        "local_folder": "Local folder",
+        "remote_folder": "Remote folder",
+        "template": "File templates",
+        "unzip": "File decompression",
+        "file_gen": "Dynamic file generation",
+        "pdf": "PDF generation",
+        "combine": "Configuration concatenation",
+        "script": "Custom script execution",
+        "installer": "Installer generation",
+        "registry": "Registry submission",
+        "precompile": "ROS package precompilation"
+      }
+    },
+    "Tuto": {
+      "title": "How to use ?",
+      "desc": "Only 3 steps to start using AIOP in all of your projects.",
+      "step1": {
+        "title": "Add the file .aiop (even empty)",
+        "desc": "This is the configuration file of the projet."
+      },
+      "step2": {
+        "title": "Declare the resources in the file .aml",
+        "desc": "This is the recipe file of the playbook."
+      },
+      "step3": {
+        "title": "Run `aiop build` in the console",
+        "desc": "To build your first package."
+      }
     },
     "FromTheBlog": {
       "title": "Blog",

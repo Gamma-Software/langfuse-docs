@@ -1,14 +1,50 @@
 {
   "home": {
     "Hero": {
-      "catch_word": ["Intégrez", "Validez", "Livrez"],
-      "quickly": "rapidement",
-      "package": "vos logiciels modulaires",
+      "catch_word": ["Intègre", "Valide", "Livre"],
+      "quickly": "rapidement.",
+      "package": "tes briques logicielles",
       "desc": "La boite à outil pour vos logiciels modulaire.",
       "demoButton": "Démonstration",
       "documentationButton": "En savoir plus sur AIOP",
       "download": "Installer gratuitement",
-      "toaster_download": "La commande pour installer AIOP est copié dans le presse-papier. Executez le dans un terminal."
+      "toaster_download": "La commande pour installer AIOP est copié dans le presse-papier. Executez le dans un terminal.",
+      "works_with": "Fonctionne avec"
+    },
+    "Capable": {
+      "title": "De quoi est-t-il capable ?",
+      "desc": "AIOP est une boite à outil regroupant de nombreuses fonctions prédéfinies pour faciliter l'intégration des logiciels modulaires.",
+      "capable": {
+        "local_file": "Fichiers locaux",
+        "remote_file": "Fichiers distants",
+        "local_folder": "Dossiers locaux",
+        "remote_folder": "Dossiers distants",
+        "template": "Modèles de fichiers",
+        "unzip": "Décompression de fichiers",
+        "file_gen": "Génération dynamique de fichiers",
+        "pdf": "Génération de PDF",
+        "combine": "Concatenation de configuration",
+        "script": "Exécution de scripts personnalisés",
+        "installer": "Génération d'un installer",
+        "registry": "Envoie dans des registres",
+        "precompile": "Précompilation de packages ROS"
+      }
+    },
+    "Tuto": {
+      "title": "Comment l'utiliser ?",
+      "desc": "Seulement 3 étapes pour commencer à utiliser AIOP dans tous vos projets.",
+      "step1": {
+        "title": "Ajoute le fichier .aiop (même vide)",
+        "desc": "C'est le fichier de configuration du projet"
+      },
+      "step2": {
+        "title": "Déclare tes resources dans le fichier .aml",
+        "desc": "C'est la cahier de recette"
+      },
+      "step3": {
+        "title": "Lance `aiop build` dans ta console",
+        "desc": "Pour générer le paquet sur mesure"
+      }
     },
     "FromTheBlog": {
       "title": "Blog",
@@ -16,7 +52,7 @@
     },
     "FeatureBento": {
       "title": "Points clés",
-      "description": "",
+      "description": "Les fonctionnalités importantes de AIOP",
       "feature": {
         "extensible": {
           "title": "Extensible",
