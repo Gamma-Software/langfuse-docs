@@ -24,7 +24,7 @@ const config: DocsThemeConfig = {
   logo: <Logo />,
   main: MainContentWrapper,
   i18n: [
-    { locale: 'en', text: 'English' },
+    { locale: 'en', text: 'English'},
     { locale: 'fr', text: 'Français' },
   ],
   search: {
@@ -81,9 +81,8 @@ const config: DocsThemeConfig = {
     text: () => {
       const messages = useLocalizedMessages();
       if (!messages) return null;
-      return (
-        messages.common.edit
-      )
+      if (process.env.NODE_ENV === "development") return messages.common.edit
+      return null
     }
   },
   feedback: {

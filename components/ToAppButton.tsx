@@ -30,7 +30,7 @@ export const ToAppButton = () => {
   const messages = useLocalizedMessages();
   if (!messages) return null;
   return (
-    <Button size="xs" asChild className="whitespace-nowrap w-[70px]">
+    <Button size="xs" asChild className="whitespace-nowrap w-auto">
       <Link
         href={
           //signedIn === "US"

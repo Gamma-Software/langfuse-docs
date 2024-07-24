@@ -1,9 +1,14 @@
 {
   "home": {
     "Hero": {
-      "packages": "Rendez vos logiciels modulaires en toute simplicité. Réduisez leur de temps d’intégration et augmentez la cadence de livraison.",
+      "catch_word": ["Intégrez", "Validez", "Livrez"],
+      "quickly": "rapidement",
+      "package": "vos logiciels modulaires",
+      "desc": "Moteur d'intégration de modules rapide et simple",
       "demoButton": "Démonstration",
-      "documentationButton": "Voir la documentation"
+      "documentationButton": "En savoir plus sur AIOP",
+      "download": "Installer gratuitement",
+      "toaster_download": "La commande pour installer AIOP est copié dans le presse-papier. Executez le dans un terminal."
     },
     "FromTheBlog": {
       "title": "Blog",
@@ -40,7 +45,9 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardise et automatise le processus de construction de packages pour systèmes embarqués."
+      "description": "AIOP fournit un ensemble d'outils pour standardiser et automatiser le processus de construction de packages de vos logiciels modulaires.",
+      "download_playbook": "Télécharger un playbook d'example",
+      "download_package": "Et un des packages résultant"
     },
     "Benefits": {
       "title": "Pourquoi l'utiliser ?",
@@ -156,8 +163,8 @@
           "featured": false,
           "description":
             "Pour des projets serieux. Inclus des fonctionnalités avancées et du support dédié. Pour le moment, la version Pro n’est pas disponible. Inscrivez-vous à notre newsletter pour être informé de sa sortie.",
-          "alt": "",
-          "price": "Bêta",
+          "alt": "Par mois / par utilisateur",
+          "price": "€125",
           "mainFeatures": [
             "Toutes les fonctionnalités de la version gratuite",
             "Accès à des cookbook de tâches personnalisées",
@@ -176,7 +183,7 @@
           "id": "tier-team",
           "href": "/schedule-demo",
           "featured": false,
-          "price": "Bêta",
+          "price": "Sur mesure",
           "description":
             "Solution dédié pour une équipe et/ou entreprise. Vous disposez d’un assistance personnalisée. Contactez nous pour discuter du prix.",
           "alt": "Contact us",
@@ -467,7 +474,7 @@
     "by": "De"
   },
   "app_button":{
-    "signup": "S’inscrire",
+    "signup": "Démarrer",
     "account": "Compte"
   },
   "common": {

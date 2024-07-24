@@ -10,6 +10,7 @@ import { FromTheBlog } from "./FromTheBlog";
 import { Benefits } from "./Benefits";
 import { Clients } from "./Clients";
 import { Workflow } from "./Workflow";
+import { Toaster } from "../ui/shadcn/toaster"
 
 export const Home = () => (
   <>
@@ -28,5 +29,7 @@ export const Home = () => (
       <Footer />
     </main>
     <Background />
+    <Toaster />
   </>
+
 );

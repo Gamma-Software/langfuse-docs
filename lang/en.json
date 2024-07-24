@@ -1,9 +1,14 @@
 {
   "home": {
     "Hero": {
-      "packages": "Software modularity at ease. Reduce integration time and increase your delivering rate.",
+      "catch_word": ["Integrate", "Validate", "Deliver"],
+      "quickly": "quickly",
+      "package": "modular softwares.",
+      "desc": "Simple and fast software modular integration engine",
       "demoButton": "Demo",
-      "documentationButton": "View Documentation"
+      "documentationButton": "Learn more about AIOP",
+      "download": "Free Install",
+      "toaster_download": "The install command is in your clipboard. Paste it your shell terminal."
     },
     "FromTheBlog": {
       "title": "Blog",
@@ -40,7 +45,9 @@
     },
     "Workflow": {
       "title": "Package as code",
-      "description": "AIOP standardizes and automates the process of building embedded system packages."
+      "description": "AIOP provides you a toolkit to standardizes and automates the process of building modular softwares.",
+      "download_playbook": "Download an example playbook",
+      "download_package": "And one of the many packages available"
     },
     "Benefits": {
       "title": "Why AIOP ?",
@@ -143,8 +150,8 @@
           "href": "/waiting-list",
           "featured": false,
           "description": "For serious projects. Includes advanced features and dedicated support. The Pro version is not yet available. Sign up for our newsletter to be informed of its release.",
-          "alt": "Monthly subscription",
-          "price": "Bêta",
+          "alt": "Monthly subscription / per user",
+          "price": "€125",
           "mainFeatures": [
             "All features of the free version",
             "Access to custom task cookbooks",
@@ -163,9 +170,9 @@
           "id": "tier-team",
           "href": "/schedule-demo",
           "featured": false,
-          "price": "Bêta",
+          "price": "Quote",
           "description": "Dedicated solution for a team and/or company. You have personalized assistance. Contact us to discuss the price.",
-          "alt": "Contact us",
+          "alt": "Monthly subscription",
           "mainFeatures": [
             "All features of the Pro version",
             "Access to workshops and training",
@@ -441,7 +448,7 @@
     "by": "By"
   },
   "app_button":{
-    "signup": "Sign up",
+    "signup": "Start",
     "account": "Account"
   },
   "common": {

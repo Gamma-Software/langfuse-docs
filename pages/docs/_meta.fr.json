@@ -40,5 +40,6 @@
   },
   "third-party": "Librairies tierces",
   "qna": "FAQ",
-  "even-more": "Encore plus loin"
+  "even-more": "Encore plus loin",
+  "troubleshooting": {"display": "hidden"}
 }

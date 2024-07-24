@@ -80,6 +80,9 @@ dependencies:
   autoprefixer:
     specifier: ^10.4.17
     version: 10.4.17(postcss@8.4.35)
+  canvas-confetti:
+    specifier: ^1.9.3
+    version: 1.9.3
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -149,6 +152,9 @@ dependencies:
   react-tweet:
     specifier: ^3.2.0
     version: 3.2.0(react-dom@18.2.0)(react@18.2.0)
+  react-use-downloader:
+    specifier: ^1.2.8
+    version: 1.2.8(react@18.2.0)
   react@latest:
     specifier: link:tsparticles/react@latest
     version: link:tsparticles/react@latest
@@ -2343,6 +2349,10 @@ packages:
 
   /caniuse-lite@1.0.30001579:
     resolution: {integrity: sha512-u5AUVkixruKHJjw/pj9wISlcMpgFWzSrczLZbrqBSxukQixmg0SJ5sZTpvaFvxU0HoQKd4yoyAogyrAz9pzJnA==}
+    dev: false
+
+  /canvas-confetti@1.9.3:
+    resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
     dev: false
 
   /ccount@2.0.1:
@@ -5509,6 +5519,15 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       swr: 2.2.4(react@18.2.0)
+    dev: false
+
+  /react-use-downloader@1.2.8(react@18.2.0):
+    resolution: {integrity: sha512-JYb9esgw2TmODSCmSEFSEd/lJ0xtO50ugOu2T/PaO0JNYvscBqJT0uY452p7N5mf37jqSET7Q5DxcgixH1631Q==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: ^17.0.2 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react@18.2.0:
