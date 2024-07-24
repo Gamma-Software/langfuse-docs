@@ -53,7 +53,7 @@ const nextraConfig = withNextra({
   },
   i18n: {
     locales: ['en', 'fr'],
-    defaultLocale: 'fr',
+    defaultLocale: 'en',
     localeDetection: false,
   },
   redirects: async () => [
