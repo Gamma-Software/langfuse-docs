@@ -26,7 +26,7 @@ export const IconContainer = ({ icon, text, delay, href }: any) => {
       )}
     >
       <Link href={href || "/docs/intro"}>
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl opacity-80 hover:opacity-100 border border-slate-700 bg-slate-800 shadow-inner">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl opacity-80 hover:opacity-100 border border-slate-400 bg-slate-500 shadow-inner">
         {icon || <HiDocumentText className="  h-8 w-8 text-slate-600" />}
       </div>
       </Link>
@@ -60,7 +60,7 @@ export const IconContainerHorizontal = ({ icon, text, delay, href }: any) => {
       )}
     >
       <Link href={href || "/docs/intro"}>
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-700 bg-slate-800 shadow-inner">
+      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-400 bg-slate-500 shadow-inner">
         {icon || <HiDocumentText className="  h-8 w-8 text-slate-600" />}
       </div>
       </Link>
