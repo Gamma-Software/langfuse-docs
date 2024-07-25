@@ -73,7 +73,7 @@ export function Demo() {
             alt="Workflow"
             width={1400}
             height={1400}
-            className="w-full opacity-80 rounded-lg shadow-xl shadow-blue-500/50"
+            className="w-full rounded-lg shadow-xl shadow-blue-500/50"
           />
         </section>
       ) : (
@@ -83,7 +83,7 @@ export function Demo() {
             alt="Workflow"
             width={1400}
             height={1400}
-            className="w-full  opacity-80 rounded-lg shadow-xl shadow-blue-500/50"
+            className="w-full rounded-lg shadow-xl shadow-blue-500/50"
           />
         </section>
         )
