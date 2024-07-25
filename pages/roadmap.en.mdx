@@ -2,9 +2,11 @@
 description: AIOP's roadmap, upcoming features and recent updates.
 ---
 
+import Link from "next/link";
 import { Features } from "@/components/RoadmapCheckedList";
 import { Header } from "@/components/Header";
-
+import { Button } from "@/components/ui/shadcn/button";
+import BackToTopButton from "@/components/ui/BackToTop";
 
 <div className="md:container">
 
@@ -15,10 +17,14 @@ import { Header } from "@/components/Header";
       description="AIOP's roadmap, upcoming features and recent updates."
       className="mb-8"
       h="h1"
-      button={{ href: "https://trello.com/b/NmFuNnMr/product-roadmap-aiop", text: "I have an idea to add"  }}
     />
+
+    <Button size="lg" variant="secondary" asChild>
+      <Link href="https://trello.com/b/NmFuNnMr/product-roadmap-aiop">I have an idea to add</Link>
+    </Button>
 
   </div>
   <Features />
+  <BackToTopButton />
 </div>
 

@@ -12,41 +12,56 @@ Dans le dossier `.aiop` de votre playbook, vous pouvez configurer les installeur
   La configuration des installeurs est optionel et devrait dans la plupart des cas vous permettre de générer un installeur sans complexité. Cette page est destinée à ceux qui souhaitent personnaliser la génération des installeurs.
 </Callout>
 
+
+
 ## Configuration
 
-Le dossier de configuration des installeurs est situé dans le répertoire relatif au playbook:
-- `<racine_playbook>/.aiop/installer/`
+Dans le fichier de configuration du playbook `.aiop`, ajoutez le champ `installer`. Sous `installer` ajoutez le type de l'installeur et ses sous arguments suivants.
 
-> `<racine_playbook>` est le répertoire racine du playbook.
+<Callout type="info" emoji="ℹ️">
+  Pour le moment, la génération des installeurs se limite aux `deb`. Mais d'autres types comme `exe`, `rpm` sont en cours de développement.
+</Callout>
 
-Ensuite vous placez les fichiers de configuration spécifiques aux installeurs dans un sous-dossier. Par exemple, si vous souhaitez générer un installeur `deb` et un installeur `rpm`, vous pouvez créer le dossier `deb` et `rpm` dans le dossier `installer` comme suit:
+- `name`: Nom de l'installeur.
+- `config_folder`: Dossier de configuration de l'installeur relatif à la racine du playbook. Ce dossier contient les fichiers de configuration pour le générateur de l'installeur. Par défaut ils seront récupéré dans le dossier `installer/`
+- `source_path` : Chemin absolu des fichiers sources du package où ils seront installé sur la machine hote. Par défaut ils seront placés dans `/usr/share/mysrc`.
+- `bin_path`: Chemin absolu des binaires du package où ils seront installés sur la machine hote. Ces binaires seront stocké dans le dossier `source_path` et symlinké dans `bin_path`. Par défaut ils seront placé dans `/usr/bin`.
+
+Un exemple de configuration pour un installeur de type deb:
+
+```yaml filename=".aiop"
+playbook:
+  installer:
+    deb:
+      name: installer-deb
+      config_folder: installer/deb
+      source_path: /usr/share/mysrc
+      bin_path: /usr/bin
+```
+
+### Configuration de l'installeur `deb`
+
+En prenant l'exemple précédement, on peut voir que les fichiers de configuration sont placés dans le dossier `installer/deb`.
+
+Placez les fichiers de configuration spécifiques à cet installeurs dans ce sous-dossier:
+
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
-    <FileTree.Folder name=".git">
-        <FileTree.File name="..." />
-    </FileTree.Folder>
-    <FileTree.Folder name=".aiop" defaultOpen>
-      <FileTree.Folder name="installer" defaultOpen>
-        <FileTree.Folder name="deb" defaultOpen>
-        </FileTree.Folder>
-        <FileTree.Folder name="rpm" defaultOpen>
-        </FileTree.Folder>
+    <FileTree.File name="..." />
+    <FileTree.Folder name="installer" defaultOpen>
+      <FileTree.Folder name="deb" defaultOpen>
+        <FileTree.File name="control" />
+        <FileTree.File name="postinst" />
       </FileTree.Folder>
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-<Callout type="info" emoji="ℹ️">
-  Pour le moment, l'installeur `deb` est le seul installeur supporté par AIOP. Les autres installeurs seront supportés dans les prochaines versions.
-</Callout>
-
-### Configuration de l'installeur `deb`
-
 Pour personnaliser la configuration d'un installeur `deb` pour des machines linux Debian, vous pouvez créer tous les fichers de configuration relatif à l'installeur `deb` dans le dossier `deb` du dossier `installer`.
 
 Par exemple, nous souhaitons modifier le fichier de configuration `control`, pour ajouter la dépendance avec le paquet `python`.
 
-```ansi filename=".aiop/installer/deb/control"
+```ansi filename="installer/deb/control"
 Package: ${package_name}
 Priority: extra
 Maintainer: Valentin Rudloff <valentin.rudloff.perso@gmail.com>
@@ -57,33 +72,20 @@ Depends: python
 Description: This is my description
 ```
 
-Vous constaterez que nous avons ajouté la ligne `Depends: python` pour ajouter une dépendance avec le paquet `python`. De plus nous utilisons les variables `${package_name}` et `${version}` qui seront remplacées par les valeurs du package généré.
+Vous constaterez que nous avons ajouté la ligne `Depends: python` pour ajouter une dépendance avec le paquet `python`.
+
+<Callout type="info" emoji="ℹ️">
+  Vous n'avez pas besoin de mettre le nom du package et la version du paquet dans le fichier `control`, AIOP remplacera les variables `${package_name}` et `${version}` dans ce fichier par ceux du package. La version correspond au tag sur votre repo git.
+</Callout>
 
 Nous pourrions aller plus loin et rajouter un script de post-installation dans le fichier `postinst`:
 
-```bash filename=".aiop/installer/deb/postinst"
+```bash filename="installer/deb/postinst"
 #!/bin/bash
 echo "Je suis lancé après l'installation du package"
 ```
 
 Dans ce script, nous affichons simplement un message dans la console après l'installation du package.
-
-L'arbre des fichiers de configuration de l'installeur `deb` ressemblerait à ceci:
-<FileTree>
-  <FileTree.Folder name="playbook" defaultOpen>
-    <FileTree.Folder name=".git">
-        <FileTree.File name="..." />
-    </FileTree.Folder>
-    <FileTree.Folder name=".aiop" defaultOpen>
-      <FileTree.Folder name="installer" defaultOpen>
-        <FileTree.Folder name="deb" defaultOpen>
-          <FileTree.File name="control" />
-          <FileTree.File name="postinst" />
-        </FileTree.Folder>
-      </FileTree.Folder>
-    </FileTree.Folder>
-  </FileTree.Folder>
-</FileTree>
 
 <Callout type="info" emoji="ℹ️">
   Pour plus d'informations sur la configuration des installeurs `deb`, vous pouvez consulter la documentation officielle de Debian [ici](https://www.debian.org/doc/manuals/maint-guide/dreq.fr.html) ou [ici](https://wiki.debian.org/ConfigPackages).

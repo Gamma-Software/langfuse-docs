@@ -1,52 +1,65 @@
 ---
-description: How to configure installers ?
+description: How to configure the installers?
 ---
 import { FileTree } from 'nextra/components'
 import { Callout } from "nextra-theme-docs";
 
-### Setting up the Installer
+# Configuring the Installer
 
-In your playbook's `.aiop` directory, you can configure the installers you wish to generate. These directories are only used when you want to generate an installer using the `aiop build --installer deb` command [[Learn More](/docs/cli/build#commande-build_installer)].
+In the `.aiop` folder of your playbook, you can configure the installers you want to generate. These folders are only used when you want to generate an installer with the command `aiop build --installer deb` [[Learn more](/docs/cli/build#commande-build_installer)].
 
 <Callout type="info" emoji="ℹ️">
-  Configuring installers is optional and should, in most cases, allow you to generate an installer without complexity. This page is intended for those who wish to customize installer generation.
+  Installer configuration is optional and should, in most cases, allow you to generate an installer without complexity. This page is intended for those who want to customize the generation of installers.
 </Callout>
 
 ## Configuration
 
-The installer configuration directory is located within the playbook's relative directory:
-- `<playbook_root>/.aiop/installer/`
+In the playbook configuration file `.aiop`, add the `installer` field. Under `installer`, add the type of installer and its following sub-arguments.
 
-> `<playbook_root>` is the root directory of the playbook.
+<Callout type="info" emoji="ℹ️">
+  Currently, installer generation is limited to `deb`. However, other types such as `exe` and `rpm` are under development.
+</Callout>
 
-Next, you place the installer-specific configuration files in a subfolder. For example, if you want to generate a `deb` installer and an `rpm` installer, you can create the `deb` and `rpm` folders in the `installer` directory as follows:
+- `name`: Name of the installer.
+- `config_folder`: Installer configuration folder relative to the root of the playbook. This folder contains the configuration files for the installer generator. By default, they will be retrieved in the `installer/` folder.
+- `source_path`: Absolute path of the package source files where they will be installed on the host machine. By default, they will be placed in `/usr/share/mysrc`.
+- `bin_path`: Absolute path of the package binaries where they will be installed on the host machine. These binaries will be stored in the `source_path` folder and symlinked in `bin_path`. By default, they will be placed in `/usr/bin`.
+
+An example configuration for a deb-type installer:
+
+```yaml filename=".aiop"
+playbook:
+  installer:
+    deb:
+      name: installer-deb
+      config_folder: installer/deb
+      source_path: /usr/share/mysrc
+      bin_path: /usr/bin
+```
+
+### Configuration of the `deb` Installer
+
+Using the previous example, we can see that the configuration files are placed in the `installer/deb` folder.
+
+Place the specific configuration files for this installer in this sub-folder:
+
 <FileTree>
   <FileTree.Folder name="playbook" defaultOpen>
-    <FileTree.Folder name=".git">
-        <FileTree.File name="..." />
-    </FileTree.Folder>
-    <FileTree.Folder name=".aiop" defaultOpen>
-      <FileTree.Folder name="installer" defaultOpen>
-        <FileTree.Folder name="deb" defaultOpen>
-        </FileTree.Folder>
-        <FileTree.Folder name="rpm" defaultOpen>
-        </FileTree.Folder>
+    <FileTree.File name="..." />
+    <FileTree.Folder name="installer" defaultOpen>
+      <FileTree.Folder name="deb" defaultOpen>
+        <FileTree.File name="control" />
+        <FileTree.File name="postinst" />
       </FileTree.Folder>
     </FileTree.Folder>
   </FileTree.Folder>
 </FileTree>
 
-<Callout type="info" emoji="ℹ️">
-  Currently, the `deb` installer is the only installer supported by AIOP. Other installers will be supported in future versions.
-</Callout>
+To customize the configuration of a `deb` installer for Debian Linux machines, you can create all the configuration files related to the `deb` installer in the `deb` folder within the `installer` folder.
 
-### Configuring the `deb` Installer
+For example, we want to modify the `control` configuration file to add a dependency on the `python` package.
 
-To customize the configuration of a `deb` installer for Debian Linux machines, you can create all configuration files related to the `deb` installer in the `deb` folder within the `installer` directory.
-
-For example, if we want to modify the `control` configuration file to add a dependency with the `python` package:
-
-```ansi filename=".aiop/installer/deb/control"
+```ansi filename="installer/deb/control"
 Package: ${package_name}
 Priority: extra
 Maintainer: Valentin Rudloff <valentin.rudloff.perso@gmail.com>
@@ -57,34 +70,21 @@ Depends: python
 Description: This is my description
 ```
 
-You'll notice that we added the line `Depends: python` to add a dependency with the `python` package. Additionally, we use the `${package_name}` and `${version}` variables, which will be replaced by the values of the generated package.
+You will notice that we have added the line `Depends: python` to add a dependency on the `python` package.
+
+<Callout type="info" emoji="ℹ️">
+  You do not need to put the package name and version in the `control` file; AIOP will replace the `${package_name}` and `${version}` variables in this file with those of the package. The version corresponds to the tag on your git repo.
+</Callout>
 
 We could go further and add a post-installation script in the `postinst` file:
 
-```bash filename=".aiop/installer/deb/postinst"
+```bash filename="installer/deb/postinst"
 #!/bin/bash
-echo "I am launched after the package installation"
+echo "I am executed after the package installation"
 ```
 
 In this script, we simply display a message in the console after the package installation.
 
-The file tree of the `deb` installer configuration would look like this:
-<FileTree>
-  <FileTree.Folder name="playbook" defaultOpen>
-    <FileTree.Folder name=".git">
-        <FileTree.File name="..." />
-    </FileTree.Folder>
-    <FileTree.Folder name=".aiop" defaultOpen>
-      <FileTree.Folder name="installer" defaultOpen>
-        <FileTree.Folder name="deb" defaultOpen>
-          <FileTree.File name="control" />
-          <FileTree.File name="postinst" />
-        </FileTree.Folder>
-      </FileTree.Folder>
-    </FileTree.Folder>
-  </FileTree.Folder>
-</FileTree>
-
 <Callout type="info" emoji="ℹ️">
-  For more information on configuring `deb` installers, you can refer to the official Debian documentation [here](https://www.debian.org/doc/manuals/maint-guide/dreq.fr.html) or [here](https://wiki.debian.org/ConfigPackages).
+  For more information on configuring `deb` installers, you can refer to the official Debian documentation [here](https://www.debian.org/doc/manuals/maint-guide/dreq.en.html) or [here](https://wiki.debian.org/ConfigPackages).
 </Callout>
