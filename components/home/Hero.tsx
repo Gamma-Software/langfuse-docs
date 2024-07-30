@@ -21,7 +21,6 @@ import {FlipWords} from "../ui/aceternityui/flip-words";
 import { Plugins } from "./Plugins"
 
 
-
 export function Hero() {
   const messages = useLocalizedMessages();
   if (!messages) return null;
