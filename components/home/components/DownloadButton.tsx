@@ -2,7 +2,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { useEffect, useRef } from "react";
-import { FaWindows, FaCentos, FaLinux, FaApple } from "react-icons/fa";
+import { FaWindows, FaCentos, FaLinux, FaApple, FaTerminal } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { IconType } from "react-icons";
@@ -54,6 +54,7 @@ export function DownloadButton () {
   };
 
   const gist = 'sh -c "$(curl -fsSL https://gist.githubusercontent.com/Gamma-Software/8d931d0d243cbe650009672d62d90f00/raw/)"'
+  const gist_manual = 'pip install aiop --index-url https://gitlab.com/api/v4/projects/52727704/packages/pypi/simple'
 
   return (
     <div ref={dropdownRef}>
@@ -76,6 +77,7 @@ export function DownloadButton () {
           <Option setOpen={() => {copyToClipboard(gist)}} Icon={FaLinux} text="Ubuntu | Debian GNU/Linux" />
           <Option setOpen={() => {copyToClipboard(gist)}} Icon={FaCentos} text="CentOS | RHEL" />
           <Option setOpen={() => {copyToClipboard(gist)}} Icon={FaWindows} text="Windows" />
+          <Option setOpen={() => {copyToClipboard(gist_manual)}} Icon={FaTerminal} text="CLI" />
         </motion.ul>
       </motion.div>
     </div>
